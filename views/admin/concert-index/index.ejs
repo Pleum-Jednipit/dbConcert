@@ -1,0 +1,170 @@
+<% include ../../partials/header %>
+<style>
+         body {
+  opacity: 1;
+  transition: 0.7s opacity;
+}
+
+body.fade {
+    opacity: 0;
+    transition: none;
+}
+html, body{
+    height:80%; /* important to vertically align the container */
+    margin:0;
+    padding:0;
+}
+.vertical-center {
+  min-height: 80%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 80vh; /* These two lines are counted as one 🙂       */
+  display: flex;
+  align-items: center;
+}
+body {
+  background: url('https://images.unsplash.com/photo-1483101974978-cf266fdf1139?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+h1{
+    color: white;
+}
+
+/* Darker background on mouse-over */
+        .btn2:hover {
+                    }
+    </style>
+            <div class="vertical-center">
+        
+                    <div class="container my-1">
+                        <div class="row my-5 ">
+                            <div class="col-12 align-self-center">
+                                   <h1 class="text-center display-1"><strong>Concert</strong></h1>
+                            </div>
+                                
+                        </div>
+                        
+                            <div class="row">
+                                    <div class="col-3 text-center my-auto">
+                                        <button type="button" class="btn btn-outline-light btn-lg" data-placement="bottom" html="true" data-toggle="popover" id="concert">
+                                            <span><img src="https://image.flaticon.com/icons/svg/1761/1761147.svg" class="p-4" width="200" alt="">
+                                                <hr>
+                                                <h2>Concert</h2>
+                                            </span>
+                                        </button>
+                                        
+                                    </div>
+                                    <div class="col-3 text-center my-auto">
+                                        <button type="button" class="btn btn-outline-light btn-lg" data-placement="bottom" html="true" data-toggle="popover" id="showtime">
+                                            <span><img src="https://image.flaticon.com/icons/svg/265/265688.svg" class="p-4" width="200" alt="">
+                                                <hr>
+                                                <h2>Show time</h2>
+                                            </span>
+                                        </button>
+                                        
+                                    </div>
+                                    <div class="col-3 text-center">
+                                        <button type="button" class="btn btn-outline-light btn-lg" data-placement="bottom" html="true" data-toggle="popover" id="zone">
+                                            <span><img src="https://image.flaticon.com/icons/svg/1773/1773654.svg" class="p-4" width="200" alt="">
+                                                <hr>
+                                                <h2>Zone & Seat</h2>
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <div class="col-3 text-center">
+                                        <button type="button" class="btn btn-outline-light btn-lg" data-placement="bottom" html="true" data-toggle="popover" id="artist">
+                                            <span><img src="https://image.flaticon.com/icons/svg/1809/1809839.svg" class="p-4" width="200" alt="">
+                                                <hr>
+                                                <h2>Artist</h2>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                    </div>
+            </div>
+        <!-- loaded popover content -->
+        <div id="popover-content-concert" class="hide d-none">
+                <div class="row">
+                    <div class="col ">
+                        <a href="/admin/concert-index/concert/new">Add</a>
+                    </div>
+                    <div class="col">
+                        <a href="edit.html" id="edit">Edit</a>
+                    </div>
+                    <div class="col">
+                            <a href="delete.html">Delete</a>
+                        </div>
+                </div>
+            </div>
+            <div id="popover-content-showtime" class="hide d-none">
+                    <div class="row">
+                        <div class="col ">
+                            <a href="">Add</a>
+                        </div>
+                        <div class="col">
+                            <a href="">Edit</a>
+                        </div>
+                        <div class="col">
+                                <a href="">Delete</a>
+                            </div>
+                    </div>
+                </div>
+                <div id="popover-content-zone" class="hide d-none">
+                        <div class="row">
+                            <div class="col ">
+                                <a href="">Add</a>
+                            </div>
+                            <div class="col">
+                                <a href="">Edit</a>
+                            </div>
+                            <div class="col">
+                                    <a href="">Delete</a>
+                                </div>
+                        </div>
+                    </div>
+                    <div id="popover-content-artist" class="hide d-none">
+                            <div class="row">
+                                <div class="col ">
+                                    <a href="">Add</a>
+                                </div>
+                                <div class="col">
+                                    <a href="">Edit</a>
+                                </div>
+                                <div class="col">
+                                        <a href="">Delete</a>
+                                    </div>
+                            </div>
+                        </div>
+
+    
+
+    <!-- Optional JavaScript -->
+        <script>
+            document.body.className = 'fade';
+          </script>
+    <script>
+            document.addEventListener("DOMContentLoaded", function(e) {
+              document.body.className = '';
+            });
+          </script>
+    <script src="smoothscoll.js"></script>
+    <script type="text/javascript" src="/path/to/build/drooltip.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+            $("[data-toggle=popover]").each(function(i, obj) {
+
+$(this).popover({
+  html: true,
+  content: function() {
+    var id = $(this).attr('id')
+    return $('#popover-content-' + id).html();
+  }
+});
+
+});
+        </script>
+<% include ../../partials/footer %>

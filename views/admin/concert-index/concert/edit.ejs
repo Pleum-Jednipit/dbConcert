@@ -3,7 +3,7 @@
     <div class="row">
         <h1 style="text-align: center">Edit Concert: <%= concert.Concert_Name %></h1>
         <div style="width: 30%; margin: 25px auto;">
-            <form action="/admin/concert-index/concert<%= concert.Concert_Name %>/<%= concert.Concert_ID%>/?_method=PUT" method="POST">
+            <form action="/admin/concert/<%= concert.Concert_Name %>/<%= concert.Concert_ID%>/edit/?_method=PUT" method="POST">
                 
                 <div class="form-group">
                     <label for="name">Concert ID: <%= concert.Concert_ID %></label>

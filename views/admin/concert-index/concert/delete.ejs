@@ -3,7 +3,7 @@
     <div class="row">
         <h1 style="text-align: center">Are you sure you want to delete concert: <%= concertName %></h1>
         <div style="width: 30%; margin: 25px auto;">
-            <form action="/admin/concert-index/concert/<%= concertName %>/<%= concertID %>/delete" method="POST">
+            <form action="/admin/concert/<%= concertName %>/<%= concertID %>/delete" method="POST">
                 
                 <div class="form-group">
                     <button class="btn btn-lg btn-primary btn-block">Delete!</button>

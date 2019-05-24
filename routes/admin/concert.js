@@ -5,8 +5,8 @@ const connection = require("../../connection")
 
 
 // add new concert
-router.get("/concert/new", function (req, res) {
-    var getVenue = "SELECT Venue_ID, Venue_Name FROM Venue"
+router.get("/new", function (req, res) {
+    var getVenue = "SELECT Venue_ID, Venue_Name FROM Venue";
     connection.query(getVenue, function (err, allVenue) {
        if (err) {
           throw err;
@@ -20,7 +20,7 @@ router.get("/concert/new", function (req, res) {
     });
  });
  
- router.post("/concert/new", function (req, res) {
+ router.post("/new", function (req, res) {
     var sql = "INSERT INTO concert ( concert_Name, concert_sales_date,concert_sales_time, concert_detail,venue_ID) " +
        "VALUES (?,?,?,?)";
     var name = req.body.name;
@@ -33,12 +33,12 @@ router.get("/concert/new", function (req, res) {
           throw err;
        }
        console.log("1 Concert is inserted");
-       res.redirect("/admin");
+       res.redirect("/admin/index");
     });
  });
  
  
- router.get("/concert/select/:type", function (req, res) {
+ router.get("/select/:type", function (req, res) {
     var type = req.params.type;
     var getConcert = "SELECT concert_ID, concert_Name FROM concert"
     connection.query(getConcert, function (err, allConcert) {
@@ -54,7 +54,7 @@ router.get("/concert/new", function (req, res) {
     });
  });
  
- router.get("/concert/:name/:id/edit", function (req, res) {
+ router.get("/:name/:id/edit", function (req, res) {
     var concertID = req.params.id;
     var concertName = req.params.name;
     console.log(concertID + concertName);
@@ -82,7 +82,7 @@ router.get("/concert/new", function (req, res) {
     });
  });
  
- router.put("/concert/:name/:id/edit", function (req, res) {
+ router.put("/:name/:id/edit", function (req, res) {
     var concertID = req.body.concertID;
     var name = req.body.name;
     var date = req.body.saleDate;
@@ -95,12 +95,13 @@ router.get("/concert/new", function (req, res) {
        if (err) {
           throw err;
        }
-       console.log(concert[0].Venue_ID);
+       console.log("Updated!")
+       res.redirect("/admin/index");
     });
  });
  
  
- router.get("/concert/:name/:id/delete", function (req, res) {
+ router.get("/:name/:id/delete", function (req, res) {
     var concertID = req.params.id;
     var concertName = req.params.name;
     res.render("./admin/concert-index/concert/delete",{
@@ -108,7 +109,7 @@ router.get("/concert/new", function (req, res) {
     });
  });
  
- router.post("/concert/:name/:id/delete", function (req, res) {
+ router.post("/:name/:id/delete", function (req, res) {
     var sql = "DELETE FROM concert where concert_ID = ?;"
     var concertID = req.params.id;
     connection.query(sql, [concertID], function (err, result) {
@@ -116,7 +117,7 @@ router.get("/concert/new", function (req, res) {
           throw err;
        }
        console.log("Delete!");
-       res.redirect("/admin");
+       res.redirect("/admin/index");
     });
  });
 
