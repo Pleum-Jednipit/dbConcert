@@ -1,0 +1,58 @@
+<% include ../../../partials/header %>
+    
+    <div class="row">
+        <h1 style="text-align: center">Select Concert</h1>
+        <div style="width: 30%; margin: 25px auto;">
+            <form action="/admin/concert-index/concert/select" method="POST">
+                
+                <div class="form-group">
+                    <select required 
+                    class="selectpicker" data-style="btn-info" name="concertID" id="concertID" onchange="myFunction()">
+                        <optgroup label="Concert Name">
+                            <option value=""> -- Select the concert -- </option>
+                            <% concert.forEach(function(item){ %>
+                            <option value="<%= item.concert_ID %>"><%= item.concert_Name %></option>
+                            <% }) %>
+                        </optgroup>
+                    </select>
+                </div>
+               <input type="hidden" name= "type" id="type" value="<%= type %>"> 
+               <input type="hidden" name= "concertName" id="concertName">
+
+                <div class="form-group">
+                        <button type="submit" btn btn-lg btn-primary btn-block>Submit!</button>
+                </div>
+
+                <a href="something" id="next">Next</a>
+
+            </form>
+            <a href="/admin">Go Back</a>
+        </div>
+    </div>
+    <script>
+    function myFunction() {
+        var concertSelect = document.getElementById("concertID");
+        var selectedValue = concertSelect.options[concertSelect.selectedIndex].value;
+        var selectedText = concertSelect.options[concertSelect.selectedIndex].text.split(" ").join("-");
+        var type = document.getElementById("type").value;
+        if (type == "edit") {
+            document.getElementById("next").href = "/admin/concert-index/concert/" + selectedText + "/" + selectedValue + "/edit";
+            document.getElementById("demo").innerHTML = "/admin/concert-index/concert/" + selectedText + "/" + selectedValue + "/edit";
+        }
+        else if( type == "delete"){
+            document.getElementById("next").href = "/admin/concert-index/concert/" + selectedText + "/" + selectedValue + "/delete";
+            document.getElementById("demo").innerHTML = "/admin/concert-index/concert/" + selectedText + "/" + selectedValue + "/delete";
+        }
+        // document.getElementByID('next').setAttribute("href", "/admin/concert/" + selectedValue + "/" + selectedText);
+
+        // var concertID = document.getElementById("concertName").textContent;
+        // document.getElementById('test').value = concertID; //or grab it by tagname etc
+        
+    }
+    
+    </script>
+    
+
+<% include ../../../partials/footer %>
+
+

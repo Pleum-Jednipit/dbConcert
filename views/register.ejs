@@ -1,0 +1,64 @@
+<% include partials/header %>
+
+<h1>Member Registration Form</h1>
+	
+	<form action = "/newregister" method="POST">
+        <div>
+			<label for="userName">UserName:</label>
+			<input type="test" name="userName" id="userName" required>
+
+			<label for="password">Password:</label>
+			<input type ="password" name="password" id="password" required>
+        </div>
+        
+		<div>
+			<label for="firstName">First Name:</label>
+			<input type="text" name="firstName" id="firstName"  required>
+
+			<label for="lastName">Last Name:</label>
+			<input type="text" name="lastName" id="lastName" required>
+		</div>
+	
+		<div>
+			<label for="male">Male</label>
+			<input type="radio" name="gender" id="male" value="male">
+
+			<label for="female">Female</label>
+			<input type="radio" name="gender" id="female" value="female">
+
+			<label for="other">Other</label>
+			<input type="radio" name="gender" id="other" value="other">
+		</div>
+
+		<div>
+			<label for="email">Email:</label>
+            <input type="email" name="email" id="email"  required>
+        </div>
+        
+        <div>
+                <label for="dateOfBirth">Date of Birth:</label>
+                <input type="date" name="dob" id="DateOfBirth"  required>
+        </div>
+
+        <div>
+                <label for="address">Mailing Address:</label>
+                <br>
+                <textarea name="address" id="Address" cols="50" rows="3"></textarea>
+        </div>
+
+        <label for="phoneNumber">Phone Number:</label>
+		<input type="text" name="phoneNumber" id="phoneNumber" required>
+
+
+	<div>
+		<label for="term">I agree to the terms and conditions</label>
+		<input type="checkbox" name="term" id="term" >
+	</div>
+
+	<input type="submit"  >
+
+	</form>
+
+
+
+<% include partials/footer %>

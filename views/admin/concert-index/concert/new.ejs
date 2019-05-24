@@ -1,0 +1,44 @@
+<% include ../../../partials/header %>
+    <div class="row">
+        <h1 style="text-align: center">Add New Concert</h1>
+        <div style="width: 30%; margin: 25px auto;">
+            <form action="/admin/concert-index/concert/new" method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input class="form-control" type="text" name="name" id="name" placeholder="Yosemite">
+                </div>
+
+                <div>
+                    <label for="saleDate">Sales Date:</label>
+                    <input type="date" name="saleDate" id="saleDate"  required>
+                </div>
+
+                <div>
+                    <label for="saleTime">Sales Time:</label>
+                    <input type="time" name="saleTime" id="saleTime"  required>
+                </div>
+
+                <div class="form-group">
+                    <label for="detail">Detail</label>
+                    <input class="form-control" type="text" name="detail" id="detail" placeholder="California’s Sierra Nevada mountains.">
+                </div>
+
+                <div class="form-group">
+                    <select class="selectpicker" data-style="btn-info" name="venueID" id="concertID">
+                        <optgroup label="Venue">
+                            <% venue.forEach(function(item){ %>
+                            <option value="<%= item.Venue_ID %>"><%= item.Venue_Name %></option>
+                            <% }) %>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+                </div>
+            </form>
+            <a href="/admin">Go Back</a>
+        </div>
+    </div>
+<% include ../../../partials/footer %>
+

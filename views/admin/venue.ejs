@@ -1,0 +1,42 @@
+<% include ../partials/header %>
+    <div class="row">
+        <h1 style="text-align: center">Add New Venue</h1>
+        <div style="width: 30%; margin: 25px auto;">
+            <form action="/admin/venue" method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input class="form-control" type="text" name="name" id="name" placeholder="Yosemite">
+                </div>
+                <div class="form-group">
+                    <label for="image">Image Url</label>
+                    <input class="form-control" type="text" name="image" id="image" pattern="^https:\/\/images\.unsplash\.com\/.*" title="Only images from images.unsplash.com allowed. See link below for instructions." placeholder="https://images.unsplash.com/..." required>
+                    <small>Click <a href="https://youtu.be/Bn3weNRQRDE">here</a> for tutorial on how to copy unsplash urls.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input class="form-control" type="text" name="address" id="address" placeholder="Yosemite National Park, CA">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input class="form-control" type="text" name="email" id="email" placeholder="California’s Sierra Nevada mountains.">
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input class="form-control" type="text" name="phoneNumber" id="phoneNumber" placeholder="California’s Sierra Nevada mountains.">
+                </div>
+
+                <div class="form-group">
+                    <label for="seatingcapacity">Seating Capacity</label>
+                    <input class="form-control" type="number" name="seatingCapacity" id="seatingcapacity" placeholder="100" step="100" min="100" required>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+                </div>
+            </form>
+            <a href="/admin">Go Back</a>
+        </div>
+    </div>
+<% include ../partials/footer %>
+

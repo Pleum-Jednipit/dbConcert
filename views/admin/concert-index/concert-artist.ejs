@@ -1,0 +1,40 @@
+<% include ../../partials/header %>
+    
+    <div class="row">
+        <h1 style="text-align: center">Concert Artist Management</h1>
+        <div style="width: 30%; margin: 25px auto;">
+            <form action="/admin/concert-artist" method="POST">
+                
+                <div class="form-group">
+                        <label for="concertID" ></label>Concert ID: <%= concertID %></label>
+                        <input type="hidden" name="concerID" value="<%= concertID %>">
+                </div>
+
+                <div class="form-group">
+                    <label for="concertName" ></label>Concert Name: <%= concertName %></label>
+                    <input type="hidden" name="concertName" value="<%= concertName %>">
+                </div>
+
+                
+                <div class="form-group" id="artist">
+                    <select class="selectpicker" data-style="btn-info" name="artistID">
+                        <optgroup label="Artist Name">
+                            <% artist.forEach(function(item){ %>
+                            <option value="<%= item.artist_ID %>"><%= item.artist_Name %></option>
+                            <% }) %>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+                </div>
+            </form>
+            <a href="/admin">Go Back</a>
+        </div>
+    </div>
+    
+
+<% include ../../partials/footer %>
+
+

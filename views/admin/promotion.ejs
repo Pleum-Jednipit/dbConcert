@@ -1,0 +1,35 @@
+<% include ../partials/header %>
+    <div class="row">
+        <h1 style="text-align: center">Add New Venue</h1>
+        <div style="width: 30%; margin: 25px auto;">
+            <form action="/admin/promotion" method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input class="form-control" type="text" name="name" id="name" placeholder="Yosemite">
+                </div>
+
+                <div>
+                    <label for="startDate">Start Date:</label>
+                    <input type="date" name="start" id="start"  required>
+                </div>
+
+                <div>
+                    <label for="endDate">End Date:</label>
+                    <input type="date" name="end" id="end"  required>
+            </div>
+
+                
+                <div class="form-group">
+                    <label for="Description">Description</label>
+                    <input class="form-control" type="text" name="detail" id="detail" placeholder="California’s Sierra Nevada mountains.">
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+                </div>
+            </form>
+            <a href="/admin">Go Back</a>
+        </div>
+    </div>
+<% include ../partials/footer %>
+
