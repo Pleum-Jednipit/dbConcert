@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var passport = require("passport");
-const connection = require("../connection")
+const connection = require("../../connection")
 
 //root route
 router.get("/index", function (req, res) {
