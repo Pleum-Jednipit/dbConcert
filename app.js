@@ -30,6 +30,8 @@ connection.connect(function(err){
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine","ejs");
 app.use(express.static("public"));
+app.use(express.static("JS"));
+
 
 app.use(methodOverride('_method'));
 app.use("/", indexRoutes);
