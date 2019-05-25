@@ -1,99 +1,75 @@
 var express = require("express");
 var router = express.Router();
 var passport = require("passport");
-const connection = require("../../connection")
+const connection = require("../../connection");
 
-// add payment method 
+
 router.get("/new", function (req, res) {
-    res.render("./admin/payment-index/payment/new");
+   res.render("./admin/payment-index/payment/new");
  });
  
  router.post("/new", function (req, res) {
-    var sql = "INSERT INTO payment_method ( Payment_Method_Name ,Payment_Method_Description) " +
-       "VALUES (?,?)";
-    var name = req.body.name;
-    var detail = req.body.detail;
-    connection.query(sql, [name, detail], function (err, result) {
+    var sql = "INSERT INTO payment ( payment_Name, payment_Detail, payment_Fee) " +
+       "VALUES (?,?,?)";
+    var paymentName = req.body.name;
+    var paymentDetail = req.body.detail;
+    var paymentFee   = req.body.price;
+    connection.query(sql, [paymentName,paymentDetail,paymentFee], function (err, result) {
        if (err) {
           throw err;
        }
-       console.log("1 Payment Method Record is inserted");
-       res.redirect("/admin/index");
+       console.log("1 Payment is inserted");
+       res.redirect("/admin/payment/index");
     });
  });
-
-
+  
  router.get("/edit", function (req, res) {
-   console.log("ISUS");
-   res.render("./admin/concert-index/concert/edit", {concert : ""});
-});
+      res.render("./admin/payment-index/payment/edit", {payment : ""});
+ });
 
-router.post("/edit", function (req, res) {
- var concertSearch = req.body.concertSearch;
- var searchConcert = "SELECT * FROM concert WHERE concert_Name = ?" ;
- connection.query(searchConcert,[concertSearch], function (err, concert) {
-    if (err) {
-       throw err;
-    }
-    if(concert){
-      var getCurrentVenue = "SELECT Venue_Name FROM venue WHERE Venue_ID = ?";
-      connection.query(getCurrentVenue,[concert[0].Venue_ID], function (err, currentVenue) {
+ router.post("/edit", function (req, res) {
+    var search    = req.body.search;
+    var sqlSearch = "SELECT * FROM payment WHERE payment_Name = ?;" ;
+    connection.query(sqlSearch,[search], function (err, payment) {
        if (err) {
           throw err;
        }
-       console.log(concert[0]);
-       console.log(currentVenue);
-         // var getVenue = "SELECT Venue_ID,Venue_Name FROM venue;";
-         // connection.query(getVenue, function (err, allVenue) {
-         //    if (err) {
-         //       throw err;
-         //    }
-         //    console.log(allVenue);
-      res.render("./admin/concert-index/concert/edit", { concert: concert[0],  currentVenue: currentVenue[0]});
-         // });
-      });
-    }
-});
-//          , {
-//              concert: concert[0], venue: allVenue, currentVenue: currentVenue[0]
-//              });
-//          });
-//     });
-//  });
-});
-
-router.put("/edit", function (req, res) {
- var concertID = req.body.concertID;
- var name = req.body.name;
- var date = req.body.saleDate;
- var time = req.body.saleTime;
- var detail = req.body.detail;
- var poster = req.body.poster;
- var venue = req.body.venue;
- var sql = "UPDATE concert SET concert_Name = ?, concert_Sales_Date = ?,concert_Sales_Time = ?, Concert_Detail = ?, Concert_Poster = ?, Venue_ID = ? WHERE concert_ID = ?;"
- connection.query(sql,[name,date,time,detail,poster,venue,concertID], function (err, concert) {
-    if (err) {
-       throw err;
-    }
-    console.log("Updated!")
-    res.redirect("/admin/index");
+       console.log(payment[0]);
+       if(payment[0]){
+         res.render("./admin/payment-index/payment/edit", { payment: payment[0]});
+       }
+       else{
+         res.render("./admin/payment-index/payment/edit", { payment: "none"});
+       }
+   });
  });
-});
-
-router.post("/delete", function (req, res) {
- var sql = "DELETE FROM concert where payment = ?;"
- var concertID = req.params.id;
- connection.query(sql, [concertID], function (err, result) {
-    if (err) {
-       throw err;
-    }
-    console.log("Delete!");
-    res.redirect("/admin/concert/index");
+ 
+ router.put("/edit", function (req, res) {
+    var paymentID = req.body.paymentID;
+    var paymentName = req.body.name;
+    var paymentDetail = req.body.detail;
+    var paymentFee   = req.body.fee;
+    var sql = "UPDATE payment SET payment_Name = ?, payment_Detail = ?,payment_Fee = ? WHERE payment_ID = ?;"
+    connection.query(sql,[paymentName,paymentDetail,paymentFee,paymentID], function (err, concert) {
+       if (err) {
+          throw err;
+       }
+       console.log("Updated!")
+       res.redirect("/admin/payment/index");
+    });
  });
-});
  
- 
- 
+ router.get("/delete/:id", function (req, res) {
+    var sql = "DELETE FROM payment where payment_ID = ?;"
+    var paymentID = req.params.id
+    connection.query(sql, [paymentID], function (err, result) {
+       if (err) {
+          throw err;
+       }
+       console.log("Delete!");
+       res.redirect("/admin/payment/index");
+    });
+ });
 
 
  module.exports = router;

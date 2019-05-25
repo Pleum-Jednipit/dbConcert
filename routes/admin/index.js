@@ -12,8 +12,8 @@ router.get("/concert/index", function (req, res) {
    res.render("./admin/concert-index/index");
 });
 
-router.get("/artist/index", function (req, res) {
-   res.render("./admin/artist-index/index");
+router.get("/concert-artist/index", function (req, res) {
+   res.render("./admin/concert-index/concert-artist/index");
 });
 
 router.get("/promotion/index", function (req, res) {

@@ -1,0 +1,99 @@
+<% include ../../partials/header %>
+<title>Venue</title>
+</head>
+<% include ../../partials/nav %>
+<div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col mx-5">
+                <h1 class="display-1">Edit</h1>
+                <hr>
+                <form action="/admin/venue/edit" method="POST">
+                <div class="form-group row mx-4 my-5">
+
+                    <label for="vanuename" class="col-sm-2 col-form-label">Search Vanue</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="search" class="form-control" id="vanuename" placeholder="vanuename">
+                    </div>
+                    <button class="btn btn-success">Search</button>
+                </div>
+            </form>
+            </div>
+
+        </div>
+        <% if (venue && venue != "none") { %>
+        <form action="/admin/venue/edit?_method=PUT" method="POST">
+        <div class="container my-5" id="find">
+            <div class="col mx-5">
+                <div class="form-group row mx-4">
+                    <input type="hidden" name="venueID" value="<%= venue.Venue_ID %>">
+
+                    <label for="vanuename" class="col-sm-2 col-form-label">Venue Name</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" id="vanuename" name="name" value="<%= venue.Venue_Name %>">
+                    </div>
+                </div>
+                <div class="form-group row mx-4">
+                    <label for="time" class="col-sm-2 col-form-label">Address</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" id="time"  name="address" value="<%= venue.Venue_Address %>">
+                    </div>
+
+                </div>
+                <div class="form-group row mx-4">
+                    <label for="time" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-5">
+                        <input type="email" class="form-control" id="time"  name="email" value="<%= venue.Venue_EmailAddress %>">
+                    </div>
+                </div>
+                <div class="form-group row mx-4">
+                    <label for="time" class="col-sm-2 col-form-label">Phone Number</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" id="time"  name="phone" value="<%= venue.Venue_PhoneNumber %>">
+                    </div>
+                </div>
+                <div class="form-group row mx-4">
+                    <label for="time" class="col-sm-2 col-form-label">Seat Capacity</label>
+                    <div class="col-sm-5">
+                        <input type="number" class="form-control" id="time"  name="capacity" value="<%= venue.Venue_SeatingCapacity %>">
+                    </div>
+                </div>
+                <div class="form-group row  mt-auto">
+                    <div class="col-6"></div>
+                    <div class="col-3 align-self-end">
+                        <button class="btn btn-warning text-center align-self mx-3" type="submit">Edit</button>
+                        <a href="/admin/venue/delete/<%= venue.Venue_ID %>" class="btn btn-danger text-center align-self" type="submit">Delete</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <% } else if(venue == "none") {%>
+            <p> NONE</p>
+        <% } %>
+    </div>
+</div>
+
+<!-- Optional JavaScript -->
+<script>
+    document.body.className = 'fade';
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function (e) {
+        document.body.className = '';
+    });
+</script>
+<script src="smoothscoll.js"></script>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+</script>
+</body>
+
+</html>

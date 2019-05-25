@@ -1,4 +1,7 @@
 <% include ../../partials/header %>
+    <title>Concert</title>
+</head>
+<% include ../../partials/nav %>
 <div class="vertical-center">
 
     <div class="container my-1">
@@ -44,11 +47,11 @@
             </div>
             <div class="col-3 text-center">
                 <button type="button" class="btn btn-outline-dark btn-lg" data-placement="bottom" html="true"
-                    data-toggle="popover" id="artist">
+                    data-toggle="popover" id="artist" onclick="window.location.href='/admin/concert-artist/index'">
                     <span><img src="https://image.flaticon.com/icons/svg/1809/1809839.svg" class="p-4" width="200"
                             alt="">
                         <hr>
-                        <h2>Artist</h2>
+                        <h2>Concert Artist</h2>
                     </span>
                 </button>
             </div>
@@ -59,7 +62,7 @@
 <div id="popover-content-concert" class="hide d-none">
     <div class="row">
         <div class="col ">
-            <a href="form.html" class="btn btn-primary">Add</a>
+            <a href="/admin/concert/new" class="btn btn-primary">Add</a>
         </div>
         <div class="col">
             <a href="/admin/concert/edit" id="edit" class="btn btn-warning">Edit</a>

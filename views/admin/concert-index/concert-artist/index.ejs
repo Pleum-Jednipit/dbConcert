@@ -1,0 +1,67 @@
+<% include ../../../partials/header %>
+    <title>Concert</title>
+</head>
+<% include ../../../partials/nav %>
+<div class="vertical-center">
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4 mx-5">Add</h1>
+            <hr>
+            <div class="row justify-between">
+                <div class="col-6 text-right my-auto">
+                    <form action="addartist.html">
+                        <button type="button" class="btn btn-outline-dark">
+                            <span><img src="https://image.flaticon.com/icons/svg/1069/1069474.svg" class="p-4"
+                                    width="150" alt="">
+                                <hr>
+                                <h5>Artist</h5>
+                            </span>
+                        </button>
+                    </form>
+
+                </div>
+                <div class="col-6 text-left my-auto">
+                    <form action="">
+                        <button type="button" class="btn btn-outline-dark" id="showtime">
+                            <span><img src="https://image.flaticon.com/icons/svg/1696/1696688.svg" class="p-4"
+                                    width="150" alt="">
+                                <hr>
+                                <h5>Record label</h5>
+                            </span>
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<!-- Optional JavaScript -->
+<script>
+    document.body.className = 'fade';
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function (e) {
+        document.body.className = '';
+    });
+</script>
+<script src="smoothscoll.js"></script>
+<script type="text/javascript" src="/path/to/build/drooltip.js"></script>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+</script>
+
+</body>
+
+</html>

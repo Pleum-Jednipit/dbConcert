@@ -1,0 +1,101 @@
+<% include ../../../../partials/header %>
+<title>Record Label</title>
+</head>
+<% include ../../../../partials/nav %>
+<div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col mx-5">
+                <h1 class="display-1">Edit</h1>
+                <hr>
+                <form action="/admin/record-label/edit" method="POST">
+                    <div class="form-group row mx-4 my-5">
+
+                        <label for="recordLabelrecieve" class="col-sm-3 col-form-label">Search Record Label</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="search">
+                        </div>
+                        <button class="btn btn-success">Search</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <% if (recordLabel && recordLabel != "none") { %>
+        <form action="/admin/record-label/edit?_method=PUT" method="POST">
+            <div class="container my-5" id="find">
+                <div class="col mx-5">
+                    <div class="form-group row mx-4">
+
+                        <input type="hidden" name="recordLabelID" value="<%= recordLabel.Record_Label_ID %>">
+
+                        <label for="concertname" class="col-sm-2 col-form-label">Record Label Name</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" id="concertname" name="name" value="<%= recordLabel.Record_Label_Name %>">
+                        </div>
+                    </div>
+                    <div class="form-group row mx-4">
+                        <label for="vanue" class="col-sm-2 col-form-label">Address</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" id="concertname" name="address" value="<%= recordLabel.Record_Label_Address %>">
+                        </div>
+                    </div>
+                    <div class="form-group row mx-4">
+                        <label for="vanue" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-5">
+                            <input type="email" class="form-control" id="concertname" name="email" value="<%= recordLabel.Record_Label_EmailAddress %>">
+                        </div>
+                    </div>
+                    <div class="form-group row mx-4">
+                        <label for="vanue" class="col-sm-2 col-form-label">Phone Number</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" id="concertname" name="phone" value="<%= recordLabel.Record_Label_PhoneNumber %>">
+                        </div>
+                    </div>
+                    <div class="form-group row mx-4">
+                        <label for="vanue" class="col-sm-2 col-form-label">Website</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" id="concertname" name="website" value="<%= recordLabel.Record_Label_Website %>">
+                        </div>
+                    </div>
+                    <div class="form-group row  mt-auto">
+                        <div class="col-6"></div>
+                        <div class="col-3 align-self-end">
+                            <button class="btn btn-warning text-center align-self mx-3" type="submit">Edit</button>
+                            <a href="/admin/record-label/delete/<%= recordLabel.Record_Label_ID %>"
+                                class="btn btn-danger text-center align-self" type="submit">Delete</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <% } else if(recordLabel == "none") {%>
+            <p> NONE</p>
+            <% } %>
+    </div>
+</div>
+
+
+<!-- Optional JavaScript -->
+<script>
+    document.body.className = 'fade';
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function (e) {
+        document.body.className = '';
+    });
+</script>
+<script src="smoothscoll.js"></script>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+</script>
+</body>
+
+</html>

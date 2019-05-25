@@ -22,10 +22,10 @@ router.get("/new", function (req, res) {
  
  router.post("/new", function (req, res) {
     var sql = "INSERT INTO concert ( concert_Name, concert_sales_date,concert_sales_time, concert_detail,venue_ID) " +
-       "VALUES (?,?,?,?)";
+       "VALUES (?,?,?,?,?)";
     var name = req.body.name;
-    var date = req.body.saleDate;
-    var time = req.body.saleTime;
+    var date = req.body.date;
+    var time = req.body.time;
     var detail = req.body.detail;
     var venueID = req.body.venueID;
     connection.query(sql, [name, date,time, detail, venueID], function (err, result) {
@@ -33,12 +33,11 @@ router.get("/new", function (req, res) {
           throw err;
        }
        console.log("1 Concert is inserted");
-       res.redirect("/admin/index");
+       res.redirect("/admin/concert/index");
     });
  });
   
  router.get("/edit", function (req, res) {
-      console.log("ISUS");
       res.render("./admin/concert-index/concert/edit", {concert : ""});
  });
 
@@ -86,7 +85,7 @@ router.get("/new", function (req, res) {
           throw err;
        }
        console.log("Updated!")
-       res.redirect("/admin/index");
+       res.redirect("/admin/concert/index");
     });
  });
  
