@@ -1,19 +1,112 @@
 <% include ../partials/header %>
-<h1> Admin Index</h1>
+        <div class="container">
+                <div class="jumbotron jumbotron-fluid">
+                        <div class="container">
+                          <h1 class="display-4">Welcome</h1>
+                          <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+                        </div>
+                      </div>
+        </div>
+        <div class="container my-3">
+                <div class="row my-3">
+                    <div class="col-3 text-center">
+                        <button type="button" class="btn btn-outline-success btn-lg" onclick="window.location.href='/admin/concert/index'">
+                            <span><i class="fas fa-compact-disc fa-7x p-4"></i>
+                                <hr>
+                                <h1>Concert</h1>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="col-3 text-center">
+                        <button type="button" class="btn btn-outline-warning btn-lg" data-toggle="popover" data-placement="bottom" id="vanue">
+                            <span><i class="fab fa-fort-awesome fa-7x p-4"></i>
+                                <hr>
+                                <h1>Vanue</h1>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="col-3 text-center">
+                        <button type="button" class="btn btn-outline-danger btn-lg" data-toggle="popover" data-placement="bottom" id="promotion">
+                            <span><i class="fas fa-ad fa-7x p-4"></i>
+                                <hr>
+                                <h1>Promotion</h1>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="col-3 text-center">
+                        <button type="button" class="btn btn-outline-primary btn-lg" onclick="window.location.href='/admin/payment/index'">
+                            <span><i class="fas fa-cash-register fa-7x p-4"></i>
+                                <hr>
+                                <h1>Payment</h1>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+        </div>
+    
+    <!-- loaded popover content -->
+    <div id="popover-content-vanue" class="hide d-none">
+        <div class="row">
+            <div class="col ">
+                <a href="/admin/venue/new" class="btn btn-primary">Add</a>
+            </div>
+            <div class="col">
+                <a href="edit.html" id="edit" class="btn btn-warning">Edit</a>
+            </div>
+        </div>
+    </div>
+    <div id="popover-content-promotion" class="hide d-none">
+        <div class="row">
+            <div class="col ">
+                <a href="form.html" class="btn btn-primary">Add</a>
+            </div>
+            <div class="col">
+                <a href="edit.html" id="edit" class="btn btn-warning">Edit</a>
+            </div>
+        </div>
+    </div>
+    <div id="popover-content-vanue" class="hide d-none">
+        <div class="row">
+            <div class="col ">
+                <a href="form.html" class="btn btn-primary">Add</a>
+            </div>
+            <div class="col">
+                <a href="edit.html" id="edit" class="btn btn-warning">Edit</a>
+            </div>
+        </div>
+    </div>
 
-<a href="/admin/venue/new" class="btn btn-lg btn-default">venue</a>
-<a href="/admin/member-type/new" class="btn btn-lg btn-default">membertype</a>
-<a href="/admin/payment-method/new" class="btn btn-lg btn-default">payment method</a>
-<a href="/admin/ticket-receiving/new" class="btn btn-lg btn-default">ticket receiving</a>
-<a href="/admin/record-label/new" class="btn btn-lg btn-default">record label</a>
-<a href="/admin/artist/new" class="btn btn-lg btn-default">artist</a>
-<a href="/admin/promotion/new" class="btn btn-lg btn-default">promotion</a>
-<a href="/admin/concert/index" class="btn btn-lg btn-default">concert</a>
-<a href="/admin/concert/new" class="btn btn-lg btn-default">new concert</a>
-<a href="/admin/concert/select/edit" class="btn btn-lg btn-default">concert edit</a>
-<a href="/admin/concert/select/delete" class="btn btn-lg btn-default">concert delete</a>
-<a href="/admin/concert-showtime/new" class="btn btn-lg btn-default">concert showtime</a>
-<a href="/admin/concert-artist/select" class="btn btn-lg btn-default">Concert Artist</a>
-<a href="/admin/concert-zone/new" class="btn btn-lg btn-default">Zone</a>
 
-<% include ../partials/footer %>
+
+    <!-- Optional JavaScript -->
+    <script>
+            document.body.className = 'fade';
+          </script>
+    <script>
+            document.addEventListener("DOMContentLoaded", function(e) {
+              document.body.className = '';
+            });
+          </script>
+    <script src="smoothscoll.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- Popover -->
+    <script>
+        $("[data-toggle=popover]").each(function (i, obj) {
+
+            $(this).popover({
+                html: true,
+                content: function () {
+                    var id = $(this).attr('id')
+                    return $('#popover-content-' + id).html();
+                }
+            });
+
+        });
+    </script>
+
+
+

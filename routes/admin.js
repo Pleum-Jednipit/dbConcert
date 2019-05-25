@@ -21,7 +21,7 @@ router.get("/promotion/index", function (req, res) {
 });
 
 router.get("/payment/index", function (req, res) {
-   res.render("./admin/promotion-index/index");
+   res.render("./admin/payment-index/index");
 });
 
 module.exports = router;

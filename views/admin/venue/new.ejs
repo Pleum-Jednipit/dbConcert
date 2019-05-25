@@ -1,42 +1,93 @@
 <% include ../../partials/header %>
-    <div class="row">
-        <h1 style="text-align: center">Add New Venue</h1>
-        <div style="width: 30%; margin: 25px auto;">
-            <form action="/admin/venue/new" method="POST">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input class="form-control" type="text" name="name" id="name" placeholder="Yosemite">
+<div class="container">
+    <div class="jumbotron">
+            <div class="row">
+                    <div class="col mx-5">
+                            <h1 class="display-1">Edit</h1>
+                            <hr>
+                            <div class="form-group row mx-4 my-5">
+                            
+                                    <label for="concertname" class="col-sm-2 col-form-label">Search Concert</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="concertname" placeholder="concertname">
+                                    </div>
+                                    <button class="btn btn-success" onclick="myFunction(document.getElementById('find')),smoothScroll(document.getElementById('find'))">Search</button>
+                                </div>
+                    </div>
+                    
                 </div>
-                <div class="form-group">
-                    <label for="image">Image Url</label>
-                    <input class="form-control" type="text" name="image" id="image" pattern="^https:\/\/images\.unsplash\.com\/.*" title="Only images from images.unsplash.com allowed. See link below for instructions." placeholder="https://images.unsplash.com/..." required>
-                    <small>Click <a href="https://youtu.be/Bn3weNRQRDE">here</a> for tutorial on how to copy unsplash urls.</small>
-                </div>
-
-                <div class="form-group">
-                    <label for="address">Address</label>
-                    <input class="form-control" type="text" name="address" id="address" placeholder="Yosemite National Park, CA">
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input class="form-control" type="text" name="email" id="email" placeholder="California’s Sierra Nevada mountains.">
-                </div>
-                <div class="form-group">
-                    <label for="phoneNumber">Phone Number</label>
-                    <input class="form-control" type="text" name="phoneNumber" id="phoneNumber" placeholder="California’s Sierra Nevada mountains.">
-                </div>
-
-                <div class="form-group">
-                    <label for="seatingcapacity">Seating Capacity</label>
-                    <input class="form-control" type="number" name="seatingCapacity" id="seatingcapacity" placeholder="100" step="100" min="100" required>
-                </div>
-
-                <div class="form-group">
-                    <button class="btn btn-lg btn-primary btn-block">Submit!</button>
-                </div>
-            </form>
-            <a href="/admin">Go Back</a>
+                <div class="container my-5 d-none" id="find">
+                        <div class="col mx-5">
+                                <div class="form-group row mx-4">
+                                
+                                        <label for="concertname" class="col-sm-2 col-form-label">ConcertName</label>
+                                        <div class="col-sm-5">
+                                            <input type="text" class="form-control" id="concertname" placeholder="concertname">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row mx-4">
+                                        <label for="date" class="col-sm-2 col-form-label">Concert date</label>
+                                        <div class="col-sm-5">
+                                            <input class="form-control" data-date-format="dd/mm/yyyy" id="datepicker">
+                                        </div>
+                
+                                    </div>
+                                    <div class="form-group row mx-4">
+                                            <label for="time" class="col-sm-2 col-form-label">Time</label>
+                                            <div class="col-sm-5">
+                                                <input type="text" class="form-control" id="time" placeholder="09:00">
+                                            </div>
+                                    </div>
+                                    <div class="form-group row mx-4">
+                                        <label for="vanue" class="col-sm-2 col-form-label">Vanue</label>
+                                        <div class="col-sm-5">
+                                            <select name="vanue" class="form-control form-control">
+                                                <option>Large select</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group row mx-4">
+                                            <label for="detail" class="col-sm-2 col-form-label">Concert Detail</label>
+                                            <div class="col-sm-5">
+                                                <textarea name="" id="detail" class="form-control" cols="30" rows="3"></textarea>
+                                            </div>
+                                    </div>
+                                    <div class="form-group row  mx-4">
+                                            <label for="image" class="col-sm-2 col-form-label">Poster</label>
+                                            <div class="col-sm-5">
+                                                    <input type="file" class="form-control-file" id="image">
+                                            </div>
+                                            
+                                            
+                                             
+                                    </div>
+                                    <div class="form-group row  mt-auto">
+                                        <div class="col-6"></div>
+                                        <div class="col-3 align-self-end">
+                                                <button class="btn btn-warning text-center align-self mx-3" type="submit">Edit</button>
+                                                <button class="btn btn-danger text-center align-self" type="submit">Delete</button>
+                                        </div>
+                                         
+                                    </div>
+                        </div>
         </div>
-    </div>
-<% include ../../partials/footer %>
+            </div>
+</div>
 
+<!-- Optional JavaScript -->
+<script>
+    document.body.className = 'fade';
+  </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function(e) {
+      document.body.className = '';
+    });
+  </script>
+<script src="smoothscoll.js"></script>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
