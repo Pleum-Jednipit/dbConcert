@@ -1,15 +1,52 @@
-<% include ../../../../partials/header %>
-<title>Concert Artist Management</title>
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!----Drooltip CSS--->
+    <link rel="stylesheet" src="/path/to/drooltip.css" />
+
+    <link rel="stylesheet" href="">
+    <style>
+        body {
+            opacity: 1;
+            transition: 0.7s opacity;
+        }
+
+        body.fade {
+            opacity: 0;
+            transition: none;
+        }
+    </style>
+<title>Concert Showtime </title>
 </head>
-<% include ../../../../partials/nav %>
+<body>
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="container">
+                <a href="/admin/index" class="navbar-brand">
+                    <img src="https://images.unsplash.com/photo-1558470598-a5dda9640f68?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
+                        width="100" class="d-inline-block align-top rounded mx-4">
+                </a>
+                <button class="btn btn-outline-warning btn-lg mx-4">Sign in</button>
+            </div>
+        </nav>
+
 
 <div class="container">
     <div class="jumbotron">
         <div class="row">
             <div class="col mx-5">
-                <h1 class="display-4 mx-5">Add New Concert Artist</h1>
+                <h1 class="display-4 mx-5">Add New Concert Showtime</h1>
                 <hr>
-                <form action="/admin/concert-artist/new" method="POST">
+                <form action="/admin/concert-showtime/new" method="POST">
                     <div class="form-group row mx-4 my-5">
                         <label for="recordLabelrecieve" class="col-sm-3 col-form-label">Search Concert</label>
                         <div class="col-sm-6">
@@ -22,15 +59,14 @@
 
         </div>
 
-        <% if (concert && concert != "none") { %>
-        <form action="/admin/concert-artist/new/insert" method="POST">
+        <form action="/admin/concert-showtime/new/insert" method="POST">
             <div class="container my-5" id="find">
                 <div class="table-wrapper">
                     <div class="table-title">
                         <div class="row">
                             <div class="col-sm-6">
-                                <h2>Concert <b><%= concert.Concert_Name %></b></h2>
-                                <input type="hidden" name="concertID" value="<%= concert.Concert_ID %>" >
+                                <h2>Concert <b></b></h2>
+                                <input type="hidden" name="concertID" value="<%= concert.Concert_ID %>">
                             </div>
                             <div class="col-sm-4">
                                 <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add
@@ -42,7 +78,11 @@
                         <thead>
                             <tr>
 
-                                <th>Artist</th>
+                                <th>Show Date</th>
+
+                                <th>Show Time</th>
+
+                                <th>Seating Plan</th>
 
                                 <th>Actions</th>
                             </tr>
@@ -50,11 +90,15 @@
                         <tbody>
                             <tr>
                                 <td>
-                                <select name="dropdown" id="dropdown" class="form-control">
-                                    <% artist.forEach(function(item){ %>
-                                    <option value="<%= item.Artist_ID %>" > <%= item.Artist_Name %></option>
-                                    <% }) %>
-                                </select>
+                                    <input type="date" name="date">
+                                </td>
+
+                                <td>
+                                    <input type="text" name="time">
+                                </td>
+
+                                <td>
+                                    <input type="text" name="plan">
                                 </td>
 
                                 <td>
@@ -71,9 +115,7 @@
                     </div>
                 </div>
             </div>
-            <% } else if(concert == "none") {%>
             <p> NONE</p>
-            <% } %>
     </div>
 </div>
 
@@ -210,14 +252,10 @@
         $(".add-new").click(function () {
 
             var index = $("table tbody tr:last-child").index();
-            var row = '<tr>' +
-                '<td> <select name="dropdown" class="form-control"> <option>Large select</option> </select>' +
+            var row = '<tr>' +'<td> <input type="date" name="date"> </td> <td> <input type="text" name="time"> </td> <td> <input type="text" name="plan"></td>' +
                 '<td>' + actions + '</td>' +
                 '</tr>';
-            
             $("table").append(row);
-            //Create and append the options
-            
             $('[data-toggle="tooltip"]').tooltip();
         });
         // Add row on add button click
@@ -254,6 +292,10 @@
         $(document).on("click", ".delete", function () {
             $(this).parents("tr").remove();
             $(".add-new").removeAttr("disabled");
+        });
+
+        $('#timepicker').timepicker({
+            uiLibrary: 'bootstrap4'
         });
     });
 </script>

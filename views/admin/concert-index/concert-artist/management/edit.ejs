@@ -7,9 +7,9 @@
     <div class="jumbotron">
         <div class="row">
             <div class="col mx-5">
-                <h1 class="display-4 mx-5">Add New Concert Artist</h1>
+                <h1 class="display-4 mx-5">Edit Concert Artist</h1>
                 <hr>
-                <form action="/admin/concert-artist/new" method="POST">
+                <form action="/admin/concert-artist/edit" method="POST">
                     <div class="form-group row mx-4 my-5">
                         <label for="recordLabelrecieve" class="col-sm-3 col-form-label">Search Concert</label>
                         <div class="col-sm-6">
@@ -18,62 +18,67 @@
                         <button class="btn btn-success">Search</button>
                     </div>
             </div>
-            </form>
-
+        </form>
+            
         </div>
-
-        <% if (concert && concert != "none") { %>
-        <form action="/admin/concert-artist/new/insert" method="POST">
-            <div class="container my-5" id="find">
-                <div class="table-wrapper">
-                    <div class="table-title">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <h2>Concert <b><%= concert.Concert_Name %></b></h2>
-                                <input type="hidden" name="concertID" value="<%= concert.Concert_ID %>" >
-                            </div>
-                            <div class="col-sm-4">
-                                <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add
-                                    New</button>
-                            </div>
+    
+        <% if (concertArtist && concertArtist != "none") { %>
+        <form action="/admin/concert-artist/edit?_method=PUT" method="POST">
+        <div class="container my-5" id="find">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2>Concert <b><%= concertName %></b></h2>
                         </div>
                     </div>
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
+                </div>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Concert Artist ID</th>
 
-                                <th>Artist</th>
+                            <th>Artist</th>
 
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                <select name="dropdown" id="dropdown" class="form-control">
-                                    <% artist.forEach(function(item){ %>
-                                    <option value="<%= item.Artist_ID %>" > <%= item.Artist_Name %></option>
-                                    <% }) %>
-                                </select>
-                                </td>
-
-                                <td>
-                                    <a class="add" title="Add" data-toggle="tooltip"><i
-                                            class="material-icons">&#xE03B;</i>
-                                        <a class="delete" title="Delete" data-toggle="tooltip"><i
-                                                class="material-icons">&#xE872;</i></a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="col-3 align-self-end">
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% concertArtist.forEach(function(ca){ %>
+                        <tr>
+                            <td>
+                                    <label for="concertname" class="col-sm-2 col-form-label"><%= ca.Concert_Artist_ID %></label>
+                                    <input type="hidden" name="concertArtistID" value="<%= ca.Concert_Artist_ID %>">
+                            <td>
+                    
+                                    <select name="dropdown" id="dropdown" class="form-control">
+                                            <% artist.forEach(function(item){ %>
+                                                <% if(  item.Artist_Name  ==  ca.Artist_Name ){ %>
+                                                    <option value="<%= item.Artist_ID %>" selected> <%= item.Artist_Name %></option>
+                                                <% } else { %>
+                                                    <option value="<%= item.Artist_ID %>"> <%= item.Artist_Name %> </option>
+                                                <% } %>
+                                                <% }) %>
+                                    </select>
+                            </td>
+        
+                            <td>
+                                <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i>
+                                    <a class="delete" title="Delete" data-toggle="tooltip"><i
+                                            class="material-icons">&#xE872;</i></a>
+                            </td>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+                <div class="col-3 align-self-end">
                         <button class="btn btn-warning text-center align-self mx-3" type="submit">Edit</button>
                     </div>
-                </div>
             </div>
-            <% } else if(concert == "none") {%>
-            <p> NONE</p>
-            <% } %>
+        </div>
+        <% } else if(concertArtist == "none") {%>
+        <p> NONE</p>
+        <% } %>
     </div>
 </div>
 
@@ -211,13 +216,10 @@
 
             var index = $("table tbody tr:last-child").index();
             var row = '<tr>' +
-                '<td> <select name="dropdown" class="form-control"> <option>Large select</option> </select>' +
+                '<td> <select name="vanue" class="form-control"> <option>Large select</option> </select>' +
                 '<td>' + actions + '</td>' +
                 '</tr>';
-            
             $("table").append(row);
-            //Create and append the options
-            
             $('[data-toggle="tooltip"]').tooltip();
         });
         // Add row on add button click
