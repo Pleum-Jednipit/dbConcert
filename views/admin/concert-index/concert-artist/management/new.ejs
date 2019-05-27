@@ -32,7 +32,7 @@
                                 <h2>Concert <b><%= concert.Concert_Name %></b></h2>
                                 <input type="hidden" name="concertID" value="<%= concert.Concert_ID %>" >
                             </div>
-                            <div class="col-sm-4">
+                            <div class="col-sm-4 mx-auto" style="left: 65px">
                                 <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add
                                     New</button>
                             </div>
@@ -60,14 +60,16 @@
                                 <td>
                                     <a class="add" title="Add" data-toggle="tooltip"><i
                                             class="material-icons">&#xE03B;</i>
-                                        <a class="delete" title="Delete" data-toggle="tooltip"><i
+                                        <a class="delete" title="Delete" data-toggle="tooltip" style="margin-left:26px;
+                                        margin-top:7px;"><i
                                                 class="material-icons">&#xE872;</i></a>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                    <div class="col-3 align-self-end">
-                        <button class="btn btn-warning text-center align-self mx-3" type="submit">Edit</button>
+                    <div class="col-3 align-self-end" style="left: 650px">
+                        <button class="btn btn-warning text-center align-self mx-3" type="submit" style="background-color: #28a745;
+                        border-color: #28a745">Submit</button>
                     </div>
                 </div>
             </div>
@@ -87,7 +89,6 @@
         document.body.className = '';
     });
 </script>
-<script src="smoothscoll.js"></script>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
@@ -106,7 +107,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
     .table-wrapper {
-        width: 500px;
+        width: 800px;
         margin: 30px auto;
         background: #fff;
         padding: 20px;
@@ -140,6 +141,7 @@
 
     table.table {
         table-layout: fixed;
+        
     }
 
     table.table tr th,
@@ -188,7 +190,7 @@
     }
 
     table.table .form-control {
-        height: 32px;
+        height: 40px;
         line-height: 32px;
         box-shadow: none;
         border-radius: 2px;
@@ -202,6 +204,7 @@
         display: none;
     }
 </style>
+
 <script type="text/javascript">
     $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();
@@ -210,12 +213,38 @@
         $(".add-new").click(function () {
 
             var index = $("table tbody tr:last-child").index();
+
+            // Create Dropdown Options //
+            var dropdownList = new Array();
+            var dropdownID  = new Array();
+            var ddl = document.getElementById('dropdown');
+            for (i = 0; i < ddl.options.length; i++) {
+                dropdownList[i] = ddl.options[i].text;
+            }
+            for (i = 0; i < ddl.options.length; i++) {
+                dropdownID[i] = ddl.options[i].value;
+            }
+            console.log(dropdownID);
+            console.log(dropdownList);
+            var option = "";
+            dropdownList.forEach(function(item,index){
+                var text = '<option value="'+ dropdownID[index]   + '">'  + item + '</option>';
+                option = option + text;
+            });
+            console.log(option);
+        
             var row = '<tr>' +
-                '<td> <select name="dropdown" class="form-control"> <option>Large select</option> </select>' +
+                '<td> <select name="dropdown" class="form-control">' ;  
+            
+            var row2 = '</select>' +
+
                 '<td>' + actions + '</td>' +
                 '</tr>';
-            
-            $("table").append(row);
+            var string = row + option + row2;
+            $("table").append(string);
+            // Create Dropdown Options //
+
+
             //Create and append the options
             
             $('[data-toggle="tooltip"]').tooltip();

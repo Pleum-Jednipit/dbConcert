@@ -63,17 +63,19 @@
                             </td>
         
                             <td>
-                                <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i>
-                                    <a class="delete" title="Delete" data-toggle="tooltip"><i
+                                <a class="add" title="Add" data-toggle="tooltip" ><i class="material-icons">&#xE03B;</i>
+                                    <a class="delete" title="Delete" data-toggle="tooltip" style="margin-left:28px;
+                                    margin-top:9px;"><i
                                             class="material-icons">&#xE872;</i></a>
                             </td>
                         </tr>
-                        <% }) %>
+                       
                     </tbody>
                 </table>
-                <div class="col-3 align-self-end">
-                        <button class="btn btn-warning text-center align-self mx-3" type="submit">Edit</button>
+                <div class="col-3 align-self-end" style="left: 675px">
+                        <button class="btn btn-warning text-center align-self mx-3" type="submit" name="delete" value="<%= ca.Concert_Artist_ID %>">Edit</button>
                     </div>
+                    <% }) %>
             </div>
         </div>
         <% } else if(concertArtist == "none") {%>
@@ -111,7 +113,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
     .table-wrapper {
-        width: 500px;
+        width: 800px;
         margin: 30px auto;
         background: #fff;
         padding: 20px;
@@ -193,7 +195,7 @@
     }
 
     table.table .form-control {
-        height: 32px;
+        height: 40px;
         line-height: 32px;
         box-shadow: none;
         border-radius: 2px;
@@ -254,6 +256,10 @@
         });
         // Delete row on delete button click
         $(document).on("click", ".delete", function () {
+            var favorite = [];
+            $.each($("input[name='delete']"), function () {
+              favorite.push($(this).val());
+            });
             $(this).parents("tr").remove();
             $(".add-new").removeAttr("disabled");
         });

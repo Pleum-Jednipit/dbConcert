@@ -2,9 +2,10 @@ var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
-var mysql = require("mysql");
+var passport = require("passport");
+var session = require('express-session');
 const connection           = require("./connection")
-var indexRoutes            = require("./routes/index"),
+var indexRoutes            = require("./routes/user"),
     adminRoutes            = require("./routes/admin/index"),
     concertRoutes          = require("./routes/admin/concert"),
     artistRoutes           = require("./routes/admin/artist");
@@ -27,10 +28,25 @@ connection.connect(function(err){
    }
 });
 
+app.use(session({
+	secret: 'secret',
+	resave: false,
+	saveUninitialized: false
+}));
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine","ejs");
 app.use(express.static("public"));
 app.use(express.static("JS"));
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+// app.use(function(req,res,next){
+//    req.locals.isLogin = req.session.isLogin;
+//    res.locals.currentUser = req.session.username;
+//    next();
+// })
+
 
 
 app.use(methodOverride('_method'));

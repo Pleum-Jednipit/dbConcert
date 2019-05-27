@@ -108,31 +108,47 @@ router.post("/new", function (req, res) {
  });
  
  router.put("/edit", function (req, res) {
+    var deleteID = req.body.delete;
+    console.log("Hi" + deleteID);
     var update    = req.body.dropdown;
     var concertArtistID = req.body.concertArtistID;
     console.log(update);
-    console.log(concertArtistID);
-    var sql = "UPDATE concert_artist SET Artist_ID = ? WHERE Concert_Artist_ID = ? ;"
-    console.log(Array.isArray(concertArtistID));
-    if(Array.isArray(concertArtistID)){
-      concertArtistID.forEach(function(item,index){
-         connection.query(sql, [update[index],item], function (err, result) {
+    if(concertArtistID === undefined){
+       if(deleteID !== undefined){
+         var sql = "DELETE FROM concert_artist where Concert_Artist_ID = ?;";
+         var count = Array(deleteID).fill(1);
+         count.forEach(function(item){
+            connection.query(sql, [item], function (err, result) {
                if (err) {
                   throw err;
                }
-               console.log("1 Concert Artist is Updates");
+               console.log("Delete!");
             });
-       });
+         });
+       }
+    } else {
+      var sql = "UPDATE concert_artist SET Artist_ID = ? WHERE Concert_Artist_ID = ? ;"
+      console.log(Array.isArray(concertArtistID));
+      if(Array.isArray(concertArtistID)){
+        concertArtistID.forEach(function(item,index){
+           connection.query(sql, [update[index],item], function (err, result) {
+                 if (err) {
+                    throw err;
+                 }
+                 console.log("1 Concert Artist is Updates");
+              });
+         });
+      }
+      else{
+           connection.query(sql, [update,concertArtistID], function (err, result) {
+                 if (err) {
+                    throw err;
+                 }
+                 console.log("1 Concert Artist is Updates");
+              });
+      }
     }
-    else{
-         connection.query(sql, [update,concertArtistID], function (err, result) {
-               if (err) {
-                  throw err;
-               }
-               console.log("1 Concert Artist is Updates");
-            });
-    }
-    res.redirect("/admin/concert/index");
+    res.redirect("/admin/concert-artist/index");
  });
  
  router.get("/delete/:id", function (req, res) {
