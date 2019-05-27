@@ -8,49 +8,46 @@
         <div class="col mx-5">
           <h1 class="display-4 mx-5">Add Zone</h1>
           <hr>
-          <div class="form-group row mx-4 my-5">
-          </div>
         </div>
 
       </div>
-      <form action="/admin/concert-zone/new/<%=concertName%>/<%=concertShowtimeID%>" method="POST">
-      <div class="container my-5" id="find">
+        <form action="/admin/concert-zone/edit/<%=concertName%>/<%=concertShowtimeID%>/<%= zone.Zone_ID %>" method="POST">
           <div class="form-group row mx-4">
             <label for="zonename" class="col-sm-2 col-form-label">Zone Name</label>
             <div class="col-sm-5">
-              <input type="text" class="form-control" id="zonename" name="name">
+              <input type="text" class="form-control" id="zonename" name="name" value="<%= zone.Zone_Name %>" >
             </div>
           </div>
 
           <div class="form-group row mx-4">
-            <label for="zoneseattype" class="col-sm-2 col-form-label">Zone Type</label>
+            <label for="zoneseattype" class="col-sm-2 col-form-label">Zone Seat type</label>
             <div class="col-sm-5">
-              <select class="form-control" name="type" id="">
-                <option value="Seating">Seating</option>
-                <option value="Standing">Standing</option>
-              </select>
+              <input type="text" class="form-control" id="zoneseattype" name="type"  value="<%= zone.Zone_Type %>" >
             </div>
           </div>
 
           <div class="form-group row mx-4">
             <label for="zoneseatprice" class="col-sm-2 col-form-label">Zone Seat Price</label>
             <div class="col-sm-5">
-              <input type="text" class="form-control" id="zoneseatprice" name="price">
+              <input type="number" class="form-control" id="zoneseatprice" name="price"  value="<%= zone.Zone_Price %>">
             </div>
           </div>
 
-          <div class="form-group row mx-4 box Standing">
-            <label for="zoneseatcapacity" class="col-sm-2 col-form-label">Zone Seat Capacity</label>
-            <div class="col-sm-5">
-              <input type="number" class="form-control" id="zoneseatcapacity" name="capacity">
-              </div>
-          </div>
+          
 
         </div>
       </div>
-      <div class="form-group row mx-4 Seating box">
+      <div class="form-group row mx-4">
         <label>Zone Seat</label>
         <script>
+          var allSeat = [];
+          var data = JSON.parse('<%-JSON.stringify(seat)%>');  
+          data.forEach(function (item) {
+            console.log(item.Seat_Number);
+            allSeat.push(item.Seat_Number);
+          });
+          console.log(allSeat);
+          
           var table = '';
           var i = 65;
           var j = 91;
@@ -58,11 +55,16 @@
             table += '<tr>';
             for (var c = 1; c <= 24; c++) {
               var str = String.fromCharCode(i);
-
-              table += '<td>' + '<li class="seat">' + '<input type="checkbox" id="' + c + str + '"' + 'name="zone"' +
+              if(allSeat.includes(c+str)){
+                table += '<td>' + '<li class="seat">' + '<input type="checkbox" id="' + c + str + '"' + 'name="zone"' +
+                'value="' + c + str + '"' + 'checked/>' +
+                '<label for="' + c + str + '">' + c + str + '</label>' + '</li>' + '</td>';
+              }
+              else{
+                table += '<td>' + '<li class="seat">' + '<input type="checkbox" id="' + c + str + '"' + 'name="zone"' +
                 'value="' + c + str + '"' + '/>' +
                 '<label for="' + c + str + '">' + c + str + '</label>' + '</li>' + '</td>';
-
+              }
             }
             table += '</tr>';
             i++;
@@ -294,21 +296,6 @@
       </style>
     </div>
   </div>
-  <script type="text/javascript">
-    $(document).ready(function(){
-        $("select").change(function(){
-            $(this).find("option:selected").each(function(){
-                var optionValue = $(this).attr("value");
-                if(optionValue){
-                    $(".box").not("." + optionValue).hide();
-                    $("." + optionValue).show();
-                } else{
-                    $(".box").hide();
-                }
-            });
-        }).change();
-    });
-    </script>
 
   <!-- Optional JavaScript -->
   <script>

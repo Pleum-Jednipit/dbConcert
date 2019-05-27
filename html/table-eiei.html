@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+    <style>
+        body {
+  opacity: 1;
+  transition: 0.7s opacity;
+}
+
+body.fade {
+    opacity: 0;
+    transition: none;
+}
+    </style>
+    <title>Hello, world!</title>
+  </head>
+  <body>
+        <nav class="navbar navbar-dark bg-dark">
+                <div class="container">
+                  <a href="index.html" class="navbar-brand">
+                      <img src="https://images.unsplash.com/photo-1558470598-a5dda9640f68?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80" width="100" class="d-inline-block align-top rounded mx-4" >
+                  </a>
+                  <button class="btn btn-outline-warning btn-lg mx-4">Sign in</button>
+                </div>
+            </nav>
+        <div class="container">
+            <div class="jumbotron">
+                    <div class="row">
+                            <div class="col mx-5">
+                                    <h1 class="display-4 mx-5"><label for="">Puppy❤️</label></h1>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-6">
+                                                <span class="lead mx-5">Showdate : <label for="">Today</label></span>
+                                                
+                                        </div>
+                                        <div class="col-6">
+                                                <span class="lead mx-5">Showtime : <label for="">This time</label></span>
+                                        </div>
+                                    </div>
+                                    <div class="row mx-4 my-5">
+                                            <div class="col text-center">
+                                                <img src="https://images.unsplash.com/photo-1507146426996-ef05306b995a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" 
+                                                class="img-fluid w-80" height="auto" alt="Responsive image">
+                                            </div>
+                                    </div>
+                            </div>
+                            
+                        </div>
+                        <div class="container my-5" id="find">
+                                <div class="table-wrapper">
+                                        <div class="table-title">
+                                            <div class="row">
+                                                <div class="col-sm-8"><h2>Zone <b>Details</b></h2></div>
+                                                <div class="col-sm-4">
+                                                    <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>ZoneName</th>
+                                                    <th>Type</th>
+                                                    <th>Price</th>
+                                                    <th>Capacity</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><label class="form-control" name=""></label></td>
+                                                    <td><label class="form-control" name=""></label></td>
+                                                    <td><label class="form-control" name=""></label></td>
+                                                    <td><label class="form-control" name=""></label></td>
+                                                    <td class="text-center" >
+                                                        <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                                                        <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                                                    </td>
+                                                </tr> 
+                                            </tbody>
+                                        </table>
+                                    </div>
+                </div>
+                    </div>
+        </div>
+
+    <!-- Optional JavaScript -->
+    <script>
+            document.body.className = 'fade';
+          </script>
+    <script>
+            document.addEventListener("DOMContentLoaded", function(e) {
+              document.body.className = '';
+            });
+          </script>
+    <script src="smoothscoll.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!--Tablelist-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+	.table-wrapper {
+		width: 800px;
+		margin: 30px auto;
+        background: #fff;
+        padding: 20px;	
+        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    }
+    .table-title {
+        padding-bottom: 10px;
+        margin: 0 0 10px;
+    }
+    .table-title h2 {
+        margin: 6px 0 0;
+        font-size: 22px;
+    }
+    .table-title .add-new {
+        float: right;
+		height: 30px;
+		font-weight: bold;
+		font-size: 12px;
+		text-shadow: none;
+		min-width: 100px;
+		border-radius: 50px;
+		line-height: 13px;
+    }
+	.table-title .add-new i {
+		margin-right: 4px;
+	}
+    table.table {
+        table-layout: fixed;
+    }
+    table.table tr th, table.table tr td {
+        border-color: #e9e9e9;
+    }
+    table.table th i {
+        font-size: 13px;
+        margin: 0 5px;
+        cursor: pointer;
+    }
+    table.table th:last-child {
+        width: 100px;
+    }
+    table.table td a {
+		cursor: pointer;
+        display: inline-block;
+        margin: 0 5px;
+		min-width: 24px;
+    }    
+	table.table td a.add {
+        color: #27C46B;
+    }
+    table.table td a.edit {
+        color: #FFC107;
+    }
+    table.table td a.delete {
+        color: #E34724;
+    }
+    table.table td i {
+        font-size: 19px;
+    }
+	table.table td a.add i {
+        font-size: 24px;
+    	margin-right: -1px;
+        position: relative;
+        top: 3px;
+    }    
+    table.table .form-control {
+        height: 32px;
+        line-height: 32px;
+        box-shadow: none;
+        border-radius: 2px;
+    }
+	table.table .form-control.error {
+		border-color: #f50000;
+	}
+	table.table td .add {
+		display: none;
+	}
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('[data-toggle="tooltip"]').tooltip();
+	var actions = $("table td:last-child").html();
+	// Append table with add row form on add new button click
+    /*$(".add-new").click(function(){
+		var index = $("table tbody tr:last-child").index();
+        var row = '<tr>' +
+            '<td><select class="selectpicker form-control" data-live-search="true" name="'+ 'a' +'">'+ '</td>' +
+                '<td><select class="selectpicker form-control" data-live-search="true" name="'+ 'a' +'">'+ '</td>' +
+                    '<td><select class="selectpicker form-control" data-live-search="true" name="'+ 'a' +'">'+ '</td>'+
+                        '<td><select class="selectpicker form-control" data-live-search="true" name="'+ 'a' +'">'+ '</td>'+
+			'<td>' + actions + '</td>' +
+        '</tr>';
+        $("select").addClass("selectpicker");
+    	$("table").append(row);		
+		
+        $('[data-toggle="tooltip"]').tooltip();
+    });*/
+	// Add row on add button click
+	$(document).on("click", ".add", function(){
+		var empty = false;
+		var input = $(this).parents("tr").find('input[type="text"]');
+        input.each(function(){
+			if(!$(this).val()){
+				$(this).addClass("error");
+				empty = true;
+			} else{
+                $(this).removeClass("error");
+            }
+		});
+		$(this).parents("tr").find(".error").first().focus();
+		if(!empty){
+			input.each(function(){
+				$(this).parent("td").html($(this).val());
+			});			
+			$(this).parents("tr").find(".add, .edit").toggle();
+			$(".add-new").removeAttr("disabled");
+		}		
+    });
+	// Edit row on edit button click
+	$(document).on("click", ".edit", function(){		
+        /*$(this).parents("tr").find("td:not(:last-child)").each(function(){
+			$(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
+		});		
+		$(this).parents("tr").find(".add, .edit").toggle();
+		$(".add-new").attr("disabled", "disabled");
+    });
+	// Delete row on delete button click
+	$(document).on("click", ".delete", function(){
+        $(this).parents("tr").remove();
+		$(".add-new").removeAttr("disabled");*/
+    });
+});
+</script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+
+<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/i18n/defaults-*.min.js"></script>
+</body>
+</html>

@@ -6,7 +6,13 @@ var async = require('async');
 
 
 router.get("/new", function (req, res) {
-   res.render("./admin/concert-index/concert-artist/management/new", {concert: ""});
+   var getAllConcert = "SELECT Concert_ID, Concert_Name FROM concert;" ;
+   connection.query(getAllConcert, function (err, allConcert) {
+      if (err) {
+         throw err;
+      }
+   res.render("./admin/concert-index/concert-artist/management/new", {concert: "", search : allConcert});
+   });
  });
 
 router.post("/new", function (req, res) {

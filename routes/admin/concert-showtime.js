@@ -25,7 +25,7 @@ router.post("/new", function (req, res) {
    var newShowdate = req.body.date;
    var newShowtime = req.body.time;
    var newPlan    = req.body.plan;
-   var sql = "INSERT INTO concert_showtime (concert_showdate, concert_showtime,concert_showtime_plan,concert_ID) " +
+   var sql = "INSERT INTO concert_showtime (Concert_ShowDate, Concert_ShowTime,Concert_Showtime_Plan,Concert_ID) " +
          "VALUES (?,?,?,?)";
    if(Array.isArray(newShowdate)){
       newShowdate.forEach(function(item,index){
@@ -112,7 +112,6 @@ router.post("/new", function (req, res) {
  });
 
 
- module.exports = router;
  
 
  module.exports = router;
