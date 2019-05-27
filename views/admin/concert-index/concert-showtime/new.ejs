@@ -21,21 +21,20 @@
             </form>
 
         </div>
-
         <% if (concert && concert != "none") { %>
-        <form action="/admin/concert-showtime/new/insert" method="POST">
-            <div class="container my-5" id="find">
-                <div class="table-wrapper">
-                    <div class="table-title">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <h2>Concert <b><%= concert.Concert_Name %></b></h2>
-                                <input type="hidden" name="concertID" value="<%= concert.Concert_ID %>">
-                            </div>
-                            <div class="col-sm-4 mx-auto" style="left: 65px">
-                                <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add
-                                    New</button>
-                            </div>
+            <form action="/admin/concert-showtime/new/insert" method="POST">
+                <div class="container my-5" id="find">
+                    <div class="table-wrapper">
+                        <div class="table-title">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h2>Concert <b><%= concert.Concert_Name %></b></h2>
+                                    <input type="hidden" name="concertID" value="<%= concert.Concert_ID %>" >
+                                </div>
+                                <div class="col-sm-4 mx-auto" style="left: 65px">
+                                    <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add
+                                        New</button>
+                                </div>
                         </div>
                     </div>
                     <table class="table table-bordered">
@@ -66,11 +65,11 @@
                                 </td>
 
                                 <td>
-                                    <a class="add" title="Add" data-toggle="tooltip"><i
+                                        <a class="add" title="Add" data-toggle="tooltip"><i
                                             class="material-icons">&#xE03B;</i>
                                         <a class="delete" title="Delete" data-toggle="tooltip" style="margin-left:26px;
-                                        margin-top:7px;">
-                                            <i class="material-icons">&#xE872;</i></a>
+                                        margin-top:7px;"><i
+                                                class="material-icons">&#xE872;</i></a>
                                 </td>
                             </tr>
                         </tbody>
@@ -97,7 +96,6 @@
         document.body.className = '';
     });
 </script>
-<script src="smoothscoll.js"></script>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
@@ -221,12 +219,11 @@
             var index = $("table tbody tr:last-child").index();
             var row = '<tr>' +
                 '<td><input type="text" class="form-control" name="name" id="name"></td>' +
-                '<td><input type="text" class="form-control" name="department" id="department"></td>' +
-                '<td><input type="text" class="form-control" name="phone" id="phone"></td>' +
+                '<td><input id="timepicker" name="time"/></td>' +
+                '<td><input type="text" name="plan"></td>' +
                 '<td>' + actions + '</td>' +
             '</tr>';
             $("table").append(row);  
-            $("table tbody tr").eq(index + 1).find(".add, .edit").toggle();
             $('[data-toggle="tooltip"]').tooltip();
         });
         // Add row on add button click
@@ -284,7 +281,6 @@
     $('#datepicker').datepicker("setDate", new Date());
 </script>
 <!--timepicker-->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
