@@ -39,9 +39,8 @@ router.post("/new", function (req, res) {
          });
       });
    }
-   else{
-      newShowdate = dateFormat(newShowdate,"isoDate");
-         connection.query(sql, [newShowdate,newShowtime,newPlan,concertID], function (err, result) {
+   else{     
+         connection.query(sql, [dateFormat(newShowdate,"isoDate"),newShowtime,newPlan,concertID], function (err, result) {
             if (err) {
                throw err;
             }
