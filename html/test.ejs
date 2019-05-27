@@ -9,13 +9,13 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <!---Glider--->
-    <link href="glider.min.css" rel="stylesheet" type="text/css">
+    
+        <!---Glider--->
+        <link href="glider.min.css" rel="stylesheet" type="text/css">
 
     <!--- Card Carousel--->
     <style>
-    </style>
+                </style>
 
     <!-- Modal CSS -->
     <style>
@@ -61,14 +61,10 @@
             border-bottom-color: #eeeeee;
             background-color: #fafafa;
         }
-
-        .hr {
-            border-width: 5px;
-            border: white;
-            outline-color: white;
+        .nav-item:hover {
+            border: #fafafa;
+            border-width: 10px;
         }
-
-        /* Border */
     </style>
 
     <title>Hello, world!</title>
@@ -79,59 +75,59 @@
     <!--- Navbar --->
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
         <div class="container">
-            <a href="index.html" class="navbar-brand">
-                <img src="https://images.unsplash.com/photo-1558470598-a5dda9640f68?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
-                    width="100em" class="d-inline-block align-top rounded mx-4">
-            </a>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active mx-2">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="#">Disabled</a>
-                    </li>
-                </ul>
-
+            <div class="col-9">
+                <a href="index.html" class="navbar-brand">
+                    <img src="https://images.unsplash.com/photo-1558470598-a5dda9640f68?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
+                        width="100em" class="d-inline-block align-top rounded mx-4">
+                </a>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="modal" data-target="#exampleModal">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <% if(!isLogin) {%>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <% if(!isLogin) {%>
+            <div class="col-md-2 ">
+                <div class="collapse navbar-collapse navbar-toggle" id="navbarNavAltMarkup">
+                    <button class="btn btn-outline-warning btn-lg mx-4" data-toggle="modal" data-target="#ModalExample">Sign in</button>
+                </div>
+            </div>
+            <% } else { %> 
                 <div class="col-md-2 ">
+                        <label class="control-label">Welcone <%= currentUser  %> !</label>
+                    </div>
+            <div class="col-md-2 ">
                     <div class="collapse navbar-collapse navbar-toggle" id="navbarNavAltMarkup">
-                        <button class="btn btn-outline-warning btn-lg mx-4" data-toggle="modal" data-target="#ModalExample">Sign in</button>
+                        <a href="/logout" class="btn btn-outline-warning btn-lg mx-4">Sign out</a>
                     </div>
                 </div>
-                <% } else { %> 
-                    <div class="col-md-2 ">
-                            <label class="control-label">Welcone <%= currentUser  %> !</label>
-                        </div>
-                <div class="col-md-2 ">
-                        <div class="collapse navbar-collapse navbar-toggle" id="navbarNavAltMarkup">
-                            <a href="/logout" class="btn btn-outline-warning btn-lg mx-4">Sign out</a>
-                        </div>
+            <% } %> 
+    </nav>
+    <nav class="navbar bg-light navbar-light d-none d-lg-block navbar-expand-lg ">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse navbar-toggle" id="navbarNavAltMarkup">
+                <div class="col-md-12">
+                    <div class="navbar-nav justify-content-center">
+                        <a class="nav-item nav-link active mx-4" href="#">Link</a>
+                        <a class="nav-item nav-link mx-4" href="#">Link</a>
+                        <a class="nav-item nav-link mx-4" href="#">Link</a>
+                        <a class="nav-item nav-link mx-4" href="#">Link</a>
                     </div>
-                <% } %> 
+                </div>
+            </div>
+        </div>
+        </div>
     </nav>
     <div class="container">
-        <% if(error && error.length > 0){ %>
-        <div class="alert alert-danger" role="alert">
-            <%= error %>
-        </div>
-        <% } %>
-        <% if(success && success.length > 0){ %>
-        <div class="alert alert-success" role="alert">
-            <%= success %>
-        </div>
-        <% } %>
+            <% if(error && error.length > 0){ %>
+                <div class="alert alert-danger" role="alert">
+                    <%= error %>
+                </div>
+            <% } %>
+            <% if(success && success.length > 0){ %>
+                <div class="alert alert-success" role="alert">
+                    <%= success %>
+                </div>
+            <% } %>
     </div>
     <!---Modal of nav--->
     <div class="modal left fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -244,57 +240,49 @@
     <div class="container my-5">
         <div class="row">
             <div class="col-1"></div>
-            <div class="col">
-                <h1 class="dispaly-1">Recommend</h1>
-            </div>
-
+            <div class="col"><h1 class="dispaly-1">Recommend</h1></div>
+            
         </div>
         <hr>
         <div class="row">
-            <div class="col-4 ml-4">
-                <div class="card" style="width: 16rem;">
-                    <div class="btn-group-vertical" role="group" aria-label="Basic example">
-                        <img src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                            class="card-img-top" height="400em" alt="">
-                        <button class="btn btn-outline-primary">Buy</button>
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <div class="col-6 text-center border-right border-top">1</div>
-                            <div class="col-6 text-center border-top">2</div>
+                <div class="col ml-4">
+                        <div class="card" style="width: 16rem;">
+                                <div class="btn-group-vertical" role="group" aria-label="Basic example">
+                                        <img src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="card-img-top" height="400em" alt="">
+                                        <button class="btn btn-outline-primary">Buy</button>
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                                <div class="col-6 text-center border-right border-top">1</div>
+                                                <div class="col-6 text-center border-top">2</div>
+                                              </div>
+                                      </div>
                         </div>
-
-                    </div>
-
                 </div>
-            </div>
-            <div class="col">
-                <div class="card" style="width: 16rem;">
-                    <div class="btn-group-vertical" role="group" aria-label="Basic example">
-                        <img src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                            class="card-img-top" height="400em" alt="">
-                        <button class="btn btn-outline-primary">Buy</button>
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <div class="col-6 text-center border-right border-top">1</div>
-                            <div class="col-6 text-center border-top">2</div>
+                <div class="col">
+                        <div class="card" style="width: 16rem;">
+                                <div class="btn-group-vertical" role="group" aria-label="Basic example">
+                                        <img src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="card-img-top" height="400em" alt="">
+                                        <button class="btn btn-outline-primary">Buy</button>
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                                <div class="col-6 text-center border-right border-top">1</div>
+                                                <div class="col-6 text-center border-top">2</div>
+                                              </div>
+                                      </div>
                         </div>
-                    </div>
                 </div>
-            </div>
-            <div class="col">
-                <div class="card" style="width: 16rem;">
-                    <div class="btn-group-vertical" role="group" aria-label="Basic example">
-                        <img src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                            class="card-img-top" height="400em" alt="">
-                        <button class="btn btn-outline-primary">Buy</button>
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <div class="col-6 text-center border-right border-top">1</div>
-                            <div class="col-6 text-center border-top">2</div>
+                <div class="col">
+                        <div class="card" style="width: 16rem;">
+                                <div class="btn-group-vertical" role="group" aria-label="Basic example">
+                                        <img src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="card-img-top" height="400em" alt="">
+                                        <button class="btn btn-outline-primary">Buy</button>
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                                <div class="col-6 text-center border-right border-top">1</div>
+                                                <div class="col-6 text-center border-top">2</div>
+                                              </div>
+                                      </div>
                         </div>
-                    </div>
                 </div>
-            </div>
         </div>
     </div>
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

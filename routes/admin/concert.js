@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 const connection = require("../../connection")
+var dateFormat = require('dateformat');
 
 
 // add new concert
@@ -28,7 +29,9 @@ router.get("/new", function (req, res) {
     var time = req.body.time;
     var detail = req.body.detail;
     var venueID = req.body.venueID;
-    connection.query(sql, [name, date,time, detail, venueID], function (err, result) {
+    console.log("before" + date);
+
+    connection.query(sql, [name,dateFormat(date,"isoDate"),time, detail, venueID], function (err, result) {
        if (err) {
           throw err;
        }
@@ -79,6 +82,7 @@ router.get("/new", function (req, res) {
     var detail = req.body.detail;
     var poster = req.body.poster;
     var venue = req.body.venue;
+    date = dateFormat(date,"isoDate");
     var sql = "UPDATE concert SET concert_Name = ?, concert_Sales_Date = ?,concert_Sales_Time = ?, Concert_Detail = ?, Concert_Poster = ?, Venue_ID = ? WHERE concert_ID = ?;"
     connection.query(sql,[concertName,date,time,detail,poster,venue,concertID], function (err, concert) {
        if (err) {

@@ -3,6 +3,7 @@ var router = express.Router();
 var passport = require("passport");
 const connection = require("../../connection");
 var async = require("async");
+var dateFormat = require('dateformat');
 
 // add concert showtime
 router.get("/new", function (req, res) {
@@ -29,6 +30,7 @@ router.post("/new", function (req, res) {
          "VALUES (?,?,?,?)";
    if(Array.isArray(newShowdate)){
       newShowdate.forEach(function(item,index){
+         item = dateFormat(item,"isoDate");
          connection.query(sql, [item,newShowtime[index],newPlan[index],concertID], function (err, result) {
             if (err) {
                throw err;
@@ -38,6 +40,7 @@ router.post("/new", function (req, res) {
       });
    }
    else{
+      newShowdate = dateFormat(newShowdate,"isoDate");
          connection.query(sql, [newShowdate,newShowtime,newPlan,concertID], function (err, result) {
             if (err) {
                throw err;
@@ -61,7 +64,9 @@ router.post("/new", function (req, res) {
           throw err;
        }
        if(allShowtime[0]){
-         console.log(allShowtime);
+         allShowtime.forEach(function(item){
+            item.Concert_ShowDate = dateFormat(item.Concert_ShowDate,"isoDate");
+         });
          res.render("./admin/concert-index/concert-showtime/edit", { showtime : allShowtime, concertName : search}); 
       }
        else{
@@ -79,6 +84,7 @@ router.post("/new", function (req, res) {
     var sql = "UPDATE concert_showtime SET Concert_ShowDate = ?, Concert_ShowTime = ?, Concert_ShowTime_Plan = ? WHERE Concert_ShowTime_ID = ? ;"
     if(Array.isArray(concertShowtimeID)){
          concertShowtimeID.forEach(function(item,index){
+            date[index] = dateFormat(date[index],"isoDate");
             connection.query(sql, [date[index],time[index],plan[index],item], function (err, result) {
                   if (err) {
                      throw err;
@@ -88,6 +94,7 @@ router.post("/new", function (req, res) {
           });
        }
        else{
+            date = dateFormat(date,"isoDate");
             connection.query(sql, [date,time,plan,concertShowtimeID], function (err, result) {
                   if (err) {
                      throw err;
