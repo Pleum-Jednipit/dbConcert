@@ -50,12 +50,12 @@
                                         <tbody>
                                             <% zone.forEach(function(item){ %>
                                             <tr>
-                                                <td><label class="form-control" name=""><%= item.Zone_Name %></label></td>
-                                                <td><label class="form-control" name=""><%= item.Zone_Type %></label></td>
-                                                <td><label class="form-control" name=""><%= item.Zone_Price %></label></td>
-                                                <td><label class="form-control" name=""><%= item.Zone_Capacity %></label></td>
-                                                <td class="text-center" >
-                                                    <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                                                <td><label class="form-control edit" name=""><%= item.Zone_Name %></label></td>
+                                                <td><label class="form-control edit" name=""><%= item.Zone_Type %></label></td>
+                                                <td><label class="form-control edit" name=""><%= item.Zone_Price %></label></td>
+                                                <td><label class="form-control edit" name=""><%= item.Zone_Capacity %></label></td>
+                                                <td class="text-center style=" style="padding: 20px">
+                                                    <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons" >&#xE03B;</i></a>
                                                     <a href="/admin/concert-zone/edit/<%= name %>/<%= showtimeID %>/<%=item.Zone_ID%>" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                                                 </td>
                                             </tr> 
@@ -165,6 +165,12 @@ table.table .form-control.error {
 }
 table.table td .add {
     display: none;
+}
+.edit{
+    padding-top: 0px;
+    height: 34px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
 }
 </style>
 <script type="text/javascript">
