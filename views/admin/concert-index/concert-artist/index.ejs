@@ -1,126 +1,147 @@
 <% include ../../../partials/header %>
-    <title>Concert</title>
+<title>Concert</title>
 </head>
 <% include ../../../partials/nav %>
-    <div class="vertical-center">
+<div class="vertical-center">
 
-        <div class="container my-1">
-            <div class="row my-5 ">
-                <div class="col-12 align-self-center">
-                    <h1 class="text-center display-1"><strong>Artist</strong></h1>
-                </div>
-
+    <div class="container my-1">
+        <div class="row my-5 ">
+            <div class="col-12 align-self-center">
+                <h1 class="text-center display-1"><strong>Artist</strong></h1>
             </div>
 
-            <div class="row ">
-                <div class="col-3 text-center mx-auto">
-                    <button type="button" class="btn btn-outline-dark btn-lg" data-placement="bottom" html="true"
-                        data-toggle="popover" id="concert">
-                        <span><img src="https://image.flaticon.com/icons/svg/1776/1776683.svg" class="p-4" width="200"
-                                alt="">
-                            <hr>
-                            <h2>Concert Artist</h2>
-                            
-                        </span>
-                    </button>
+        </div>
 
-                </div>
-                <div class="col-3 text-center mx-auto">
-                    <button type="button" class="btn btn-outline-dark btn-lg" data-placement="bottom" html="true"
-                        data-toggle="popover" id="showtime">
-                        <span><img src="https://image.flaticon.com/icons/svg/1661/1661031.svg" class="p-4" width="200"
-                                alt="">
-                            <hr>
-                            <h2>Artist</h2>
-                        </span>
-                    </button>
+        <div class="row ">
+            <div class="col-3 text-center mx-auto">
+                <button type="button" class="btn btn-outline-dark btn-lg pop" data-placement="bottom" html="true"
+                    data-toggle="popover" id="concert">
+                    <span><img src="https://image.flaticon.com/icons/svg/1776/1776683.svg" class="p-4" width="200"
+                            alt="">
+                        <hr>
+                        <h2>Concert Artist</h2>
 
-                </div>
-                <div class="col-3 text-center mx-auto">
-                    <button type="button" class="btn btn-outline-dark btn-lg" data-placement="bottom" html="true"
-                        data-toggle="popover" id="zone">
-                        <span><img src="https://image.flaticon.com/icons/svg/1059/1059908.svg" class="p-4" width="200"
-                                alt="">
-                            <hr>
-                            <h2>Record Label</h2>
-                        </span>
-                    </button>
-                </div>
-                
+                    </span>
+                </button>
+
             </div>
+            <div class="col-3 text-center mx-auto">
+                <button type="button" class="btn btn-outline-dark btn-lg pop" data-placement="bottom" html="true"
+                    data-toggle="popover" id="showtime">
+                    <span><img src="https://image.flaticon.com/icons/svg/1661/1661031.svg" class="p-4" width="200"
+                            alt="">
+                        <hr>
+                        <h2>Artist</h2>
+                    </span>
+                </button>
+
+            </div>
+            <div class="col-3 text-center mx-auto">
+                <button type="button" class="btn btn-outline-dark btn-lg pop" data-placement="bottom" html="true"
+                    data-toggle="popover" id="zone">
+                    <span><img src="https://image.flaticon.com/icons/svg/1059/1059908.svg" class="p-4" width="200"
+                            alt="">
+                        <hr>
+                        <h2>Record Label</h2>
+                    </span>
+                </button>
+            </div>
+
         </div>
     </div>
-    <!-- loaded popover content -->
-    <div id="popover-content-concert" class="hide d-none">
-        <div class="row">
-            <div class="col ">
-                <a href="/admin/concert-artist/new" class="btn btn-primary">Add</a>
-            </div>
-            <div class="col">
-                <a href="/admin/concert-artist/edit" id="edit" class="btn btn-warning">Edit</a>
-            </div>
+</div>
+<!-- loaded popover content -->
+<div id="popover-content-concert" class="hide d-none">
+    <div class="row">
+        <div class="col ">
+            <a href="/admin/concert-artist/new" class="btn btn-primary">Add</a>
+        </div>
+        <div class="col">
+            <a href="/admin/concert-artist/edit" id="edit" class="btn btn-warning">Edit</a>
         </div>
     </div>
-    <div id="popover-content-showtime" class="hide d-none">
-        <div class="row">
-            <div class="col ">
-                <a href="/admin/artist/new" class="btn btn-primary">Add</a>
-            </div>
-            <div class="col">
-                <a href="/admin/artist/edit" id="edit" class="btn btn-warning">Edit</a>
-            </div>
+</div>
+<div id="popover-content-showtime" class="hide d-none">
+    <div class="row">
+        <div class="col ">
+            <a href="/admin/artist/new" class="btn btn-primary">Add</a>
+        </div>
+        <div class="col">
+            <a href="/admin/artist/edit" id="edit" class="btn btn-warning">Edit</a>
         </div>
     </div>
-    <div id="popover-content-zone" class="hide d-none">
-        <div class="row">
-            <div class="col ">
-                <a href="/admin/record-label/new" class="btn btn-primary">Add</a>
-            </div>
-            <div class="col">
-                <a href="/admin/record-label/edit" id="edit" class="btn btn-warning">Edit</a>
-            </div>
+</div>
+<div id="popover-content-zone" class="hide d-none">
+    <div class="row">
+        <div class="col ">
+            <a href="/admin/record-label/new" class="btn btn-primary">Add</a>
+        </div>
+        <div class="col">
+            <a href="/admin/record-label/edit" id="edit" class="btn btn-warning">Edit</a>
         </div>
     </div>
-    
+</div>
 
 
 
-    <!-- Optional JavaScript -->
-    <script>
-        document.body.className = 'fade';
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function (e) {
-            document.body.className = '';
+
+<!-- Optional JavaScript -->
+<script>
+    document.body.className = 'fade';
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function (e) {
+        document.body.className = '';
+    });
+</script>
+<script src="smoothscoll.js"></script>
+<script type="text/javascript" src="/path/to/build/drooltip.js"></script>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+</script>
+
+<!-- Popover -->
+<script>
+    $("[data-toggle=popover]").each(function (i, obj) {
+
+        $(this).popover({
+            html: true,
+            content: function () {
+                var id = $(this).attr('id')
+                return $('#popover-content-' + id).html();
+            }
         });
-    </script>
-    <script src="smoothscoll.js"></script>
-    <script type="text/javascript" src="/path/to/build/drooltip.js"></script>
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
 
-    <!-- Popover -->
-    <script>
-        $("[data-toggle=popover]").each(function (i, obj) {
-
-            $(this).popover({
-                html: true,
-                content: function () {
-                    var id = $(this).attr('id')
-                    return $('#popover-content-' + id).html();
-                }
+    });
+</script>
+<script>
+    $(".pop").popover({
+            trigger: "manual",
+            html: true,
+            animation: false
+        })
+        .on("mouseenter", function () {
+            var _this = this;
+            $(this).popover("show");
+            $(".popover").on("mouseleave", function () {
+                $(_this).popover('hide');
             });
-
+        }).on("mouseleave", function () {
+            var _this = this;
+            setTimeout(function () {
+                if (!$(".popover:hover").length) {
+                    $(_this).popover("hide");
+                }
+            }, 300);
         });
-    </script>
+</script>
 </body>
 
 </html>
