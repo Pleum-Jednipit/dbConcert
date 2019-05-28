@@ -166,7 +166,7 @@ router.get("/:name/showtime/:showtime", function (req, res) {
 
 
 // Book seat
-router.get("/:name/showtime/:showtime/:zone", function (req, res) {
+router.get("/:name/showtime/:showtime/:zone",isUser, function (req, res) {
    var name = req.params.name;
    var concertName = name.split("-").join(" ");
    var showtimeID = req.params.showtime;
@@ -243,7 +243,7 @@ router.get("/:name/showtime/:showtime/:zone", function (req, res) {
 });
 
 
-router.post("/:name/showtime/:showtime/:zone/booking", function (req, res) {
+router.post("/:name/showtime/:showtime/:zone/booking",isUser, function (req, res) {
    var concertName = req.body.concertName;
    var concertShowtime = req.body.concertShowtime;
    var venueName = req.body.venueName;
@@ -286,7 +286,7 @@ router.post("/:name/showtime/:showtime/:zone/booking", function (req, res) {
          var ticketFee = ticket[0].Ticket_Receiving_Fee;
          var total = (quantity * zonePrice) + paymentFee + ticketFee;
          console.log(total);
-         var username = "test";
+         var username = req.session.username;
          connection.query(sqlBooking, [username, showtimeID, dateFormat(now, "isoDateTime"), quantity, ticketID, paymentID, total], function (err, venue) {
             if (err) {
                throw err;
@@ -356,7 +356,7 @@ router.post("/:name/showtime/:showtime/:zone/booking", function (req, res) {
    });
 });
 
-router.get("/:name/showtime/:showtime/booking/:bookingID", function (req, res) {
+router.get("/:name/showtime/:showtime/booking/:bookingID",isUser, function (req, res) {
    var showtimeID = req.params.showtime;
    var name = req.params.name;
    var bookingID = req.params.bookingID;
