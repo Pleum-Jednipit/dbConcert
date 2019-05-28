@@ -18,6 +18,7 @@ router.get("/index", function (req, res) {
        }
    console.log(concert[0].Concert_Sales_Date);
    res.render("./user/index");
+      });
 });
 
 // show register form
