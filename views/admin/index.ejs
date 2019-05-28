@@ -24,7 +24,7 @@
                         </button>
                     </div>
                     <div class="col-3 text-center">
-                        <button type="button" class="btn btn-outline-warning btn-lg" data-toggle="popover" data-placement="bottom" id="vanue" style="background-color: rgb(243, 243, 171)">
+                        <button type="button" class="btn btn-outline-warning btn-lg pop" data-toggle="popover" data-placement="bottom" id="vanue" style="background-color: rgb(243, 243, 171)">
                             <span><i class="fab fa-fort-awesome fa-7x p-4"></i>
                                 <hr>
                                 <h1>Venue</h1>
@@ -103,7 +103,23 @@
             });
 
         });
+        
     </script>
-
+<script>
+$(".pop").popover({ trigger: "manual" , html: true, animation:false})
+    .on("mouseenter", function () {
+        var _this = this;
+        $(this).popover("show");
+        $(".popover").on("mouseleave", function () {
+            $(_this).popover('hide');
+        });
+    }).on("mouseleave", function () {
+        var _this = this;
+        setTimeout(function () {
+            if (!$(".popover:hover").length) {
+                $(_this).popover("hide");
+            }
+        }, 300);
+});</script>
 
 
