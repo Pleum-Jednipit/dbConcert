@@ -2,13 +2,17 @@ var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 const connection = require("../../connection")
+var middleware = require("../../middleware");
+var {
+   isAdmin
+} = middleware;
 
 // add ticket receiving
-router.get("/new", function (req, res) {
+router.get("/new",isAdmin, function (req, res) {
     res.render("./admin/payment-index/ticket-receiving/new");
  });
  
- router.post("/new", function (req, res) {
+ router.post("/new", isAdmin,function (req, res) {
     var sql = "INSERT INTO ticket_receiving ( Ticket_Receiving_Name ,Ticket_Receiving_Detail, Ticket_Receiving_Fee) " +
        "VALUES (?,?,?)";
     var name = req.body.name;
@@ -24,11 +28,11 @@ router.get("/new", function (req, res) {
  });
 
 
- router.get("/edit", function (req, res) {
+ router.get("/edit",isAdmin, function (req, res) {
    res.render("./admin/payment-index/ticket-receiving/edit", {ticket : ""});
 });
 
-router.post("/edit", function (req, res) {
+router.post("/edit", isAdmin,function (req, res) {
  var search    = req.body.ticketName;
  var sqlSearch = "SELECT * FROM ticket_receiving WHERE Ticket_Receiving_Name = ?;" ;
  connection.query(sqlSearch,[search], function (err, ticket) {
@@ -45,7 +49,7 @@ router.post("/edit", function (req, res) {
 });
 });
 
-router.put("/edit", function (req, res) {
+router.put("/edit",isAdmin, function (req, res) {
  var ticketID = req.body.ticketID;
  var ticketName = req.body.name;
  var ticketDetail = req.body.detail;
@@ -60,7 +64,7 @@ router.put("/edit", function (req, res) {
  });
 });
 
-router.get("/delete/:id", function (req, res) {
+router.get("/delete/:id",isAdmin, function (req, res) {
  var sql = "DELETE FROM ticket_receiving where ticket_receiving_ID = ?;"
  var ticketID = req.params.id
  connection.query(sql, [ticketID], function (err, result) {

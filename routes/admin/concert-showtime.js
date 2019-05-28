@@ -4,13 +4,17 @@ var passport = require("passport");
 const connection = require("../../connection");
 var async = require("async");
 var dateFormat = require('dateformat');
+var middleware = require("../../middleware");
+var {
+   isAdmin
+} = middleware;
 
 // add concert showtime
-router.get("/new", function (req, res) {
+router.get("/new",isAdmin, function (req, res) {
    res.render("./admin/concert-index/concert-showtime/new", { concert : ""});
 });
 
-router.post("/new", function (req, res) {
+router.post("/new", isAdmin,function (req, res) {
    var search    = req.body.search;
    var sqlSearch = "SELECT Concert_ID, Concert_Name FROM concert WHERE Concert_Name = ?;" ;
    connection.query(sqlSearch,[search], function (err, concert) {
@@ -21,7 +25,7 @@ router.post("/new", function (req, res) {
    });
  });
  
- router.post("/new/insert", function (req, res) {
+ router.post("/new/insert",isAdmin, function (req, res) {
    var concertID = req.body.concertID;
    var newShowdate = req.body.date;
    var newShowtime = req.body.time;
@@ -54,7 +58,7 @@ router.post("/new", function (req, res) {
       res.render("./admin/concert-index/concert-showtime/edit", {showtime : ""});
  });
 
- router.post("/edit", function (req, res) {
+ router.post("/edit", isAdmin,function (req, res) {
     var allShowtimeData = [];
     var search    = req.body.search;
     var sqlSearch = "SELECT cs.* FROM concert_showtime cs, concert c WHERE cs.Concert_ID = c.Concert_ID AND c.Concert_Name = ?;" ;
@@ -74,7 +78,7 @@ router.post("/new", function (req, res) {
    });
  });
  
- router.put("/edit", function (req, res) {
+ router.put("/edit",isAdmin, function (req, res) {
     var concertShowtimeID = req.body.concertShowtimeID;
     var concertID = req.body.concertID;
     var date =req.body.date;
@@ -104,7 +108,7 @@ router.post("/new", function (req, res) {
     res.redirect("/admin/concert-artist/index");
  });
  
- router.get("/delete/:id", function (req, res) {
+ router.get("/delete/:id", isAdmin,function (req, res) {
     var sql = "DELETE FROM concert_artist where Concert_Artist_ID = ?;"
     var Concert_Artist_ID = req.params.id
     console.log(concertID);

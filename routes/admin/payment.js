@@ -2,13 +2,17 @@ var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 const connection = require("../../connection");
+var middleware = require("../../middleware");
+var {
+   isAdmin
+} = middleware;
 
 
-router.get("/new", function (req, res) {
+router.get("/new", isAdmin,function (req, res) {
    res.render("./admin/payment-index/payment/new");
  });
  
- router.post("/new", function (req, res) {
+ router.post("/new", isAdmin,function (req, res) {
     var sql = "INSERT INTO payment ( payment_Name, payment_Detail, payment_Fee) " +
        "VALUES (?,?,?)";
     var paymentName = req.body.name;
@@ -23,11 +27,11 @@ router.get("/new", function (req, res) {
     });
  });
   
- router.get("/edit", function (req, res) {
+ router.get("/edit", isAdmin,function (req, res) {
       res.render("./admin/payment-index/payment/edit", {payment : ""});
  });
 
- router.post("/edit", function (req, res) {
+ router.post("/edit",isAdmin, function (req, res) {
     var search    = req.body.search;
     var sqlSearch = "SELECT * FROM payment WHERE payment_Name = ?;" ;
     connection.query(sqlSearch,[search], function (err, payment) {
@@ -44,7 +48,7 @@ router.get("/new", function (req, res) {
    });
  });
  
- router.put("/edit", function (req, res) {
+ router.put("/edit",isAdmin, function (req, res) {
     var paymentID = req.body.paymentID;
     var paymentName = req.body.name;
     var paymentDetail = req.body.detail;
@@ -59,7 +63,7 @@ router.get("/new", function (req, res) {
     });
  });
  
- router.get("/delete/:id", function (req, res) {
+ router.get("/delete/:id",isAdmin, function (req, res) {
     var sql = "DELETE FROM payment where payment_ID = ?;"
     var paymentID = req.params.id
     connection.query(sql, [paymentID], function (err, result) {

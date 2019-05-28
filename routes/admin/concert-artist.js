@@ -3,9 +3,13 @@ var router = express.Router();
 var passport = require("passport");
 const connection = require("../../connection");
 var async = require('async');
+var middleware = require("../../middleware");
+var {
+   isAdmin
+} = middleware;
 
 
-router.get("/new", function (req, res) {
+router.get("/new",isAdmin, function (req, res) {
    var getAllConcert = "SELECT Concert_ID, Concert_Name FROM concert;" ;
    connection.query(getAllConcert, function (err, allConcert) {
       if (err) {
@@ -15,7 +19,7 @@ router.get("/new", function (req, res) {
    });
  });
 
-router.post("/new", function (req, res) {
+router.post("/new",isAdmin, function (req, res) {
    var search    = req.body.search;
    var sqlSearch = "SELECT Concert_ID, Concert_Name FROM concert WHERE Concert_Name = ?;" ;
    connection.query(sqlSearch,[search], function (err, concert) {
@@ -33,7 +37,7 @@ router.post("/new", function (req, res) {
 });
 
 
- router.post("/new/insert", function (req, res) {
+ router.post("/new/insert", isAdmin,function (req, res) {
    var concertID = req.body.concertID;
    var newArtist = req.body.dropdown;
    var sql = "INSERT INTO concert_artist (concert_id, artist_id) " +
@@ -60,11 +64,11 @@ router.post("/new", function (req, res) {
    res.redirect("/admin/concert-artist/index"); 
    });
   
- router.get("/edit", function (req, res) {
+ router.get("/edit", isAdmin,function (req, res) {
       res.render("./admin/concert-index/concert-artist/management/edit", {concertArtist : ""});
  });
 
- router.post("/edit", function (req, res) {
+ router.post("/edit",isAdmin, function (req, res) {
     var allArtist = [];
     var search    = req.body.search;
     var sqlSearch = "SELECT ca.* FROM concert_artist ca, concert c WHERE ca.Concert_ID = c.Concert_ID AND c.Concert_Name = ?;" ;
@@ -107,7 +111,7 @@ router.post("/new", function (req, res) {
    });
  });
  
- router.put("/edit", function (req, res) {
+ router.put("/edit",isAdmin, function (req, res) {
     var deleteID = req.body.delete;
     console.log("Hi" + deleteID);
     var update    = req.body.dropdown;
@@ -151,7 +155,7 @@ router.post("/new", function (req, res) {
     res.redirect("/admin/concert-artist/index");
  });
  
- router.get("/delete/:id", function (req, res) {
+ router.get("/delete/:id",isAdmin, function (req, res) {
     var sql = "DELETE FROM concert_artist where Concert_Artist_ID = ?;"
     var Concert_Artist_ID = req.params.id
     console.log(concertID);

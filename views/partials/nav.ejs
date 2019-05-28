@@ -26,19 +26,15 @@
             <button class="navbar-toggler" type="button" data-toggle="modal" data-target="#exampleModal">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <% if(!isLogin) {%>
-                <div class="col-md-2 ">
-                    <div class="collapse navbar-collapse navbar-toggle" id="navbarNavAltMarkup">
-                        <button class="btn btn-outline-warning btn-lg mx-4" data-toggle="modal" data-target="#ModalExample">Sign in</button>
-                    </div>
-                </div>
+                <% if( !isAdmin) {%>
+                
                 <% } else { %> 
-                    <div class="col-md-2 ">
-                            <label class="control-label">Welcone <%= currentUser  %> !</label>
+                    <div class="col-md-3 text-right">
+                            <label class="control-label" style="color:white; font-size: 1.3em;">Admin: <%= currentUser  %> </label>
                         </div>
                 <div class="col-md-2 ">
                         <div class="collapse navbar-collapse navbar-toggle" id="navbarNavAltMarkup">
-                            <a href="/logout" class="btn btn-outline-warning btn-lg mx-4">Sign out</a>
+                            <a href="/admin/logout" class="btn btn-outline-warning mx-4" style="font-size: 1.3em">Sign out</a>
                         </div>
                     </div>
                 <% } %> 

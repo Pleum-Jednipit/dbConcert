@@ -19,6 +19,7 @@ var userRoutes                  = require("./routes/user"),
     adminconcertShowtimeRoutes  = require("./routes/admin/concert-showtime"),
     adminconcertArtistRoutes    = require("./routes/admin/concert-artist"),
     adminconcertZoneRoutes      = require("./routes/admin/concert-zone"),
+    adminpromotionMemberRoutes  = require("./routes/admin/promotion-member"),
     adminmemberTypeRoutes       = require("./routes/admin/member-type");
 
 connection.connect(function(err){
@@ -71,6 +72,7 @@ app.use("/admin/member-type",adminmemberTypeRoutes);
 app.use("/admin/concert-showtime",adminconcertShowtimeRoutes);
 app.use("/admin/concert-artist",adminconcertArtistRoutes);
 app.use("/admin/concert-zone",adminconcertZoneRoutes);
+app.use("/admin/promotion-member",adminpromotionMemberRoutes);
 
 
 app.listen(3000, function(){

@@ -2,14 +2,18 @@ var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 const connection = require("../../connection")
+var middleware = require("../../middleware");
+var {
+   isAdmin
+} = middleware;
 
 
 // add record label
-router.get("/new", function (req, res) {
+router.get("/new", isAdmin,function (req, res) {
     res.render("./admin/concert-index/concert-artist/record-label/new");
  });
  
- router.post("/new", function (req, res) {
+ router.post("/new", isAdmin,function (req, res) {
     var sql = "INSERT INTO record_label ( record_label_Name, record_label_Address , Record_Label_EmailAddress , record_label_PhoneNumber, record_label_website) " +
        "VALUES (?,?,?,?,?)";
     var recordLabelName = req.body.name;
@@ -26,11 +30,11 @@ router.get("/new", function (req, res) {
     });
  });
 
- router.get("/edit", function (req, res) {
+ router.get("/edit", isAdmin,function (req, res) {
       res.render("./admin/concert-index/concert-artist/record-label/edit", {recordLabel : ""});
  });
 
- router.post("/edit", function (req, res) {
+ router.post("/edit", isAdmin,function (req, res) {
     var search    = req.body.search;
     var sqlSearch = "SELECT * FROM record_label WHERE record_label_Name = ?;" ;
     connection.query(sqlSearch,[search], function (err, recordLabel) {
@@ -46,7 +50,7 @@ router.get("/new", function (req, res) {
    });
  });
  
- router.put("/edit", function (req, res) {
+ router.put("/edit",isAdmin, function (req, res) {
     var recordLabelID = req.body.recordLabelID;
     var recordLabelName = req.body.name;
     var recordLabelAddress = req.body.address;

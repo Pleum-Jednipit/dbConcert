@@ -2,13 +2,17 @@ var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 const connection = require("../../connection")
+var middleware = require("../../middleware");
+var {
+   isAdmin
+} = middleware;
 
 // add new venue
-router.get("/new", function (req, res) {
+router.get("/new", isAdmin,function (req, res) {
     res.render("./admin/venue/new");
  });
 
-router.post("/new", function (req, res) {
+router.post("/new",isAdmin, function (req, res) {
     var sql = "INSERT INTO venue ( Venue_Name, Venue_Address , Venue_EmailAddress , Venue_PhoneNumber,Venue_SeatingCapacity) " +
        "VALUES (?,?,?,?,?)";
     var name = req.body.name;
@@ -25,11 +29,11 @@ router.post("/new", function (req, res) {
     });
  });
 
- router.get("/edit", function (req, res) {
+ router.get("/edit",isAdmin, function (req, res) {
    res.render("./admin/venue/edit", {venue : ""});
 });
 
-router.post("/edit", function (req, res) {
+router.post("/edit",isAdmin, function (req, res) {
  var search    = req.body.search;
  var sqlSearch = "SELECT * FROM venue WHERE venue_Name = ?;" ;
  connection.query(sqlSearch,[search], function (err, venue) {
@@ -46,7 +50,7 @@ router.post("/edit", function (req, res) {
 });
 });
 
-router.put("/edit", function (req, res) {
+router.put("/edit", isAdmin,function (req, res) {
  var venueID = req.body.venueID;
  var venueName = req.body.name;
  var email = req.body.email;

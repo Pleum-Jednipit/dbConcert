@@ -3,10 +3,14 @@ var router = express.Router();
 var passport = require("passport");
 const connection = require("../../connection")
 var dateFormat = require('dateformat');
+var middleware = require("../../middleware");
+var {
+   isAdmin
+} = middleware;
 
 
 // add new concert
-router.get("/new", function (req, res) {
+router.get("/new", isAdmin,function (req, res) {
     var getVenue = "SELECT Venue_ID, Venue_Name FROM Venue";
     connection.query(getVenue, function (err, allVenue) {
        if (err) {
@@ -21,7 +25,7 @@ router.get("/new", function (req, res) {
     });
  });
  
- router.post("/new", function (req, res) {
+ router.post("/new", isAdmin,function (req, res) {
     var sql = "INSERT INTO concert ( concert_Name, concert_sales_date,concert_sales_time, concert_detail,venue_ID,Concert_Poster) " +
        "VALUES (?,?,?,?,?,?)";
     var name = req.body.name;
@@ -41,11 +45,11 @@ router.get("/new", function (req, res) {
     });
  });
   
- router.get("/edit", function (req, res) {
+ router.get("/edit", isAdmin,function (req, res) {
       res.render("./admin/concert-index/concert/edit", {concert : ""});
  });
 
- router.post("/edit", function (req, res) {
+ router.post("/edit", isAdmin,function (req, res) {
     var concertSearch = req.body.concertSearch;
     var searchConcert = "SELECT * FROM concert WHERE concert_Name = ?" ;
     connection.query(searchConcert,[concertSearch], function (err, concert) {
@@ -75,7 +79,7 @@ router.get("/new", function (req, res) {
    });
  });
  
- router.put("/edit", function (req, res) {
+ router.put("/edit", isAdmin,function (req, res) {
     var concertID = req.body.concertID;
     var concertName = req.body.concertName;
     var date = req.body.saleDate;
@@ -94,7 +98,7 @@ router.get("/new", function (req, res) {
     });
  });
  
- router.get("/delete/:id", function (req, res) {
+ router.get("/delete/:id", isAdmin,function (req, res) {
     var sql = "DELETE FROM concert where concert_ID = ?;"
     var concertID = req.params.id
     console.log(concertID);

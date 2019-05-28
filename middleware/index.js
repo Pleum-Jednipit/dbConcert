@@ -3,14 +3,14 @@ module.exports = {
       if(req.session.isLogin){
           return next();
       }
-      req.flash('error', 'Please sign in first');
+      req.flash('error', 'Please Sign In First');
       res.redirect('/index');
   },
   isAdmin: function(req,res,next){
     if(req.session.isAdmin){
         return next();
     }
-    req.flash('error','You do not have permission to access this page ');
-    res.redirect('/index');
+    req.flash('error','You do not have permission to access this page, Please Sign In First');
+    res.redirect('/admin/login');
   }
 }
