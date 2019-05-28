@@ -48,7 +48,8 @@ router.post("/register", function (req, res) {
    var email = req.body.email;
    var address = req.body.address;
    var phoneNumber = req.body.phone;
-   connection.query(sql, [userName, password, name, dob, email, gender, address, phoneNumber, 1], function (err, result) {
+   var dateOfBirth = dateFormat(dob,"isoDate");
+   connection.query(sql, [userName, password, name, dateOfBirth, gender, email, address, phoneNumber, 1], function (err, result) {
       if (err) {
          throw err;
       }

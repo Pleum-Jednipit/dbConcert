@@ -238,12 +238,12 @@ router.post("/:name/showtime/:showtime/:zone/booking", function (req, res) {
       var quantity = req.body.quantity;
    }
    var getTicket = "SELECT * FROM ticket_receiving WHERE Ticket_Receiving_ID = ?";
-   connection.query(getTicket,[ticketID],function (err, ticket) {
+   connection.query(getTicket, [ticketID], function (err, ticket) {
       if (err) {
          throw err;
       }
       var getPayment = "SELECT * FROM payment;";
-      connection.query(getPayment,[paymentID], function (err, payment) {
+      connection.query(getPayment, [paymentID], function (err, payment) {
          if (err) {
             throw err;
          }
@@ -267,58 +267,58 @@ router.post("/:name/showtime/:showtime/:zone/booking", function (req, res) {
                   throw err;
                }
                var sqlBookedSeat = "INSERT INTO booked_seat (Seat_ID,Concert_ShowTime_ID,Booking_ID) " +
-               "VALUES (?,?,?)";
+                  "VALUES (?,?,?)";
                console.log(bookingSeat);
                console.log(bookingID);
-               if(zoneType == "Seating"){
-                  if(quantity > 1){
-                     bookingSeat.forEach(function(item){
-                        connection.query(sqlBookedSeat, [item,showtimeID,bookingID[0].Booking_ID], function (err, venue) {
+               if (zoneType == "Seating") {
+                  if (quantity > 1) {
+                     bookingSeat.forEach(function (item) {
+                        connection.query(sqlBookedSeat, [item, showtimeID, bookingID[0].Booking_ID], function (err, venue) {
                            if (err) {
                               throw err;
                            }
                            console.log(item + " is Booked")
-                           
+
                         });
                      });
                   } else {
-                        connection.query(sqlBookedSeat, [bookingSeat,showtimeID,bookingID[0].Booking_ID], function (err, venue) {
-                           if (err) {
-                              throw err;
-                           }
-                           console.log(bookingSeat + " is Booked")
-                        });
+                     connection.query(sqlBookedSeat, [bookingSeat, showtimeID, bookingID[0].Booking_ID], function (err, venue) {
+                        if (err) {
+                           throw err;
+                        }
+                        console.log(bookingSeat + " is Booked")
+                     });
                   }
-               } else if(zoneType == "Standing"){
-                     var quantityNumber = Number(quantity);
-                     var getStandindSeat = "SELECT s.Seat_ID FROM seat s, zone z WHERE s.Zone_ID = ? AND NOT EXISTS(SELECT 1 FROM booked_seat bs WHERE bs.Seat_ID = s.Seat_ID) LIMIT ?;";
-                     connection.query(getStandindSeat,[zoneID,quantityNumber],function (err, bookingSeat) {
+               } else if (zoneType == "Standing") {
+                  var quantityNumber = Number(quantity);
+                  var getStandindSeat = "SELECT s.Seat_ID FROM seat s, zone z WHERE s.Zone_ID = ? AND NOT EXISTS(SELECT 1 FROM booked_seat bs WHERE bs.Seat_ID = s.Seat_ID) LIMIT ?;";
+                  connection.query(getStandindSeat, [zoneID, quantityNumber], function (err, bookingSeat) {
                      if (err) {
                         throw err;
-                        }
-                        if(quantity > 1){
-                           console.log("GO");
-                           bookingSeat.forEach(function(item){
-                              connection.query(sqlBookedSeat, [item.Seat_ID,showtimeID,bookingID[0].Booking_ID], function (err, venue) {
-                                 if (err) {
-                                    throw err;
-                                 }
-                                 console.log(item.Seat_ID + " is Booked")
-                              });
-                           });
-                        } else {
-                           console.log("Hi");
-                           console.log(bookingSeat.Seat_ID);
-                           connection.query(sqlBookedSeat, [bookingSeat[0].Seat_ID,showtimeID,bookingID[0].Booking_ID], function (err, venue) {
+                     }
+                     if (quantity > 1) {
+                        console.log("GO");
+                        bookingSeat.forEach(function (item) {
+                           connection.query(sqlBookedSeat, [item.Seat_ID, showtimeID, bookingID[0].Booking_ID], function (err, venue) {
                               if (err) {
                                  throw err;
                               }
-                              console.log(bookingSeat[0].Seat_ID + " is Booked")
+                              console.log(item.Seat_ID + " is Booked")
                            });
+                        });
+                     } else {
+                        console.log("Hi");
+                        console.log(bookingSeat.Seat_ID);
+                        connection.query(sqlBookedSeat, [bookingSeat[0].Seat_ID, showtimeID, bookingID[0].Booking_ID], function (err, venue) {
+                           if (err) {
+                              throw err;
+                           }
+                           console.log(bookingSeat[0].Seat_ID + " is Booked")
+                        });
                      }
                   });
-                  }  
-               res.redirect("/concert/" + name  + "/showtime/" + showtimeID + "/booking/" + bookingID[0].Booking_ID)
+               }
+               res.redirect("/concert/" + name + "/showtime/" + showtimeID + "/booking/" + bookingID[0].Booking_ID)
             });
          });
       });
@@ -331,18 +331,62 @@ router.get("/:name/showtime/:showtime/booking/:bookingID", function (req, res) {
    var bookingID = req.params.bookingID;
    var getBookingInfo = "SELECT * FROM booking WHERE Booking_ID = ?";
    console.log(bookingID);
-   connection.query(getBookingInfo,[bookingID],function (err, booking) {
+   connection.query(getBookingInfo, [bookingID], function (err, bookingInfo) {
       if (err) {
          throw err;
       }
-      var getConcertInfo = "SELECT * FROM concert c, concert_showtime cs WHERE cs.Concert_ShowTime_ID = ? AND cs.Concert_ID = c.Concert_ID";
-      connection.query(getConcertInfo,showtimeID,function (err, concertInfo) {
+      var getConcertInfo = "SELECT * FROM concert c, concert_showtime cs, venue v WHERE cs.Concert_ShowTime_ID = ? AND cs.Concert_ID = c.Concert_ID AND c.Venue_ID = v.Venue_ID";
+      connection.query(getConcertInfo, showtimeID, function (err, concertInfo) {
          if (err) {
             throw err;
          }
-         console.log(concertInfo);
-         
-         res.render("./user/concert/bookinginfo");
+         var getMemberInfo = "SELECT * FROM member WHERE Member_Username = ?;";
+         connection.query(getMemberInfo, 'test', function (err, memberInfo) {
+            if (err) {
+               throw err;
+            }
+            var getBookedSeat = "SELECT * FROM booked_seat bs, seat s WHERE Booking_ID = ? AND bs.Seat_ID = s.Seat_ID;";
+            connection.query(getBookedSeat, bookingID, function (err, bookedSeat) {
+               if (err) {
+                  throw err;
+               }
+               var getZoneInfo = "SELECT z.* FROM zone z, seat s WHERE s.Seat_ID = ? AND s.Zone_ID = z.Zone_ID;";
+               connection.query(getZoneInfo, bookedSeat[0].Seat_ID, function (err, zoneInfo) {
+                  if (err) {
+                     throw err;
+                  }
+                  var getTicketInfo = "SELECT * FROM ticket_receiving;";
+                  connection.query(getTicketInfo, bookedSeat[0].Ticket_Receiving_ID, function (err, ticketInfo) {
+                     if (err) {
+                        throw err;
+                     }
+                     var getPaymentInfo = "SELECT * FROM payment";
+                     connection.query(getPaymentInfo, bookedSeat[0].Payment_ID, function (err, paymentInfo) {
+                        if (err) {
+                           throw err;
+                        }
+                        concertInfo[0].Concert_ShowDate = dateFormat(concertInfo[0].Concert_ShowDate,"fullDate");
+                        console.log(concertInfo);
+                        console.log(bookingInfo);
+                        console.log(memberInfo);
+                        console.log(bookedSeat);
+                        console.log(zoneInfo);
+                        console.log(ticketInfo);
+                        console.log(paymentInfo)
+                        res.render("./user/concert/bookinginfo", {
+                           concert: concertInfo[0],
+                           booking: bookingInfo[0],
+                           member: memberInfo[0],
+                           bookedSeat: bookedSeat,
+                           zone: zoneInfo[0],
+                           ticket: ticketInfo[0],
+                           payment: paymentInfo[0]
+                        });
+                     });
+                  });
+               });
+            });
+         });
       });
    });
 });
