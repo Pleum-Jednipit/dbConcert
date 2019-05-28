@@ -59,6 +59,11 @@ router.post("/register", function (req, res) {
 });
 
 
+router.get("/login", function (req, res) {
+   res.render("./user/login");
+});
+
+
 //handling user sign in
 router.post("/login", function (req, res) {
    var username = req.body.username;
@@ -78,11 +83,11 @@ router.post("/login", function (req, res) {
 
             req.flash("success", "Welcome to Concert " + req.session.username);
 
-            res.redirect('/index');
+            res.redirect(req.session.currentPage);
          } else {
 
             req.flash("error", "Invalid Username and Password");
-            res.redirect('/index');
+            res.redirect('/login');
          }
          res.end();
       });

@@ -35,6 +35,7 @@ router.get("/:name", function (req, res) {
    var name = req.params.name;
    console.log(name);
    var concertName = name.split("-").join(" ");
+   var now = new Date();
    // Get concert and showtime info
    var getConcert = "SELECT * FROM concert c, concert_showtime cs WHERE c.Concert_Name = ? AND c.Concert_ID = cs.Concert_ID;";
    connection.query(getConcert, [concertName], function (err, concert) {
@@ -56,11 +57,22 @@ router.get("/:name", function (req, res) {
                throw err;
             }
             console.log(venue[0].Venue_Name);
+            var today = new Date();
+            var date = dateFormat(date,"isoDate");
+            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+            var comingSoon = false;
+            if(date < dateFormat(concert[0].Concert_Sales_Date,"isoDate")){
+               comingSoon = true;
+               if(time < concert[0].Concert_Sales_Time){
+               comingSoon = true;
+               }
+            }
             res.render("./user/concert/concertinfo", {
                concert: concert,
                artist: artist,
                venue: venue[0],
-               name: name
+               name: name,
+               comingSoon : comingSoon
             }, );
          });
       });
@@ -219,19 +231,31 @@ router.get("/:name/showtime/:showtime/:zone",isUser, function (req, res) {
                            if (err) {
                               throw err;
                            }
-                           res.render("./user/concert/selectseat", {
-                              showtime: showtime[0],
-                              venue: venue[0],
-                              zone: zone[0],
-                              seat: allSeat,
-                              bookedSeat: bookedSeat,
-                              concertName: concertName,
-                              ticket: ticket,
-                              payment: payment,
-                              name: name,
-                              concert: concert[0]
-                           })
-
+                           var getPromotion = "SELECT * FROM promotion WHERE Concert_ID = ?;";
+                           connection.query(getPromotion,[concert[0].Concert_ID],function (err, promotion) {
+                              if (err) {
+                                 throw err;
+                              }
+                              var now = new Date();
+                              var currentDate = dateFormat(now,"isoDate");
+                              promotion.forEach(function(item){
+                                 if(currentDate >= item.Promotion_Start && currentDate <= item.Promotion_End ){
+                                    console.log("Nice");
+                                 } 
+                              });
+                              res.render("./user/concert/selectseat", {
+                                 showtime: showtime[0],
+                                 venue: venue[0],
+                                 zone: zone[0],
+                                 seat: allSeat,
+                                 bookedSeat: bookedSeat,
+                                 concertName: concertName,
+                                 ticket: ticket,
+                                 payment: payment,
+                                 name: name,
+                                 concert: concert[0]
+                              })
+                           });
                         });
                      });
                   });

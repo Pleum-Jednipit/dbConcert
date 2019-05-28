@@ -52,6 +52,7 @@ app.use(function(req,res,next){
    res.locals.isLogin = req.session.isLogin;
    res.locals.currentUser = req.session.username;
    res.locals.isAdmin = req.session.isAdmin;
+   res.locals.currentPage = req.session.currentPage;
    res.locals.error = req.flash("error");
    res.locals.success = req.flash("success");
    next();

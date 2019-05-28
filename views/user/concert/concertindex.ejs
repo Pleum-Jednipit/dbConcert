@@ -32,14 +32,14 @@
                             src="<%= item.Concert_Poster %>" style="margin-top: 10px">
                         <% if(now > item.Concert_Sales_Date) { %>
                         <div _ngcontent-c6="" class="card-buyTicket ng-star-inserted" style="text-align: center">
-                            <a _ngcontent-c6="" href="https://www.allticket.com/event/WhatTheFest2" >
+                            <a _ngcontent-c6="" >
                                <span _ngcontent-c6=""><a href="/concert/<%= item.Concert_Name.split(" ").join("-") %>" class="btn btn-outline-dark" style="width: 250px; margin-top: 10px; background-color: #eeeeee">BUY NOW</a></span>
                             </a>
                         </div>
                         <% } else { %>
                         <div _ngcontent-c6="" class="card-buyTicket ng-star-inserted" style="text-align: center">
-                                <a _ngcontent-c6="" href="https://www.allticket.com/event/WhatTheFest2" >
-                                   <span _ngcontent-c6=""><button type="button" class="btn btn-outline-dark" style="width: 250px; margin-top: 10px; background-color: #eeeeee">COMING SOON</button></span>
+                                <a _ngcontent-c6="" >
+                                   <span _ngcontent-c6=""><a href="/concert/<%= item.Concert_Name.split(" ").join("-") %> " class="btn btn-outline-dark" style="width: 250px; margin-top: 10px; background-color: #eeeeee">COMING SOON</a></span>
                                 </a>
                             </div>
                             <% } %>

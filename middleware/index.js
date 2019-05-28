@@ -1,11 +1,13 @@
 module.exports = {
   isUser: function(req, res, next){
+      var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+      console.log(fullUrl);
       if(req.session.isLogin){
           return next();
       }
+      req.session.currentPage = fullUrl
       req.flash('error', 'Please Sign In First');
-      var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
-      res.redirect('/index');
+      res.redirect('/login');
       
   },
   isAdmin: function(req,res,next){

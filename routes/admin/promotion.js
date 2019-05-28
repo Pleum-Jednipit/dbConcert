@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 const connection = require("../../connection")
+var dateFormat = require('dateformat');
 var middleware = require("../../middleware");
 var {
    isAdmin
@@ -28,8 +29,9 @@ router.get("/new", isAdmin,function (req, res) {
     var end = req.body.enddate;
     var detail = req.body.detail;
     var concertID = req.body.dropdown;
+    console.log(concertID);
     var discount = req.body.discount;
-    connection.query(sql, [name, start, end, detail,concertID,discount], function (err, result) {
+    connection.query(sql, [name, dateFormat(start,"isoDate"), dateFormat(end,"isoDate"), detail,concertID,discount], function (err, result) {
        if (err) {
           throw err;
        }

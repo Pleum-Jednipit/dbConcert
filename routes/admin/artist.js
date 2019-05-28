@@ -19,12 +19,13 @@ router.get("/new", isAdmin,function (req, res) {
 });
 
 router.post("/new",isAdmin, function (req, res) {
-    var sql = "INSERT INTO artist ( artist_Name, artist_detail , Record_Label_ID) " +
+    var sql = "INSERT INTO artist ( artist_Name, artist_detail ,artist_Image, Record_Label_ID) " +
        "VALUES (?,?,?)";
     var artistName = req.body.name;
     var artistDetail = req.body.detail;
     var recordLabel = req.body.recordLabel;
-    connection.query(sql, [artistName,artistDetail,recordLabel], function (err, result) {
+    var image = req.body.image;
+    connection.query(sql, [artistName,artistDetail,image,recordLabel], function (err, result) {
        if (err) {
           throw err;
        }
@@ -37,6 +38,7 @@ router.post("/new",isAdmin, function (req, res) {
       res.render("./admin/concert-index/concert-artist/artist/edit", {artist : ""});
  });
 
+ // display image link
  router.post("/edit",isAdmin, function (req, res) {
     var search    = req.body.search;
     var sqlSearch = "SELECT * FROM artist WHERE artist_Name = ?;" ;
@@ -70,8 +72,9 @@ router.post("/new",isAdmin, function (req, res) {
     var artistName = req.body.name;
     var artistDetail = req.body.detail;
     var recordLabelName = req.body.recordLabel;
-    var sql = "UPDATE artist SET artist_Name = ?, artist_Detail = ?, record_label_ID = ? WHERE artist_ID = ?;"
-    connection.query(sql,[artistName,artistDetail,recordLabelName,artistID], function (err, concert) {
+    var image = req.body.image;
+    var sql = "UPDATE artist SET artist_Name = ?, artist_Detail = ?, record_label_ID = ? , artist_Image = ? WHERE artist_ID = ?;"
+    connection.query(sql,[artistName,artistDetail,recordLabelName,image,artistID], function (err, concert) {
        if (err) {
           throw err;
        }

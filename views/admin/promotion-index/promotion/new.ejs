@@ -47,7 +47,7 @@
                             <select name="dropdown" id="concert" class="form-control selectpicker"
                                 data-live-search="true">
                                 <% concert.forEach(function(item){ %>
-                                <option value="<%= concert.Concert_ID %>"> <%= item.Concert_Name %> </option>
+                                <option value="<%= item.Concert_ID %>"> <%= item.Concert_Name %> </option>
                                 <% }) %>
                             </select>
                         </div>

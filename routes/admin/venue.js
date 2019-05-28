@@ -13,14 +13,16 @@ router.get("/new", isAdmin,function (req, res) {
  });
 
 router.post("/new",isAdmin, function (req, res) {
-    var sql = "INSERT INTO venue ( Venue_Name, Venue_Address , Venue_EmailAddress , Venue_PhoneNumber,Venue_SeatingCapacity) " +
-       "VALUES (?,?,?,?,?)";
+    var sql = "INSERT INTO venue ( Venue_Name, Venue_Address , Venue_EmailAddress , Venue_PhoneNumber,Venue_SeatingCapacity,Venue_Detail,Venue_Image) " +
+       "VALUES (?,?,?,?,?,?,?)";
     var name = req.body.name;
     var email = req.body.email;
     var address = req.body.address;
     var phoneNumber = req.body.phone;
     var seatingCapacity = req.body.capacity;
-    connection.query(sql, [name, address, email, phoneNumber, seatingCapacity], function (err, result) {
+    var detail = req.body.detail;
+    var image = req.body.image;
+    connection.query(sql, [name, address, email, phoneNumber, seatingCapacity,detail,image], function (err, result) {
        if (err) {
           throw err;
        }
@@ -50,6 +52,7 @@ router.post("/edit",isAdmin, function (req, res) {
 });
 });
 
+// ejs display detail image 
 router.put("/edit", isAdmin,function (req, res) {
  var venueID = req.body.venueID;
  var venueName = req.body.name;
@@ -57,8 +60,10 @@ router.put("/edit", isAdmin,function (req, res) {
  var address = req.body.address;
  var phoneNumber = req.body.phone;
  var seatingCapacity = req.body.capacity;
- var sql = "UPDATE venue SET venue_Name = ?, venue_Address = ?, venue_EmailAddress = ?, venue_PhoneNumber = ?, venue_SeatingCapacity = ? WHERE venue_ID = ?;"
- connection.query(sql,[venueName,address,email,phoneNumber,seatingCapacity,venueID], function (err, concert) {
+ var detail = req.body.detail;
+ var image = req.body.image;
+ var sql = "UPDATE venue SET venue_Name = ?, venue_Address = ?, venue_EmailAddress = ?, venue_PhoneNumber = ?, venue_SeatingCapacity = ? ,venue_Detail = ?, venue_Image = ? WHERE venue_ID = ?;"
+ connection.query(sql,[venueName,address,email,phoneNumber,seatingCapacity,venueID,detail,image], function (err, concert) {
     if (err) {
        throw err;
     }

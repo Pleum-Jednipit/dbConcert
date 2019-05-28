@@ -12,7 +12,19 @@ router.get("/", function (req, res) {
           throw err;
        }
        console.log(venueInfo)
-       res.render("./user/venue", {venueInfo : venueInfo});
+       res.render("./user/venue/venueindex", {venue : venueInfo});
+    });
+ });
+
+ router.get("/:name", function (req, res) {
+    var venueName = req.params.name.split("-").join(" ");
+    var getVenueInfo = "SELECT *  FROM venue WHERE Venue_Name = ?";
+    connection.query(venueName, function (err, venueInfo) {
+       if (err) {
+          throw err;
+       }
+       console.log(venueInfo[0])
+       res.render("./user/venue/venueshow", {venue : venueInfo[0]});
     });
  });
 

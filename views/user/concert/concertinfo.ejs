@@ -43,12 +43,19 @@
                         <% }) %>
                     </div>
                    
-            
+                    <% if(comingSoon) { %>
+                        <div class="row my-4">
+                                <div class="col text-center">
+                                        <a type="button" class="btn btn-outline-dark btn-lg">Coming Soon</a>
+                                </div>
+                            </div>
+                        <% } else {%>
                     <div class="row my-4">
                         <div class="col text-center">
                                 <a href="/concert/<%= name %>/showtime" type="button" class="btn btn-outline-dark btn-lg">Buy Ticket</a>
                         </div>
                     </div>
+                    <%  } %>
                 
                 
             </div>
