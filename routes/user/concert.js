@@ -218,6 +218,7 @@ router.post("/:name/showtime/:showtime/:zone/booking", function (req, res) {
    var venueName = req.body.venueName;
    var zoneName = req.body.zoneName;
    var zoneID = req.body.zoneID;
+   var name = req.params.name;
    console.log("ID" + zoneID);
    var zonePrice = req.body.zonePrice;
    var ticketID = req.body.ticketID;
@@ -317,116 +318,33 @@ router.post("/:name/showtime/:showtime/:zone/booking", function (req, res) {
                      }
                   });
                   }  
-               res.send("Hi");
+               res.redirect("/concert/" + name  + "/showtime/" + showtimeID + "/booking/" + bookingID[0].Booking_ID)
             });
          });
       });
    });
 });
 
-
-// router.get("/:name/showtime/:id",function (req, res) {
-//    var name = req.params.name;
-//    var concertShowtimeID = req.params.id;
-//    var concertName = name.split("-").join(" ");
-//    var getConcert = "SELECT * FROM concert c, concert_showtime cs WHERE c.Concert_Name = ? AND c.Concert_ID = cs.Concert_ID;";
-//    connection.query(getConcert,[concertName], function (err,concert) {
-//       if (err) {
-//          throw err;
-//       }
-//       var getAllZone = "SELECT * FROM zone z, concert_showtime cs, concert c WHERE c.Concert_Name = ? AND c.Concert_ID = cs.Concert_ID AND z.Concert_ShowTime_ID = cs.Concert_ShowTime_ID;"
-//        connection.query(getAllZone,[concertName], function (err, zone) {
-//          if (err) {
-//             throw err;
-//          }
-//          concert.forEach(function(item){
-//             item.Concert_ShowDate = dateFormat(item.Concert_ShowDate,"fullDate");
-//             console.log(item.Concert_ShowDate);
-//          });
-//          var getVenue = "SELECT Venue_Name FROM venue v, concert c WHERE Concert_Name = ? AND c.Venue_ID = v.Venue_ID;";
-//          connection.query(getVenue,[concertName], function (err, venue) {
-//             if (err) {
-//                throw err;
-//             }
-//          res.render("./user/concert/selectshowtime", {concert: concert, zone: zone, venue: venue[0], name:name });
-//          });
-//       });
-//    });
-// });
-
-
-
-
-
+router.get("/:name/showtime/:showtime/booking/:bookingID", function (req, res) {
+   var showtimeID = req.params.showtime;
+   var name = req.params.name;
+   var bookingID = req.params.bookingID;
+   var getBookingInfo = "SELECT * FROM booking WHERE Booking_ID = ?";
+   console.log(bookingID);
+   connection.query(getBookingInfo,[bookingID],function (err, booking) {
+      if (err) {
+         throw err;
+      }
+      var getConcertInfo = "SELECT * FROM concert c, concert_showtime cs WHERE cs.Concert_ShowTime_ID = ? AND cs.Concert_ID = c.Concert_ID";
+      connection.query(getConcertInfo,showtimeID,function (err, concertInfo) {
+         if (err) {
+            throw err;
+         }
+         console.log(concertInfo);
+         
+         res.render("./user/concert/bookinginfo");
+      });
+   });
+});
 
 module.exports = router;
-
-
-
-
-
-
-{
-   /* <script type="text/javascript">
-       $(document).ready(function () {
-           $("select").change(function () {
-               $(this).find("option:selected").each(function () {
-                   var optionValue = $(this).attr("value");
-                   if (optionValue) {
-                       $(".box").not("." + optionValue).hide();
-                       $("." + optionValue).show();
-                   } else {
-                       $(".box").hide();
-                   }
-               });
-           }).change();
-       });
-   </script> */
-}
-
-
-
-// Create Drop Down
-// var zone = JSON.parse('<%-JSON.stringify(zone)%>');
-// var dropdown = document.getElementById('zone');
-// dropdown.options.length = 0;
-// var label = document.createElement('option');
-// label.text = "--Please Select Zone--"; 
-// dropdown.add(label, 0);
-// zone.forEach(function(item,index){
-//     if(showtime == item.Concert_ShowTime_ID){
-//         var option = document.createElement('option');
-//         option.text = option.value = item.Zone_Name;
-//         dropdown.add(option, 0);
-//         }
-// });
-
-
-// function zone_change() {
-//     var dropdown = document.getElementById('zone');
-//     var zoneName = JSON.parse('<%-JSON.stringify(zone)%>');
-//     zoneName.forEach(function(item){
-//         if(dropdown.value == item.Zone_Name){
-//             if(item.Zone_Type == "Seating"){
-//                 $('#Seating').removeClass("d-none").addClass("d-block");
-//                 $('#Standing').removeClass("d-block").addClass("d-none");
-
-//                 console.log("Seating");
-//             } else{
-//                 $('#Standing').removeClass("d-none").addClass("d-block");
-//                 $('#Seating').removeClass("d-block").addClass("d-none");
-
-//                 console.log("Standing");
-//             }
-//         }
-//     });
-// }
-
-
-{/* <div class="col-sm-3"></div>
-                        <select name="test" id="test" class="form-control selectpicker" data-live-search="true">
-                                <% ticket.forEach(function(item){ %>
-                                    <option value="<%=item.Ticket_Receiving_ID %>"><%=item.Ticket_Receiving_Name %></option>
-                                    <% }) %>
-                         </select>
-                </div> */}
