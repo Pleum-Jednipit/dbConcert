@@ -15,7 +15,7 @@
                             <div class="col-sm-6">
                                 <input type="text" class="form-control" name="search">
                             </div>
-                            <button class="btn btn-success">Search</button>
+                            <button class="btn btn-outline-success">Search</button>
                         </div>
                     </form>
                 </div>
@@ -46,13 +46,14 @@
                             <input type="number" class="form-control" id="time"  maxlength="10" name="price" value="<%= payment.Payment_Fee%>">
                         </div>
                     </div>
+                    <!--- 3.52AM modify edit,delete button --->
                     <div class="form-group row  mt-auto">
-                        <div class="col-6"></div>
+                        <div class="col-7"></div>
                         <div class="col-3 align-self-end">
-                            <button class="btn btn-warning text-center align-self mx-3" type="submit">Edit</button>
-                            <a href="/admin/payment-method/delete/<%= payment.Payment_ID %>" class="btn btn-danger text-center align-self" type="submit">Delete</a>
+                            <button class="btn btn-outline-info text-center align-self mx-3" type="submit">Edit</button>
+                            <a href="/admin/payment-method/delete/<%= payment.Payment_ID %>" class="" type="submit"><button class="btn btn-outline-danger">Delete</button></a>
                         </div>
-
+                    <!--- /3.52AM --->
                     </div>
                 </div>
             </div>
