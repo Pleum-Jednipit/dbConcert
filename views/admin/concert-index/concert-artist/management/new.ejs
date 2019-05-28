@@ -15,7 +15,7 @@
                         <div class="col-sm-6">
                             <input type="text" class="form-control" name="search">
                         </div>
-                        <button class="btn btn-success">Search</button>
+                        <button class="btn btn-outline-success">Search</button>
                     </div>
             </div>
             </form>
@@ -32,10 +32,12 @@
                                 <h2>Concert <b><%= concert.Concert_Name %></b></h2>
                                 <input type="hidden" name="concertID" value="<%= concert.Concert_ID %>" >
                             </div>
-                            <div class="col-sm-4 mx-auto" style="left: 65px">
+                            <!--- 3.52AM modify button --->
+                            <div class="col-sm-4 mx-auto" style="left: 55px">
                                 <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add
                                     New</button>
                             </div>
+                            <!--- /3.52AM --->
                         </div>
                     </div>
                     <table class="table table-bordered">
@@ -67,10 +69,11 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div class="col-3 align-self-end" style="left: 650px">
-                        <button class="btn btn-warning text-center align-self mx-3" type="submit" style="background-color: #28a745;
-                        border-color: #28a745">Submit</button>
+                    <!--- 3.52AM modify button --->
+                    <div class="col-3 align-self-end" style="left: 450px">
+                        <button class="btn btn-warning text-center align-self mx-3 " type="submit">Edit</button>
                     </div>
+                    <!--- /3.52AM --->
                 </div>
             </div>
             <% } else if(concert == "none") {%>
@@ -107,7 +110,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
     .table-wrapper {
-        width: 800px;
+        width: 600px;
         margin: 30px auto;
         background: #fff;
         padding: 20px;

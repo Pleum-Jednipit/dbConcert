@@ -12,8 +12,8 @@
         </div>
 
         <div class="row">
-            <div class="col-3 text-center my-auto">
-                <button type="button" class="btn btn-outline-dark btn-lg" data-placement="bottom" html="true"
+            <div class="col-4 text-center my-auto">
+                <button type="button" class="btn btn-outline-dark btn-lg pop" data-placement="bottom" html="true"
                     data-toggle="popover" id="concert">
                     <span><img src="https://image.flaticon.com/icons/svg/1077/1077170.svg" class="p-4" width="200"
                             alt="">
@@ -23,8 +23,8 @@
                 </button>
 
             </div>
-            <div class="col-3 text-center my-auto">
-                <button type="button" class="btn btn-outline-dark btn-lg" data-placement="bottom" html="true"
+            <div class="col-4 text-center my-auto">
+                <button type="button" class="btn btn-outline-dark btn-lg pop" data-placement="bottom" html="true"
                     data-toggle="popover" id="showtime">
                     <span><img src="https://image.flaticon.com/icons/svg/1585/1585316.svg" class="p-4" width="200"
                             alt="">
@@ -34,8 +34,10 @@
                 </button>
 
             </div>
-            <div class="col-3 text-center" style="margin-top: 0px;margin-bottom: 0px;">
-                <button type="button" class="btn btn-outline-dark btn-lg" data-placement="bottom" html="true"
+            <!--- 3.52AM Chang popover to general button (haven't fix yet) --->
+            <div class="col-4 text-center" style="margin-top: 0px;margin-bottom: 0px;">
+                <!--- How to fix delete data-placement, data-toggle, html="true", delete class="pop" --->
+                <button type="button" class="btn btn-outline-dark btn-lg pop" data-placement="bottom" html="true"
                     data-toggle="popover" id="zone" style="height: 297px">
                     <span><img src="https://image.flaticon.com/icons/svg/1369/1369781.svg" class="p-4" width="200"
                             alt="">
@@ -44,16 +46,7 @@
                     </span>
                 </button>
             </div>
-            <div class="col-3 text-center" style="margin-top: 0px;margin-bottom: 0px;">
-                <button type="button" class="btn btn-outline-dark btn-lg" data-placement="bottom" html="true"
-                    data-toggle="popover" id="artist" onclick="window.location.href=''" style="height: 297px">
-                    <span><img src="https://image.flaticon.com/icons/svg/1785/1785485.svg" class="p-4" width="200"
-                            alt="">
-                        <hr>
-                        <h5>Concert & Promotion </h5>
-                    </span>
-                </button>
-            </div>
+            <!--- /3.52AM --->
         </div>
     </div>
 </div>
@@ -124,6 +117,24 @@
 
     });
 </script>
+
+<!--- Hover Popover --->
+<script>
+        $(".pop").popover({ trigger: "manual" , html: true, animation:false})
+            .on("mouseenter", function () {
+                var _this = this;
+                $(this).popover("show");
+                $(".popover").on("mouseleave", function () {
+                    $(_this).popover('hide');
+                });
+            }).on("mouseleave", function () {
+                var _this = this;
+                setTimeout(function () {
+                    if (!$(".popover:hover").length) {
+                        $(_this).popover("hide");
+                    }
+                }, 300);
+        });</script>
 </body>
 
 </html>
