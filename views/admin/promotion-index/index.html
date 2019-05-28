@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+            
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!----Drooltip CSS--->
+    <link rel="stylesheet" src="/path/to/drooltip.css">
+            
+    <!---Glider--->
+    <link href="glider.min.css" rel="stylesheet" type="text/css">
+    <!-- Modal CSS -->
+    <style>
+        .modal.left .modal-dialog {
+            position: fixed;
+            margin: auto;
+            width: 320px;
+            height: 100%;
+            -webkit-transform: translate3d(0%, 0, 0);
+            -ms-transform: translate3d(0%, 0, 0);
+            -o-transform: translate3d(0%, 0, 0);
+            transform: translate3d(0%, 0, 0);
+        }
+                
+        .modal.left .modal-content {
+            height: 100%;
+            overflow-y: auto;
+        }
+        
+        .modal.left .modal-body {
+            padding: 15px 15px 80px;
+        }    
+        
+        .modal.left.fade .modal-dialog {
+            left: -320px;
+            -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+            -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
+            -o-transition: opacity 0.3s linear, left 0.3s ease-out;
+            transition: opacity 0.3s linear, left 0.3s ease-out;
+        }
+                
+        .modal.left.fade.show .modal-dialog {
+            left: 0;
+        }
+                
+        /* ----- MODAL STYLE ----- */
+        .modal-content {
+            border-radius: 0;
+            border: none;
+        }
+                
+        .modal-header {
+            border-bottom-color: #eeeeee;
+            background-color: #fafafa;
+        }
+                
+        .hr {
+            border-width: 5px;
+            border: white;
+            outline-color: white;
+        }
+                
+        .modifileconcertnamecard{
+            text-align: left;
+            letter-spacing: 1px;
+            text-transform: none;
+            font-family: "Comic Sans MS", cursive, sans-serif;
+        }
+                
+        .modifileconcertdatecard{
+            text-align: center;
+            text-transform: uppercase;
+            color: gray;
+            font-family: "Comic Sans MS", cursive, sans-serif;
+        }
+                    
+        <link rel="stylesheet" herf="">
+
+        <style>
+        body {
+            opacity: 1;
+            transition: 0.7s opacity;
+        }
+                
+        body.fade {
+            opacity: 0;
+            transition: none;
+        }
+    </style>
+    <title>Concert</title>
+</head>
+
+
+<body style="background-color: rgb(235, 233, 233)">
+        <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+                <div class="container">
+                    <a href="/admin/index" class="navbar-brand">
+                        <img src="https://image.flaticon.com/icons/svg/1695/1695570.svg" width="60em" class="d-inline-block align-top rounded mx-4">
+                    </a>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active mx-2">
+                                <a class="nav-link" href="/admin/concert/index">Concert <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item mx-2">
+                                <a class="nav-link" href="/admin/venue/new">Venue</a>
+                            </li>
+                            <li class="nav-item mx-2">
+                                <a class="nav-link" href="#">Promotion</a>
+                            </li>
+                            <li class="nav-item mx-2">
+                                <a class="nav-link" href="#">Payment</a>
+                            </li>                    
+                        </ul>
+        
+                    </div>
+                    <button class="navbar-toggler" type="button" data-toggle="modal" data-target="#exampleModal">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        
+                        <div class="col-md-2 ">
+                            <div class="collapse navbar-collapse navbar-toggle" id="navbarNavAltMarkup">
+                                <button class="btn btn-outline-warning btn-lg mx-4" data-toggle="modal" data-target="#ModalExample">Sign in</button>
+                            </div>
+                        </div>
+                         
+            </div>
+        </nav>
+        <div class="container">
+        </div>
+        <!---Modal of nav--->
+        <div class="modal left fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="flex-column">
+                            <a class="nav-item nav-link active" href="#">Home</a>
+                            <a href="#" class="nav-item nav-link">Link</a>
+                            <a href="#" class="nav-item nav-link">Link</a>
+                            <a href="#" class="nav-item nav-link">Link</a>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="vertical-center">
+
+                <div class="container my-1">
+                    <div class="row my-5 ">
+                        <div class="col-12 align-self-center">
+                            <h1 class="text-center display-1"><strong>Promotion</strong></h1>
+                        </div>
+            
+                    </div>
+            
+                    <div class="row">
+                        <div class="col-3 text-center my-auto">
+                            <button type="button" class="btn btn-outline-dark btn-lg" data-placement="bottom" html="true"
+                                data-toggle="popover" id="concert">
+                                <span><img src="https://image.flaticon.com/icons/svg/1077/1077170.svg" class="p-4" width="200"
+                                        alt="">
+                                    <hr>
+                                    <h2>Promotion</h2>
+                                </span>
+                            </button>
+            
+                        </div>
+                        <div class="col-3 text-center my-auto">
+                            <button type="button" class="btn btn-outline-dark btn-lg" data-placement="bottom" html="true"
+                                data-toggle="popover" id="showtime">
+                                <span><img src="https://image.flaticon.com/icons/svg/1585/1585316.svg" class="p-4" width="200"
+                                        alt="">
+                                    <hr>
+                                    <h2>Member type</h2>
+                                </span>
+                            </button>
+            
+                        </div>
+                        <div class="col-3 text-center" style="margin-top: 0px;margin-bottom: 0px;">
+                            <button type="button" class="btn btn-outline-dark btn-lg" data-placement="bottom" html="true"
+                                data-toggle="popover" id="zone" style="height: 297px">
+                                <span><img src="https://image.flaticon.com/icons/svg/1369/1369781.svg" class="p-4" width="200"
+                                        alt="">
+                                    <hr>
+                                    <h5>Member & Promotion</h5>
+                                </span>
+                            </button>
+                        </div>
+                        <div class="col-3 text-center" style="margin-top: 0px;margin-bottom: 0px;">
+                            <button type="button" class="btn btn-outline-dark btn-lg" data-placement="bottom" html="true"
+                                data-toggle="popover" id="artist"  onclick="window.location.href='/admin/concert-artist/index'"
+                                style="height: 297px">
+                                <span><img src="https://image.flaticon.com/icons/svg/1785/1785485.svg" class="p-4" width="200"
+                                        alt="">
+                                    <hr>
+                                    <h5>Concert & Promotion </h5>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- loaded popover content -->
+            <div id="popover-content-concert" class="hide d-none">
+                <div class="row">
+                    <div class="col ">
+                        <a href="/admin/concert/new" class="btn btn-primary">Add</a>
+                    </div>
+                    <div class="col">
+                        <a href="/admin/concert/edit" id="edit" class="btn btn-warning">Edit</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popover-content-showtime" class="hide d-none">
+                <div class="row">
+                    <div class="col ">
+                        <a href="/admin/concert-showtime/new" class="btn btn-primary">Add</a>
+                    </div>
+                    <div class="col">
+                        <a href="/admin/concert-showtime/edit" id="edit" class="btn btn-warning">Edit</a>
+                    </div>
+                </div>
+            </div>
+            <div id="popover-content-zone" class="hide d-none">
+                <div class="row">
+                    <div class="col ">
+                        <a href="/admin/concert-zone/select" class="btn btn-primary">Add</a>
+                    </div>
+                    <div class="col">
+                        <a href="/admin/concert-zone/edit" id="edit" class="btn btn-warning">Edit</a>
+                    </div>
+                </div>
+            </div> 
+        
+    
+</body>
+        

@@ -11,14 +11,14 @@ router.get("/", function (req, res) {
 
 // Index
 router.get("/index", function (req, res) {
-   var getAllConcert = "SELECT * FROM concert WHERE CURDATE() < Concert_Sales_Date";
-    connection.query(getAllConcert, function (err, concert) {
-       if (err) {
-          throw err;
-       }
-   console.log(concert[0].Concert_Sales_Date);
+   // var getAllConcert = "SELECT * FROM concert WHERE CURDATE() < Concert_Sales_Date";
+   //  connection.query(getAllConcert, function (err, concert) {
+   //     if (err) {
+   //        throw err;
+   //     }
+   // console.log(concert[0].Concert_Sales_Date);
    res.render("./user/index");
-   });
+   // });
 });
 
 // show register form
