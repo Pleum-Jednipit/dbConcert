@@ -6,7 +6,7 @@
 <div class="container-fluid" style="background: whitesmoke;">
     <div class="row">
         <div class="col-4">
-            <img src="https://images.unsplash.com/photo-1558930320-8fcc4e3e2a6a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+            <img src="<%= concert[0].Concert_Poster %>"
                 class="img-fluid m-3 mx-5" width="300px" alt="">
         </div>
         <div class="col-6">
@@ -62,7 +62,12 @@
     <div class="row">
         <div class="col text-center">
                 <label for="ticketrecieve" class="col col-form-label" id=""></label>
-            <img src="https://www.asiaworld-expo.com/assets/img/BP_web-map-Rev-10b-da6ffd497d.png" alt="">
+            <% showtime.forEach(function(item){ %>
+                <% if(item.Concert_ShowTime_ID == selectedShowtime) { %>
+                    <img src="<%= item.Concert_ShowTime_Plan %>" alt="">
+                <% } %>
+            <%}) %>
+            
         </div>
     </div>
 

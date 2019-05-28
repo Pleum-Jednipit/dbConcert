@@ -11,8 +11,23 @@ var async = require("async");
 
 //root route landing 
 router.get("/", function (req, res) {
-   console.log("saf");
-   res.render("./user/concert/concert");
+   var getConcertInfo = "SELECT DISTINCT c.*  FROM concert c, concert_showtime cs WHERE cs.Concert_ID = c.Concert_ID AND CURDATE() < cs.Concert_ShowDate;";
+   connection.query(getConcertInfo, function (err, concertInfo) {
+      if (err) {
+         throw err;
+      }
+      // var getShowtimeInfo = "SELECT * FROM concert_showtime WHERE cs.Concert_ID = ?;";
+      // connection.query(getConcertInfo, function (err, concertInfo) {
+      //    if (err) {
+      //       throw err;
+      //    }
+         console.log(concertInfo);
+         var now = new Date();
+         concertInfo.forEach(function(item,index){
+         item.Concert_ShowDate = dateFormat(item.Concert_ShowDate,"mediumDate");
+         });
+      res.render("./user/concert/concertindex", {concert : concertInfo, now: now});
+   });
 });
 
 router.get("/:name", function (req, res) {
@@ -128,12 +143,20 @@ router.get("/:name/showtime/:showtime", function (req, res) {
                if (err) {
                   throw err;
                }
-               res.render("./user/concert/selectshowtime", {
-                  concert: concert,
-                  zoneInfo: zoneInfo,
-                  venue: venue[0],
-                  name: name,
-                  selectedShowtime: showtimeID
+               var getShowtime = "SELECT cs.* FROM concert c, concert_showtime cs WHERE c.Concert_Name = ? AND c.Concert_ID = cs.Concert_ID;"
+                  connection.query(getShowtime, [concertName], function (err, showtime) {
+                     if (err) {
+                        throw err;
+                     }
+                     console.log(showtime)
+                  res.render("./user/concert/selectshowtime", {
+                     concert: concert,
+                     zoneInfo: zoneInfo,
+                     venue: venue[0],
+                     name: name,
+                     selectedShowtime: showtimeID,
+                     showtime : showtime
+                  });
                })
             });
          });
@@ -191,17 +214,25 @@ router.get("/:name/showtime/:showtime/:zone", function (req, res) {
                         if (err) {
                            throw err;
                         }
-                        res.render("./user/concert/selectseat", {
-                           showtime: showtime[0],
-                           venue: venue[0],
-                           zone: zone[0],
-                           seat: allSeat,
-                           bookedSeat: bookedSeat,
-                           concertName: concertName,
-                           ticket: ticket,
-                           payment: payment,
-                           name: name
-                        })
+                        var getConcert = "SELECT * FROM concert WHERE Concert_Name = ?";
+                        connection.query(getConcert,[concertName],function (err, concert) {
+                           if (err) {
+                              throw err;
+                           }
+                           res.render("./user/concert/selectseat", {
+                              showtime: showtime[0],
+                              venue: venue[0],
+                              zone: zone[0],
+                              seat: allSeat,
+                              bookedSeat: bookedSeat,
+                              concertName: concertName,
+                              ticket: ticket,
+                              payment: payment,
+                              name: name,
+                              concert: concert[0]
+                           })
+
+                        });
                      });
                   });
                });

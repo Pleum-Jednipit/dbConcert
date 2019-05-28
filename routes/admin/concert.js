@@ -22,16 +22,17 @@ router.get("/new", function (req, res) {
  });
  
  router.post("/new", function (req, res) {
-    var sql = "INSERT INTO concert ( concert_Name, concert_sales_date,concert_sales_time, concert_detail,venue_ID) " +
-       "VALUES (?,?,?,?,?)";
+    var sql = "INSERT INTO concert ( concert_Name, concert_sales_date,concert_sales_time, concert_detail,venue_ID,Concert_Poster) " +
+       "VALUES (?,?,?,?,?,?)";
     var name = req.body.name;
     var date = req.body.date;
     var time = req.body.time;
     var detail = req.body.detail;
     var venueID = req.body.venueID;
+    var poster = req.body.poster;
     console.log("before" + date);
 
-    connection.query(sql, [name,dateFormat(date,"isoDate"),time, detail, venueID], function (err, result) {
+    connection.query(sql, [name,dateFormat(date,"isoDate"),time, detail, venueID,poster], function (err, result) {
        if (err) {
           throw err;
        }
