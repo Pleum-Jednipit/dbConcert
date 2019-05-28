@@ -4,7 +4,7 @@
 <% include ../../partials/usernav %>
     <div class="container-fluid" style="background: whitesmoke;">
         <div class="row">
-            <div class="col-6">
+            <div class="col-5">
                 <img src="https://images.unsplash.com/photo-1558930320-8fcc4e3e2a6a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid m-3 mx-5" alt="">
             </div>
             <div class="col-6">
@@ -32,14 +32,16 @@
                             <label for="" class="text-center"><%= venue.Venue_Name %></label>
                     </div>
                 </div>
-                <% artist.forEach(function(item) { %>
+                
                 <div class="row my-4">
-                        <div class="col">
+                        <% artist.forEach(function(item) { %>
+                        <div class="col-6">
                                 <label for="" ><img src="https://image.flaticon.com/icons/svg/125/125805.svg" class="text-center mr-2 ml-5" width="20px" alt=""></label>
                                 <label for="" class="text-center"><%= item.Artist_Name %></label>
                         </div>
+                        <% }) %>
                     </div>
-                    <% }) %>
+                   
             
                     <div class="row my-4">
                         <div class="col text-center">

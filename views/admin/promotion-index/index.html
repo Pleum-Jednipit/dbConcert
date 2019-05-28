@@ -99,21 +99,23 @@
         <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
                 <div class="container">
                     <a href="/admin/index" class="navbar-brand">
-                        <img src="https://image.flaticon.com/icons/svg/1695/1695570.svg" width="60em" class="d-inline-block align-top rounded mx-4">
+                        <img src="https://image.flaticon.com/icons/svg/1695/1695570.svg"
+                            width="60em" class="d-inline-block align-top rounded mx-4">
                     </a>
+        
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active mx-2">
+                            <li class="nav-item mx-2">
                                 <a class="nav-link" href="/admin/concert/index">Concert <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item mx-2">
-                                <a class="nav-link" href="/admin/venue/new">Venue</a>
+                                <a class="nav-link" href="/admin/concert-artist/index">Artist</a>
                             </li>
                             <li class="nav-item mx-2">
-                                <a class="nav-link" href="#">Promotion</a>
+                                <a class="nav-link" href="/admin/promotion/index">Promotion</a>
                             </li>
                             <li class="nav-item mx-2">
-                                <a class="nav-link" href="#">Payment</a>
+                                <a class="nav-link" href="/admin/payment/index">Payment</a>
                             </li>                    
                         </ul>
         
@@ -121,35 +123,111 @@
                     <button class="navbar-toggler" type="button" data-toggle="modal" data-target="#exampleModal">
                             <span class="navbar-toggler-icon"></span>
                         </button>
-                        
+                        <% if(!isLogin) {%>
                         <div class="col-md-2 ">
                             <div class="collapse navbar-collapse navbar-toggle" id="navbarNavAltMarkup">
                                 <button class="btn btn-outline-warning btn-lg mx-4" data-toggle="modal" data-target="#ModalExample">Sign in</button>
                             </div>
                         </div>
-                         
+                        <% } else { %> 
+                            <div class="col-md-2 ">
+                                    <label class="control-label">Welcone <%= currentUser  %> !</label>
+                                </div>
+                        <div class="col-md-2 ">
+                                <div class="collapse navbar-collapse navbar-toggle" id="navbarNavAltMarkup">
+                                    <a href="/logout" class="btn btn-outline-warning btn-lg mx-4">Sign out</a>
+                                </div>
+                            </div>
+                        <% } %> 
+            </nav>
+            <div class="container">
+                <% if(error && error.length > 0){ %>
+                <div class="alert alert-danger" role="alert">
+                    <%= error %>
+                </div>
+                <% } %>
+                <% if(success && success.length > 0){ %>
+                <div class="alert alert-success" role="alert">
+                    <%= success %>
+                </div>
+                <% } %>
             </div>
-        </nav>
-        <div class="container">
-        </div>
-        <!---Modal of nav--->
-        <div class="modal left fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <div class="flex-column">
-                            <a class="nav-item nav-link active" href="#">Home</a>
-                            <a href="#" class="nav-item nav-link">Link</a>
-                            <a href="#" class="nav-item nav-link">Link</a>
-                            <a href="#" class="nav-item nav-link">Link</a>
+            <!---Modal of nav--->
+            <div class="modal left fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="flex-column">
+                                <a class="nav-item nav-link active" href="#">Home</a>
+                                <a href="#" class="nav-item nav-link">Link</a>
+                                <a href="#" class="nav-item nav-link">Link</a>
+                                <a href="#" class="nav-item nav-link">Link</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        
+            <!-- Modal Login -->
+            <form action="/login" method="POST">
+            <div id="ModalExample" class="modal fade">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="container">
+                                        <div class="row">
+                                                <div class="col-12 text-center"><h4 class="modal-title text-center">Log in</h4>
+                                                </div>
+                                            </div>
+                                            
+                                </div>
+                                
+                            </div>
+                            <div class="modal-body">
+                                <form role="form" method="POST" action="">
+                                    <input type="hidden" name="_token" value="">
+                                    <div class="form-group">
+                                        <label class="control-label">Username</label>
+                                        <div>
+                                            <input type="text" class="form-control input-lg" name="username" >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">Password</label>
+                                        <div>
+                                            <input type="password" class="form-control input-lg" name="password">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="remember"> Remember Me
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div>
+                                            <a class="btn btn-link" href="">Forgot Your Password?</a>
+                                            <button type="submit" class="btn btn-info btn-block">Login</button>
+                                        </div>
+                                    </div>
+                                    
+                                </form>
+                            </div>
+                            <div class="modal-footer text-xs-center">
+                                Don't have an account? <a href="/register">Sign up »</a>
+                            </div>
+                            
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+            </nav>ห
         <div class="vertical-center">
 
                 <div class="container my-1">
