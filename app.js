@@ -8,6 +8,9 @@ var flash        = require("connect-flash");
 const connection                = require("./connection")
 var userRoutes                  = require("./routes/user"),
     concertRoutes               = require("./routes/user/concert"),
+    venueRoutes                 = require("./routes/user/venue"),
+    artistRoutes                = require("./routes/user/artist"),
+    promotionRoutes             = require("./routes/user/promotion"),
     adminRoutes                 = require("./routes/admin/index"),
     adminconcertRoutes          = require("./routes/admin/concert"),
     adminartistRoutes           = require("./routes/admin/artist"),
@@ -60,6 +63,9 @@ app.use(function(req,res,next){
 app.use(methodOverride('_method'));
 app.use("/", userRoutes);
 app.use("/concert", concertRoutes);
+app.use("/artist", artistRoutes);
+app.use("/venue", venueRoutes);
+app.use("/promotion", promotionRoutes);
 app.use("/admin", adminRoutes);
 app.use("/admin/concert",adminconcertRoutes);
 app.use("/admin/artist",adminartistRoutes);

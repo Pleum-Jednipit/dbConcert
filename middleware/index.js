@@ -4,7 +4,9 @@ module.exports = {
           return next();
       }
       req.flash('error', 'Please Sign In First');
+      var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
       res.redirect('/index');
+      
   },
   isAdmin: function(req,res,next){
     if(req.session.isAdmin){

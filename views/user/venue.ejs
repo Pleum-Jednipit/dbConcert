@@ -1,0 +1,66 @@
+<% include ../partials/userheader %>
+<title>Concert </title>
+</head>
+<% include ../partials/usernav %>
+
+   
+
+    <!--body part1-->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col">
+                <h1 class="dispaly-1">Venue</h1>
+            </div>
+
+        </div>
+        <hr>
+        
+        
+    </div>
+    <% venue.forEach(function(item){ %> 
+    <div class="container">
+        <div class="row">
+                <div class="col mx-3">
+                        <div class="card mb-3 border-0" style="">
+                                <div class="row no-gutters">
+                                  <div class="col-4">
+                                    <img src="https://images.unsplash.com/photo-1558879177-69cde6b279c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" width="600px" height="250px" class="card-img" alt="">
+                                  </div>
+                                  <div class="col-6">
+                                    <div class="card-body">
+                                      <h5 class="card-title"><%= venue.Venue_Name %></h5>
+                                      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, deleniti. Minus magnam aliquid, soluta esse fugiat numquam quas nostrum qui accusantium ab maiores ipsam debitis impedit porro vero inventore odio.</p>
+                                      <div class="row">
+                                          <div class="col-5">
+                                                <label class="card-text">Phone : <label for="">0222222222</label></label>
+                                          </div>
+                                          <div class="col-5">
+                                                <label class="card-text">Email : <label for="">nani@hotmail.com</label></label>
+                                          </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                </div>
+        </div>
+    </div>
+    <% }) %>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+
+</body>
+
+</html>

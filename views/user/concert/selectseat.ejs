@@ -143,7 +143,6 @@
                 favorite.push($(this).val());
             });
             /*alert("My favourite sports are: " + favorite.join(", "));*/
-
         });
     });
 </script>
@@ -348,6 +347,7 @@
 </style>
 </div>
 </div>
+
 <script type="text/javascript">
     $(document).ready(function () {
         $("select").change(function () {
@@ -372,8 +372,8 @@
                         <div class="form-group row mx-5">
                             <label for="staticEmail" class="col-sm-3 col-form-label">Booked Seat</label>
                             <div class="col-sm-5">
-                                <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                    value="email@example.com" name="">
+                                <input type="text" readonly class="form-control-plaintext" id="selectedSeat"
+                                    name="selectedSeat">
                             </div>
                         </div>
                         <div class="form-group row mx-5">
