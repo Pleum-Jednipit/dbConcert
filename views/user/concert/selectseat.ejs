@@ -67,66 +67,69 @@
     </div>
     <% } %>
     <% if(zone.Zone_Type == "Seating") { %>
-    <div class="form-group row mx-5 sittingzone">
-        <label>Zone Seat</label>
-        <script>
-            var zoneSeat = [];
-            var bookedSeat = [];
-            var allZoneSeat = JSON.parse('<%-JSON.stringify(seat)%>');
-            var allBookedSeat = JSON.parse('<%-JSON.stringify(bookedSeat)%>');
-            allZoneSeat.forEach(function (item) {
-                zoneSeat.push(item.Seat_Number);
-            });
-            allBookedSeat.forEach(function (item) {
-                bookedSeat.push(item.Seat_Number);
-            });
-            var table = '';
-            var i = 65;
-            var j = 91;
-            for (var r = 0; r < 24; r++) {
-                table += '<tr>';
-                for (var c = 1; c <= 24; c++) {
-                    var str = String.fromCharCode(i);
-                    if (zoneSeat.includes(c + str)) {
-                        if(bookedSeat.includes(c+str)){
-                            console.log("nO");
-                            table += '<td>' + '<li class="seat">' + '<input type="checkbox" id="' + c +
-                                    str + '"' +
-                                    'name="zone"' +
-                                    'value="' + c + str + '"' + 'disableD/>' +
-                                    '<label for="' + c + str + '">' + c + str + '</label>' + '</li>' + '</td>';
-                        }
-                        else{
-                            console.log("ok");
-                            allZoneSeat.forEach(function(item){
-                            if(item.Seat_Number == c+str){
-                                table += '<td>' + '<li class="seat">' + '<input type="checkbox" id="' + c + str + '"' +
-                            'name="zone"' +
-                            'value="' + item.Seat_ID + '"' + '/>' +
-                            '<label for="' + c + str + '">' + c + str + '</label>' + '</li>' + '</td>';
-                            }
+    <div class="form-group row mx-5 my-4 sittingzone">
+<div class="col-2"></div>
+        <div class="col "><label class="">Zone Seat</label></div>
+        <div class="col-10">
+                <script>
+                        var zoneSeat = [];
+                        var bookedSeat = [];
+                        var allZoneSeat = JSON.parse('<%-JSON.stringify(seat)%>');
+                        var allBookedSeat = JSON.parse('<%-JSON.stringify(bookedSeat)%>');
+                        allZoneSeat.forEach(function (item) {
+                            zoneSeat.push(item.Seat_Number);
                         });
+                        allBookedSeat.forEach(function (item) {
+                            bookedSeat.push(item.Seat_Number);
+                        });
+                        var table = '';
+                        var i = 65;
+                        var j = 91;
+                        for (var r = 0; r < 24; r++) {
+                            table += '<tr>';
+                            for (var c = 1; c <= 24; c++) {
+                                var str = String.fromCharCode(i);
+                                if (zoneSeat.includes(c + str)) {
+                                    if(bookedSeat.includes(c+str)){
+                                        console.log("nO");
+                                        table += '<td>' + '<li class="seat">' + '<input type="checkbox" id="' + c +
+                                                str + '"' +
+                                                'name="zone"' +
+                                                'value="' + c + str + '"' + 'disableD/>' +
+                                                '<label for="' + c + str + '">' + c + str + '</label>' + '</li>' + '</td>';
+                                    }
+                                    else{
+                                        console.log("ok");
+                                        allZoneSeat.forEach(function(item){
+                                        if(item.Seat_Number == c+str){
+                                            table += '<td>' + '<li class="seat">' + '<input type="checkbox" id="' + c + str + '"' +
+                                        'name="zone"' +
+                                        'value="' + item.Seat_ID + '"' + '/>' +
+                                        '<label for="' + c + str + '">' + c + str + '</label>' + '</li>' + '</td>';
+                                        }
+                                    });
+                                    }
+                                    // zoneSeat.forEach(function (zone) {
+                                    //     console.log("HO" + zone);
+                                    //     if (bookedSeat.includes(zone.Seat_Number)) {
+                                    //         console.log("hi");
+                                    //     }
+                                    // });
+                                    
+                                } else {
+                                    table += '<td style="opacity:0;">' + '<li class="seat">' + '<input type="checkbox" id="' + c +
+                                        str + '"' +
+                                        'name="zone"' +
+                                        'value="' + c + str + '"' + 'disabled/>' +
+                                        '<label for="' + c + str + '">' + c + str + '</label>' + '</li>' + '</td>';
+                                }
+                            }
+                            table += '</tr>';
+                            i++;
                         }
-                        // zoneSeat.forEach(function (zone) {
-                        //     console.log("HO" + zone);
-                        //     if (bookedSeat.includes(zone.Seat_Number)) {
-                        //         console.log("hi");
-                        //     }
-                        // });
-                        
-                    } else {
-                        table += '<td style="opacity:0;">' + '<li class="seat">' + '<input type="checkbox" id="' + c +
-                            str + '"' +
-                            'name="zone"' +
-                            'value="' + c + str + '"' + 'disabled/>' +
-                            '<label for="' + c + str + '">' + c + str + '</label>' + '</li>' + '</td>';
-                    }
-                }
-                table += '</tr>';
-                i++;
-            }
-            document.write('<table class="table-wrapper" id="table-wrap">' + table + '</table>')
-        </script>
+                        document.write('<table class="table-wrapper" id="table-wrap">' + table + '</table>')
+                    </script>
+        </div>
     </div>
     <% } %>
 
@@ -394,7 +397,7 @@
                             </div>
                         </div>
                         <div class="form-group row  mt-auto">
-                            <div class="col-5"></div>
+                            <div class="col-9"></div>
                             <div class="col-3 text-center">
                                 <button class="btn btn-primary text-center align-self" type="submit">Submit</button>
                             </div>
