@@ -54,7 +54,7 @@
 <% if(zone.Zone_Type == "Standing") { %>
 <div class="container my-5">
     <div class="form-group row mx-5 standingzone">
-        <label for="zoneseatcapacity" class="col-sm-2 col-form-label">Seat Quantity</label>
+        <label for="zoneseatcapacity" class="col-sm-2 ml-3 col-form-label">Seat Quantity</label>
         <div class="col-sm-5">
             <select class="form-control selectpicker" name="quantity" id="">
                 <option>- Select Seat Quantity -</option>
@@ -362,45 +362,47 @@
 </script>
 </div>
 
-<div class="row">
-    <div class="col">
-    <div class="col-9">
-            <div class="form-group row mx-5">
-                <label for="staticEmail" class="col-sm-3 col-form-label">Booked Seat</label>
-                <div class="col-sm-5">
-                    <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                        value="email@example.com" name="">
-                </div>
-            </div>
-            <div class="form-group row mx-5">
-                <label for="inputPassword" class="col-sm-3 col-form-label">Ticket Recieving Method</label>
-                <div class="col-sm-3">
-                        <select name="ticketID" id="test" class="form-control selectpicker" data-live-search="true">
-                                <% ticket.forEach(function(item){ %>
-                                    <option value="<%=item.Ticket_Receiving_ID %>"><%=item.Ticket_Receiving_Name %></option>
+<div class="container">
+        <div class="row">
+                <div class="col">
+                <div class="col-9">
+                        <div class="form-group row mx-5">
+                            <label for="staticEmail" class="col-sm-3 col-form-label">Booked Seat</label>
+                            <div class="col-sm-5">
+                                <input type="text" readonly class="form-control-plaintext" id="staticEmail"
+                                    value="email@example.com" name="">
+                            </div>
+                        </div>
+                        <div class="form-group row mx-5">
+                            <label for="inputPassword" class="col-sm-3 col-form-label">Ticket Recieving Method</label>
+                            <div class="col-sm-3">
+                                    <select name="ticketID" id="test" class="form-control selectpicker" data-live-search="true">
+                                            <% ticket.forEach(function(item){ %>
+                                                <option value="<%=item.Ticket_Receiving_ID %>"><%=item.Ticket_Receiving_Name %></option>
+                                                <% }) %>
+                                     </select>
+                            </div>
+                        </div>
+                        <div class="form-group row mx-5">
+                            <label for="inputPassword" class="col-sm-3 col-form-label">Payment Method</label>
+                            <div class="col-sm-3">
+                                <select name="paymentID" class="form-control" id="">
+                                    <% payment.forEach(function(item){ %>
+                                    <option value="<%=item.Payment_ID %>"><%=item.Payment_Name %></option>
                                     <% }) %>
-                         </select>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row  mt-auto">
+                            <div class="col-5"></div>
+                            <div class="col-3 text-center">
+                                <button class="btn btn-primary text-center align-self" type="submit">Submit</button>
+                            </div>
+            
+                        </div>
                 </div>
             </div>
-            <div class="form-group row mx-5">
-                <label for="inputPassword" class="col-sm-3 col-form-label">Payment Method</label>
-                <div class="col-sm-3">
-                    <select name="paymentID" class="form-control" id="">
-                        <% payment.forEach(function(item){ %>
-                        <option value="<%=item.Payment_ID %>"><%=item.Payment_Name %></option>
-                        <% }) %>
-                    </select>
-                </div>
             </div>
-            <div class="form-group row  mt-auto">
-                <div class="col-5"></div>
-                <div class="col-3 text-center">
-                    <button class="btn btn-primary text-center align-self" type="submit">Submit</button>
-                </div>
-
-            </div>
-    </div>
-</div>
 </div>
 <script>
     var test = document.getElementById("test").value;
