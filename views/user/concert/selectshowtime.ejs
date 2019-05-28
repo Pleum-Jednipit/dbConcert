@@ -71,6 +71,7 @@
             <label for="zone" class="col col-form-label">Zone</label>
         </div>
         <div class="col-4"><select name="zoneNumber" class="form-control" id="zone" onchange=zone_change();>
+                <option>--Please Select Showtime--</option>
                 <% zoneInfo.forEach(function(item){ %>
                     <option value="<%= item.Zone_Name %>"><%= item.Zone_Name %></option>
                 <% }) %>
@@ -92,38 +93,6 @@
 
     <% } %>
 
-    <div class="form-group row mx-5 box Standing" style="display: none;" id="Standing">
-        <label for="zoneseatcapacity" class="col-sm-2 col-form-label">Seat Quantity</label>
-        <div class="col-sm-5">
-            <input type="text" class="form-control" id="zoneseatcapacity" placeholder="seatquantity">
-        </div>
-    </div>
-
-    <div class="form-group row mx-5 Seating box" style="display: none;" id="Seating">
-        <label>Zone Seat</label>
-        <script>
-            var table = '';
-            var i = 65;
-            var j = 91;
-            for (var r = 0; r < 24; r++) {
-                table += '<tr>';
-                for (var c = 1; c <= 24; c++) {
-                    var str = String.fromCharCode(i);
-
-                    table += '<td>' + '<li class="seat">' + '<input type="checkbox" id="' + c + str + '"' +
-                        'name="seat"' +
-                        'value="' + c + str + '"' + '/>' +
-                        '<label for="' + c + str + '">' + c + str + '</label>' + '</li>' + '</td>';
-
-                }
-                table += '</tr>';
-                i++;
-            }
-            document.write('<table class="table-wrapper" id="table-wrap">' + table + '</table>')
-        </script>
-    </div>
-
-
     <div class="form-group row  mt-auto">
         <div class="col-8"></div>
         <div class="col-3 text-center">
@@ -131,221 +100,6 @@
         </div>
 
     </div>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("button").click(function () {
-                var favorite = [];
-                $.each($("input[name='zone']:checked"), function () {
-                    favorite.push($(this).val());
-                });
-                /*alert("My favourite sports are: " + favorite.join(", "));*/
-
-            });
-
-        });
-    </script>
-    <style>
-        tr {
-            margin: 0%;
-        }
-
-        td {
-            width: 2em;
-            height: auto;
-        }
-
-        .table-wrapper {
-            width: auto;
-            margin: auto;
-            background: #fff;
-            padding: 20px;
-            box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
-        }
-
-        /*Downloaded from https://www.codeseek.co/siiron/css-seat-booking-MYXZWg */
-        *,
-        *:before,
-        *:after {
-            box-sizing: border-box;
-        }
-
-
-        .fuselage {
-            border-right: 5px solid #d8d8d8;
-            border-left: 5px solid #d8d8d8;
-        }
-
-        ol {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .seats {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            justify-content: flex-start;
-        }
-
-        .seat {
-            display: flex;
-            flex: 0 0 14.28571428571429%;
-            padding: 0px;
-            position: relative;
-        }
-
-        .seat:nth-child(3) {
-            margin-right: 14.28571428571429%;
-        }
-
-        .seat input[type=checkbox] {
-            position: absolute;
-            opacity: 0;
-        }
-
-        .seat input[type=checkbox]:checked+label {
-            background: #5bff69;
-            -webkit-animation-name: rubberBand;
-            animation-name: rubberBand;
-            animation-duration: 300ms;
-            animation-fill-mode: both;
-        }
-
-        .seat input[type=checkbox]:disabled+label {
-            background: #dddddd;
-            text-indent: -9999px;
-            overflow: hidden;
-        }
-
-        .seat input[type=checkbox]:disabled+label:after {
-            content: "X";
-            text-indent: 0;
-            position: absolute;
-            top: 0em;
-            left: 50%;
-            transform: translate(-50%, 0%);
-        }
-
-        .seat input[type=checkbox]:disabled+label:hover {
-            box-shadow: none;
-            cursor: not-allowed;
-        }
-
-        .seat label {
-            display: block;
-            position: relative;
-            width: 100%;
-            text-align: center;
-            font-size: 0.8em;
-            font-weight: bold;
-            line-height: 1.5rem;
-            padding: 0;
-            background: rgb(255, 126, 249);
-            border-radius: 5px;
-            animation-duration: 300ms;
-            animation-fill-mode: both;
-        }
-
-        .seat label:before {
-            content: "";
-            position: absolute;
-            width: 75%;
-            height: 75%;
-            top: 1px;
-            left: 50%;
-            transform: translate(-50%, 0%);
-            background: rgba(255, 250, 254, 0.459);
-            border-radius: 3px;
-        }
-
-        .seat label:hover {
-            cursor: pointer;
-            box-shadow: 0 0 0px 2px #5C6AFF;
-        }
-
-        @-webkit-keyframes rubberBand {
-            0% {
-                -webkit-transform: scale3d(1, 1, 1);
-                transform: scale3d(1, 1, 1);
-            }
-
-            30% {
-                -webkit-transform: scale3d(1.25, 0.75, 1);
-                transform: scale3d(1.25, 0.75, 1);
-            }
-
-            40% {
-                -webkit-transform: scale3d(0.75, 1.25, 1);
-                transform: scale3d(0.75, 1.25, 1);
-            }
-
-            50% {
-                -webkit-transform: scale3d(1.15, 0.85, 1);
-                transform: scale3d(1.15, 0.85, 1);
-            }
-
-            65% {
-                -webkit-transform: scale3d(0.95, 1.05, 1);
-                transform: scale3d(0.95, 1.05, 1);
-            }
-
-            75% {
-                -webkit-transform: scale3d(1.05, 0.95, 1);
-                transform: scale3d(1.05, 0.95, 1);
-            }
-
-            100% {
-                -webkit-transform: scale3d(1, 1, 1);
-                transform: scale3d(1, 1, 1);
-            }
-        }
-
-        @keyframes rubberBand {
-            0% {
-                -webkit-transform: scale3d(1, 1, 1);
-                transform: scale3d(1, 1, 1);
-            }
-
-            30% {
-                -webkit-transform: scale3d(1.25, 0.75, 1);
-                transform: scale3d(1.25, 0.75, 1);
-            }
-
-            40% {
-                -webkit-transform: scale3d(0.75, 1.25, 1);
-                transform: scale3d(0.75, 1.25, 1);
-            }
-
-            50% {
-                -webkit-transform: scale3d(1.15, 0.85, 1);
-                transform: scale3d(1.15, 0.85, 1);
-            }
-
-            65% {
-                -webkit-transform: scale3d(0.95, 1.05, 1);
-                transform: scale3d(0.95, 1.05, 1);
-            }
-
-            75% {
-                -webkit-transform: scale3d(1.05, 0.95, 1);
-                transform: scale3d(1.05, 0.95, 1);
-            }
-
-            100% {
-                -webkit-transform: scale3d(1, 1, 1);
-                transform: scale3d(1, 1, 1);
-            }
-        }
-
-        .rubberBand {
-            -webkit-animation-name: rubberBand;
-            animation-name: rubberBand;
-        }
-    </style>
-</div>
-</div>
 <script>
         function round_change() {
             var showtime = document.getElementById("showtime").value;
@@ -359,9 +113,10 @@
             console.log("Check");
             var name = JSON.parse('<%-JSON.stringify(name)%>');
             var zoneName = document.getElementById('zone').value;
+            console.log(zoneName);
             var showtimeID = document.getElementById('showtime').value;
-            var link = "/concert/" + name + "/showtime/" + showtime + "/" + zoneName;
-            $("#nextlink").attr("href", link)
+            var link = "/concert/" + name + "/showtime/" + showtimeID + "/" + zoneName;
+            $("a").attr("href", link)
         }
     </script>
 </div>
