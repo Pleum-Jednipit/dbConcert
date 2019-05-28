@@ -9,6 +9,10 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!---Glider--->
+    <link href="glider.min.css" rel="stylesheet" type="text/css">
+
     <!--- Card Carousel--->
     <style>
     </style>
@@ -204,327 +208,125 @@
                     <div class="col-6">
                             <label for="ticketrecieve" class="col col-form-label">Zone : <label for="">Z</label> </label>
                     </div>
-                    <div class="col-6">
-                            <label for="ticketrecieve" class="col col-form-label">Price : <label for="">6M</label> </label>
-                    </div>
             </div>
         </div>
 
     </div>
     </div>
     <div class="container my-5">
-            <div class="form-group row mx-5 standingzone">
-                    <label for="zoneseatcapacity" class="col-sm-2 col-form-label">Seat Quantity</label>
-                    <div class="col-sm-5">
-                      <select class="form-control selectpicker" name="" id="">
-                          <option value="" >- Select Seat Quanity -</option>
-                          <option value="">1</option>
-                          <option value="">2</option>
-                          <option value="">3</option>
-                          <option value="">4</option>
-                      </select>
-                      </div>
-                  </div>
-                
-              <div class="form-group row mx-5 sittingzone">
-                <label>Zone Seat</label>
-                <script>
-                  var table = '';
-                  var i = 65;
-                  var j = 91;
-                  for (var r = 0; r < 24; r++) {
-                    table += '<tr>';
-                    for (var c = 1; c <= 24; c++) {
-                      var str = String.fromCharCode(i);
-        
-                      table += '<td>' + '<li class="seat">' + '<input type="checkbox" id="' + c + str + '"' + 'name="zone"' +
-                        'value="' + c + str + '"' + '/>' +
-                        '<label for="' + c + str + '">' + c + str + '</label>' + '</li>' + '</td>';
-        
-                    }
-                    table += '</tr>';
-                    i++;
-                  }
-                  document.write('<table class="table-wrapper" id="table-wrap">' + table + '</table>')
-                </script>
-              </div>
-
-        
-              </div>
-              <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-          <script type="text/javascript">
-            $(document).ready(function () {
-              $("button").click(function () {
-                var favorite = [];
-                $.each($("input[name='zone']:checked"), function () {
-                  favorite.push($(this).val());
-                });
-                /*alert("My favourite sports are: " + favorite.join(", "));*/
-    
-              });
-            });
-          </script>
-          <style>
-            tr {
-              margin: 0%;
-            }
-    
-            td {
-              width: 2em;
-              height: auto;
-            }
-    
-            .table-wrapper {
-              width: auto;
-              margin: auto;
-              background: #fff;
-              padding: 20px;
-              box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
-            }
-    
-            /*Downloaded from https://www.codeseek.co/siiron/css-seat-booking-MYXZWg */
-            *,
-            *:before,
-            *:after {
-              box-sizing: border-box;
-            }
-    
-    
-            .fuselage {
-              border-right: 5px solid #d8d8d8;
-              border-left: 5px solid #d8d8d8;
-            }
-    
-            ol {
-              list-style: none;
-              padding: 0;
-              margin: 0;
-            }
-    
-            .seats {
-              display: flex;
-              flex-direction: row;
-              flex-wrap: nowrap;
-              justify-content: flex-start;
-            }
-    
-            .seat {
-              display: flex;
-              flex: 0 0 14.28571428571429%;
-              padding: 0px;
-              position: relative;
-            }
-    
-            .seat:nth-child(3) {
-              margin-right: 14.28571428571429%;
-            }
-    
-            .seat input[type=checkbox] {
-              position: absolute;
-              opacity: 0;
-            }
-    
-            .seat input[type=checkbox]:checked+label {
-              background: #5bff69;
-              -webkit-animation-name: rubberBand;
-              animation-name: rubberBand;
-              animation-duration: 300ms;
-              animation-fill-mode: both;
-            }
-    
-            .seat input[type=checkbox]:disabled+label {
-              background: #dddddd;
-              text-indent: -9999px;
-              overflow: hidden;
-            }
-    
-            .seat input[type=checkbox]:disabled+label:after {
-              content: "X";
-              text-indent: 0;
-              position: absolute;
-              top: 0em;
-              left: 50%;
-              transform: translate(-50%, 0%);
-            }
-    
-            .seat input[type=checkbox]:disabled+label:hover {
-              box-shadow: none;
-              cursor: not-allowed;
-            }
-    
-            .seat label {
-              display: block;
-              position: relative;
-              width: 100%;
-              text-align: center;
-              font-size: 0.8em;
-              font-weight: bold;
-              line-height: 1.5rem;
-              padding: 0;
-              background: rgb(255, 126, 249);
-              border-radius: 5px;
-              animation-duration: 300ms;
-              animation-fill-mode: both;
-            }
-    
-            .seat label:before {
-              content: "";
-              position: absolute;
-              width: 75%;
-              height: 75%;
-              top: 1px;
-              left: 50%;
-              transform: translate(-50%, 0%);
-              background: rgba(255, 250, 254, 0.459);
-              border-radius: 3px;
-            }
-    
-            .seat label:hover {
-              cursor: pointer;
-              box-shadow: 0 0 0px 2px #5C6AFF;
-            }
-    
-            @-webkit-keyframes rubberBand {
-              0% {
-                -webkit-transform: scale3d(1, 1, 1);
-                transform: scale3d(1, 1, 1);
-              }
-    
-              30% {
-                -webkit-transform: scale3d(1.25, 0.75, 1);
-                transform: scale3d(1.25, 0.75, 1);
-              }
-    
-              40% {
-                -webkit-transform: scale3d(0.75, 1.25, 1);
-                transform: scale3d(0.75, 1.25, 1);
-              }
-    
-              50% {
-                -webkit-transform: scale3d(1.15, 0.85, 1);
-                transform: scale3d(1.15, 0.85, 1);
-              }
-    
-              65% {
-                -webkit-transform: scale3d(0.95, 1.05, 1);
-                transform: scale3d(0.95, 1.05, 1);
-              }
-    
-              75% {
-                -webkit-transform: scale3d(1.05, 0.95, 1);
-                transform: scale3d(1.05, 0.95, 1);
-              }
-    
-              100% {
-                -webkit-transform: scale3d(1, 1, 1);
-                transform: scale3d(1, 1, 1);
-              }
-            }
-    
-            @keyframes rubberBand {
-              0% {
-                -webkit-transform: scale3d(1, 1, 1);
-                transform: scale3d(1, 1, 1);
-              }
-    
-              30% {
-                -webkit-transform: scale3d(1.25, 0.75, 1);
-                transform: scale3d(1.25, 0.75, 1);
-              }
-    
-              40% {
-                -webkit-transform: scale3d(0.75, 1.25, 1);
-                transform: scale3d(0.75, 1.25, 1);
-              }
-    
-              50% {
-                -webkit-transform: scale3d(1.15, 0.85, 1);
-                transform: scale3d(1.15, 0.85, 1);
-              }
-    
-              65% {
-                -webkit-transform: scale3d(0.95, 1.05, 1);
-                transform: scale3d(0.95, 1.05, 1);
-              }
-    
-              75% {
-                -webkit-transform: scale3d(1.05, 0.95, 1);
-                transform: scale3d(1.05, 0.95, 1);
-              }
-    
-              100% {
-                -webkit-transform: scale3d(1, 1, 1);
-                transform: scale3d(1, 1, 1);
-              }
-            }
-    
-            .rubberBand {
-              -webkit-animation-name: rubberBand;
-              animation-name: rubberBand;
-            }
-          </style>
+        <div class="row">
+            <div class="col mx-5">
+                    <h3 class="display-5 my-3 mx-5"><strong>Order Detail</strong></h1>
+                    <hr>
+            </div>
         </div>
-      </div>
-      <script type="text/javascript">
-        $(document).ready(function(){
-            $("select").change(function(){
-                $(this).find("option:selected").each(function(){
-                    var optionValue = $(this).attr("value");
-                    if(optionValue){
-                        $(".box").not("." + optionValue).hide();
-                        $("." + optionValue).show();
-                    } else{
-                        $(".box").hide();
-                    }
-                });
-            }).change();
-        });
-        </script>
-                        </div>
             <div class="row">
-                <div class="col"></div>
+                
                 <div class="col-9">
                         <form>
                                 <div class="form-group row mx-5">
-                                  <label for="staticEmail" class="col-sm-3 col-form-label">Booked Seat</label>
+                                  <label for="bookID" class="col-sm-5 col-form-label">Booked ID</label>
                                   <div class="col-sm-5">
-                                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+                                    <input type="text" readonly class="form-control-plaintext" id="bookID" value="">
                                   </div>
                                 </div>
                                 <div class="form-group row mx-5">
-                                  <label for="inputPassword" class="col-sm-3 col-form-label">Ticket Recieve</label>
-                                  <div class="col-sm-3">
-                                    <select name="" class="form-control" id="">
-                                        <option value="">BTS Station</option>
-                                        <option value="">EMS</option>
-                                        <option value="">Walkin</option>
-                                    </select>
-                                  </div>
+                                  <label for="bookSeat" class="col-sm-5 col-form-label">Booked Seat</label>
+                                  <div class="col-sm-5">
+                                        <input type="text" readonly class="form-control-plaintext" id="bookSeat" value="">
+                                      </div>
                                 </div>
                                 <div class="form-group row mx-5">
-                                        <label for="inputPassword" class="col-sm-3 col-form-label">Payment Method</label>
-                                        <div class="col-sm-3">
-                                          <select name="" class="form-control" id="">
-                                              <option value="">Credit Card</option>
-                                          </select>
-                                        </div>
+                                        <label for="numberSeat" class="col-sm-5 col-form-label">Number of Seat</label>
+                                        <div class="col-sm-5">
+                                                <input type="text" readonly class="form-control-plaintext" id="numberSear" value="">
+                                              </div>
                                       </div>
                                       <div class="form-group row mx-5">
-                                            <label for="inputPassword" class="col-sm-3 col-form-label">Total Amount</label>
-                                            <div class="col-sm-3">
-                                              <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="300 Baht">
+                                            <label for="priceSeat" class="col-sm-5 col-form-label">Price per Seat</label>
+                                            <div class="col-sm-5">
+                                              <input type="text" readonly class="form-control-plaintext" id="priceSeat" value="">
                                             </div>
                                           </div>
-                                      <div class="form-group row  mt-auto">
-                                            <div class="col-5"></div>
-                                            <div class="col-3 text-center">
-                                                    <button class="btn btn-primary text-center align-self" type="submit">Submit</button>
+                                          <div class="form-group row mx-5">
+                                                <label for="priceSeatAmount" class="col-sm-5 col-form-label">Price Amount</label>
+                                                <div class="col-sm-5">
+                                                  <input type="text" readonly class="form-control-plaintext" id="priceSeatAmount" value="">
+                                                </div>
+                                              </div>
+                                          <div class="form-group row mx-5">
+                                                <label for="promotionDiscount" class="col-sm-5 col-form-label">Promotion Discount</label>
+                                                <div class="col-sm-5">
+                                                  <input type="text" readonly class="form-control-plaintext" id="promotionDiscount" value="">
+                                                </div>
+                                              </div>
+                                              <div class="form-group row mx-5">
+                                                    <label for="deriveryFee" class="col-sm-5 col-form-label">Derivery Fee</label>
+                                                    <div class="col-sm-5">
+                                                      <input type="text" readonly class="form-control-plaintext" id="deriveryFee" value="">
+                                                    </div>
+                                                  </div>
+                                                  <div class="form-group row mx-5">
+                                                        <label for="deriveryMethod" class="col-sm-5 col-form-label">Derivery Method</label>
+                                                        <div class="col-sm-5">
+                                                          <input type="text" readonly class="form-control-plaintext" id="deriveryMethod" value="">
+                                                        </div>
+                                                      </div>
+                                      <div class="form-group row mx-5">
+                                            <label for="totalAmount" class="col-sm-5 col-form-label">Total Amount</label>
+                                            <div class="col-sm-5">
+                                              <input type="text" readonly class="form-control-plaintext" id="totalAmount" value="">
                                             </div>
-                                             
-                                        </div>
+                                          </div>
                               </form>
                 </div>
             </div>
+            <!-- Member Detail -->
+            <div class="row my-4">
+                    <div class="col mx-5">
+                            <h3 class="display-5 my-3 mx-5"><strong>Member Detail</strong></h1>
+                            <hr>
+                    </div>
+                </div>
+                    <div class="row">
+                        
+                        <div class="col-9">
+                                <form>
+                                        <div class="form-group row mx-5">
+                                          <label for="username" class="col-sm-5 col-form-label">Username</label>
+                                          <div class="col-sm-5">
+                                            <input type="text" readonly class="form-control-plaintext" id="username" value="">
+                                          </div>
+                                        </div>
+                                        <div class="form-group row mx-5">
+                                          <label for="address" class="col-sm-5 col-form-label">Address</label>
+                                          <div class="col-sm-5">
+                                                <input type="text" readonly class="form-control-plaintext" id="address" value="">
+                                          </div>
+                                        </div>
+                                        <div class="form-group row mx-5">
+                                                <label for="email" class="col-sm-5 col-form-label">Email</label>
+                                                <div class="col-sm-5">
+                                                        <input type="text" readonly class="form-control-plaintext" id="email" value="">
+                                                  </div>
+                                              </div>
+                                              <div class="form-group row mx-5">
+                                                    <label for="phone" class="col-sm-5 col-form-label">Phone Number</label>
+                                                    <div class="col-sm-5">
+                                                      <input type="text" readonly class="form-control-plaintext" id="phone" value="">
+                                                    </div>
+                                                  </div>
+                                              <div class="row mt-auto">
+                                                    <div class="col-5"></div>
+                                                    <div class="col-3 text-center">
+                                                            <button class="btn btn-primary text-center align-self" type="submit">Submit</button>
+                                                    </div>
+                                                     
+                                                </div>
+                                      </form>
+                        </div>
+                    </div>
+                    <!-- /MemberDetail -->
     </div>
 
        

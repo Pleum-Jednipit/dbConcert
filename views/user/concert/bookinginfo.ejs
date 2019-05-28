@@ -1,0 +1,213 @@
+<% include ../../partials/userheader %>
+<title>Concert </title>
+</head>
+<% include ../../partials/usernav %>
+    <div class="container-fluid" style="background: whitesmoke;">
+        <div class="row">
+            <div class="col-4">
+                <img src="https://images.unsplash.com/photo-1558930320-8fcc4e3e2a6a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid m-3 mx-5" width="300px" alt="">
+            </div>
+            <div class="col-6">
+                <div class="row">
+                        <div class="col-12">
+                                <h1 class="display-5 my-3 mx-4" style="color: black;"><strong><%= concert.Concert_Name %></strong></h1>
+                                <hr>
+                        </div>
+                </div>
+                <div class="row my-1">
+                    <div class="col-6">
+                            <label for="ticketrecieve" class="col col-form-label">Concert Showtime : <%= concert.Concert_ShowTime %> <%= concert.Concert_ShowDate %> </label>
+                    </div>
+                    <div class="col-6">
+                            <label for="ticketrecieve" class="col col-form-label">Venue : <%= concert.Venue_Name %> </label>
+                    </div>
+            </div>
+            <div class="row my-1">
+                    <div class="col-6">
+                            <label for="ticketrecieve" class="col col-form-label">Zone : <label for=""> <%= zone.Zone_Name %></label> </label>
+                    </div>
+            </div>
+            <% if(zone.Zone_Type == "Seating") {%>
+            <div class="row my-1">
+                    <div class="col-6">
+                            <label for="ticketrecieve" class="col col-form-label">Seat Number : <label for="">
+                                <% if(bookedSeat.length > 1) { %>
+                                    <% bookedSeat.forEach(function(item) { %>
+                                        <%= item.Seat_Number %>
+                                    <% }) %>
+                                <% } else { %>
+                                    <%= bookedSeat[0].Seat_Number %>
+                                    <% } %>
+                            </label> </label>
+                    </div>
+            </div>
+            <% } %>
+        </div>
+
+    </div>
+    </div>
+    <div class="container my-5">
+        <div class="row">
+            <div class="col mx-5">
+                    <h3 class="display-5 my-3 mx-5"><strong>Order Detail</strong></h1>
+                    <hr>
+            </div>
+        </div>
+            <div class="row">
+                
+                <div class="col-9">
+                        <form>
+                                <div class="form-group row mx-5">
+                                  <label for="bookID" class="col-sm-5 col-form-label">Booked ID</label>
+                                  <div class="col-sm-5">
+                                    <input type="text" readonly class="form-control-plaintext" id="bookID" value="<%=booking.Booking_ID %>">
+                                  </div>
+                                </div>
+                                <div class="form-group row mx-5">
+                                        <label for="numberSeat" class="col-sm-5 col-form-label">Number of Seat</label>
+                                        <div class="col-sm-5">
+                                                <input type="text" readonly class="form-control-plaintext" id="numberSear" value="<%= booking.Booking_Quantity %>">
+                                              </div>
+                                      </div>
+                                      <div class="form-group row mx-5">
+                                            <label for="priceSeat" class="col-sm-5 col-form-label">Price per Seat</label>
+                                            <div class="col-sm-5">
+                                              <input type="text" readonly class="form-control-plaintext" id="priceSeat" value="<%= zone.Zone_Price %>">
+                                            </div>
+                                          </div>
+                                          <div class="form-group row mx-5">
+                                                <label for="priceSeatAmount" class="col-sm-5 col-form-label">Price Amount</label>
+                                                <div class="col-sm-5">
+                                                  <label  class="form-control-plaintext" id="priceSeatAmount" ><%= booking.Booking_Quantity * zone.Zone_Price%></label>
+                                                </div>
+                                              </div>
+                                          <div class="form-group row mx-5">
+                                                <label for="promotionDiscount" class="col-sm-5 col-form-label">Promotion Discount</label>
+                                                <div class="col-sm-5">
+                                                  <input type="text" readonly class="form-control-plaintext" id="promotionDiscount" value="">
+                                                </div>
+                                              </div>
+                                              <div class="form-group row mx-5">
+                                                    <label for="deriveryMethod" class="col-sm-5 col-form-label">Derivery Method</label>
+                                                    <div class="col-sm-5">
+                                                      <input type="text" readonly class="form-control-plaintext" id="deriveryMethod" value="<%= ticket.Ticket_Receiving_Name %>">
+                                                    </div>
+                                                  </div>
+                                              <div class="form-group row mx-5">
+                                                    <label for="deriveryFee" class="col-sm-5 col-form-label">Derivery Fee</label>
+                                                    <div class="col-sm-5">
+                                                      <input type="text" readonly class="form-control-plaintext" id="deriveryFee" value="<%= ticket.Ticket_Receiving_Fee %>">
+                                                    </div>
+                                                  </div>
+                                                  <div class="form-group row mx-5">
+                                                        <label for="deriveryMethod" class="col-sm-5 col-form-label">Payment Method</label>
+                                                        <div class="col-sm-5">
+                                                          <input type="text" readonly class="form-control-plaintext" id="deriveryMethod" value="<%= payment.Payment_Name %>">
+                                                        </div>
+                                                      </div>
+                                                  <div class="form-group row mx-5">
+                                                        <label for="deriveryFee" class="col-sm-5 col-form-label">Payment Fee</label>
+                                                        <div class="col-sm-5">
+                                                          <input type="text" readonly class="form-control-plaintext" id="deriveryFee" value="<%= payment.Payment_Fee %>">
+                                                        </div>
+                                                      </div>
+                                                 
+                                      <div class="form-group row mx-5">
+                                            <label for="totalAmount" class="col-sm-5 col-form-label">Total Amount</label>
+                                            <div class="col-sm-5">
+                                              <input type="text" readonly class="form-control-plaintext" id="totalAmount" value="<%= booking.Booking_Total_Price %>">
+                                            </div>
+                                          </div>
+                              </form>
+                </div>
+            </div>
+            <!-- Member Detail -->
+            <div class="row my-4">
+                    <div class="col mx-5">
+                            <h3 class="display-5 my-3 mx-5"><strong>Member Detail</strong></h1>
+                            <hr>
+                    </div>
+                </div>
+                    <div class="row">
+                        
+                        <div class="col-9">
+                                <form>
+                                        <div class="form-group row mx-5">
+                                          <label for="username" class="col-sm-5 col-form-label">Name</label>
+                                          <div class="col-sm-5">
+                                            <input type="text" readonly class="form-control-plaintext" id="username" value="<%= member.Member_Name %>">
+                                          </div>
+                                        </div>
+                                        <div class="form-group row mx-5">
+                                          <label for="address" class="col-sm-5 col-form-label">Address</label>
+                                          <div class="col-sm-5">
+                                                <input type="text" readonly class="form-control-plaintext" id="address" value="<%= member.Member_Address %>">
+                                          </div>
+                                        </div>
+                                        <div class="form-group row mx-5">
+                                                <label for="email" class="col-sm-5 col-form-label">Email</label>
+                                                <div class="col-sm-5">
+                                                        <input type="text" readonly class="form-control-plaintext" id="email" value="<%= member.Member_EmailAddress %>">
+                                                  </div>
+                                              </div>
+                                              <div class="form-group row mx-5">
+                                                    <label for="phone" class="col-sm-5 col-form-label">Phone Number</label>
+                                                    <div class="col-sm-5">
+                                                      <input type="text" readonly class="form-control-plaintext" id="phone" value="<%= member.Member_PhoneNumber %>">
+                                                    </div>
+                                                  </div>
+                                              <div class="row mt-auto">
+                                                    <div class="col-5"></div>
+                                                    <div class="col-3 text-center">
+                                                            <a href="/index" class="btn btn-primary text-center align-self" type="submit">Submit</a>
+                                                    </div>
+                                                     
+                                                </div>
+                                      </form>
+                        </div>
+                    </div>
+                    <!-- /MemberDetail -->
+    </div>
+
+       
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <!-- Popover -->
+    <script>
+            $("[data-toggle=popover]").each(function (i, obj) {
+    
+                $(this).popover({
+                    html: true,
+                    content: function () {
+                        var id = $(this).attr('id')
+                        return $('#popover-content-' + id).html();
+                    }
+                });
+    
+            });
+        </script>
+        <!----Selecticker----->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+<script>
+ $(function () {
+$('select').selectpicker();
+});
+</script>
+<!---- /Selectpicker ----->
+
+</body>
+
+</html>
