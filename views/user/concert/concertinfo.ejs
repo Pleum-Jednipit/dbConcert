@@ -1,0 +1,71 @@
+<% include ../../partials/userheader %>
+<title>Concert </title>
+</head>
+<% include ../../partials/usernav %>
+    <div class="container-fluid" style="background: whitesmoke;">
+        <div class="row">
+            <div class="col-6">
+                <img src="https://images.unsplash.com/photo-1558930320-8fcc4e3e2a6a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid m-3 mx-5" alt="">
+            </div>
+            <div class="col-6">
+                <div class="row">
+                        <div class="col-12">
+                                <h1 class="display-5 my-3 text-center" style="color: black;"><strong><%= concert[0].Concert_Name %></strong></h1>
+                                <hr>
+                        </div>
+                </div>
+                <div class="row my-4">
+                    <% concert.forEach(function(item) { %>
+                    <div class="col-6">
+                        <label for="" ><img src="https://image.flaticon.com/icons/svg/61/61469.svg" class="text-center mr-2 ml-5" width="20px" alt=""></label>
+                        <label for="" class="text-center"><%= item.Concert_ShowDate %></label>
+                    </div>
+                    <div class="col-6 border-left">
+                            <label for="" ><img src="https://image.flaticon.com/icons/svg/66/66403.svg" class="text-center mr-2 ml-5" width="20px" alt=""></label>
+                            <label for="" class="text-center"><%= item.Concert_ShowTime %></label>
+                        </div>
+                    <% }) %>
+                </div>
+                <div class="row my-4">
+                    <div class="col">
+                            <label for="" ><img src="https://image.flaticon.com/icons/svg/125/125805.svg" class="text-center mr-2 ml-5" width="20px" alt=""></label>
+                            <label for="" class="text-center"><%= venue.Venue_Name %></label>
+                    </div>
+                </div>
+                <% artist.forEach(function(item) { %>
+                <div class="row my-4">
+                        <div class="col">
+                                <label for="" ><img src="https://image.flaticon.com/icons/svg/125/125805.svg" class="text-center mr-2 ml-5" width="20px" alt=""></label>
+                                <label for="" class="text-center"><%= item.Artist_Name %></label>
+                        </div>
+                    </div>
+                    <% }) %>
+            
+                    <div class="row my-4">
+                        <div class="col text-center">
+                                <a href="/concert/<%= name %>/showtime" type="button" class="btn btn-outline-dark btn-lg">Buy Ticket</a>
+                        </div>
+                    </div>
+                
+                
+            </div>
+        </div>
+
+    </div>
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+
+</body>
+
+</html>

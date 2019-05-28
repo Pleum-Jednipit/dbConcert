@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 const connection = require("../../connection");
 var middleware = require("../../middleware");
-
+var dateFormat = require('dateformat');
 
 //root route landing 
 router.get("/", function (req, res) {
@@ -11,14 +11,13 @@ router.get("/", function (req, res) {
 
 // Index
 router.get("/index", function (req, res) {
-   // var getAllConcert = "SELECT * FROM concert WHERE CURDATE() < Concert_Sales_Date";
-   //  connection.query(getAllConcert, function (err, concert) {
-   //     if (err) {
-   //        throw err;
-   //     }
-   // console.log(concert[0].Concert_Sales_Date);
+   var getAllConcert = "SELECT * FROM concert c, concert_showtime cs WHERE c.Concert_ID = cs.Concert_ID AND CURDATE() < cs.Concert_ShowDate ";
+    connection.query(getAllConcert, function (err, concert) {
+       if (err) {
+          throw err;
+       }
+   console.log(concert[0].Concert_Sales_Date);
    res.render("./user/index");
-   // });
 });
 
 // show register form

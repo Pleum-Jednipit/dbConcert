@@ -1,0 +1,399 @@
+<% include ../../partials/userheader %>
+<title>Concert </title>
+</head>
+<% include ../../partials/usernav %>
+
+<div class="container-fluid" style="background: whitesmoke;">
+    <div class="row">
+        <div class="col-4">
+            <img src="https://images.unsplash.com/photo-1558930320-8fcc4e3e2a6a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                class="img-fluid m-3 mx-5" width="300px" alt="">
+        </div>
+        <div class="col-6">
+            <form action="/concert/<%=name %>/showtime" method="POST">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="display-5 my-3 mx-4" style="color: black;"><strong>Blackpink</strong></h1>
+                    <hr>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group row ">
+                        <div class="col-4">
+                            <label for="ticketrecieve" class="col col-form-label">Venue</label>
+                        </div>
+
+                        <div class="col">
+                            <label for="ticketrecieve" class="col col-form-label"><%= venue.Venue_Name %></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group row ">
+                        <div class="col-4">
+                            <label for="ticketrecieve" class="col col-form-label">Concert Showtime</label>
+                        </div>
+
+                        <div class="col">
+                            <select onchange=round_change(); name="showtime" class="form-control" id="showtime">
+                                <option>--Please Select Showtime--</option>
+                                <% concert.forEach(function(item){ %>
+                                        <% if(selectedShowtime == item.Concert_ShowTime_ID) {%>
+                                            <option value="<%=item.Concert_ShowTime_ID %>" selected><%=item.Concert_ShowDate %>
+                                        <% } else {%>
+                                            <option value="<%=item.Concert_ShowTime_ID %>"><%=item.Concert_ShowDate %>
+                                        <% } %>
+                                <% }) %>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<% if(selectedShowtime) { %>
+<div class="container my-5">
+    <div class="row">
+        <div class="col text-center">
+                <label for="ticketrecieve" class="col col-form-label" id=""></label>
+            <img src="https://www.asiaworld-expo.com/assets/img/BP_web-map-Rev-10b-da6ffd497d.png" alt="">
+        </div>
+    </div>
+
+    <div class="form-group row my-5 mx-5">
+        <div class="col-1">
+            <label for="zone" class="col col-form-label">Zone</label>
+        </div>
+        <div class="col-4"><select name="zoneNumber" class="form-control" id="zone" onchange=zone_change();>
+                <% zoneInfo.forEach(function(item){ %>
+                    <option value="<%= item.Zone_Name %>"><%= item.Zone_Name %></option>
+                <% }) %>
+            </select>
+        </div>
+        <div class="col mx-5">
+            <label class="btn btn-outline-primary" data-toggle="popover" id="concert">Seats Available</label>
+        </div>
+    </div>
+    <!-- loaded popover content -->
+    <div id="popover-content-concert" class="hide d-none" >
+        <ul class="list-group" id="available">
+            <li class="list-group-item text-center"><strong>   Zone  :  Seats Avaiable</strong></li>
+            <% zoneInfo.forEach(function(item){ %>
+                <li class="list-group-item text-center"><strong><%= item.Zone_Name %>  :  <%= item.Avaiable %></strong></li>
+            <% }) %>
+        </ul>
+    </div>
+
+    <% } %>
+
+    <div class="form-group row mx-5 box Standing" style="display: none;" id="Standing">
+        <label for="zoneseatcapacity" class="col-sm-2 col-form-label">Seat Quantity</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" id="zoneseatcapacity" placeholder="seatquantity">
+        </div>
+    </div>
+
+    <div class="form-group row mx-5 Seating box" style="display: none;" id="Seating">
+        <label>Zone Seat</label>
+        <script>
+            var table = '';
+            var i = 65;
+            var j = 91;
+            for (var r = 0; r < 24; r++) {
+                table += '<tr>';
+                for (var c = 1; c <= 24; c++) {
+                    var str = String.fromCharCode(i);
+
+                    table += '<td>' + '<li class="seat">' + '<input type="checkbox" id="' + c + str + '"' +
+                        'name="seat"' +
+                        'value="' + c + str + '"' + '/>' +
+                        '<label for="' + c + str + '">' + c + str + '</label>' + '</li>' + '</td>';
+
+                }
+                table += '</tr>';
+                i++;
+            }
+            document.write('<table class="table-wrapper" id="table-wrap">' + table + '</table>')
+        </script>
+    </div>
+
+
+    <div class="form-group row  mt-auto">
+        <div class="col-8"></div>
+        <div class="col-3 text-center">
+            <a href="#"  id="nextLink" class="btn btn-primary text-right align-self" type="submit">Select</a>
+        </div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("button").click(function () {
+                var favorite = [];
+                $.each($("input[name='zone']:checked"), function () {
+                    favorite.push($(this).val());
+                });
+                /*alert("My favourite sports are: " + favorite.join(", "));*/
+
+            });
+
+        });
+    </script>
+    <style>
+        tr {
+            margin: 0%;
+        }
+
+        td {
+            width: 2em;
+            height: auto;
+        }
+
+        .table-wrapper {
+            width: auto;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+        }
+
+        /*Downloaded from https://www.codeseek.co/siiron/css-seat-booking-MYXZWg */
+        *,
+        *:before,
+        *:after {
+            box-sizing: border-box;
+        }
+
+
+        .fuselage {
+            border-right: 5px solid #d8d8d8;
+            border-left: 5px solid #d8d8d8;
+        }
+
+        ol {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .seats {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+        }
+
+        .seat {
+            display: flex;
+            flex: 0 0 14.28571428571429%;
+            padding: 0px;
+            position: relative;
+        }
+
+        .seat:nth-child(3) {
+            margin-right: 14.28571428571429%;
+        }
+
+        .seat input[type=checkbox] {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .seat input[type=checkbox]:checked+label {
+            background: #5bff69;
+            -webkit-animation-name: rubberBand;
+            animation-name: rubberBand;
+            animation-duration: 300ms;
+            animation-fill-mode: both;
+        }
+
+        .seat input[type=checkbox]:disabled+label {
+            background: #dddddd;
+            text-indent: -9999px;
+            overflow: hidden;
+        }
+
+        .seat input[type=checkbox]:disabled+label:after {
+            content: "X";
+            text-indent: 0;
+            position: absolute;
+            top: 0em;
+            left: 50%;
+            transform: translate(-50%, 0%);
+        }
+
+        .seat input[type=checkbox]:disabled+label:hover {
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+
+        .seat label {
+            display: block;
+            position: relative;
+            width: 100%;
+            text-align: center;
+            font-size: 0.8em;
+            font-weight: bold;
+            line-height: 1.5rem;
+            padding: 0;
+            background: rgb(255, 126, 249);
+            border-radius: 5px;
+            animation-duration: 300ms;
+            animation-fill-mode: both;
+        }
+
+        .seat label:before {
+            content: "";
+            position: absolute;
+            width: 75%;
+            height: 75%;
+            top: 1px;
+            left: 50%;
+            transform: translate(-50%, 0%);
+            background: rgba(255, 250, 254, 0.459);
+            border-radius: 3px;
+        }
+
+        .seat label:hover {
+            cursor: pointer;
+            box-shadow: 0 0 0px 2px #5C6AFF;
+        }
+
+        @-webkit-keyframes rubberBand {
+            0% {
+                -webkit-transform: scale3d(1, 1, 1);
+                transform: scale3d(1, 1, 1);
+            }
+
+            30% {
+                -webkit-transform: scale3d(1.25, 0.75, 1);
+                transform: scale3d(1.25, 0.75, 1);
+            }
+
+            40% {
+                -webkit-transform: scale3d(0.75, 1.25, 1);
+                transform: scale3d(0.75, 1.25, 1);
+            }
+
+            50% {
+                -webkit-transform: scale3d(1.15, 0.85, 1);
+                transform: scale3d(1.15, 0.85, 1);
+            }
+
+            65% {
+                -webkit-transform: scale3d(0.95, 1.05, 1);
+                transform: scale3d(0.95, 1.05, 1);
+            }
+
+            75% {
+                -webkit-transform: scale3d(1.05, 0.95, 1);
+                transform: scale3d(1.05, 0.95, 1);
+            }
+
+            100% {
+                -webkit-transform: scale3d(1, 1, 1);
+                transform: scale3d(1, 1, 1);
+            }
+        }
+
+        @keyframes rubberBand {
+            0% {
+                -webkit-transform: scale3d(1, 1, 1);
+                transform: scale3d(1, 1, 1);
+            }
+
+            30% {
+                -webkit-transform: scale3d(1.25, 0.75, 1);
+                transform: scale3d(1.25, 0.75, 1);
+            }
+
+            40% {
+                -webkit-transform: scale3d(0.75, 1.25, 1);
+                transform: scale3d(0.75, 1.25, 1);
+            }
+
+            50% {
+                -webkit-transform: scale3d(1.15, 0.85, 1);
+                transform: scale3d(1.15, 0.85, 1);
+            }
+
+            65% {
+                -webkit-transform: scale3d(0.95, 1.05, 1);
+                transform: scale3d(0.95, 1.05, 1);
+            }
+
+            75% {
+                -webkit-transform: scale3d(1.05, 0.95, 1);
+                transform: scale3d(1.05, 0.95, 1);
+            }
+
+            100% {
+                -webkit-transform: scale3d(1, 1, 1);
+                transform: scale3d(1, 1, 1);
+            }
+        }
+
+        .rubberBand {
+            -webkit-animation-name: rubberBand;
+            animation-name: rubberBand;
+        }
+    </style>
+</div>
+</div>
+<script>
+        function round_change() {
+            var showtime = document.getElementById("showtime").value;
+            console.log(showtime);
+            // document.getElementById('csID').innerHTML = showtime;
+            var name = JSON.parse('<%-JSON.stringify(name)%>');
+            var link = "/concert/" + name + "/showtime/" + showtime;
+            window.location.href = link;
+        }
+        function zone_change() {
+            console.log("Check");
+            var name = JSON.parse('<%-JSON.stringify(name)%>');
+            var zoneName = document.getElementById('zone').value;
+            var showtimeID = document.getElementById('showtime').value;
+            var link = "/concert/" + name + "/showtime/" + showtime + "/" + zoneName;
+            $("#nextlink").attr("href", link)
+        }
+    </script>
+</div>
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+</script>
+<!-- Popover -->
+<script>
+    $("[data-toggle=popover]").each(function (i, obj) {
+
+        $(this).popover({
+            html: true,
+            content: function () {
+                var id = $(this).attr('id')
+                return $('#popover-content-' + id).html();
+            }
+        });
+
+    });
+</script>
+
+</body>
+
+</html>

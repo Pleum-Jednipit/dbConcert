@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!---Glider--->
+    <link href="glider.min.css" rel="stylesheet" type="text/css">
+
+    <!--- Card Carousel--->
+    <style>
+    </style>
+
+    <!-- Modal CSS -->
+    <style>
+        .modal.left .modal-dialog {
+            position: fixed;
+            margin: auto;
+            width: 320px;
+            height: 100%;
+            -webkit-transform: translate3d(0%, 0, 0);
+            -ms-transform: translate3d(0%, 0, 0);
+            -o-transform: translate3d(0%, 0, 0);
+            transform: translate3d(0%, 0, 0);
+        }
+
+        .modal.left .modal-content {
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        .modal.left .modal-body {
+            padding: 15px 15px 80px;
+        }
+
+        .modal.left.fade .modal-dialog {
+            left: -320px;
+            -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+            -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
+            -o-transition: opacity 0.3s linear, left 0.3s ease-out;
+            transition: opacity 0.3s linear, left 0.3s ease-out;
+        }
+
+        .modal.left.fade.show .modal-dialog {
+            left: 0;
+        }
+
+        /* ----- MODAL STYLE ----- */
+        .modal-content {
+            border-radius: 0;
+            border: none;
+        }
+
+        .modal-header {
+            border-bottom-color: #eeeeee;
+            background-color: #fafafa;
+        }
+        .hr {
+            border-width: 5px;
+            border: white;
+            outline-color: white;
+        }
+
+        /* Border */
+    </style>
+
+    <title>Hello, world!</title>
+</head>
+
+<body>
+
+    <!--- Navbar --->
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+        <div class="container">
+                <a href="index.html" class="navbar-brand">
+                        <img src="https://images.unsplash.com/photo-1558470598-a5dda9640f68?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
+                            width="100em" class="d-inline-block align-top rounded mx-4">
+                    </a>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                      <li class="nav-item active mx-2">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                      </li>
+                      <li class="nav-item mx-2">
+                        <a class="nav-link" href="#">Link</a>
+                      </li>
+                      <li class="nav-item mx-2">
+                            <a class="nav-link" href="#">Link</a>
+                      </li>
+                      <li class="nav-item mx-2">
+                        <a class="nav-link" href="#">Disabled</a>
+                      </li>
+                    </ul>
+
+                  </div>
+            <button class="navbar-toggler" type="button" data-toggle="modal" data-target="#exampleModal">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="col-md-2 ">
+                <div class="collapse navbar-collapse navbar-toggle" id="navbarNavAltMarkup">
+                    <button class="btn btn-outline-warning btn-lg mx-4" data-toggle="modal"
+                        data-target="#ModalExample">Sign in</button>
+                </div>
+            </div>
+    </nav>
+    <!---Modal of nav--->
+    <div class="modal left fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="flex-column">
+                        <a class="nav-item nav-link active" href="#">Home</a>
+                        <a href="#" class="nav-item nav-link">Link</a>
+                        <a href="#" class="nav-item nav-link">Link</a>
+                        <a href="#" class="nav-item nav-link">Link</a>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal Login -->
+    <div id="ModalExample" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <h4 class="modal-title text-center">Log in</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-body">
+                    <form role="form" method="POST" action="">
+                        <input type="hidden" name="_token" value="">
+                        <div class="form-group">
+                            <label class="control-label">E-Mail Address</label>
+                            <div>
+                                <input type="email" class="form-control input-lg" name="email" value="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Password</label>
+                            <div>
+                                <input type="password" class="form-control input-lg" name="password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="remember"> Remember Me
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div>
+                                <a class="btn btn-link" href="">Forgot Your Password?</a>
+                                <button type="submit" class="btn btn-info btn-block">Login</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer text-xs-center">
+                    Don't have an account? <a href="/auth/register">Sign up »</a>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!-- Carousel -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://images.unsplash.com/photo-1528920304568-7aa06b3dda8b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                    class="imgres d-block w-100" height="400rem" alt="Responsive image">
+            </div>
+            <div class="carousel-item active">
+                <img src="https://images.unsplash.com/photo-1469827160215-9d29e96e72f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                    class="d-block w-100" height="400em" alt="Responsive image">
+            </div>
+            <div class="carousel-item active">
+                <img src="https://images.unsplash.com/photo-1524260855046-f743b3cdad07?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                    class="d-block w-100" height="400em" alt="Responsive image">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <!--body part1-->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col">
+                <h1 class="dispaly-1">Recommend</h1>
+            </div>
+
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-4 ml-4">
+                <div class="card" style="width: 16rem;">
+                    <div class="btn-group-vertical" role="group" aria-label="Basic example">
+                        <img src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                            class="card-img-top" height="400em" alt="">
+                        <button class="btn btn-outline-primary">Buy</button>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <div class="col-6 text-center border-right border-top">1</div>
+                            <div class="col-6 text-center border-top">2</div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 16rem;">
+                    <div class="btn-group-vertical" role="group" aria-label="Basic example">
+                        <img src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                            class="card-img-top" height="400em" alt="">
+                        <button class="btn btn-outline-primary">Buy</button>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <div class="col-6 text-center border-right border-top">1</div>
+                            <div class="col-6 text-center border-top">2</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 16rem;">
+                    <div class="btn-group-vertical" role="group" aria-label="Basic example">
+                        <img src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                            class="card-img-top" height="400em" alt="">
+                        <button class="btn btn-outline-primary">Buy</button>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <div class="col-6 text-center border-right border-top">1</div>
+                            <div class="col-6 text-center border-top">2</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+
+</body>
+
+</html>
