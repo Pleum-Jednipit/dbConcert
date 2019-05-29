@@ -1,0 +1,13 @@
+SELECT r.Record_Label_Name,COUNT(a.Artist_ID) AS NumberofArtist FROM record_label r,artist a WHERE r.Record_Label_ID = a.Record_Label_ID GROUP BY a.Record_Label_ID ORDER BY NumberofArtist DESC
+
+SELECT c.Concert_Name,COUNT(a.Artist_ID) AS NumberofArtist FROM concert c,concert_artist a WHERE a.Concert_ID=c.Concert_ID GROUP BY a.Concert_ID ORDER BY NumberofArtist DESC
+
+SELECT m.Member_Name,d.Concert_Name,SUM(b.Booking_Total_Price) AS Price FROM concert_showtime c,booking b,member m,concert d WHERE c.Concert_ID = d.Concert_ID AND c.Concert_Showtime_ID = b.Concert_Showtime_ID AND m.Member_Username = b.Member_Username GROUP BY b.Member_Username, d.Concert_ID ORDER BY Price DESC
+
+SELECT t.Ticket_Receiving_Name,COUNT(b.Ticket_Receiving_ID) AS NumberofUsingMethod FROM booking b,ticket_receiving t WHERE t.Ticket_Receiving_ID = b.Ticket_Receiving_ID GROUP BY t.Ticket_Receiving_ID ORDER BY NumberofUsingMethod DESC
+
+SELECT a.Artist_Name,COUNT(c.Concert_ID) AS NumberofConcert FROM artist a,concert_artist c WHERE a.Artist_ID = c.Artist_ID GROUP BY a.Artist_ID ORDER BY NumberofConcert DESC
+
+SELECT m.Member_Name,COUNT(b.Booking_ID) AS NumberofBooking FROM member m,booking b WHERE m.Member_Username = b.Member_Username GROUP BY b.Member_Username ORDER BY NumberofBooking DESC
+
+SELECT v.Venue_Name,COUNT(c.Concert_ID) AS NumberofConcert FROM concert c,venue v WHERE v.Venue_ID = c.Venue_ID GROUP BY c.Venue_ID ORDER BY NumberofConcert DESC

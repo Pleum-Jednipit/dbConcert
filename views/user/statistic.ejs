@@ -55,11 +55,14 @@
                                             <th>Artist</th>
                                             <th>Capacity</th>
                                         </tr>
-                                        <tr>
-                                            <td><label for=""></label></td>
-                                            <td><label for=""></label></td>
-                                            <td><label for=""></label></td>
-                                        </tr>
+                                        <% table1.forEach(function(item) { %>
+                                            <tr>
+                                                <td><label for=""><%= item.Concert_Name %></label></td>
+                                                <td><label for=""><%= item.Artist_Name %></label></td>
+                                                <td><label for=""><%= item.Capacity %></label></td>
+                                
+                                            </tr>
+                                            <% }) %>
                                     </table>
                                 </div>
                             </div>
@@ -79,10 +82,12 @@
                                             <th>Concert</th>
                                             <th>Number of Booking</th>
                                         </tr>
+                                        <% table2.forEach(function(item) { %>
                                         <tr>
-                                            <td><label for=""></label></td>
-                                            <td><label for=""></label></td>
+                                            <td><label for=""><%= item.Concert_Name %></label></td>
+                                            <td><label for=""><%= item.Number_of_Booking %></label></td>
                                         </tr>
+                                        <% }) %>
                                     </table>
                                 </div>
                             </div>
@@ -103,8 +108,12 @@
                                             <th>Capacity</th>
                                         </tr>
                                         <tr>
-                                            <td><label for=""></label></td>
-                                            <td><label for=""></label></td>
+                                                <% table3.forEach(function(item) { %>
+                                                    <tr>
+                                                        <td><label for=""><%= item.Venue_Name %></label></td>
+                                                        <td><label for=""><%= item.Venue_SeatingCapacity %></label></td>
+                                                    </tr>
+                                                    <% }) %>
                                         </tr>
                                     </table>
                                 </div>
