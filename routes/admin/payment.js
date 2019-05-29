@@ -75,7 +75,7 @@ router.put("/edit", isAdmin, function (req, res) {
    var paymentID = req.body.paymentID;
    var paymentName = req.body.name;
    var paymentDetail = req.body.detail;
-   var paymentFee = req.body.fee;
+   var paymentFee = req.body.price;
    var sql = "UPDATE payment SET payment_Name = ?, payment_Detail = ?,payment_Fee = ? WHERE payment_ID = ?;"
    connection.query(sql, [paymentName, paymentDetail, paymentFee, paymentID], function (err, concert) {
       if (err) {
