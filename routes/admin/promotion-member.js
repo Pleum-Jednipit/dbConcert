@@ -53,7 +53,7 @@ router.post("/new", isAdmin,function (req, res) {
 
 router.post("/new/insert", function (req, res) {
    var promotionID = req.body.promotionID;
-   var membertype = req.body.dropdown;
+   var membertype = req.body.mt;
    var sql = "INSERT INTO member_promotion (Promotion_ID, MemberType_ID) " +
       "VALUES (?,?)";
    if (Array.isArray(membertype)) {

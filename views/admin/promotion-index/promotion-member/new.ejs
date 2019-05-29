@@ -15,7 +15,7 @@
                         <div class="form-group row mx-4 my-5">
                             <label for="ticketrecieve" class="col-sm-3 ml-5 col-form-label">Search Promotion</label>
                             <div class="col-sm-6">
-                                <select name="dropdown" id="dropdown" class="form-control selectpicker"
+                                <select name="dropdown" id="dropdown12" class="form-control selectpicker"
                                     data-live-search="true">
                                     <% search.forEach(function(item){ %>
                                     <option value="<%= item.Promotion_Name %>"> <%= item.Promotion_Name %> </option>
@@ -52,7 +52,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><select class="selectpicker form-control" data-live-search="true" name="dropdown" id="">
+                            <td><select class="selectpicker form-control" data-live-search="true" name="mt" id="dropdown123">
                                     <% membertype.forEach(function(item){ %>
                                         <option value="<%= item.MemberType_ID %>"> <%= item.MemberType_Name %> </option>
                                         <% }) %>
@@ -206,15 +206,35 @@
             var actions = $("table td:last-child").html();
             // Append table with add row form on add new button click
             $(".add-new").click(function () {
-                var index = $("table tbody tr:last-child").index();
-                var row = '<tr>' +
-                    '<td><select class="selectpicker form-control" data-live-search="true">' + '</td>' +
-                    '<td class="text-center"><a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a></td>' +
-                    '</tr>';
-                $("table").append(row);
-                $(function () {
-                    $('select').selectpicker();
-                });
+                 // Create Dropdown Options //
+            var dropdownList = new Array();
+            var dropdownID  = new Array();
+            var ddl = document.getElementById('dropdown123');
+            for (i = 0; i < ddl.options.length; i++) {
+                dropdownList[i] = ddl.options[i].text;
+            }
+            for (i = 0; i < ddl.options.length; i++) {
+                dropdownID[i] = ddl.options[i].value;
+            }
+            console.log(dropdownID);
+            console.log(dropdownList);
+            var option = "";
+            dropdownList.forEach(function(item,index){
+                var text = '<option value="'+ dropdownID[index]   + '">'  + item + '</option>';
+                option = option + text;
+            });
+            console.log(option);
+        
+            var row = '<tr>' +
+                '<td> <select name="mt" class="form-control"> ';    
+            
+            var row2 = '</select>' +
+                '<td>' + actions + '</td>' +
+                '</tr>';
+            
+            var string = row + option + row2;
+            $("table").append(string);
+            // Create Dropdown Options /
                 $('[data-toggle="tooltip"]').tooltip();
             });
             // Add row on add button click
