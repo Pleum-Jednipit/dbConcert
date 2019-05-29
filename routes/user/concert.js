@@ -21,12 +21,15 @@ router.get("/", function (req, res) {
       //    if (err) {
       //       throw err;
       //    }
-         console.log(concertInfo);
-         var now = new Date();
-         concertInfo.forEach(function(item,index){
-         item.Concert_ShowDate = dateFormat(item.Concert_ShowDate,"mediumDate");
-         });
-      res.render("./user/concert/concertindex", {concert : concertInfo, now: now});
+      console.log(concertInfo);
+      var now = new Date();
+      concertInfo.forEach(function (item, index) {
+         item.Concert_ShowDate = dateFormat(item.Concert_ShowDate, "mediumDate");
+      });
+      res.render("./user/concert/concertindex", {
+         concert: concertInfo,
+         now: now
+      });
    });
 });
 
@@ -58,13 +61,13 @@ router.get("/:name", function (req, res) {
             }
             console.log(venue[0].Venue_Name);
             var today = new Date();
-            var date = dateFormat(date,"isoDate");
+            var date = dateFormat(date, "isoDate");
             var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
             var comingSoon = false;
-            if(date < dateFormat(concert[0].Concert_Sales_Date,"isoDate")){
+            if (date < dateFormat(concert[0].Concert_Sales_Date, "isoDate")) {
                comingSoon = true;
-               if(time < concert[0].Concert_Sales_Time){
-               comingSoon = true;
+               if (time < concert[0].Concert_Sales_Time) {
+                  comingSoon = true;
                }
             }
             res.render("./user/concert/concertinfo", {
@@ -72,7 +75,7 @@ router.get("/:name", function (req, res) {
                artist: artist,
                venue: venue[0],
                name: name,
-               comingSoon : comingSoon
+               comingSoon: comingSoon
             }, );
          });
       });
@@ -115,7 +118,7 @@ router.get("/:name/showtime", function (req, res) {
 });
 
 // Select Showtime and Zone
-router.get("/:name/showtime/:showtime",function (req, res) {
+router.get("/:name/showtime/:showtime", function (req, res) {
    var zoneInfo = [];
    var name = req.params.name;
    var concertName = name.split("-").join(" ");
@@ -156,18 +159,18 @@ router.get("/:name/showtime/:showtime",function (req, res) {
                   throw err;
                }
                var getShowtime = "SELECT cs.* FROM concert c, concert_showtime cs WHERE c.Concert_Name = ? AND c.Concert_ID = cs.Concert_ID;"
-                  connection.query(getShowtime, [concertName], function (err, showtime) {
-                     if (err) {
-                        throw err;
-                     }
-                     console.log(showtime)
+               connection.query(getShowtime, [concertName], function (err, showtime) {
+                  if (err) {
+                     throw err;
+                  }
+                  console.log(showtime)
                   res.render("./user/concert/selectshowtime", {
                      concert: concert,
                      zoneInfo: zoneInfo,
                      venue: venue[0],
                      name: name,
                      selectedShowtime: showtimeID,
-                     showtime : showtime
+                     showtime: showtime
                   });
                })
             });
@@ -178,7 +181,7 @@ router.get("/:name/showtime/:showtime",function (req, res) {
 
 
 // Book seat
-router.get("/:name/showtime/:showtime/:zone",isUser, function (req, res) {
+router.get("/:name/showtime/:showtime/:zone", isUser, function (req, res) {
    var name = req.params.name;
    var concertName = name.split("-").join(" ");
    var showtimeID = req.params.showtime;
@@ -227,18 +230,18 @@ router.get("/:name/showtime/:showtime/:zone",isUser, function (req, res) {
                            throw err;
                         }
                         var getConcert = "SELECT * FROM concert WHERE Concert_Name = ?";
-                        connection.query(getConcert,[concertName],function (err, concert) {
+                        connection.query(getConcert, [concertName], function (err, concert) {
                            if (err) {
                               throw err;
                            }
                            var getMemberInfo = "SELECT * FROM member WHERE Member_Username = ?;";
                            connection.query(getMemberInfo, 'test', function (err, memberInfo) {
-                           if (err) {
-                              throw err;
+                              if (err) {
+                                 throw err;
                               }
                            });
                            var getPromotion = "SELECT DISTINCT p.* FROM promotion p, member_promotion mp , member m WHERE p.Concert_ID = ? AND CURDATE() > p.Promotion_Start AND CURDATE() < p.Promotion_End AND mp.MemberType_ID = m.MemberType_ID AND m.Member_Username = ?;";
-                           connection.query(getPromotion,[concert[0].Concert_ID,req.session.username],function (err, promotion) {
+                           connection.query(getPromotion, [concert[0].Concert_ID, req.session.username], function (err, promotion) {
                               if (err) {
                                  throw err;
                               }
@@ -268,14 +271,21 @@ router.get("/:name/showtime/:showtime/:zone",isUser, function (req, res) {
 });
 
 
-router.post("/:name/showtime/:showtime/:zone/booking",isUser, function (req, res) {
+router.post("/:name/showtime/:showtime/:zone/booking", isUser, function (req, res) {
    var concertName = req.body.concertName;
    var concertShowtime = req.body.concertShowtime;
    var venueName = req.body.venueName;
    var zoneName = req.body.zoneName;
    var zoneID = req.body.zoneID;
    var name = req.params.name;
-   var promotion = req.body.promotion;
+   var promotionID = req.body.promotion;
+   console.log("HERE:" + promotionID);
+   if(promotionID == ""){
+      promotionID = null;
+      console.log("Below");
+      console.log(promotionID);
+   }
+   console.log("Promotion: " + promotionID);
    console.log("ID" + zoneID);
    var zonePrice = req.body.zonePrice;
    var ticketID = req.body.ticketID;
@@ -299,90 +309,104 @@ router.post("/:name/showtime/:showtime/:zone/booking",isUser, function (req, res
       if (err) {
          throw err;
       }
-      var getPayment = "SELECT * FROM payment;";
+      var getPayment = "SELECT * FROM payment WHERE Payment_ID = ?;";
       connection.query(getPayment, [paymentID], function (err, payment) {
          if (err) {
             throw err;
          }
-         var sqlBooking = "INSERT INTO booking ( Member_Username, Concert_ShowTime_ID,Booking_DateTime,Booking_Quantity, Ticket_Receiving_ID ,Payment_ID,Booking_Total_Price) " +
-            "VALUES (?,?,?,?,?,?,?)";
-         var now = new Date();
-         console.log(showtimeID);
-         var paymentFee = payment[0].Payment_Fee;
-         var ticketFee = ticket[0].Ticket_Receiving_Fee;
-         var total = (quantity * zonePrice) + paymentFee + ticketFee;
-         console.log(total);
-         var username = req.session.username;
-         connection.query(sqlBooking, [username, showtimeID, dateFormat(now, "isoDateTime"), quantity, ticketID, paymentID, total], function (err, venue) {
+         var getPromotion = "SELECT * FROM promotion WHERE Promotion_ID = ?;";
+         connection.query(getPromotion, [promotionID], function (err, promotion) {
             if (err) {
                throw err;
             }
-            console.log("1 Booking is Inserted")
-            var getBookingID = "SELECT Booking_ID FROM booking WHERE Member_Username = ? ORDER BY Booking_ID DESC LIMIT 1";
-            connection.query(getBookingID, [username], function (err, bookingID) {
+            var sqlBooking = "INSERT INTO booking ( Member_Username, Concert_ShowTime_ID,Booking_DateTime,Booking_Quantity, Ticket_Receiving_ID ,Payment_ID,Booking_Total_Price,Promotion_ID) " +
+               "VALUES (?,?,?,?,?,?,?,?)";
+            var now = new Date();
+            console.log(showtimeID);
+            var paymentFee = payment[0].Payment_Fee;
+            var ticketFee = ticket[0].Ticket_Receiving_Fee;
+            if(promotion != ""){
+               console.log("Promotion!!!!!!");
+               var discountPercent = promotion[0].Promotion_Discount;
+               var discount = (quantity * zonePrice) * (discountPercent / 100)
+            } else{
+               var discount = 0;
+            }
+            var total = (quantity * zonePrice) + paymentFee + ticketFee - discount;
+            console.log(total);
+            var username = req.session.username;
+            console.log(promotion)
+            connection.query(sqlBooking, [username, showtimeID, dateFormat(now, "isoDateTime"), quantity, ticketID, paymentID, total, promotionID], function (err, venue) {
                if (err) {
                   throw err;
                }
-               var sqlBookedSeat = "INSERT INTO booked_seat (Seat_ID,Concert_ShowTime_ID,Booking_ID) " +
-                  "VALUES (?,?,?)";
-               console.log(bookingSeat);
-               console.log(bookingID);
-               if (zoneType == "Seating") {
-                  if (quantity > 1) {
-                     bookingSeat.forEach(function (item) {
-                        connection.query(sqlBookedSeat, [item, showtimeID, bookingID[0].Booking_ID], function (err, venue) {
-                           if (err) {
-                              throw err;
-                           }
-                           console.log(item + " is Booked")
-
-                        });
-                     });
-                  } else {
-                     connection.query(sqlBookedSeat, [bookingSeat, showtimeID, bookingID[0].Booking_ID], function (err, venue) {
-                        if (err) {
-                           throw err;
-                        }
-                        console.log(bookingSeat + " is Booked")
-                     });
+               console.log("1 Booking is Inserted")
+               var getBookingID = "SELECT Booking_ID FROM booking WHERE Member_Username = ? ORDER BY Booking_ID DESC LIMIT 1";
+               connection.query(getBookingID, [username], function (err, bookingID) {
+                  if (err) {
+                     throw err;
                   }
-               } else if (zoneType == "Standing") {
-                  var quantityNumber = Number(quantity);
-                  var getStandindSeat = "SELECT s.Seat_ID FROM seat s, zone z WHERE s.Zone_ID = ? AND NOT EXISTS(SELECT 1 FROM booked_seat bs WHERE bs.Seat_ID = s.Seat_ID) LIMIT ?;";
-                  connection.query(getStandindSeat, [zoneID, quantityNumber], function (err, bookingSeat) {
-                     if (err) {
-                        throw err;
-                     }
+                  var sqlBookedSeat = "INSERT INTO booked_seat (Seat_ID,Concert_ShowTime_ID,Booking_ID) " +
+                     "VALUES (?,?,?)";
+                  console.log(bookingSeat);
+                  console.log(bookingID);
+                  if (zoneType == "Seating") {
                      if (quantity > 1) {
-                        console.log("GO");
                         bookingSeat.forEach(function (item) {
-                           connection.query(sqlBookedSeat, [item.Seat_ID, showtimeID, bookingID[0].Booking_ID], function (err, venue) {
+                           connection.query(sqlBookedSeat, [item, showtimeID, bookingID[0].Booking_ID], function (err, venue) {
                               if (err) {
                                  throw err;
                               }
-                              console.log(item.Seat_ID + " is Booked")
+                              console.log(item + " is Booked")
+
                            });
                         });
                      } else {
-                        console.log("Hi");
-                        console.log(bookingSeat.Seat_ID);
-                        connection.query(sqlBookedSeat, [bookingSeat[0].Seat_ID, showtimeID, bookingID[0].Booking_ID], function (err, venue) {
+                        connection.query(sqlBookedSeat, [bookingSeat, showtimeID, bookingID[0].Booking_ID], function (err, venue) {
                            if (err) {
                               throw err;
                            }
-                           console.log(bookingSeat[0].Seat_ID + " is Booked")
+                           console.log(bookingSeat + " is Booked")
                         });
                      }
-                  });
-               }
-               res.redirect("/concert/" + name + "/showtime/" + showtimeID + "/booking/" + bookingID[0].Booking_ID)
+                  } else if (zoneType == "Standing") {
+                     var quantityNumber = Number(quantity);
+                     var getStandindSeat = "SELECT s.Seat_ID FROM seat s, zone z WHERE s.Zone_ID = ? AND NOT EXISTS(SELECT 1 FROM booked_seat bs WHERE bs.Seat_ID = s.Seat_ID) LIMIT ?;";
+                     connection.query(getStandindSeat, [zoneID, quantityNumber], function (err, bookingSeat) {
+                        if (err) {
+                           throw err;
+                        }
+                        if (quantity > 1) {
+                           console.log("GO");
+                           bookingSeat.forEach(function (item) {
+                              connection.query(sqlBookedSeat, [item.Seat_ID, showtimeID, bookingID[0].Booking_ID], function (err, venue) {
+                                 if (err) {
+                                    throw err;
+                                 }
+                                 console.log(item.Seat_ID + " is Booked")
+                              });
+                           });
+                        } else {
+                           console.log("Hi");
+                           console.log(bookingSeat.Seat_ID);
+                           connection.query(sqlBookedSeat, [bookingSeat[0].Seat_ID, showtimeID, bookingID[0].Booking_ID], function (err, venue) {
+                              if (err) {
+                                 throw err;
+                              }
+                              console.log(bookingSeat[0].Seat_ID + " is Booked")
+                           });
+                        }
+                     });
+                  }
+                  res.redirect("/concert/" + name + "/showtime/" + showtimeID + "/booking/" + bookingID[0].Booking_ID)
+               });
             });
          });
       });
    });
 });
 
-router.get("/:name/showtime/:showtime/booking/:bookingID",isUser, function (req, res) {
+router.get("/:name/showtime/:showtime/booking/:bookingID", isUser, function (req, res) {
    var showtimeID = req.params.showtime;
    var name = req.params.name;
    var bookingID = req.params.bookingID;
@@ -412,32 +436,45 @@ router.get("/:name/showtime/:showtime/booking/:bookingID",isUser, function (req,
                   if (err) {
                      throw err;
                   }
-                  var getTicketInfo = "SELECT * FROM ticket_receiving;";
-                  connection.query(getTicketInfo, bookedSeat[0].Ticket_Receiving_ID, function (err, ticketInfo) {
+                  var getTicketInfo = "SELECT * FROM ticket_receiving WHERE Ticket_Receiving_ID = ?;";
+                  connection.query(getTicketInfo, bookingInfo[0].Ticket_Receiving_ID, function (err, ticketInfo) {
                      if (err) {
                         throw err;
                      }
-                     var getPaymentInfo = "SELECT * FROM payment";
-                     connection.query(getPaymentInfo, bookedSeat[0].Payment_ID, function (err, paymentInfo) {
+                     var getPaymentInfo = "SELECT * FROM payment WHERE Payment_ID = ?; ";
+                     console.log(bookingID[0].Payment_ID);
+                     connection.query(getPaymentInfo, bookingInfo[0].Payment_ID, function (err, paymentInfo) {
                         if (err) {
                            throw err;
                         }
-                        concertInfo[0].Concert_ShowDate = dateFormat(concertInfo[0].Concert_ShowDate,"fullDate");
-                        console.log(concertInfo);
-                        console.log(bookingInfo);
-                        console.log(memberInfo);
-                        console.log(bookedSeat);
-                        console.log(zoneInfo);
-                        console.log(ticketInfo);
-                        console.log(paymentInfo)
-                        res.render("./user/concert/bookinginfo", {
-                           concert: concertInfo[0],
-                           booking: bookingInfo[0],
-                           member: memberInfo[0],
-                           bookedSeat: bookedSeat,
-                           zone: zoneInfo[0],
-                           ticket: ticketInfo[0],
-                           payment: paymentInfo[0]
+                        
+                        if( bookingInfo[0].Promotion_ID == null){
+                           bookingInfo[0].Promotion_ID = 0;
+                        }
+                        var getPromotionInfo = "SELECT * FROM promotion WHERE Promotion_ID = ?; ";
+                        connection.query(getPromotionInfo, bookingInfo[0].Promotion_ID, function (err, promotionInfo) {
+                           if (err) {
+                              throw err;
+                           }
+                           concertInfo[0].Concert_ShowDate = dateFormat(concertInfo[0].Concert_ShowDate, "fullDate");
+                           console.log(concertInfo);
+                           console.log(bookingInfo);
+                           console.log(memberInfo);
+                           console.log(bookedSeat);
+                           console.log(zoneInfo);
+                           console.log(ticketInfo);
+                           console.log(paymentInfo)
+                           console.log(promotionInfo);
+                           res.render("./user/concert/bookinginfo", {
+                              concert: concertInfo[0],
+                              booking: bookingInfo[0],
+                              member: memberInfo[0],
+                              bookedSeat: bookedSeat,
+                              zone: zoneInfo[0],
+                              ticket: ticketInfo[0],
+                              payment: paymentInfo[0],
+                              promotion: promotionInfo[0]
+                           });
                         });
                      });
                   });
