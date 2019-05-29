@@ -5,22 +5,27 @@
 
 <div class="container">
     <div class="jumbotron">
-        <div class="row">
-            <div class="col mx-5">
-                <h1 class="display-4 mx-5">Add Concert Zone</h1>
-                <hr>
-                <form action="/admin/concert-zone/select" method="POST">
-                    <div class="form-group row mx-4 my-5">
-                        <label for="recordLabelrecieve" class="col-sm-3 col-form-label">Search Concert</label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" name="search">
-                        </div>
+            <div class="row">
+                    <div class="col mx-5">
+                        <h1 class="display-1">Add Concert Zone</h1>
+                        <hr>
+                        <div class="form-group row mx-4 my-5">
+                                <label for="ticketrecieve" class="col-sm-3 ml-5 col-form-label">Search Concert</label>
+                                <div class="col-sm-6">
+                        <form action="/admin/concert-zone/select" method="POST">
+                            <select name="search" id="dropdown" class="form-control selectpicker"
+                                data-live-search="true">
+                                <option value="" disabled> --Please Select Concert -- </option>
+                                <% search.forEach(function(item){ %>
+                                    <option value="<%= item.Concert_Name %>" > <%= item.Concert_Name  %> </option>
+                                <% }) %>
+                            </select>
+                            </div>
                         <button class="btn btn-success">Search</button>
                     </div>
-            </div>
-            </form>
-
-        </div>
+                    </div>
+                </form>
+                </div>
 
 
         <% if (showtime && showtime != "none") { %>
@@ -86,7 +91,7 @@
                 </div>
             </div>
             <% } else if(showtime == "none") {%>
-            <p> NONE</p>
+            <p> This Concert has no showtime, Please Add showtime first to add zone</p>
             <% } %>
     </div>
 </div>

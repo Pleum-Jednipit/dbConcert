@@ -28,14 +28,22 @@ function updateSeat(zoneID, allSeat) {
    });
 }
 
-router.get("/select", isAdmin,function (req, res) {
-   res.render("./admin/concert-index/concert-zone/select", {
-      showtime: ""
+router.get("/select", isAdmin, function (req, res) {
+   var sql = "SELECT * FROM concert;";
+   connection.query(sql, function (err, result) {
+      if (err) {
+         throw err;
+      }
+      res.render("./admin/concert-index/concert-zone/select", {
+         showtime: "",
+         search: result
+      });
    });
 });
 
-router.post("/select",isAdmin, function (req, res) {
+router.post("/select", isAdmin, function (req, res) {
    var search = req.body.search;
+   var sql = "SELECT * FROM concert;";
    var sqlSearch = "SELECT cs.* FROM concert_showtime cs, concert c WHERE cs.Concert_ID = c.Concert_ID AND c.Concert_Name = ?;";
    connection.query(sqlSearch, [search], function (err, allShowtime) {
       if (err) {
@@ -43,20 +51,32 @@ router.post("/select",isAdmin, function (req, res) {
       }
       var name = search.split(" ").join("-");
       if (allShowtime[0]) {
-         res.render("./admin/concert-index/concert-zone/select", {
-            showtime: allShowtime,
-            concertName: search,
-            name: name
+         connection.query(sql, function (err, result) {
+            if (err) {
+               throw err;
+            }
+            res.render("./admin/concert-index/concert-zone/select", {
+               showtime: allShowtime,
+               concertName: search,
+               name: name,
+               search: result
+            });
          });
       } else {
-         res.render("./admin/concert-index/concert-zone/select", {
-            showtime: "none"
+         connection.query(sql, function (err, result) {
+            if (err) {
+               throw err;
+            }
+            res.render("./admin/concert-index/concert-zone/select", {
+               showtime: "none",
+               search: result
+            });
          });
       }
    });
 });
 
-router.get("/select/:name/:id",isAdmin,function (req, res) {
+router.get("/select/:name/:id", isAdmin, function (req, res) {
    var concertShowtimeID = req.params.id;
    var concertName = req.params.name.split("-").join(" ");
    var sqlSearch = "SELECT * FROM concert_showtime WHERE Concert_ShowTime_ID = ?;";
@@ -64,8 +84,8 @@ router.get("/select/:name/:id",isAdmin,function (req, res) {
       if (err) {
          throw err;
       }
-      showtime.forEach(function(item){
-         item.Concert_ShowDate = dateFormat(item.Concert_ShowDate,"fullDate");
+      showtime.forEach(function (item) {
+         item.Concert_ShowDate = dateFormat(item.Concert_ShowDate, "fullDate");
          console.log("After");
       });
       var getAllZone = "SELECT * FROM zone WHERE concert_showtime_id = ?;";
@@ -84,7 +104,7 @@ router.get("/select/:name/:id",isAdmin,function (req, res) {
    });
 });
 
-router.get("/new/:name/:id",isAdmin, function (req, res) {
+router.get("/new/:name/:id", isAdmin, function (req, res) {
    var concertShowtimeID = req.params.id;
    var concertName = req.params.name;
    var sqlSearch = "SELECT * FROM concert_showtime WHERE Concert_Showtime_ID = ?;";
@@ -99,7 +119,7 @@ router.get("/new/:name/:id",isAdmin, function (req, res) {
    });
 });
 
-router.post("/new/:name/:id", isAdmin,function (req, res) {
+router.post("/new/:name/:id", isAdmin, function (req, res) {
    var concertShowtimeID = req.params.id;
    var concertName = req.params.name;
    console.log(concertName);
@@ -162,7 +182,7 @@ router.post("/new/:name/:id", isAdmin,function (req, res) {
 });
 
 
-router.get("/edit/:name/:id/:zone", isAdmin,function (req, res) {
+router.get("/edit/:name/:id/:zone", isAdmin, function (req, res) {
    var concertShowtimeID = req.params.id;
    var concertName = req.params.name;
    var zoneID = req.params.zone;
@@ -187,7 +207,7 @@ router.get("/edit/:name/:id/:zone", isAdmin,function (req, res) {
    });
 });
 
-router.post("/edit/:name/:id/:zone", isAdmin,function (req, res) {
+router.post("/edit/:name/:id/:zone", isAdmin, function (req, res) {
    var concertShowtimeID = req.params.id;
    var concertName = req.params.name;
    var zoneID = req.params.zone;
@@ -274,7 +294,7 @@ router.post("/edit/:name/:id/:zone", isAdmin,function (req, res) {
                   if (err) {
                      throw err;
                   }
-                  console.log( Math.abs(diff) + " Seat  is deleted");
+                  console.log(Math.abs(diff) + " Seat  is deleted");
                });
             }
          }
@@ -283,7 +303,7 @@ router.post("/edit/:name/:id/:zone", isAdmin,function (req, res) {
    res.redirect("/admin/concert-zone/select/" + concertName + "/" + concertShowtimeID);
 });
 
-router.get("/delete/:name/:id/:zone",isAdmin, function (req, res) {
+router.get("/delete/:name/:id/:zone", isAdmin, function (req, res) {
    var concertShowtimeID = req.params.id;
    var concertName = req.params.name;
    var zoneID = req.params.zone;

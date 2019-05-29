@@ -31,7 +31,13 @@ router.get("/new", isAdmin,function (req, res) {
  });
 
  router.get("/edit", isAdmin,function (req, res) {
-      res.render("./admin/concert-index/concert-artist/record-label/edit", {recordLabel : ""});
+   var sql = "SELECT * FROM record_label;";
+   connection.query(sql, function (err, result) {
+      if (err) {
+         throw err;
+      }
+      res.render("./admin/concert-index/concert-artist/record-label/edit", {recordLabel : "", search: result});
+      });
  });
 
  router.post("/edit", isAdmin,function (req, res) {
@@ -42,7 +48,13 @@ router.get("/new", isAdmin,function (req, res) {
           throw err;
        }
        if(recordLabel[0]){
-         res.render("./admin/concert-index/concert-artist/record-label/edit", { recordLabel: recordLabel[0]});
+         var sql = "SELECT * FROM record_label;";
+         connection.query(sql, function (err, result) {
+            if (err) {
+               throw err;
+            }
+            res.render("./admin/concert-index/concert-artist/record-label/edit", { recordLabel: recordLabel[0],search:result});
+            });
        }
        else{
          res.render("./admin/concert-index/concert-artist/record-label/edit", { recordLabel: "none"});

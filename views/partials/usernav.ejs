@@ -26,7 +26,7 @@
                         <a class="nav-link" href="/promotion">Promotion</a>
                     </li>
                     <li class="nav-item mx-2">
-                            <a class="nav-link" href="/promotion">Statistic</a>
+                            <a class="nav-link" href="/statistic">Statistic</a>
                     </li>
                 </ul>
 
@@ -35,15 +35,25 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <% if(!isLogin) {%>
-            <div class="col-md-2 ">
+            <div class="col-md-2 text-right">
                 <div class="collapse navbar-collapse navbar-toggle" id="navbarNavAltMarkup">
-                    <button class="btn btn-outline-warning btn-lg mx-4" data-toggle="modal"
-                        data-target="#ModalExample">Sign in</button>
+                    <a href="/login" data-target="#ModalExample">Sign in</a>
                 </div>
+            </div>
+            <div class="col-md-2 ">
+                    <div class="collapse navbar-collapse navbar-toggle" id="navbarNavAltMarkup">
+                        <a href="/login"  
+                            data-target="#ModalExample">Register</a>
+                    </div>
             </div>
             <% } else { %>
             <div class="col-md-2 ">
                 <label class="control-label">Welcone <%= currentUser  %> !</label>
+            </div>
+            <div class="col-md-2 ">
+                    <div class="collapse navbar-collapse navbar-toggle" id="navbarNavAltMarkup">
+                        <a href="/logout" class="btn btn-outline-warning btn m-4">Sign out</a>
+                    </div>
             </div>
             <div class="col-md-2 ">
                 <div class="collapse navbar-collapse navbar-toggle" id="navbarNavAltMarkup">
@@ -64,79 +74,3 @@
         </div>
         <% } %>
     </div>
-    <!---Modal of nav--->
-    <div class="modal left fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="flex-column">
-                        <a class="nav-item nav-link active" href="#">Home</a>
-                        <a href="#" class="nav-item nav-link">Link</a>
-                        <a href="#" class="nav-item nav-link">Link</a>
-                        <a href="#" class="nav-item nav-link">Link</a>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Login -->
-    <form action="/login" method="POST">
-        <div id="ModalExample" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-12 text-center">
-                                    <h4 class="modal-title text-center">Log in</h4>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                    <div class="modal-body">
-                        <form role="form" method="POST" action="">
-                            <input type="hidden" name="_token" value="">
-                            <div class="form-group">
-                                <label class="control-label">Username</label>
-                                <div>
-                                    <input type="text" class="form-control input-lg" name="username">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label">Password</label>
-                                <div>
-                                    <input type="password" class="form-control input-lg" name="password">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="remember"> Remember Me
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div>
-                                    <a class="btn btn-link" href="">Forgot Your Password?</a>
-                                    <button type="submit" class="btn btn-info btn-block">Login</button>
-                                </div>
-                            </div>
-
-                        </form>
-                    </div>
-                    <div class="modal-footer text-xs-center">
-                        Don't have an account? <a href="/auth/register">Sign up »</a>
-                    </div>
-
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->

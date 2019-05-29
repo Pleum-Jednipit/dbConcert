@@ -29,11 +29,18 @@ router.get("/new",isAdmin, function (req, res) {
 
 
  router.get("/edit",isAdmin, function (req, res) {
-   res.render("./admin/payment-index/ticket-receiving/edit", {ticket : ""});
+   var sql = "SELECT * FROM ticket_receiving;";
+   connection.query(sql, function (err, result) {
+      if (err) {
+         throw err;
+      }
+      res.render("./admin/payment-index/ticket-receiving/edit", {ticket : "", search: result});
+      });
+  
 });
 
 router.post("/edit", isAdmin,function (req, res) {
- var search    = req.body.ticketName;
+ var search    = req.body.search;
  var sqlSearch = "SELECT * FROM ticket_receiving WHERE Ticket_Receiving_Name = ?;" ;
  connection.query(sqlSearch,[search], function (err, ticket) {
     if (err) {
@@ -41,7 +48,13 @@ router.post("/edit", isAdmin,function (req, res) {
     }
     console.log(ticket[0]);
     if(ticket[0]){
-      res.render("./admin/payment-index/ticket-receiving/edit", { ticket: ticket[0]});
+      var sql = "SELECT * FROM ticket_receiving;";
+      connection.query(sql, function (err, result) {
+         if (err) {
+            throw err;
+         }
+         res.render("./admin/payment-index/ticket-receiving/edit", { ticket: ticket[0], search : result});
+         });
     }
     else{
       res.render("./admin/payment-index/ticket-receiving/edit", { ticket: "none"});
