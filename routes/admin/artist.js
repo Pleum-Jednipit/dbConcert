@@ -8,23 +8,13 @@ var {
 } = middleware;
 
 
-router.get("/new", isAdmin, function (req, res) {
+router.get("/new", isAdmin,function (req, res) {
    var getRecordLabel = "SELECT Record_Label_ID, Record_Label_Name FROM record_label;";
    connection.query(getRecordLabel, function (err, allRecordLabel) {
-      if (err) {
-         throw err;
-      }
-      var sqlSearch = "SELECT * FROM venue";
-      connection.query(sqlSearch, function (err, search) {
-         if (err) {
-            throw err;
-         }
-         res.render("./admin/venue/edit", {
-            venue: "",
-            search: search
-         });
-      });
-
+       if (err) {
+          throw err;
+       }
+      res.render("./admin/concert-index/concert-artist/artist/new", {recordLabel: allRecordLabel});
    });
 });
 

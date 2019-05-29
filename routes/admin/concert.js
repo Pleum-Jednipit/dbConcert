@@ -35,7 +35,6 @@ router.get("/new",function (req, res) {
     var venueID = req.body.venueID;
     var poster = req.body.poster;
     console.log("before" + date);
-
     connection.query(sql, [name,dateFormat(date,"isoDate"),time, detail, venueID,poster], function (err, result) {
        if (err) {
           throw err;

@@ -11,22 +11,19 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item mx-2">
-                        <a class="nav-link" href="/index">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link active" href="/concert">Concert <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item mx-2">
-                        <a class="nav-link" href="/concert">Concert <span class="sr-only">(current)</span></a>
+                        <a class="nav-link active" href="/venue">Venue</a>
                     </li>
                     <li class="nav-item mx-2">
-                        <a class="nav-link" href="/venue">Venue</a>
+                        <a class="nav-link active" href="/artist">Artist</a>
                     </li>
                     <li class="nav-item mx-2">
-                        <a class="nav-link" href="/artist">Artist</a>
+                        <a class="nav-link active" href="/promotion">Promotion</a>
                     </li>
                     <li class="nav-item mx-2">
-                        <a class="nav-link" href="/promotion">Promotion</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                            <a class="nav-link" href="/statistic">Statistic</a>
+                            <a class="nav-link active" href="/statistic">Statistic</a>
                     </li>
                 </ul>
 
@@ -35,31 +32,37 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <% if(!isLogin) {%>
-            <div class="col-md-2 text-right">
-                <div class="collapse navbar-collapse navbar-toggle" id="navbarNavAltMarkup">
-                    <a href="/login" data-target="#ModalExample">Sign in</a>
-                </div>
-            </div>
-            <div class="col-md-2 ">
-                    <div class="collapse navbar-collapse navbar-toggle" id="navbarNavAltMarkup">
-                        <a href="/login"  
-                            data-target="#ModalExample">Register</a>
-                    </div>
+            <div class="form-inline">
+                   <ul class="navbar-nav mr-auto">
+                        <div class="text-right">
+                                <div class="collapse navbar-collapse navbar-toggle" id="navbarNavAltMarkup">
+                                    <a class="nav-link active" href="/login" data-target="#ModalExample">Sign in</a>
+                                </div>
+                            </div>
+                            <div class="mx-2">
+                                    <div class="collapse navbar-collapse navbar-toggle" id="navbarNavAltMarkup">
+                                        <a href="/register"  class="nav-link active"
+                                            data-target="#ModalExample">Register</a>
+                                    </div>
+                            </div>
+                   </ul>
             </div>
             <% } else { %>
-            <div class="col-md-2 ">
-                <label class="control-label">Welcone <%= currentUser  %> !</label>
-            </div>
-            <div class="col-md-2 ">
-                    <div class="collapse navbar-collapse navbar-toggle" id="navbarNavAltMarkup">
-                        <a href="/logout" class="btn btn-outline-warning btn m-4">Sign out</a>
-                    </div>
-            </div>
-            <div class="col-md-2 ">
-                <div class="collapse navbar-collapse navbar-toggle" id="navbarNavAltMarkup">
-                    <a href="/logout" class="btn btn-outline-warning btn mx-4">Sign out</a>
-                </div>
-            </div>
+                <div class="form-inline">
+                        <ul class="navbar-nav mr-auto">
+                             <div class="text-right">
+                                     <div class="collapse navbar-collapse navbar-toggle" id="navbarNavAltMarkup">
+                                         <a class="nav-link active" href="/logout" data-target="#ModalExample">Sign out</a>
+                                     </div>
+                                 </div>
+                                 <div class="mx-2">
+                                         <div class="collapse navbar-collapse navbar-toggle" id="navbarNavAltMarkup">
+                                             <a href="/profile"  class="nav-link active"
+                                                 data-target="#ModalExample">Your Profile</a>
+                                         </div>
+                                 </div>
+                        </ul>
+                 </div>
             <% } %>
     </nav>
     <div class="container">

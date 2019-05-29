@@ -88,7 +88,7 @@ router.post("/login", function (req, res) {
             console.log("Login:" + req.session.isLogin);
             console.log("Username: " + req.session.username);
 
-            req.flash("success", "Welcome to Concert " + req.session.username);
+            req.flash("success", "Welcome to our Concert Reservation Website   " + req.session.username + "!");
 
             if(req.session.currentPage){
                res.redirect(req.session.currentPage);
