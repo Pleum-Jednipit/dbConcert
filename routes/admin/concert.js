@@ -125,6 +125,9 @@ router.post("/:id/new",function (req, res) {
        if (err) {
           throw err;
        }
+      //  concert.forEach(function(item){
+      //    item.Concert_Sales_Date = dateFormat(item.Concert_Sales_Date,"isoDate");
+      //  });
        console.log(concert);
        if(concert[0]){
          var getCurrentVenue = "SELECT Venue_Name FROM venue WHERE Venue_ID = ?";
@@ -149,7 +152,6 @@ router.post("/:id/new",function (req, res) {
          });
        }
        else{
-          console.log("f");
          res.render("./admin/concert-index/concert/edit", { concert: "none"});
        }
    });

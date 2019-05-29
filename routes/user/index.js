@@ -118,4 +118,11 @@ router.get("/logout", function (req, res) {
 });
 
 
+router.get("/statistic", function (req, res) {
+   res.render("./user/statistic");
+});
+
+
+
+
 module.exports = router;

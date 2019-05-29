@@ -4,23 +4,30 @@
 <% include ../../../partials/nav %>
     <div class="container">
         <div class="jumbotron">
-            <div class="row">
-                <div class="col mx-5">
-                    <h1 class="display-1">Edit</h1>
-                    <hr>
-                    <form action="/admin/payment-method/edit" method="POST">
-                        <div class="form-group row mx-4 my-5">
-
-                            <label for="paymentrecieve" class="col-sm-3 col-form-label">Search Payment Method</label>
-                            <div class="col-sm-6">
-                                <input type="text" class="form-control" name="search">
-                            </div>
-                            <button class="btn btn-outline-success">Search</button>
+                <div class="row">
+                        <div class="col mx-5">
+                            <h1 class="display-1">Edit</h1>
+                            <hr>
+                            <div class="form-group row mx-4 my-5">
+                                    <label for="ticketrecieve" class="col-sm-3 ml-5 col-form-label">Search Payment</label>
+                                    <div class="col-sm-6">
+                            <form action="/admin/payment-method/edit" method="POST">
+                                <select name="dropdown" id="dropdown" class="form-control selectpicker"
+                                    data-live-search="true">
+                                    <% search.forEach(function(item){ %>
+                                        <% if (payment && payment.Payment_Name == item.Payment_Name) {%>
+                                        <option value="<%= item.Payment_Name %>" selected> <%= item.Payment_Name  %> </option>
+                                        <% } else { %>
+                                    <option value="<%= item.Payment_Name %>"> <%= item.Payment_Name  %> </option>
+                                    <% } %>
+                                    <% }) %>
+                                </select>
+                                </div>
+                            <button class="btn btn-success">Search</button>
+                        </div>
                         </div>
                     </form>
-                </div>
-
-            </div>
+                    </div>
             <% if (payment && payment != "none") { %>
             <form action="/admin/payment-method/edit?_method=PUT" method="POST">
             <div class="container my-5" id="find">

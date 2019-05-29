@@ -8,16 +8,24 @@
             <div class="col mx-5">
                 <h1 class="display-1">Edit</h1>
                 <hr>
-                <form action="/admin/venue/edit" method="POST">
                 <div class="form-group row mx-4 my-5">
-
-                    <label for="venuename" class="col-sm-2 col-form-label">Search Venue</label>
-                    <div class="col-sm-6">
-                        <input type="text" name="search" class="form-control" id="venuename" placeholder="venuename">
+                        <label for="ticketrecieve" class="col-sm-3 ml-5 col-form-label">Search Venue</label>
+                        <div class="col-sm-6">
+                <form action="/admin/venue/edit" method="POST">
+                    <select name="dropdown" id="dropdown" class="form-control selectpicker"
+                        data-live-search="true">
+                        <% search.forEach(function(item){ %>
+                            <% if (venue && venue.Venue_Name == item.Venue_Name) {%>
+                            <option value="<%= item.Venue_Name %>" selected> <%= item.Venue_Name  %> </option>
+                            <% } else { %>
+                        <option value="<%= item.Venue_Name %>"> <%= item.Venue_Name  %> </option>
+                        <% } %>
+                        <% }) %>
+                    </select>
                     </div>
-                    <button class="btn btn-success">Search</button>
-                </div>
-            </form>
+                <button class="btn btn-success">Search</button>
+                </form>
+            </div>
             </div>
 
         </div>

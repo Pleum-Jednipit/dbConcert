@@ -29,6 +29,10 @@ router.get("/", function (req, res) {
        }
        console.log("ho");
        console.log(promotionInfo[0])
+       promotionInfo.forEach(function(item){
+         item.Promotion_Start = dateFormat(item.Promotion_Start,"mediumDate");
+         item.Promotion_End = dateFormat(item.Promotion_End,"mediumDate");
+       });
        res.render("./user/promotion/promotionshow", {promotion : promotionInfo[0]});
     });
  });
