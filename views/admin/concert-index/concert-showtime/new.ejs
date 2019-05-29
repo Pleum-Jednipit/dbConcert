@@ -227,8 +227,8 @@
         $(".add-new").click(function(){
             var index = $("table tbody tr:last-child").index();
             var row = '<tr>' +
-                '<td><input type="text" class="form-control" name="name" id="name"></td>' +
-                '<td><input id="timepicker" type="text" class="form-control" name="time"/></td>' +
+                '<td><input type="text" class="form-control" placeholder="yyyy-mm-dd" name="name" id="name"></td>' +
+                '<td><input id="timepicker" type="text" class="form-control" placeholder="hh:mm" name="time"/></td>' +
                 '<td><input type="text" name="plan"></td>' +
                 '<td>' + actions + '</td>' +
             '</tr>';
@@ -271,7 +271,6 @@
         });
     });
     </script>
-
 </body>
 
 </html>
