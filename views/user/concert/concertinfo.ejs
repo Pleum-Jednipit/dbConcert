@@ -52,7 +52,7 @@
                             </div>
                         <% } else {%>
                     <div class="row my-4">
-                        <div class="col text-center">
+                        <div class="col text-center" >
                                 <a href="/concert/<%= name %>/showtime" type="button" class="btn btn-danger mb-2" style="width: 70%; margin-left: 40px">BUY TICKET</a>
                         </div>
                     </div>
@@ -62,11 +62,23 @@
                 
             </div>
         </div>
-
-                
-
     </div>
-    <p><%= concert[0].Concert_Detail %></p>
+        <div class="row mt-5" style="margin-bottom: 2%">
+                <div class="col-1"></div>
+                <div class="col">
+                    <h2 class="dispaly-1">Detail</h2>
+                </div>
+            </div>
+        <div class="form-group row mx-5" >
+               
+            <br>
+            <textarea readonly class="col-xl form-control" rows="70" disabled id="phone" style="background-color: white; border: 0ch ">
+            <%= concert[0].Concert_Detail %></textarea>            
+        </div>
+ 
+    
+    
+    
     
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
