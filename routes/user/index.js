@@ -11,7 +11,7 @@ router.get("/", function (req, res) {
 
 // Index
 router.get("/index", function (req, res) {
-   var getConcertInfo = "SELECT *  FROM concert c, concert_showtime cs,venue v WHERE cs.Concert_ID = c.Concert_ID AND CURDATE() < cs.Concert_ShowDate  GROUP BY c.Concert_ID , cs.Concert_ShowTime_ID ORDER BY cs.Concert_ShowDate LIMIT 6;";
+   var getConcertInfo = "SELECT *  FROM concert c, concert_showtime cs,venue v WHERE cs.Concert_ID = c.Concert_ID AND CURDATE() < cs.Concert_ShowDate  GROUP BY c.Concert_ID , cs.Concert_ShowTime_ID ORDER BY cs.Concert_ShowDate LIMIT 8;";
    connection.query(getConcertInfo, function (err, concertInfo) {
       if (err) {
          throw err;
@@ -120,6 +120,39 @@ router.get("/logout", function (req, res) {
 
 router.get("/statistic", function (req, res) {
    res.render("./user/statistic");
+});
+
+
+router.get("/profile", function (req, res) {
+   var getMemberInfo = "SELECT * FROM member WHERE Member_Username = ?";
+   connection.query(getMemberInfo,[req.session.username], function (err, member) {
+      if (err) {
+         throw err;
+      }
+      console.log(member);
+      member.forEach(function(item){
+         item.Member_DOB = dateFormat(item.Member_DOB,"isoDate");
+      });
+      res.render("./user/profile", { member: member[0]});
+   });
+});
+
+
+router.post("/profile", function (req, res) {
+   var name = req.body.name;
+   var dob = req.body.date;
+   var gender = req.body.gender;
+   var email = req.body.email;
+   var address = req.body.address;
+   var phoneNumber = req.body.phone;
+   var dateOfBirth = dateFormat(dob,"isoDate");
+   var sql = "UPDATE member SET Member_Name = ?, Member_DOB = ? ,Member_Gender = ? ,Member_Address = ?, Member_EmailAddress = ?, Member_PhoneNumber = ? WHERE Member_Username = ?";
+   connection.query(sql,[name,dateOfBirth,gender,email,address,phoneNumber,req.session.username], function (err, member) {
+      if (err) {
+         throw err;
+      }
+      res.redirect("/index");
+   });
 });
 
 

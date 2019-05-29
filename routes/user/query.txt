@@ -1,0 +1,14 @@
+
+// Most Booking for concert showtime
+SELECT c.Concert_Name, COUNT(b.Booking_ID) AS Number_of_Booking FROM concert c, booking b, concert_showtime cs WHERE b.Concert_ShowTime_ID = cs.Concert_ShowTime_ID AND cs.Concert_ID = c.Concert_ID GROUP BY cs.Concert_ShowTime_ID ORDER BY Number_of_Booking DESC;
+
+// 
+SELECT * FROM venue ORDER BY Venue_SeatingCapacity DESC;
+
+
+// Most popular booking id
+SELECT p.Payment_Name, COUNT(b.Booking_ID) AS Number FROM payment p, booking b WHERE b.Payment_ID = p.Payment_ID GROUP BY p.Payment_ID ORDER BY Number DESC;
+
+
+//Most artist in one concert
+SELECT c.Concert_Name, COUNT(ca.Concert_Artist_ID) AS Number FROM concert c, concert_artist ca WHERE c.Concert_ID = ca.Concert_Artist_ID GROUP BY ca.Concert_ID   ORDER BY Number DESC;

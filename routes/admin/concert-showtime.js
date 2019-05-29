@@ -35,22 +35,29 @@ router.post("/new", isAdmin, function (req, res) {
          if (err) {
             throw err;
          }
-         res.render("./admin/concert-index/concert-showtime/new", {
-            concert: concert[0],
-            search: result
+         var getShowtime = "SELECT * FROM concert_showtime cs, concert c WHERE cs.Concert_ID = c.Concert_ID AND c.Concert_Name = ?;";
+         connection.query(getShowtime, [search], function (err, showtime) {
+            if (err) {
+               throw err;
+            }
+            res.render("./admin/concert-index/concert-showtime/new", {
+               concert: concert[0],
+               search: result,
+               showtime: showtime
+            });
          });
       });
-
    });
 });
 
-router.post("/new/insert", isAdmin, function (req, res) {
+router.post("/new/insert", function (req, res) {
    var concertID = req.body.concertID;
    var newShowdate = req.body.date;
    var newShowtime = req.body.time;
    var newPlan = req.body.plan;
    var sql = "INSERT INTO concert_showtime (Concert_ShowDate, Concert_ShowTime,Concert_Showtime_Plan,Concert_ID) " +
       "VALUES (?,?,?,?)";
+   console.log(newShowdate);
    if (Array.isArray(newShowdate)) {
       newShowdate.forEach(function (item, index) {
          item = dateFormat(item, "isoDate");

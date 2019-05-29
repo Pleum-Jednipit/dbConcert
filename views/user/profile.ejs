@@ -11,41 +11,29 @@
 		<div class="jumbotron">
 			<div class="row">
 				<div class="col mx-5">
-					<h1 class="display-4 mx-5">Register</h1>
+					<h1 class="display-4 mx-5">Profile</h1>
 					<hr>
 
 				</div>
 			</div>
-			<form method="POST" action="/register">
+			<form method="POST" action="/profile">
 				<div class="container my-5">
 					<div class="row">
 						<div class="col mx-5">
 							<div class="form-group row mx-4">
-
-								<label for="username" class="col-sm-2 col-form-label">Username</label>
-								<div class="col-sm-5">
-									<input type="text" class="form-control" id="username" name="username">
-								</div>
-							</div>
-							<div class="form-group row mx-4">
-
-								<label for="password" class="col-sm-2 col-form-label">Password</label>
-								<div class="col-sm-5">
-									<input type="password" class="form-control" id="password" name="password">
-								</div>
 							</div>
 							<div class="form-group row mx-4">
 
 									<label for="username" class="col-sm-2 col-form-label">Name</label>
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="name" name="name">
+										<input type="text" class="form-control" id="name" name="name" value="<%=member.Member_Name %>">
 									</div>
 								</div>
 							<div class="form-group row mx-4">
 								<label for="DOB" class="col-sm-2 col-form-label">Date of Birth</label>
 								<div class="col-sm-5">
 									<input class="form-control" data-date-format="dd/mm/yyyy" id="datepicker"
-										name="date">
+										name="date" value="<%= member.Member_DOB %>">
 								</div>
 							</div>
 
@@ -57,7 +45,7 @@
 										value="male" checked="">
 									<label class="form-check-label checkbox mr-5" for="exampleRadios1">Male</label>
 									<input class="form-check-input " type="radio" name="gender" id="exampleRadios2"
-										value="female">
+										value="female" checked="">
 									<label class="form-check-label checkbox" for="exampleRadios2">Female</label>
 								</div>
 
@@ -66,21 +54,21 @@
 
 								<label for="email" class="col-sm-2 col-form-label">Email</label>
 								<div class="col-sm-5">
-									<input type="email" class="form-control" id="email" name="email">
+									<input type="email" class="form-control" id="email" name="email" value="<%= member.Member_EmailAddress %>">
 								</div>
 							</div>
 							<div class="form-group row mx-4">
 								<label for="time" class="col-sm-2 col-form-label">Address</label>
 								<div class="col-sm-5">
-									<textarea name="address" class="form-control" id="" cols="30" rows="5"></textarea>
+									<textarea name="address" class="form-control" id="" cols="30" rows="5"><%= member.Member_Address %></textarea>
 								</div>
 							</div>
 							<div class="form-group row mx-4">
 
 								<label for="phone" class="col-sm-2 col-form-label">Phone Number</label>
 								<div class="col-sm-5">
-									<input type="text" name="phone" class="form-control" id="phone"
-										 style="margin-top: 10px">
+									<input type="text" name="phone" class="form-control" id="phone" value="<%= member.Member_PhoneNumber %>"
+										placeholder="0222222222" style="margin-top: 10px">
 								</div>
 							</div>
 							<div class="form-group row  mt-auto">

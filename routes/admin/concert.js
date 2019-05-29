@@ -42,19 +42,6 @@ router.get("/new",function (req, res) {
        console.log("1 Concert is inserted");
        res.redirect("/admin/concert/index");
     });
-   // connection.query(sql, [name,dateFormat(date,"isoDate"),time, detail, venueID,poster], function (err, result) {
-   //    if (err) {
-   //       throw err;
-   //    }
-   //    console.log("1 Concert is inserted");
-   //    var sql2 = "SELECT * FROM concert WHERE Concert_Name = ?"
-   //    connection.query(sql2,name, function (err, result) {
-   //       if (err) {
-   //          throw err;
-   //       }
-   //       res.redirect("/admin/concert/" + result[0].Concert_ID + "/new" );
-   //    });
-   // });
  });
 
  router.get("/:id/new",function (req, res) {
@@ -159,13 +146,13 @@ router.post("/:id/new",function (req, res) {
  router.put("/edit", isAdmin,function (req, res) {
     var concertID = req.body.concertID;
     var concertName = req.body.concertName;
-    var date = req.body.saleDate;
-    var time = req.body.saleTime;
+    var date = req.body.date;
+    var time = req.body.time;
     var detail = req.body.detail;
     var poster = req.body.poster;
     var venue = req.body.venue;
     date = dateFormat(date,"isoDate");
-    var sql = "UPDATE concert SET concert_Name = ?, concert_Sales_Date = ?,concert_Sales_Time = ?, Concert_Detail = ?, Concert_Poster = ?, Venue_ID = ? WHERE concert_ID = ?;"
+    var sql = "UPDATE concert SET concert_Name = ?, concert_Sales_Date = ?, concert_Sales_Time = ?, Concert_Detail = ?, Concert_Poster = ?, Venue_ID = ? WHERE concert_ID = ?;"
     connection.query(sql,[concertName,date,time,detail,poster,venue,concertID], function (err, concert) {
        if (err) {
           throw err;

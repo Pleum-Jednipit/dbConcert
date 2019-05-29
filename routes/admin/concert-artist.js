@@ -92,31 +92,12 @@ router.get("/edit", isAdmin, function (req, res) {
 router.post("/edit", isAdmin, function (req, res) {
    var allArtist = [];
    var search = req.body.search;
-   var sqlSearch = "SELECT ca.* FROM concert_artist ca, concert c WHERE ca.Concert_ID = c.Concert_ID AND c.Concert_Name = ?;";
+   var sqlSearch = "SELECT * FROM concert_artist ca, concert c ,artist a WHERE ca.Concert_ID = c.Concert_ID AND c.Concert_Name = ? AND ca.Artist_ID = a.Artist_ID;";
    connection.query(sqlSearch, [search], function (err, allConcertArtist) {
       if (err) {
          throw err;
       }
       if (allConcertArtist[0]) {
-         async.forEachOf(allConcertArtist, function (concertArtist, none, callback) {
-            var getArtist = "SELECT Artist_ID, Artist_Name FROM artist WHERE Artist_ID = ?";
-            connection.query(getArtist, [concertArtist.Artist_ID], function (err, artist) {
-               if (err) {
-                  throw err;
-               }
-               var data = {
-                  Concert_Artist_ID: concertArtist.Artist_ID,
-                  Artist_ID: artist[0].Artist_ID,
-                  Artist_Name: artist[0].Artist_Name
-               };
-               allArtist.push(data);
-               callback(null);
-            });
-         }, function done() {
-            console.log(allArtist);
-            allArtist.forEach(function (item) {
-               console.log(item.Artist_Name);
-            });
             var getAllArtist = "SELECT Artist_Name, Artist_ID FROM artist";
             connection.query(getAllArtist, function (err, artist) {
                if (err) {
@@ -129,14 +110,13 @@ router.post("/edit", isAdmin, function (req, res) {
                   }
                   res.render("./admin/concert-index/concert-artist/management/edit", {
                      concertID: allConcertArtist[0].Concert_ID,
-                     concertArtist: allArtist,
+                     concertArtist: allConcertArtist,
                      concertName: search,
                      artist: artist,
                      search: result
                   });
                });
             });
-         });
       } else {
          var sql = "SELECT * FROM concert;";
          connection.query(sql, function (err, result) {
@@ -158,8 +138,9 @@ router.put("/edit", isAdmin, function (req, res) {
    var update = req.body.dropdown;
    var concertArtistID = req.body.concertArtistID;
    console.log(update);
-   if (concertArtistID === undefined) {
+   console.log("CHECK" + concertArtistID);
       if (deleteID !== undefined) {
+         console.log(hello);
          var sql = "DELETE FROM concert_artist where Concert_Artist_ID = ?;";
          var count = Array(deleteID).fill(1);
          count.forEach(function (item) {
@@ -170,12 +151,13 @@ router.put("/edit", isAdmin, function (req, res) {
                console.log("Delete!");
             });
          });
-      }
    } else {
+      console.log("HERE @ !@")
       var sql = "UPDATE concert_artist SET Artist_ID = ? WHERE Concert_Artist_ID = ? ;"
       console.log(Array.isArray(concertArtistID));
       if (Array.isArray(concertArtistID)) {
          concertArtistID.forEach(function (item, index) {
+            console.log("HERE" + update[index] + item);
             connection.query(sql, [update[index], item], function (err, result) {
                if (err) {
                   throw err;

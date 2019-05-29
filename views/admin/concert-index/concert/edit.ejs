@@ -14,13 +14,10 @@
                         <div class="col-sm-6">
                                 <form action="/admin/concert/edit" method="POST">
                             <select name="dropdown" id="dropdown" class="form-control selectpicker"
-                                data-live-search="true">
+                                data-live-search="true" required>
+                                <option value="" disabled selected>--Please Select Your Option --</option>
                                 <% search.forEach(function(item){ %>
-                                    <% if (concert && concert.Concert_Name == item.Concert_Name) {%>
-                                    <option value="<%= item.Concert_Name %>" selected> <%= item.Concert_Name  %> </option>
-                                    <% } else { %>
-                                <option value="<%= item.Concert_Name %>"> <%= item.Concert_Name  %> </option>
-                                <% } %>
+                                    <option value="<%= item.Concert_Name %>" > <%= item.Concert_Name  %> </option>
                                 <% }) %>
                             </select>
                         </div>
@@ -35,9 +32,6 @@
         <div class="container my-5" id="find">
             <div class="col mx-5">
                 <div class="form-group row mx-4">
-                    <label for="concertname" class="col-sm-2 col-form-label">Concert ID</label>
-                    <div class="col-sm-5">
-                        <label for="concertname" class="form-control col-form-label"><%=concert.Concert_ID%></label>
                         <input type="hidden" class="form-control" id="concertname" name="concertID" value="<%=concert.Concert_ID%>">
                     </div>
                 </div>
