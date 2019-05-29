@@ -11,14 +11,21 @@ router.get("/", function (req, res) {
 
 // Index
 router.get("/index", function (req, res) {
-   var getAllConcert = "SELECT * FROM concert c, concert_showtime cs WHERE c.Concert_ID = cs.Concert_ID AND CURDATE() < cs.Concert_ShowDate ";
-    connection.query(getAllConcert, function (err, concert) {
-       if (err) {
-          throw err;
-       }
-   console.log(concert[0].Concert_Sales_Date);
-   res.render("./user/index");
+   var getConcertInfo = "SELECT *  FROM concert c, concert_showtime cs,venue v WHERE cs.Concert_ID = c.Concert_ID AND CURDATE() < cs.Concert_ShowDate  GROUP BY c.Concert_ID , cs.Concert_ShowTime_ID ORDER BY cs.Concert_ShowDate;;";
+   connection.query(getConcertInfo, function (err, concertInfo) {
+      if (err) {
+         throw err;
+      }
+      console.log(concertInfo);
+      var now = new Date();
+      concertInfo.forEach(function (item, index) {
+         item.Concert_ShowDate = dateFormat(item.Concert_ShowDate, "mediumDate");
       });
+      res.render("./user/index", {
+         concert: concertInfo,
+         now: now
+      });
+   });
 });
 
 // show register form
@@ -83,7 +90,12 @@ router.post("/login", function (req, res) {
 
             req.flash("success", "Welcome to Concert " + req.session.username);
 
-            res.redirect(req.session.currentPage);
+            if(req.session.currentPage){
+               res.redirect(req.session.currentPage);
+            }
+            else{
+               res.redirect('/index');
+            }
          } else {
 
             req.flash("error", "Invalid Username and Password");
@@ -92,8 +104,8 @@ router.post("/login", function (req, res) {
          res.end();
       });
    } else {
-      res.send('Please enter Username and Password!');
-      res.end();
+      req.flash("error", "Invalid Username and Password");
+      res.redirect('/login');
    }
 });
 

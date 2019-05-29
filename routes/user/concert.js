@@ -16,11 +16,6 @@ router.get("/", function (req, res) {
       if (err) {
          throw err;
       }
-      // var getShowtimeInfo = "SELECT * FROM concert_showtime WHERE cs.Concert_ID = ?;";
-      // connection.query(getConcertInfo, function (err, concertInfo) {
-      //    if (err) {
-      //       throw err;
-      //    }
       console.log(concertInfo);
       var now = new Date();
       concertInfo.forEach(function (item, index) {
