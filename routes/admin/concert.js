@@ -45,12 +45,18 @@ router.get("/new", isAdmin,function (req, res) {
     });
  });
   
- router.get("/edit", isAdmin,function (req, res) {
-      res.render("./admin/concert-index/concert/edit", {concert : ""});
+ router.get("/edit",function (req, res) {
+      var sqlSearch = "SELECT * FROM concert" ;
+      connection.query(sqlSearch, function (err, search) {
+         if (err) {
+            throw err;
+         }
+      res.render("./admin/concert-index/concert/edit", {concert : "", search : search});
+      });
  });
 
- router.post("/edit", isAdmin,function (req, res) {
-    var concertSearch = req.body.concertSearch;
+ router.post("/edit", function (req, res) {
+    var concertSearch = req.body.dropdown;
     var searchConcert = "SELECT * FROM concert WHERE concert_Name = ?" ;
     connection.query(searchConcert,[concertSearch], function (err, concert) {
        if (err) {
@@ -69,11 +75,18 @@ router.get("/new", isAdmin,function (req, res) {
                   throw err;
                }
                console.log(allVenue);
-               res.render("./admin/concert-index/concert/edit", { concert: concert[0], venue: allVenue, currentVenue: currentVenue[0]});
+               var sqlSearch = "SELECT * FROM concert" ;
+               connection.query(sqlSearch, function (err, search) {
+                  if (err) {
+                     throw err;
+                  }
+               res.render("./admin/concert-index/concert/edit", { concert: concert[0], venue: allVenue, currentVenue: currentVenue[0], search : search});
+               });
             });
          });
        }
        else{
+          console.log("f");
          res.render("./admin/concert-index/concert/edit", { concert: "none"});
        }
    });

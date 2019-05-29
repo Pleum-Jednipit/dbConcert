@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 const connection = require("../../connection")
+var dateFormat = require('dateformat');
 var middleware = require("../../middleware");
 var {
    isAdmin
@@ -55,21 +56,25 @@ router.post("/select",isAdmin, function (req, res) {
    });
 });
 
-router.get("/select/:name/:id", isAdmin,function (req, res) {
+router.get("/select/:name/:id",isAdmin,function (req, res) {
    var concertShowtimeID = req.params.id;
    var concertName = req.params.name.split("-").join(" ");
-   var sqlSearch = "SELECT * FROM concert_showtime WHERE Concert_Showtime_ID = ?;";
+   var sqlSearch = "SELECT * FROM concert_showtime WHERE Concert_ShowTime_ID = ?;";
    connection.query(sqlSearch, concertShowtimeID, function (err, showtime) {
       if (err) {
          throw err;
       }
+      showtime.forEach(function(item){
+         item.Concert_ShowDate = dateFormat(item.Concert_ShowDate,"fullDate");
+         console.log("After");
+      });
       var getAllZone = "SELECT * FROM zone WHERE concert_showtime_id = ?;";
       connection.query(getAllZone, concertShowtimeID, function (err, zone) {
          if (err) {
             throw err;
          }
          res.render("./admin/concert-index/concert-zone/showtime", {
-            showtime: showtime,
+            showtime: showtime[0],
             concertName: concertName,
             zone: zone,
             name: concertName.split(" ").join("-"),

@@ -17,52 +17,64 @@
                 </div>
             <hr>
             <div class="row">
-                <% var concertID = []; %>
-
-                <% concert.forEach(function(item){ %>
-                    <% if(!concertID.includes(item.Concert_ID)) { %>
-                        <% concertID.push(item.Concert_ID); %>
+                    <% var concertID = []; %>
+                    <% concert.forEach(function(item){ %>
+                        <% if(!concertID.includes(item.Concert_ID)) { %>
+                            <% concertID.push(item.Concert_ID); %>
+                
+                <div class="col-3">
                     <div _ngcontent-c6
-                    class="col-12 col-sm-6 col-lg-3 card align-items-center align-items-lg-stretch cardwrapper ng-star-inserted" 
+                    class="col-12 card align-items-center align-items-lg-stretch cardwrapper ng-star-inserted" 
                     style="margin-left: 45px;margin-right: 40px; margin-top: 20px; margin:40px"   > 
-                    <div _ngcontent-c6="" class="card-box card-box-by-event">
-                     
-                        <img _ngcontent-c6 applazyload="" class="card-img-top img-fluid"
-                            src="<%= item.Concert_Poster %>" style="margin-top: 10px">
-                        <% if(now > item.Concert_Sales_Date) { %>
-                        <div _ngcontent-c6="" class="card-buyTicket ng-star-inserted" style="text-align: center">
-                            <a _ngcontent-c6="" >
-                               <span _ngcontent-c6=""><a href="/concert/<%= item.Concert_Name.split(" ").join("-") %>" class="btn btn-outline-dark" style="width: 250px; margin-top: 10px; background-color: #eeeeee">BUY NOW</a></span>
-                            </a>
-                        </div>
-                        <% } else { %>
-                        <div _ngcontent-c6="" class="card-buyTicket ng-star-inserted" style="text-align: center">
-                                <a _ngcontent-c6="" >
-                                   <span _ngcontent-c6=""><a href="/concert/<%= item.Concert_Name.split(" ").join("-") %> " class="btn btn-outline-dark" style="width: 250px; margin-top: 10px; background-color: #eeeeee">COMING SOON</a></span>
-                                </a>
-                            </div>
-                            <% } %>
-                       <div _ngcontent-c6="" class="row cardfooter">
-                           <div _ngcontent-c6="" class="col-5 p-1 ng-star-inserted">
-                                <div _ngcontent-c6="" class="splitWrapper eventDate is-size-6">
-                                    <div _ngcontent-c6="" class="text-dark text-overflow modifileconcertdatecard"><%= item.Concert_ShowDate %>
+                        <div class="card-box card-box-by-event">         
+                            <img class="card-img-top img-fluid"
+                            src="<%= item.Concert_Poster %>" style="margin-top: 15px">
+                                <div _ngcontent-c6="" class="row cardfooter">
+                                        <div _ngcontent-c6="" class="col-12 text-center px-1 ng-star-inserted">
+                                                <div _ngcontent-c6="" class="splitWrapper eventName">
+                                                    <div _ngcontent-c6="" class="my-1 text-overflow modifileconcertnamecard text-center lead"><strong><%= item.Concert_Name %></strong>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <div class="col-12 p-1 text-center ng-star-inserted">
+                                            <div class="splitWrapper eventDate is-size-6">
+                                                <div class="text-dark text-overflow modifileconcertdatecard text-left ml-3" style=""><i class="fas fa-calendar-check mr-2"></i><%= item.Concert_ShowDate %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 p-1 text-center ng-star-inserted">
+                                                <div class="splitWrapper eventDate is-size-6">
+                                                    <div class="text-dark text-overflow modifileconcertdatecard text-left ml-3" style=""><i class="fas fa-map-marker-alt mr-2"></i><%= item.Concert_ShowDate %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <!---->
+                                        
+                                        <!---->
+                                        <!---->
                                     </div>
+                                    <% if(now > item.Concert_Sales_Date) { %>
+                                <div _ngcontent-c6="" class="card-buyTicket ng-star-inserted" style="text-align: center">
+                                    <a _ngcontent-c6="" >
+                                       <span _ngcontent-c6=""><a href="/concert/<%= item.Concert_Name.split(" ").join("-") %>"><button class="btn btn-danger mb-2" style="width: 100%; margin-top: 10px;">BUY NOW</button></a></span>
+                                    </a>
                                 </div>
-                            </div>
-                            <!---->
-                            <div _ngcontent-c6="" class="col-7 px-1 ng-star-inserted">
-                                <div _ngcontent-c6="" class="splitWrapper eventName">
-                                    <div _ngcontent-c6="" class="my-1 text-overflow modifileconcertnamecard"><%= item.Concert_Name %>
+                                <% } else { %>
+                                <div _ngcontent-c6="" class="card-buyTicket ng-star-inserted" style="text-align: center">
+                                        <a _ngcontent-c6="" >
+                                           <span _ngcontent-c6=""><a href="/concert/<%= item.Concert_Name.split(" ").join("-") %> "><button class="btn btn-warning mb-2" style="width: 100%; margin-top: 10px;">COMING SOON</button></a></span>
+                                        </a>
                                     </div>
-                                </div>
-                            </div>
-                            <!---->
-                            <!---->
+                                    <% } %>
+                            
                         </div>
                     </div>
+    
+                    
                 </div>
                 <% } %>
-                <% }) %>
+                    <% }) %>
+               </div>
 
                 
             </div>
