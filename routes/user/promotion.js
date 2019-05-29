@@ -6,8 +6,8 @@ var dateFormat = require('dateformat');
 
 //root route landing 
 router.get("/", function (req, res) {
-    var getpromotionInfo = "SELECT *  FROM promotion";
-    connection.query(getVenueInfo, function (err, promotionInfo) {
+    var getpromotionInfo = "SELECT *  FROM promotion p, membertype mt, member_promotion mp, concert c WHERE p.Promotion_ID = mp.Promotion_ID AND mp.MemberType_ID = mt.MemberType_ID AND p.Concert_ID = c.Concert_ID GROUP BY p.Promotion_ID";
+    connection.query(getpromotionInfo, function (err, promotionInfo) {
        if (err) {
           throw err;
        }

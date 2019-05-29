@@ -11,7 +11,7 @@ var async = require("async");
 
 //root route landing 
 router.get("/", function (req, res) {
-   var getConcertInfo = "SELECT DISTINCT c.*  FROM concert c, concert_showtime cs WHERE cs.Concert_ID = c.Concert_ID AND CURDATE() < cs.Concert_ShowDate;";
+   var getConcertInfo = "SELECT *  FROM concert c, concert_showtime cs,venue v WHERE cs.Concert_ID = c.Concert_ID AND CURDATE() < cs.Concert_ShowDate  GROUP BY c.Concert_ID , cs.Concert_ShowTime_ID ORDER BY cs.Concert_ShowDate LIMIT 6;";
    connection.query(getConcertInfo, function (err, concertInfo) {
       if (err) {
          throw err;

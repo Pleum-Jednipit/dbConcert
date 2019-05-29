@@ -10,7 +10,7 @@ var {
 
 
 // add new concert
-router.get("/new", isAdmin,function (req, res) {
+router.get("/new",function (req, res) {
     var getVenue = "SELECT Venue_ID, Venue_Name FROM Venue";
     connection.query(getVenue, function (err, allVenue) {
        if (err) {
@@ -25,7 +25,7 @@ router.get("/new", isAdmin,function (req, res) {
     });
  });
  
- router.post("/new", isAdmin,function (req, res) {
+ router.post("/new",function (req, res) {
     var sql = "INSERT INTO concert ( concert_Name, concert_sales_date,concert_sales_time, concert_detail,venue_ID,Concert_Poster) " +
        "VALUES (?,?,?,?,?,?)";
     var name = req.body.name;
@@ -43,7 +43,70 @@ router.get("/new", isAdmin,function (req, res) {
        console.log("1 Concert is inserted");
        res.redirect("/admin/concert/index");
     });
+   // connection.query(sql, [name,dateFormat(date,"isoDate"),time, detail, venueID,poster], function (err, result) {
+   //    if (err) {
+   //       throw err;
+   //    }
+   //    console.log("1 Concert is inserted");
+   //    var sql2 = "SELECT * FROM concert WHERE Concert_Name = ?"
+   //    connection.query(sql2,name, function (err, result) {
+   //       if (err) {
+   //          throw err;
+   //       }
+   //       res.redirect("/admin/concert/" + result[0].Concert_ID + "/new" );
+   //    });
+   // });
  });
+
+ router.get("/:id/new",function (req, res) {
+    var concertID = req.params.id;
+    var search    = req.body.search;
+   var sqlSearch = "SELECT Concert_ID, Concert_Name FROM concert WHERE Concert_ID = ?;" ;
+   connection.query(sqlSearch,[concertID], function (err, concert) {
+      if (err) {
+         throw err;
+      }
+      var getAllArtist = "SELECT Artist_Name, Artist_ID FROM artist";
+      connection.query(getAllArtist, function (err, artist) {
+         if (err) {
+            throw err;
+         }
+         res.render("./admin/concert-index/concert/addconcertartist", { concert : concert[0], artist: artist});
+      });
+   });
+});
+
+
+router.post("/:id/new",function (req, res) {
+   var concertID = req.body.concertID;
+   var newArtist = req.body.dropdown;
+   var sql = "INSERT INTO concert_artist (concert_id, artist_id) " +
+         "VALUES (?,?)";
+   if(Array.isArray(newArtist)){
+      newArtist.forEach(function(item){
+         connection.query(sql, [concertID,item], function (err, result) {
+            if (err) {
+               throw err;
+            }
+            console.log("1 Concert Artist is inserted");
+         });
+      });
+   }
+   else{
+         connection.query(sql, [concertID,newArtist], function (err, result) {
+            if (err) {
+               throw err;
+            }
+            console.log("1 Concert Artist is inserted");
+         });
+     
+   } 
+   res.redirect("/admin/concert-artist/index"); 
+});
+
+
+
+
   
  router.get("/edit",function (req, res) {
       var sqlSearch = "SELECT * FROM concert" ;

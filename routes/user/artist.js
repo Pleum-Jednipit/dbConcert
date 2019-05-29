@@ -6,8 +6,8 @@ var dateFormat = require('dateformat');
 
 //root route landing 
 router.get("/", function (req, res) {
-    var getArtistInfo = "SELECT *  FROM artist";
-    connection.query(getVenueInfo, function (err, artistInfo) {
+    var getArtistInfo = "SELECT a.* , rl.Record_Label_Name  FROM artist a , record_label rl WHERE a.Record_Label_ID = rl.Record_Label_ID GROUP BY a.Artist_ID;";
+    connection.query(getArtistInfo, function (err, artistInfo) {
        if (err) {
           throw err;
        }
@@ -16,17 +16,6 @@ router.get("/", function (req, res) {
     });
  });
 
- router.get("/:name", function (req, res) {
-    var artistName = req.params.name.split("-").join(" ");
-    var getArtistInfo = "SELECT *  FROM artist WHERE Artist_Name = ?";
-    connection.query(getArtistInfo,[artistName], function (err, artistInfo) {
-       if (err) {
-          throw err;
-       }
-       console.log(artistInfo[0])
-       res.render("./user/artist/artistshow", {artist : artistInfo[0]});
-    });
- });
 
 
 module.exports = router;
