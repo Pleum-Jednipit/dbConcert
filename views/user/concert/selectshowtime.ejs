@@ -2,19 +2,19 @@
 <title>Concert </title>
 </head>
 <% include ../../partials/usernav %>
-
-<div class="container-fluid" style="background: whitesmoke;">
+<body>
+<div class="container" style="background: whitesmoke; margin-top: 40px; border-radius: 25px">
     <div class="row">
         <div class="col-4">
             <img src="<%= concert[0].Concert_Poster %>"
-                class="img-fluid m-3 mx-5" width="300px" alt="">
+                class="img-fluid m-3 mx-5" style="padding-left: 100px" width="300px" alt="">
         </div>
         <div class="col-6">
             <form action="/concert/<%=name %>/showtime" method="POST">
             <div class="row">
                 <div class="col-12">
                     <h1 class="display-5 my-3 mx-4" style="color: black;"><strong>Blackpink</strong></h1>
-                    <hr>
+                    <hr style="border-top: 2.5px solid gray">
                 </div>
             </div>
             <div class="row">
@@ -71,7 +71,7 @@
         </div>
     </div>
 
-    <div class="form-group row my-5 mx-5">
+    <div class="form-group row my-5 mx-5" style="padding-left: 250px">
         <div class="col-1">
             <label for="zone" class="col col-form-label">Zone</label>
         </div>

@@ -2,15 +2,15 @@
 <title>Concert </title>
 </head>
 <% include ../../partials/usernav %>
-
+<body>
 <!--- Body --->
 <form action="/concert/<%= name %>/showtime/<%= showtime.Concert_ShowTime_ID %>/<%= zone.Zone_Name %>/booking" method="POST">
-<div class="container-fluid" style="background: whitesmoke;">
+    <div class="container" style="background: whitesmoke; margin-top: 40px; border-radius: 25px ">
     
         <div class="row">
             <div class="col-4">
                 <img src="<%= concert.Concert_Poster %>"
-                    class="img-fluid m-3 mx-5" width="300px" alt="">
+                    class="img-fluid m-3 mx-5" style="padding-left: 100px" width="300px" alt="">
             </div>
             <div class="col-6">
                 <div class="row">
@@ -69,8 +69,8 @@
     <% if(zone.Zone_Type == "Seating") { %>
     <div class="form-group row mx-5 my-4 sittingzone">
 <div class="col-2"></div>
-        <div class="col "><label class="">Zone Seat</label></div>
-        <div class="col-10">
+        <div class="col "><label class=""></label></div>
+        <div class="col-10" style="margin-left: 130px">
                 <script>
                         var zoneSeat = [];
                         var bookedSeat = [];
@@ -365,7 +365,7 @@
 </script>
 </div>
 
-<div class="container">
+<div class="container" style="margin-left: 300px">
         <div class="row">
                 <div class="col">
                 <div class="col-9">

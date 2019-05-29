@@ -2,32 +2,33 @@
 <title>Concert </title>
 </head>
 <% include ../../partials/usernav %>
-    <div class="container-fluid" style="background: whitesmoke;">
+<body>  
+    <div class="container" style="background: whitesmoke; margin-top: 40px; border-radius: 25px ">
         <div class="row">
             <div class="col-5">
-                <img src="<%= concert[0].Concert_Poster %>" class="img-fluid m-3 mx-5" alt="" style="padding-left: 150px;">
+                <img src="<%= concert[0].Concert_Poster %>" class="img-fluid m-3 mx-5" alt="" style="padding-left: 150px; width: 460px">
             </div>
             <div class="col-6">
                 <div class="row">
                         <div class="col-12">
                                 <h1 class="display-5 my-3 text-center" style="color: black;"><strong><%= concert[0].Concert_Name %></strong></h1>
-                                <hr>
+                                <hr style="margin-left: 30px">
                         </div>
-                </div>
+                </div> 
                 <div class="row mt-4">
                     <% concert.forEach(function(item) { %>
 
-                    <div class="col-6">
+                    <div class="col-6" >
                         <label for="" ><img src="https://image.flaticon.com/icons/svg/61/61469.svg" class="text-center mr-2 ml-5" width="20px" alt=""></label>
-                        <label for="" class="text-center"><%= item.Concert_ShowDate %></label>
+                        <label for="" class="text-center" ><%= item.Concert_ShowDate %></label>
                     </div>
-                    <div class="col-6 border-left">
+                    <div class="col-6 border-left" >
                             <label for="" ><img src="https://image.flaticon.com/icons/svg/66/66403.svg" class="text-center mr-2 ml-5" width="20px" alt=""></label>
                             <label for="" class="text-center"><%= item.Concert_ShowTime %></label>
                         </div>
                     <% }) %>
                 </div>
-                <div class="row mt-1">
+                <div class="row mt-1" >
                     <div class="col">
                             <label for="" ><img src="https://image.flaticon.com/icons/svg/125/125805.svg" class="text-center mr-2 ml-5" width="20px" alt=""></label>
                             <label for="" class="text-center"><%= venue.Venue_Name %></label>
@@ -52,7 +53,7 @@
                         <% } else {%>
                     <div class="row my-4">
                         <div class="col text-center">
-                                <a href="/concert/<%= name %>/showtime" type="button" class="btn btn-outline-dark btn-lg">Buy Ticket</a>
+                                <a href="/concert/<%= name %>/showtime" type="button" class="btn btn-danger mb-2" style="width: 70%; margin-left: 40px">BUY TICKET</a>
                         </div>
                     </div>
                     <%  } %>
