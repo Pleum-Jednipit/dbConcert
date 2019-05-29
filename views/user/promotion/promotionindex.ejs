@@ -18,67 +18,51 @@
             </div>
             <hr>
             <div class="row">
+                <% promotion.forEach(function(item){ %>
                 <div 
                     class="col-12 col-sm-6 col-lg-3 card align-items-center align-items-lg-stretch cardwrapper ng-star-inserted"
                     style="margin-left: 45px;margin-right: 40px; margin-top: 20px; margin:40px">
                     <div class="card-box card-box-by-event">
 
-                        <img  applazyload="" class="card-img-top img-fluid" src="https://images.unsplash.com/photo-1556229174-5e42a09e45af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                        <img  applazyload="" class="card-img-top img-fluid" src="<%= item.Promotion_Image %>"
                             style="margin-top: 10px">
                             <div class="row cardfooter my-2">
                                     <div class="col p-1 ng-star-inserted text-center">
                                         <div class="splitWrapper eventDate is-size-6">
                                             <div class="text-dark text-overflow modifileconcertdatecard">
-                                                <h2><strong><%= promotion.Promotion_Name %> </strong></h2>
+                                                <h2><strong><%= item.Promotion_Name %></strong></h2>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row cardfooter my-2">
+                                    <div class="col text-center">
+                                        <label for="">Start : <%= item.Promotion_Start %></label>
+                                    </div>
+                                    <div class="col text-center">
+                                        <label for="">End : <%= item.Promotion_End %></label>
+                                    </div>
+                                </div>
+                                <div class="row cardfooter my-2">
+                                        <div class="col text-center">
+                                            <label for="">Concert:  <%= item.Promotion_Name %></label>
+                                        </div>
+                                    </div>
+                
                         <div class="card-buyTicket ng-star-inserted" style="text-align: center">
                             <a>
-                                <span ><a href="" class="btn btn-outline-primary mb-2"
+                                <span ><a href="promotion/<%= item.Promotion_Name.split(" ").join("-") %>" class="btn btn-outline-primary mb-2"
                                         style="width: 100%;">Detail</a></span>
                             </a>
                         </div>
                         
                     </div>
                 </div>
+                <% }) %>
             </div>
         </div>
 
-        <div class="container my-5">
-                <div class="row">
-                    <div class="col-0" style="width: 25px"></div>
-                    <div class="col">
-                        <h1 class="dispaly-1" style="float: left">Payment
-                            <img src="https://image.flaticon.com/icons/svg/444/444963.svg"
-                                style="float:right; width: 50px;"></h1>
-                        
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div 
-                        class="col-12 col-sm-6 col-lg-3 card align-items-center align-items-lg-stretch cardwrapper ng-star-inserted"
-                        style="margin-left: 45px;margin-right: 40px; margin-top: 20px; margin:40px">
-                        <div class="card-box card-box-by-event">
-    
-                            <img  applazyload="" class="card-img-top img-fluid" src="https://images.unsplash.com/photo-1556229174-5e42a09e45af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                                style="margin-top: 10px">
-                                <div class="row cardfooter my-2">
-                                        <div class="col p-1 ng-star-inserted text-center">
-                                            <div class="splitWrapper eventDate is-size-6">
-                                                <div class="text-dark text-overflow modifileconcertdatecard">
-                                                    <h2><strong>Summer Sales</strong></h2>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>    
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+        
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

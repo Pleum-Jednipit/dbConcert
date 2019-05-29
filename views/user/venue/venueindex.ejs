@@ -16,10 +16,11 @@
                 </div>
             </div>
             <hr>
-            <% venue.forEach(function(venue){ %>
+            
             <div class="row">
+                    <% venue.forEach(function(venue){ %>
                 <!--- Add form here --->
-                    <div class="col-3 mx-2">
+                    <div class="col-3">
                             <div class="row">
                                 <div class="col-12 text-center">
                                         <img class="card-img-top" src="<%= venue.Venue_Image %>" alt="" ref="">
@@ -29,11 +30,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-10"></div>
+                        
                         <!---- /Add ---->
+                        <% }) %>
 
             </div>
-            <% }) %>
+           
         </div>
 
         <!-- Optional JavaScript -->
