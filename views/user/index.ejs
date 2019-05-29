@@ -3,8 +3,8 @@
 </head>
 <% include ../partials/usernav %>
 
-
-<div class="container" >
+<body>
+    <div class="container" >
         <div class="jumbotron" style="background-image: url(https://images.unsplash.com/photo-1466150036782-869a824aeb25?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);
         background-repeat: no-repeat;
         background-position: right top;
@@ -12,36 +12,63 @@
         position: relative;
         background-size: cover;
         top: 30px;
-        height: 550px;">
-
-</div>
+        height: 550px;
+        border-radius: 25px">
+        </div>     
+    </div>
     <!--body part1-->
-    <div class="container my-5">
-        <div class="row">
-            <div class="col-1"></div>
-            <div class="col">
-                <h1 class="dispaly-1">RECOMMEND</h1>
-            </div>
-
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-4 ml-4">
-                <div class="card" style="width: 16rem;">
-                    <div class="btn-group-vertical" role="group" aria-label="Basic example">
-                        <img src="<%= item.Concert_Poster %>"
-                            class="card-img-top" height="400em" alt="">
-                        <button type="button" class="btn btn-outline-dark">BUY NOW</button>
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <div class="col-6 text-center border-right border-top">Date show</div>
-                            <div class="col-6 text-center border-top"></div>
-                        </div>>
-
-                    </div>
-
+    <div class="container" >
+        <div class="container my-5">
+            <div class="row" >
+                <div class="col-0" style="width: 20px"></div>
+                    <div class="col">
+                        <h1 class="dispaly-1" style="float: left; margin-top: 30px">RECOMMEND
+                        <img src="https://image.flaticon.com/icons/svg/1533/1533908.svg" style="float:right; width: 50px;">
+                        </h1>
+                    </div>  
                 </div>
+                <hr style="border-top: 3px solid rgb(54, 54, 54); margin-bottom: 10px">
             </div>
             
+            <div class="row">
+                <div _ngcontent-c6
+                class="col-12 col-sm-6 col-lg-3 card align-items-center align-items-lg-stretch cardwrapper ng-star-inserted" 
+                style="margin-left: 45px;margin-right: 40px; margin-top: 20px; margin:40px"   > 
+                    <div _ngcontent-c6="" class="card-box card-box-by-event">         
+                        <img _ngcontent-c6 applazyload="" class="card-img-top img-fluid"
+                        src="https://m.thaiticketmajor.com/img_poster/prefix_1/1642/4642/blackpink-2019-world-tour-5bfe05ddc500b-l.jpg" style="margin-top: 15px">
+                        <div _ngcontent-c6="" class="card-buyTicket ng-star-inserted" style="text-align: center">
+                            <a _ngcontent-c6="" href="https://www.allticket.com/event/WhatTheFest2" >
+                            <span _ngcontent-c6="">
+                                <button type="button" class="btn btn-outline-dark" style="width: 250px; margin-top: 10px;">BUY NOW
+                                </button>
+                            </span>
+                            </a>
+                        </div>
+                        <div _ngcontent-c6="" class="row cardfooter">
+                            <div _ngcontent-c6="" class="col-5 p-1 ng-star-inserted">
+                                <div _ngcontent-c6="" class="splitWrapper eventDate is-size-6">
+                                    <div _ngcontent-c6="" class="text-dark text-overflow modifileconcertdatecard text-center" style="">13
+                                        <br>JAN/2019
+                                    </div>
+                                </div>
+                            </div>
+                            <!---->
+                            <div _ngcontent-c6="" class="col-7 px-1 ng-star-inserted">
+                                <div _ngcontent-c6="" class="splitWrapper eventName">
+                                    <div _ngcontent-c6="" class="my-1 text-overflow modifileconcertnamecard text-left">Blackpink 2019 World Tour
+                                    </div>
+                                </div>
+                            </div>
+                            <!---->
+                            <!---->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

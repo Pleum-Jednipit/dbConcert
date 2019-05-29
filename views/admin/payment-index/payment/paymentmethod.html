@@ -1,0 +1,1142 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+            
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!----Drooltip CSS--->
+    <link rel="stylesheet" src="/path/to/drooltip.css">
+            
+    <!---Glider--->
+    <link href="glider.min.css" rel="stylesheet" type="text/css">
+    <!-- Modal CSS -->
+    <style>
+        .modal.left .modal-dialog {
+            position: fixed;
+            margin: auto;
+            width: 320px;
+            height: 100%;
+            -webkit-transform: translate3d(0%, 0, 0);
+            -ms-transform: translate3d(0%, 0, 0);
+            -o-transform: translate3d(0%, 0, 0);
+            transform: translate3d(0%, 0, 0);
+        }
+                
+        .modal.left .modal-content {
+            height: 100%;
+            overflow-y: auto;
+        }
+        
+        .modal.left .modal-body {
+            padding: 15px 15px 80px;
+        }    
+        
+        .modal.left.fade .modal-dialog {
+            left: -320px;
+            -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+            -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
+            -o-transition: opacity 0.3s linear, left 0.3s ease-out;
+            transition: opacity 0.3s linear, left 0.3s ease-out;
+        }
+                
+        .modal.left.fade.show .modal-dialog {
+            left: 0;
+        }
+                
+        /* ----- MODAL STYLE ----- */
+        .modal-content {
+            border-radius: 0;
+            border: none;
+        }
+                
+        .modal-header {
+            border-bottom-color: #eeeeee;
+            background-color: #fafafa;
+        }
+                
+        .hr {
+            border-width: 5px;
+            border: white;
+            outline-color: white;
+        }
+                
+        .modifileconcertnamecard{
+            text-align: left;
+            letter-spacing: 1px;
+            text-transform: none;
+            font-family: "Comic Sans MS", cursive, sans-serif;
+        }
+                
+        .modifileconcertdatecard{
+            text-align: center;
+            text-transform: uppercase;
+            color: gray;
+            font-family: "Comic Sans MS", cursive, sans-serif;
+        }
+                    
+        <link rel="stylesheet" herf="">
+
+        <style>
+        body {
+            opacity: 1;
+            transition: 0.7s opacity;
+        }
+                
+        body.fade {
+            opacity: 0;
+            transition: none;
+        }
+    </style>
+    <title>Payment method</title>
+</head>
+
+
+<body style="background-color: rgb(170, 169, 169)">
+        <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+                <div class="container">
+                    <a href="/admin/index" class="navbar-brand">
+                        <img src="https://image.flaticon.com/icons/svg/1695/1695570.svg" width="60em" class="d-inline-block align-top rounded mx-4">
+                    </a>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active mx-2">
+                                <a class="nav-link" href="/admin/concert/index">Concert <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item mx-2">
+                                <a class="nav-link" href="/admin/venue/new">Venue</a>
+                            </li>
+                            <li class="nav-item mx-2">
+                                <a class="nav-link" href="#">Promotion</a>
+                            </li>
+                            <li class="nav-item mx-2">
+                                <a class="nav-link" href="#">Payment</a>
+                            </li>                    
+                        </ul>
+        
+                    </div>
+                    <button class="navbar-toggler" type="button" data-toggle="modal" data-target="#exampleModal">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        
+                        <div class="col-md-2 ">
+                            <div class="collapse navbar-collapse navbar-toggle" id="navbarNavAltMarkup">
+                                <button class="btn btn-outline-warning btn-lg mx-4" data-toggle="modal" data-target="#ModalExample">Sign in</button>
+                            </div>
+                        </div>
+                         
+            </div>
+        </nav>
+        <div class="container">
+        </div>
+        <!---Modal of nav--->
+        <div class="container box">
+            <div class="jumbotron" style="margin-top: 30px; background-color: rgb(230, 230, 230)">
+                <div class="step-by"><h1 style="margin-top: 20px; color: rgb(36, 35, 35); font-weight: bold">Select payment and delivery method</h1>
+                </div>                 
+                <div class="event-container">
+                    <div class="jumbotron" style="margin-top: 30px; background-color: rgb(168, 167, 167)">
+                        <div class="poster">
+                            <img src=https://m.thaiticketmajor.com/img_poster/prefix_1/1642/4642/blackpink-2019-world-tour-5bfe05ddc500b-l.jpg style="width: 200px; position: absolute;
+                            left: 280px;">
+                        </div>
+                        <div class="event-detail">
+                            <div class="event-name" ><h3><strong style="color: rgb(48, 48, 48); position: relative; margin-left: 250px">Blackpink 2019 World tour</strong></h3>
+                            </div>
+                            <div class="venue"><h4 style="color: rgb(48, 48, 48); position: relative; margin-left: 250px">Venue : IMPACT CHALLENGER (Hall 1)</h4>
+                            </div>
+                            <div class="date"><h4 style="color: rgb(48, 48, 48); position: relative; margin-left: 250px">วันและเวลาการแสดง / Show Date &amp; Time :  Tue 20 Aug 2019 20:30 </h4>
+                            </div>
+                            <div class="zone"><h4 style="color: rgb(48, 48, 48); position: relative; margin-left: 250px">โซนที่นั่ง / Zone : B</h4>
+                            </div>
+                            <div class="seat"><h4 style="color: rgb(48, 48, 48); position: relative; margin-left: 250px">จำนวนบัตร / Ticket amount : &nbsp; 1</h4>
+                            </div>
+                            <div class="price-selected"><h4 style="color: rgb(48, 48, 48); position: relative; margin-left: 250px">ราคา / Price :  2,500</h4>
+                            </div>
+                            <div class="ticketp-selected"><h4 style="color: rgb(48, 48, 48); position: relative; margin-left: 250px">บริการ Ticket Protect : มี / Accept</h4>
+                            </div>
+                        </div>
+                    </div>       
+                </div>
+            </div>        
+            <div class="container-content-payment">
+                <!-- Chevy code start -->
+                <div class="bg-checy-code">
+                    <div class="container-chevy">
+                        <div class="howto"><a href="http://www.thaiticketmajor.com/privilege.php" target="_blank">How to get TTM Code?</a>
+                        </div>
+                            <div class="chevy-warn">*หากมี E Coupon code หรือรหัสส่วนลดของงานแสดง กรุณาใส่รหัสในหน้าต่อไป / *For E Coupon code or Discount code, Please fill in the next page</div>
+                        </div>
+                        <!-- Chevy code end -->
+                        
+                        <!-- Please select your payment method -->
+                        <div class="header-payment"><h2><strong>1. กรุณาเลือกวิธีการชำระเงิน (Please select your payment method)</strong></h2></div>
+                    
+                        <div class="payment-content-box">
+                            <div class="content-box-payment">
+                                <div class="wrapper-history">
+                                    <div class="button-select">
+                                      <ul id="payment_group">
+                                                                        <!-- Button credit card start -->
+                                        <li>
+                                            <div id="btn_creditcard" class="button-payment">
+                                                <div class="head-payment-channel"><br>บัตรเครดิต <br>
+                                                    <span class="payment-gray">Credit Card Payment</span></div>
+                                                    <div class="icon-payment"><img src="images/preferred-credit-small.png"></div>
+                                            </div>
+                                        </li>
+                                        <!-- Button credit card end -->
+                                                                        <!-- Button cash atm start -->
+                                        <li>
+                                            <div id="btn_cashatm" class="button-payment">
+                                                <div class="icon-payment"><img src="images/cash-payment.png"></div>
+                                                <div class="head-payment-channel">ชำระเงินสด และเอทีเอ็ม <br>
+                                                    <span class="payment-gray">Cash Payment and ATM </span></div>
+                                            </div>
+                                        </li>
+                                        <!-- Button cash atm end -->
+                                                                        <!-- Button mobile banking start -->
+                                        <li>
+                                            <div id="btn_mobile" class="button-payment">
+                                                <div class="icon-payment"><img src="images/icon-mobile-banking.png"></div>
+                                                <div class="head-payment-channel">ชำระผ่าน App บนมือถือ <br>
+                                                    <span class="payment-gray">Mobile Payment (Rabbit LINE Pay, Pay Plus, AirPay)</span></div>
+                                            </div>
+                                        </li>
+                                        <!-- Button mobile banking end -->
+                                        
+                                        
+                                        
+                                        <!-- Button direct debit start -->
+        <li>
+            <div id="btn_directdebit" class="button-payment">
+                <div class="icon-payment"><img src="images/icon-directdebit.png"></div>
+                <div class="head-payment-channel">หักเงินผ่านบัญชี<br>
+                    <span class="payment-gray">Direct debit payment</span></div>
+            </div>
+        </li>
+        <!-- Button direct debit end -->
+        
+                                      </ul>
+                                    </div>
+                                
+                                    <!-- Content credit card -->
+                                    <div id="paycontent_creditcard" class="hide_object">
+                                        <div class="container-content-history">
+                                            <div class="content-payment">
+                                                <p> <input name="paytype" type="radio" value="KBKI" onclick="javascript:channelcheck();" checked="" class="hide_object"> ชำระเงินโดยบัตรเครดิต เดบิต ของทุกธนาคาร<br>
+                                                    <span class="red">Payment by Card (Credit / Debit of all banks)</span></p>
+                                                <div id="label_creditnumber"></div>
+                                                <input type="hidden" id="debit" name="debit">
+                                                <div id="verify"></div>
+                                                <div id="cverify" style="display:block;">
+                                                    <div class="payment-head">*กรุณาเลือกประเภทบัตรของท่านในการชำระเงิน / Please select your card type for payment </div>
+                                                    <div>
+                                                        <table width="100%" bgcolor="#E6E6E6" class="tb_show">
+                                                            <tbody><tr bgcolor="#F5F5F5">
+                                                                <td valign="top">
+                                                                    <div class="content-payment">
+                                                                        <table width="100%" class="tb_show">
+                                                                            <tbody><tr>
+                                                                                
+                                                                                <!-- VISA credit/debit card head start -->
+        <td valign="top" style="border-left:1px solid #cccccc" width="268">
+            <div class="content-payment cardtype">
+                <p class="text-center">บัตรวีซ่า / มาสเตอร์การ์ด / เดบิต / เจซีบี /<br><span class="red">VISA / MasterCard / debit card / JCB</span></p>
+                <p class="images-center"><label for="ctype_visa"><img height="60" src="http://www.thaiticketmajor.com/images/credit-debit-cards.png"></label></p>
+                <p class="text-center"><input type="radio" id="ctype_visa" name="ctype" value="7"></p>
+            </div>
+        </td>
+        <!-- VISA credit/debit credit card head end -->
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                <!-- Citibank credit card head start -->
+        <td valign="top" style="border-left:1px solid #cccccc" width="268">
+            <div class="content-payment cardtype">
+                <p class="text-center">บัตรเครดิต Citbank / <br><span class="red">Citibank credit card</span></p>
+                <p class="images-center"><label for="ctype_citibank"><img height="60" src="http://www.thaiticketmajor.com/images/citibank-credit.jpg"></label></p>
+                <p class="text-center"><input type="radio" id="ctype_citibank" name="ctype" value="2" onclick="javascript:document.paytypeform.cid1.disabled=false;document.paytypeform.cid2.disabled=false;document.paytypeform.cid3.disabled=false;document.paytypeform.cid4.disabled=false;document.paytypeform.citicheck.disabled=false;"></p>
+            </div>
+        </td>
+        <!-- Citibank credit card head end -->
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                <!-- SCB M credit card head start -->
+        <td valign="top" style="border-left:1px solid #cccccc" width="268">
+            <div class="content-payment cardtype">
+                <p class="text-center">บัตรเครดิต เดบิต และบัตรเติมเงิน / <br><span class="red">SCB M VISA</span></p>
+                <p class="images-center"><label for="ctype_scbm"><img height="60" src="http://www.thaiticketmajor.com/images/scbm-credit.jpg"></label></p>
+                <p class="text-center"><input type="radio" id="ctype_scbm" name="ctype" value="15" onclick="javascript:document.paytypeform.scbmid1.disabled=false;document.paytypeform.scbmid2.disabled=false;document.paytypeform.scbmid3.disabled=false;document.paytypeform.scbmid4.disabled=false;document.paytypeform.scbmcheck.disabled=false;"></p>
+            </div>
+        </td>
+        <!-- SCB M credit card head end -->
+                                                                                
+                                                                            </tr>
+                                                                        </tbody></table>
+                                                                        
+                                                                        <table width="100%">
+                                                                            
+                                                                            <!-- VISA credit/debit credit card content start -->
+        <tbody><tr id="content_visa" class="more">
+            <td>
+                <div class="content-payment">
+                    <p><img src="http://www.thaiticketmajor.com/images/credit-debit-cards.png"></p>
+                </div>
+            </td>
+        </tr>
+        <!-- VISA credit/debit credit card content end -->
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            <!-- Citibank credit card content start -->
+        <tr id="content_citibank" class="more">
+            <td>
+                <div class="content-payment">
+                    <p><img src="http://www.thaiticketmajor.com/images/citibank-credit-i.jpg"></p>
+                    <p>- ผู้ถือบัตรเครดิต Citibank Metal / Ultima กรุณากรอกหมายเลขบัตรเครดิต 16 หลักเพื่อรับสิทธิประโยชน์ แล้วกดปุ่ม "ตรวจสอบ" <span><a href="http://www.thaiticketmajor.com/citibank-2015.php" target="_blank">คลิกดูรายละเอียด</a></span><br>
+                        <span class="red">- Citibank Metal / Ultima Cardholder, Please fill-in credit card number to get special privilege <a href="http://www.thaiticketmajor.com/citibank-2015.php?la=en" target="_blank">Click here for more information</a></span></p>
+                    <p>หมายเลขบัตร Citibank (Citibank Card No.)
+                        <input type="text" class="txtcredit integer" id="cid1" name="cid1" size="4" maxlength="4" value="" onkeyup="if (this.value.length >= 4) document.paytypeform.cid2.focus()" disabled="">
+                         - <input type="text" class="txtcredit integer" id="cid2" name="cid2" size="4" maxlength="4" value="" onkeyup="if (this.value.length >= 4) document.paytypeform.cid3.focus()" disabled=""> 
+                         - <input type="text" style="text-align: center;" class="txtcredit integer" id="cid3" name="cid3" size="4" maxlength="4" value="" onkeyup="if (this.value.length >= 4) document.paytypeform.cid4.focus()" disabled=""> 
+                         - <input type="text" class="txtcredit integer" id="cid4" name="cid4" size="4" maxlength="4" value="" disabled="">
+                        <input type="button" id="citicheck" name="citicheck" value="Check No. / ตรวจสอบ" onclick="javascript:check_ccredit();" disabled="">
+                    </p>
+                    <p>* พิเศษ! สำหรับผู้ถือบัตร Citibank Ultima เท่านั้น เพื่อรับสิทธิ์อัพเกรดบัตร, ฟรี ค่าจัดส่งไปรษณีย์ เมื่อซื้อบัตรชมการแสดงผ่านเว็บไซด์ www.thaiticketmajor.com และ TTM Call Center<br>
+                        <span class="red">Special! Citibank Ultima cardholder who purchases ticket(s). to get the upgrade ticket(s). via www.thaiticketmajor.com and TTM Call Center will get free delivery charge.</span></p>
+                </div>
+            </td>
+        </tr>
+        <!-- Citibank credit card content end -->
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                            <!-- SCB M credit card content start -->
+        <tr id="content_scbm" class="more">
+            <td>
+                <div class="content-payment">
+                    <p><img src="http://www.thaiticketmajor.com/images/scbm-credit-i.jpg"></p>
+                    <p>- สำหรับบัตรเครดิต เดบิต และบัตรเติมเงิน SCB M ธนาคารไทยพาณิชย์ กรุณากรอกหมายเลขบัตรเครดิต 16 หลักเพื่อรับสิทธิประโยชน์ แล้วกดปุ่ม "ตรวจสอบ" <br>
+                        <span class="red">- Credit, Debit and Pre-paid SCB M Card holder, Please fill-in credit card number to get special privilege </span></p>
+                    <p>หมายเลขบัตร SCB M VISA (SCB M VISA Card No.)
+                        <input type="text" class="txtcredit integer" id="scbmid1" name="scbmid1" size="4" maxlength="4" value="" onkeyup="if (this.value.length >= 4) document.paytypeform.scbmid2.focus()" disabled="">
+                         - <input type="text" class="txtcredit integer" id="scbmid2" name="scbmid2" size="4" maxlength="4" value="" onkeyup="if (this.value.length >= 4) document.paytypeform.scbmid3.focus()" disabled=""> 
+                         - <input type="text" style="text-align: center;" class="txtcredit integer" id="scbmid3" name="scbmid3" size="4" maxlength="4" value="" onkeyup="if (this.value.length >= 4) document.paytypeform.scbmid4.focus()" disabled=""> 
+                         - <input type="text" class="txtcredit integer" id="scbmid4" name="scbmid4" size="4" maxlength="4" value="" disabled="">
+                        <input type="button" id="scbmcheck" name="scbmcheck" value="Check No. / ตรวจสอบ" onclick="javascript:check_scbmcredit();" disabled="">
+                    </p>
+                </div>
+            </td>
+        </tr>
+        <!-- SCB M credit card content end -->  
+                                                                            
+                                                                        </tbody></table>
+                                                                    </div>
+                                                                    
+                                                                </td>
+                                                            </tr>
+                                                        </tbody></table>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    
+                                    <!-- Content cash or ATM -->
+                                    <div id="paycontent_cashatm" class="hide_object">
+                                        <div class="container-content-history">
+                                            <div class="content-payment">
+                                                <p> <input name="paytype" type="radio" value="CTSI" onclick="javascript:channelcheck();" class="hide_object"> การชำระเงินด้วยเงินสดต้องชำระเงินภายใน 2 ชั่วโมง หลังจากได้รับรหัสจอง (สำหรับลูกค้าภายในประเทศไทยเท่านั้น)<br>
+                                                    <span class="red">Payment at Bill Payment service (Domestic only), please paid within 2 hours after get reservation code at</span></p>
+                                                <div class="logo-payment"><img src="images/all-logo-payment-new3.jpg" width="501" height="40"></div>
+                                                <p class="more-content"><a href="#" id="link_cashservice" class="showLink blue">ดูรายละเอียดเพิ่มเติม / More Information</a></p>
+                                                <div class="clearfix"></div>
+                                                
+                                                <div id="content_cashservice" class="more">
+                                                    <table width="100%" bgcolor="#E6E6E6" class="tb_show tb_showmiddle">
+                                                        <tbody><tr bgcolor="#F5F5F5">
+                                                            <td width="15%" align="center"><img align="absmiddle" alt="" src="http://www.thaiticketmajor.com/images/cenpay.jpg"></td>
+                                                            <td width="85%">
+                                                                <div class="content-payment">
+                                                                    <p>ชำระเงิน CenPay บริการภายใต้เครือเซ็นทรัลกรุ๊ป มีเคาน์เตอร์รับชำระเงินที่: ห้างสรรพสินค้าเซ็นทรัล, ห้างสรรพสินค้าโรบินสัน, ห้างสรรพสินค้าเซน, ท็อปซุปเปอร์มาร์เก็ต และท็อปส์เดลี่, บีทูเอส, เซ็นทรัลฟู้ดฮอลล์, ร้านแฟมิลี่มาร์ทกว่า 1,000 สาขา, ออฟฟิศเมท<br>
+                                                                        <span class="red">CenPay by Central Group. You can make payment at following shops: Central Department Store, Robinson Department Store, Zen Department Store, Tops Supermarket and Tops Daily, B2S, Central Food Hall, Family Mart with more than 1,000 branches, Office Mate</span></p>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr bgcolor="#F5F5F5">
+                                                            <td width="15%" align="center"><img alt="" src="http://www.thaiticketmajor.com/images/bangkokbank.jpg"></td>
+                                                            <td width="85%">
+                                                                <div class="content-payment">
+                                                                    <p>ธนาคารกรุงเทพฯ<br>
+                                                                        <span class="red">Bangkok Bank (Branch and ATM Machine)</span></p>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr bgcolor="#F5F5F5">
+                                                            <td width="15%" align="center"><img alt="" src="http://www.thaiticketmajor.com/images/kasikronthai.jpg"></td>
+                                                            <td width="85%">
+                                                                <div class="content-payment">
+                                                                    <p>ธนาคารกสิกรไทย K-ATM และ K-Mobile Banking จะไม่สามารถชำระได้ในช่วงเวลา 22:00 - 24:00 น. ของทุกวัน <br>
+                                                                        <span class="red">Kasikorn Bank K-ATM and K-Mobile Banking will out of service between 10 pm. - 12 pm. every day</span></p>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr bgcolor="#F5F5F5">
+                                                            <td width="15%" align="center"><img alt="" src="http://www.thaiticketmajor.com/images/m-pay.jpg"></td>
+                                                            <td width="85%">
+                                                                <div class="content-payment">
+                                                                    <p>ชำระผ่าน mPAY STATION ที่ AIS Shop, Telewiz หรือโทรศัพท์มือถือด้วยบริการ mPAY สำหรับผู้ใช้ระบบ GSM advance และ One-2-Call <br>
+                                                                        <span class="red">Payment via AIS Shop, Telewiz or mPAY service only for GSM advance and One-2-Call customers</span></p>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr bgcolor="#F5F5F5">
+                                                            <td width="15%" align="center"><img alt="" src="http://www.thaiticketmajor.com/images/justpay.jpg"></td>
+                                                            <td width="85%">
+                                                                <div class="content-payment">
+                                                                    <p>บริการ Just pay <br>
+                                                                        <span class="red">(TOT)</span></p>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr bgcolor="#F5F5F5">
+                                                            <td width="15%" align="center"><img alt="" src="http://www.thaiticketmajor.com/images/thaipost.jpg"></td>
+                                                            <td width="85%">
+                                                                <div class="content-payment">
+                                                                    <p>ไปรษณีย์ไทย <br>
+                                                                        <span class="red">Thailand Post</span></p>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr bgcolor="#F5F5F5">
+                                                            <td width="15%" align="center"><img alt="" src="http://www.thaiticketmajor.com/images/tescolotus.jpg"></td>
+                                                            <td width="85%">
+                                                                <div class="content-payment">
+                                                                    <p>เทสโก้โลตัส <br>
+                                                                        <span class="red">TESCO LOTUS</span></p>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <!--
+                                                        <tr bgcolor="#F5F5F5">
+                                                            <td width="15%" align="center"><img alt="" src="http://www.thaiticketmajor.com/images/airpay.jpg" /></td>
+                                                            <td width="85%">
+                                                                <div class="content-payment">
+                                                                    <p>แอร์เพย์ เกตเวย์ กรุณาชำระเงินภายในเวลา 15 นาที หลังจากทำรายการจอง <br />
+                                                                        <span class="red">AirPay Gateway Please paid within 15 minute after get reservation completed.</span></p>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        -->
+                                                        <tr bgcolor="#F5F5F5">
+                                                            <td width="15%" align="center"><img alt="" src="http://www.thaiticketmajor.com/images/bigc_logo.jpg"></td>
+                                                            <td width="85%">
+                                                                <div class="content-payment">
+                                                                    <p>บิ๊กซี <br>
+                                                                        <span class="red">BigC</span></p>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr bgcolor="#F5F5F5">
+                                                            <td width="15%" align="center"><img alt="" src="http://www.thaiticketmajor.com/images/bluepay_logo.jpg"></td>
+                                                            <td width="85%">
+                                                                <div class="content-payment">
+                                                                    <p>บลูเพย์ <br>
+                                                                        <span class="red">BluePay</span></p>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                </div>
+                                                <br>
+                                                
+                                                <p>* ธนาคารกสิกรไทย K-ATM และ K-Mobile Banking จะไม่สามารถชำระได้ในช่วงเวลา 22:00 - 24:00 น. ของทุกวัน <br>
+                                                    <span class="red">* Kasikorn Bank K-ATM and K-Mobile Banking will out of service between 10 pm. - 12 pm. every day</span></p>
+                                                <p>กรุณาใส่หมายเลขโทรศัพท์ของท่านเพื่อยืนยันการชำระเงินผ่านเคาน์เตอร์รับชำระเงิน หรือเอทีเอ็ม<br>
+                                                    <span class="red">Please fill in your telephone number as reference for confirming your payment at counter or ATM</span></p>
+        
+                                                
+                                                <p><input name="contact" type="text" id="contact" maxlength="10" class="integer">  <br> Ex. 0812345678</p>
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <!-- Content Mobile banking start -->
+                                    <div id="paycontent_mobile" class="hide_object">
+                                        <div class="container-content-history">
+                                            <div class="content-payment">
+                                                <p> <input name="paytype" type="radio" value="KBKD" onclick="javascript:channelcheck();" class="hide_object"> ชำระเงินโดยผ่านมือถือ<br>
+                                                    <span class="red">Payment by Mobile App</span></p>
+                                                <div class="payment-head">*กรุณาเลือกช่องทางการชำระเงินผ่านมือถือ / Please select your mobile type for payment</div>
+                                                <div>
+                                                    <table width="100%" bgcolor="#E6E6E6" class="tb_show">
+                                                        <tbody><tr bgcolor="#F5F5F5">
+                                                            <td valign="top">
+                                                                <div class="content-payment">
+                                                                    <table width="100%" class="tb_show">
+                                                                        <tbody><tr>
+                                                                                                                            <!-- Kplus head start -->
+                                                        <td valign="top" width="268">
+                                                            <div class="content-payment cardtype">
+                                                                <p><input type="radio" id="mtype_kplus" name="mtype" value="KBKC">
+                                                                    <label for="mtype_kplus"><img src="images/logo-payplus.jpg" width="100" height="50"></label></p>
+                                                                <p>กรุณาชำระเงินภายในเวลา 5 นาที หลังจากทำรายการจอง<br>
+                                                                    <span class="red">Payment at Mobile Banking Service, Please paid within 5 minute after get reservation completed</span></p>
+                                                                <p>* K-Mobile Banking จะไม่สามารถชำระได้ในช่วงเวลา 22:00 - 24:00 น. ของทุกวัน<br>
+                                                                    <span class="red">* K-Mobile Banking will out of service between 10 pm. - 12 pm. every day</span></p>
+                                                            </div>
+                                                        </td>
+                                                        <!-- Kplus head end -->
+                                                                                                                            <!-- Line head start -->
+                                                        <td valign="top" style="border-left:1px solid #cccccc" width="268">
+                                                            <div class="content-payment cardtype">
+                                                                <p><input type="radio" id="mtype_line" name="mtype" value="LNCR">
+                                                                    <label for="mtype_line"><img src="images/linepay_logo_172x30.png"></label></p>
+                                                                <p>ชำระเงินอย่างง่ายๆ และปลอดภัยด้วยบัตรเครดิต หรือบัตรเดบิตผ่าน Rabbit LINE Pay (Cash Balance, Master Card, Visa) คุณจะต้องเข้าไปที่หน้า LINE Pay เพื่อดำเนินการชำระเงิน<br>
+                                                                    <span class="red">Pay easily and secure credit card or debit card through Rabbit LINE Pay (Cash Balance, Master Card, Visa) You must visit the LINE Pay for payment processing</span></p>
+                                                            </div>
+                                                        </td>
+                                                        <!-- Line head end -->
+                                                                                                                            <!-- Airpay head start -->
+                                                        <td valign="top" style="border-left:1px solid #cccccc" width="268">
+                                                            <div class="content-payment cardtype">
+                                                                <p><input type="radio" id="mtype_airpay" name="mtype" value="AIRI">
+                                                                    <label for="mtype_airpay"><img src="images/airpay-logo.jpg" width="103" height="36"></label></p>
+                                                                <p>สะดวก ปลอดภัย จ่ายได้ด้วย AirPay แค่เปิดหน้าแอปฯ สแกน และ จ่าย กรุณาชำระเงินภายในเวลา 15 นาที หลังทำรายการจอง
+                                                                    <br>
+                                                                    <span class="red">Conveniently and securely make a payment through AirPay.
+                                                                        Please pay within 15 minutes after reservation is completed.</span>
+                                                                </p>
+                                                            </div>
+                                                        </td>
+                                                        <!-- Airpay head end -->
+                                                                        </tr>
+                                                                    </tbody></table>
+                                                                    
+                                                                    <table width="100%">
+                                                                                                                        <!-- Kplus content start -->
+                                                        <tbody><tr id="content_kplus" class="more">
+                                                            <td>
+                                                                <div class="content-payment">
+                                                                    <p>กรุณาใส่หมายเลขโทรศัพท์ของท่านเพื่อยืนยันการชำระเงินผ่าน Pay Plus<br>
+                                                                        <span class="red">Please fill in your telephone number as reference for confirming your payment </span></p>
+                                                                    <p><input name="mobilecontact" type="text" id="mobilecontact" maxlength="10" class="integer">  <br> Ex. 0812345678</p>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <!-- Kplus content end -->
+                                                                    </tbody></table>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Content Mobile banking end -->
+        
+        
+                                    <!-- Content Redeem -->
+                                    <div id="paycontent_redeem" class="hide_object">
+                                        <div class="container-content-history">
+                                            <div class="content-payment">
+                                                <p> <input name="paytype" type="radio" value="RDCI" onclick="javascript:channelcheck();" class="hide_object"> ชำระเงินโดยบัตรเครดิต Redeem<br>
+                                                    <span class="red">Payment by Card Credit Redeem</span></p>
+                                                <div id="label_redeemcredit"></div>
+        
+                                                <div class="payment-head">*กรุณาเลือกประเภทการชำระเงิน / Please select your type for payment</div>
+                                                <div>
+                                                    <table width="100%" bgcolor="#E6E6E6" class="tb_show">
+                                                        <tbody><tr bgcolor="#F5F5F5">
+                                                            <td valign="top">
+                                                                <div class="content-payment">
+                                                                    <table width="100%" class="tb_show">
+                                                                        <tbody><tr>
+                                                                            
+                                                                        </tr>
+                                                                    </tbody></table>
+                                                                    
+                                                                    <table width="100%">
+                                                                        
+                                                                    </table>
+                                                                </div>
+                                                                
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                </div>
+        
+                                            </div>
+                                        </div>
+                                    </div>
+        
+        
+                                    <!-- Content Flexi -->
+                                    <div id="paycontent_flexi" class="hide_object">
+                                        <div class="container-content-history">
+                                            <div class="content-payment">
+                                                <p> <input name="paytype" type="radio" value="FXCI" onclick="javascript:channelcheck();" class="hide_object"> ชำระเงินโดยบัตรเครดิต Flexi<br>
+                                                    <span class="red">Payment by Card Credit Flexi</span></p>
+                                                <div id="label_flexicredit"></div>
+        
+                                                <div class="payment-head">*กรุณาเลือกประเภทการชำระเงิน / Please select your type for payment</div>
+                                                <div>
+                                                    <table width="100%" bgcolor="#E6E6E6" class="tb_show">
+                                                        <tbody><tr bgcolor="#F5F5F5">
+                                                            <td valign="top">
+                                                                <div class="content-payment">
+                                                                    <table width="100%" class="tb_show">
+                                                                        <tbody><tr>
+                                                                            
+                                                                        </tr>
+                                                                    </tbody></table>
+                                                                    
+                                                                    <table width="100%">
+                                                                        
+                                                                    </table>
+                                                                </div>
+                                                                
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                </div>
+        
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <!-- Content Master pass -->
+                                    <div id="paycontent_masterpass" class="hide_object">
+                                        <div class="container-content-history">
+                                            <div class="content-payment">
+                                                <p> <input name="paytype" type="radio" value="MTPI" onclick="javascript:channelcheck();" class="hide_object"> การชำระเงินด้วย Master pass<br>
+                                                    <span class="red">Payment at Master pass service</span></p>
+                                                <div class="logo-payment"><img src="images/masterpass-logo-i.png" width="179" height="41"></div>
+                                                <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+        
+        
+                                    <!-- Content Direct debit -->
+                                    <div id="paycontent_directdebit" class="hide_object">
+                                        <div class="container-content-history">
+                                            <div class="content-payment">
+                                                <p>ชำระเงินโดยหักเงินผ่านบัญชีธนาคาร<br>
+                                                    <span class="red">Payment by Direct debit</span></p>
+                                                <div class="payment-head">*กรุณาเลือกประเภทการชำระเงิน / Please select your type for payment</div>
+                                                <div>
+                                                    <table width="100%" bgcolor="#E6E6E6" class="tb_show">
+                                                        <tbody><tr bgcolor="#F5F5F5">
+                                                            <td valign="top">
+                                                                <div class="content-payment">
+                                                                    <table width="100%" class="tb_show">
+                                                                        <tbody><tr>
+                                                                            <!-- BBL direct debit head start -->
+        <td valign="top" style="border-left:1px solid #cccccc" width="268">
+            <div class="content-payment cardtype">
+                <p> <input id="paytype_bbldirect" name="paytype" type="radio" value="BBLD" onclick="javascript:channelcheck();" class="hide_object">
+                    <label for="paytype_bbldirect"><img src="images/bbl-directdebit-logo.png" width="103" height="36"></label></p>
+                <p>ธนาคารกรุงเทพ Direct debit กรุณาชำระเงินภายในเวลา 15 นาที หลังจากทำรายการจอง<br>
+                    <span class="red">BBL I-Banking, Please paid within 15 minute after get reservation completed</span></p>
+            </div>
+        </td>
+        <!-- BBL direct debit head end -->
+                                                                        </tr>
+                                                                    </tbody></table>
+                                                                </div>
+                                                                
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                </div>
+        
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Please select your delivery method -->
+                        <div class="header-payment"><h2><strong>2. กรุณาเลือกวิธีการรับบัตร (Please select your delivery method)</strong></h2></div>
+                        
+                        <div class="payment-content-box">
+                            <div class="content-box-payment">
+                                <div class="wrapper-history">
+                                    <div class="button-select">
+                                      <ul id="delivery_group">
+                                                                        <!-- Button pickup start -->
+                                        <li>
+                                          <div id="btn_pickup" class="button-payment-delivery">
+                                            <div class="icon-papyment-btn icon-pickup"></div>
+                                            <div class="head-payment-btn">รับบัตรด้วยตนเอง<br>
+                                              <span class="payment-gray">Pick up the ticket(s) by yourself</span></div>
+                                          </div>
+                                        </li>
+                                        <!-- Button pickup end -->
+                                                                        <!-- Button thaipost start -->
+                                        <li>
+                                          <div id="btn_thaipost" class="button-payment-delivery">
+                                            <div class="icon-papyment-btn icon-deliver"></div>
+                                            <div class="head-payment-btn">จัดส่งทางไปรษณีย์ <br>
+                                              <span class="payment-gray">Deliver the ticket(s) by post</span></div>
+                                          </div>
+                                        </li>
+                                        <!-- Button thaipost end -->
+                                      </ul>
+                                    </div>
+                                    
+                                    <!-- Content pickup -->
+                                    <div id="deycontent_pickup" class="hide_object">
+                                        <div class="container-content-history">
+                                            <div class="content-payment">
+                                                <p><input name="deliver" type="radio" value="1" onclick="javascript:send(1);" class="hide_object">
+                                                    รับบัตรด้วยตนเองบริเวณหน้างาน ณ จุดจำหน่ายของไทยทิคเก็ตเมเจอร์ ก่อนการแสดงเริ่ม ประมาณ 1 ชม. (ไม่คิดค่าบริการการส่งบัตร)<br>
+                    <span class="red">Pick up the ticket(s) by yourself at the venue on the show date approx. 1 hour prior to the show time at that venue TTM outlet (Free of delivery charge)</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Content thaipost -->
+                                    <div id="deycontent_thaipost" class="hide_object">
+                                        <div class="container-content-history">
+                                            <div class="content-payment">
+                                                                                        <p><input name="deliver" type="radio" value="3" onclick="javascript:send(3);" class="hide_object"> บริการจัดส่งบัตรทางไปรษณีย์ อัตราค่าบริการ 60 บาท ทั่วประเทศ  สำหรับการบริการจัดส่ง จะเปิดให้บริการภายในประเทศไทยเท่านั้น จัดส่งภายใน 7- 14 วันทำการหลังชำระเงิน<br>
+                <span class="red">Deliver the ticket(s) to your place by post with service fee 60 Baht. For delivery service in Thailand only. (Domestic only). Arrangement within 7 - 14 official days after payment.</span></p>
+                                                <div class="payment-head">สถานที่ส่งบัตร / Place to deliver</div>
+                                                <div>
+                                                    <table width="100%" bgcolor="#E6E6E6" class="tb_show address">
+                                                        <tbody><tr bgcolor="#F5F5F5">
+                                                            <td valign="top">
+                                                                <div class="content-payment">
+                                                                    <table width="100%" class="tb_show">
+                                                                        <tbody><tr>
+                                                                            <td width="30%"><input name="address_m" type="radio" value="4" checked="" class="hide_object"> ชื่อ / <span class="red">Firstname :</span></td>
+                                                                            <td width="70%"><input name="c_fname_m" type="text" id="c_fname_m" value="Janejira"></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>นามสกุล / <span class="red">Last Name :</span></td>
+                                                                            <td><input name="c_lname_m" type="text" id="c_lname_m" value="Saichamchan"></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td valign="top">ที่อยู่ / <span class="red">Address :</span></td>
+                                                                            <td>
+                                                                                <input type="text" name="c_address_m" id="c_address_m" style="width:300px;" value="497 หมู่บ้านสินทวีสวนธน1 ซอยประชาอุทิศ44 ถนนประชาอุทิศ แขวงบางมด เขตทุ่งครุ กทม. 10140 เขตทุ่งครุ จังหวัดกรุงเทพมหานคร 10140">
+                                                                                <br>
+                                                                                <span class="red">(บ้านเลขที่/Home No, ห้องเลขที่/Room No, ชื่ออาคารหรือชื่อหมู่บ้าน/Apartment or Village Name, ซอย, ถนน, แขวง/Sub-District เท่านั้น)</span>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>ประเทศ / <span class="red">Country :</span></td>
+                                                                            <td>
+                                                                                <select name="c_ctCode" id="c_ctCode" style="width:200px;">
+                                                                                    <option value="TH" selected="">ไทย/Thailand</option>
+                                                                              </select>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>จังหวัด / <span class="red">Province :</span></td>
+                                                                            <td> 
+                                                                              <select name="c_pvId" id="c_pvId" style="width:200px;">
+                                                                                    <option value="00*เลือกจังหวัด">เลือกจังหวัด/Select Province</option><option value="68*กระบี่">กระบี่/Krabi</option><option value="33*กรุงเทพฯ" selected="">กรุงเทพฯ/Bangkok</option><option value="18*กาญจนบุรี">กาญจนบุรี/Kanchanaburi</option><option value="47*กาฬสินธุ์">กาฬสินธุ์/Kalasin</option><option value="13*กำแพงเพชร">กำแพงเพชร/Kamphaenphet</option><option value="46*ขอนแก่น">ขอนแก่น/Khonkaen</option><option value="61*จันทบุรี">จันทบุรี/Chanthaburi</option><option value="32*ฉะเชิงเทรา">ฉะเชิงเทรา/Chachoengsao</option><option value="59*ชลบุรี">ชลบุรี/Chonburi</option><option value="20*ชัยนาท">ชัยนาท/Chainat</option><option value="49*ชัยภูมิ">ชัยภูมิ/Chaiya</option><option value="63*ชุมพร">ชุมพร/Chumphon</option><option value="01*เชียงราย">เชียงราย/Chiangrai</option><option value="02*เชียงใหม่">เชียงใหม่/Chiangmai</option><option value="70*ตรัง">ตรัง/Trang</option><option value="62*ตราด">ตราด/Trat</option><option value="11*ตาก">ตาก/Tak</option><option value="26*นครนายก">นครนายก/Nakhonnayok</option><option value="27*นครปฐม">นครปฐม/Nakhonpathom</option><option value="43*นครพนม">นครพนม/Nakhonphanom</option><option value="54*นครราชสีมา">นครราชสีมา/Nakhonratchasima</option><option value="69*นครศรีธรรมราช">นครศรีธรรมราช/Nakhonsithammarat</option><option value="16*นครสวรรค์">นครสวรรค์/Nakhonsawan</option><option value="28*นนทบุรี">นนทบุรี/Nonthaburi</option><option value="76*นราธิวาส">นราธิวาส/Narathiwat</option><option value="05*น่าน">น่าน/Nan</option><option value="55*บุรีรัมย์">บุรีรัมย์/Burirum</option><option value="77*บึงกาฬ">บึงกาฬ/Bungkan</option><option value="29*ปทุมธานี">ปทุมธานี/Pathumthani</option><option value="39*ประจวบคีรีขันธ์">ประจวบคีรีขันธ์/Prachuapkhirikhan</option><option value="30*ปราจีนบุรี">ปราจีนบุรี/Prachinburi</option><option value="74*ปัตตานี">ปัตตานี/Pattani</option><option value="04*พะเยา">พะเยา/Phayoa</option><option value="66*พังงา">พังงา/Phangnga</option><option value="71*พัทลุง">พัทลุง/Phatthalung</option><option value="14*พิจิตร">พิจิตร/Phichit</option><option value="12*พิษณุโลก">พิษณุโลก/Phitsanulok</option><option value="38*เพชรบุรี">เพชรบุรี/Petchburi</option><option value="15*เพชรบูรณ์">เพชรบูรณ์/Petchabun</option><option value="08*แพร่">แพร่/Prae</option><option value="67*ภูเก็ต">ภูเก็ต/Phuket</option><option value="50*มหาสารคาม">มหาสารคาม/Mahasarakham</option><option value="48*มุกดาหาร">มุกดาหาร/Mukdahan</option><option value="03*แม่ฮ่องสอน">แม่ฮ่องสอน/Maehongson</option><option value="51*ยโสธร">ยโสธร/Yasothon</option><option value="75*ยะลา">ยะลา/Yala</option><option value="53*ร้อยเอ็ด">ร้อยเอ็ด/Roiet</option><option value="64*ระนอง">ระนอง/Ranong</option><option value="60*ระยอง">ระยอง/Rayong</option><option value="34*ราชบุรี">ราชบุรี/Ratchaburi</option><option value="22*ลพบุรี">ลพบุรี/Lopburi</option><option value="07*ลำปาง">ลำปาง/Lumpang</option><option value="06*ลำพูน">ลำพูน/Lamphun</option><option value="41*เลย">เลย/Loei</option><option value="57*ศรีสะเกษ">ศรีสะเกษ/Sisaket</option><option value="44*สกลนคร">สกลนคร/Sakonnakhon</option><option value="73*สงขลา">สงขลา/Songkhla</option><option value="72*สตูล">สตูล/Satun</option><option value="35*สมุทรปราการ">สมุทรปราการ/Samutprakan</option><option value="37*สมุทรสงคราม">สมุทรสงคราม/Samutsongkhram</option><option value="36*สมุทรสาคร">สมุทรสาคร/Samutsakhon</option><option value="31*สระแก้ว">สระแก้ว/Sakaeo</option><option value="24*สระบุรี">สระบุรี/Saraburi</option><option value="21*สิงห์บุรี">สิงห์บุรี/Singburi</option><option value="10*สุโขทัย">สุโขทัย/Sukhothai</option><option value="19*สุพรรณบุรี">สุพรรณบุรี/Suphanburi</option><option value="65*สุราษฎร์ธานี">สุราษฎร์ธานี/Suratthani</option><option value="56*สุรินทร์">สุรินทร์/Surin</option><option value="40*หนองคาย">หนองคาย/Nongkhai</option><option value="45*หนองบัวลำภู">หนองบัวลำภู/Nongbualamphu</option><option value="25*อยุธยา">อยุธยา/Ayutthaya</option><option value="23*อ่างทอง">อ่างทอง/Angthong</option><option value="52*อำนาจเจริญ">อำนาจเจริญ/Amnatcharoen</option><option value="42*อุดรธานี">อุดรธานี/Udonthani</option><option value="09*อุตรดิตถ์">อุตรดิตถ์/Utaradit</option><option value="17*อุทัยธานี">อุทัยธานี/UthaiThani</option><option value="58*อุบลราชธานี">อุบลราชธานี/Ubonratchathani</option>
+                                                                                </select>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>อำเภอ / <span class="red">Amphur :</span></td>
+                                                                            <td>
+                                                                              <select name="c_amId" id="c_amId" style="width:200px;">
+                                                                                    <option value="000">-------------------</option><option value="001*คลองสาน">คลองสาน/Klong San</option><option value="002*คลองเตย">คลองเตย/Klong Toey</option><option value="003*จอมทอง">จอมทอง/Chom Tong</option><option value="004*จตุจักร">จตุจักร/Chatuchak.</option><option value="005*ดุสิต">ดุสิต/Dusit.</option><option value="006*ดอนเมือง">ดอนเมือง/Don Muang</option><option value="007*ตลิ่งชัน">ตลิ่งชัน/Ta-ling Chan</option><option value="008*ธนบุรี">ธนบุรี/Thonburi.</option><option value="009*บางกอกน้อย">บางกอกน้อย/Bangkok Noi</option><option value="010*บางกอกใหญ่">บางกอกใหญ่/Bangkok Yai</option><option value="011*บางกะปิ">บางกะปิ/Bangkapi</option><option value="012*บางขุนเทียน">บางขุนเทียน/Bang kun Tien</option><option value="013*บางเขน">บางเขน/BangKhen.</option><option value="014*บางคอแหลม">บางคอแหลม/Bang Ko Laem.</option><option value="015*บางซื่อ">บางซื่อ/Bang Sue.</option><option value="016*บางพลัด">บางพลัด/Bang Phlat</option><option value="017*บางรัก">บางรัก/Bang Rak</option><option value="018*บึงกุ่ม">บึงกุ่ม/Bueng Kum.</option><option value="019*ประเวศ">ประเวศ/Phawat</option><option value="020*ปทุมวัน">ปทุมวัน/Phatumwan</option><option value="021*ป้อมปราบศัตรูพ่าย">ป้อมปราบศัตรูพ่าย/PomPrab Satoo Pai</option><option value="022*พญาไท">พญาไท/Phayathai</option><option value="023*พระโขนง">พระโขนง/PhrakaNong</option><option value="024*พระนคร">พระนคร/Phranakon</option><option value="025*ภาษีเจริญ">ภาษีเจริญ/Pasi Charieng</option><option value="026*มีนบุรี">มีนบุรี/MinBuri.</option><option value="027*ยานนาวา">ยานนาวา/Yannawa.</option><option value="028*ราชเทวี">ราชเทวี/Radchatawi</option><option value="029*ราษฎร์บูรณะ">ราษฎร์บูรณะ/Rat boo ra na</option><option value="030*ลาดกระบัง">ลาดกระบัง/Ladkrabang.</option><option value="031*ลาดพร้าว">ลาดพร้าว/Ladprow</option><option value="032*สาทร">สาทร/Sathorn.</option><option value="033*สัมพันธวงศ์">สัมพันธวงศ์/Sum pan tha wong</option><option value="034*หนองแขม">หนองแขม/Nong Kham.</option><option value="035*หนองจอก">หนองจอก/Nong Chok.</option><option value="036*ห้วยขวาง">ห้วยขวาง/Huai Kwang</option><option value="037*สวนหลวง">สวนหลวง/Suan Luang.</option><option value="909*คลองสามวา">คลองสามวา/Khlong Sam Wa.</option><option value="910*คันนายาว">คันนายาว/Khanna yao</option><option value="911*ดินแดง">ดินแดง/DinDeang</option><option value="912*ทวีวัฒนา">ทวีวัฒนา/Taweewattana.</option><option value="913*ทุ่งครุ" selected="">ทุ่งครุ/Thungkru.</option><option value="914*บางแค">บางแค/Bangkae</option><option value="915*บางนา">บางนา/Bangna</option><option value="916*บางบอน">บางบอน/BangBon</option><option value="917*วังทองหลาง">วังทองหลาง/Wang Tong Lang</option><option value="918*วัฒนา">วัฒนา/Wattana.</option><option value="919*สะพานสูง">สะพานสูง/Sapan sung</option><option value="920*สายไหม">สายไหม/Sai mai</option><option value="921*ศรีนครินทร์">ศรีนครินทร์/Sri nacharin</option><option value="924*หลักสี่">หลักสี่/Laksi</option>
+                                                                                </select>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>รหัสไปรษณีย์ / <span class="red">Post Code :</span></td>
+                                                                            <td>
+                                                                                <input name="c_PostCode" type="text" id="c_PostCode" style="width:80px;" class="integer" value="10140" maxlength="5">
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                          <td>*เบอร์โทรสำหรับติดต่อผู้รับ / <br><span class="red">Contact phone for recipient :</span></td>
+                                                                          <td><input name="c_ContactRecipient" type="text" id="c_ContactRecipient" style="width:80px;" class="integer" value="" maxlength="10"><br> Ex. 0812345678</td>
+                                                                        </tr>
+                                                                        <!--<tr>
+                                                                            <td>&nbsp;</td>
+                                                                            <td>
+                                                                                <div class="save_currentaddress">
+                                                                                    <input type="checkbox" name="currentaddress" id="currentaddress" value="Y" />
+                                                                                    <label for="currentaddress">คุณต้องการบันทึกที่อยู่ในการจัดส่งนี้เป็นที่อยู่ปัจจุบันของคุณ<br />
+                                                                                        <span class="red">You want to update delivery address to be your current address.</span></label>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>-->
+                                                                    </tbody></table>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                </div>
+                                                <br>
+                                                <p>ท่านสามารถแก้ไขที่อยู่การจัดส่งบัตร ได้ที่หน้าประวัติการสั่งซื้อ โดยต้องล็อกอินเข้ามาแก้ไขภายใน 24 ชม.หลังจากทำการจอง หรือ หากท่านยังไม่ได้รับบัตร กรุณา ติดต่อ <strong><u>Call Center 02-262-3456</u></strong><br>
+                                                    <span class="red">You can edit address of delivery place later at "Purchase History Page" after login or if you have any problem please contact <strong><u>Call Center 02-262-3456</u></strong></span></p>
+                                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        
+                    
+                        <p align="center">ทางบริษัทฯ จะคืนเงินให้กับลูกค้าตามจำนวนที่ชำระ ยกเว้น ค่าบริการใบละ 20 บาท ค่าธรรมเนียมที่ชำระผ่าน Bill payment, ค่าธรรมเนียมในการโอนเงินผ่านธนาคาร, ค่าบริการจัดส่ง และ/หรือ ค่าใช้จ่ายอื่นๆ ที่นอกเหนือจากค่าบัตร เป็นต้น <br><br>
+                        หากท่านได้ชำระค่าสินค้า หรือค่าบริการแก่ทางบริษัทฯเรียบร้อยแล้ว โดยบริษัทฯได้ทำการสำรองที่นั่ง หรือสินค้าให้แก่ท่าน ในกรณีที่ท่านมิได้รับบัตรเข้าชมการแสดง หรือมิได้รับสินค้าภายในเวลาที่กำหนด บริษัทฯขอสงวนสิทธิ์ในการคืนเงินให้แก่ท่าน ไม่ว่ากรณีใดก็ตาม <br>กรุณาอ่านข้อตกลงการยอมรับในการใช้บริการผ่าน Thaiticketmajor <a class="blue" href="http://www.thaiticketmajor.com/policies.php" target="_blank">คลิกที่นี่</a><br><br>
+                            
+                            <span class="red">Thaiticketmajor will give the customers a refund for the ticket price excluded all services fee e.g. Booking and convenience fee 20 THB per ticket , Bill payment processing fee, Bank transfer fee, Delivery fee, etc.<br><br>
+                        If you have successfully paid for ticket(s) or other service of Thaiticketmajor Co., Ltd. and seat(s) has been reserved. In case you did not picked up ticket(s) or not picked up ticket(s) on time. We reserve the right not to refund you for your ticket in any case. Please read more terms and Condition of Thaiticketmajor before agreement :</span> <a class="blue" href="http://www.thaiticketmajor.com/policies.php?la=en" target="_blank"> Click here</a>
+                        </p>
+                        <div align="left">
+                            <input type="hidden" name="zone" value="B2">
+                            <input type="hidden" name="rdId" value="62710">
+                            <input type="hidden" name="ehId" value="584" id="ehId">
+                            <input type="hidden" name="mrid" value="">
+                            <input type="hidden" name="mwId" value="">
+                            <input type="hidden" name="venue" value="IMPACT CHALLENGER (Hall 1)">
+                            <input type="hidden" name="pricelist" value="">
+                            <input type="hidden" name="seatlist" value="">
+                            <input type="hidden" name="performance" value="The Chainsmokers World War Joy Asia Tour">
+                            <input type="hidden" name="price" value="2500">
+                            <input type="hidden" name="cnt" value="0">
+                            <input type="hidden" name="debit1" value="">
+                            <input type="hidden" name="alert1" value="0">
+                            <input type="hidden" name="aigflag" value="1">
+                            <input type="hidden" name="book_cnt" value="1">
+                            <input type="hidden" id="amountcode" name="amountcode" value="2500">
+                        </div>
+                        
+                        <div id="delivery_thailand" class="hide_object more">
+                            <table width="100%" bgcolor="#E6E6E6" class="tb_show tb_showmiddle">
+                                <tbody><tr bgcolor="#F5F5F5">
+                                    <td>
+                                        <div class="content-payment">
+                                            <p>
+                                                อัตรค่าบริการ 60 บาททั่วประเทศ(เฉพาะประเทศไทยเท่านั้น) และข้าพเจ้ายินยอมให้ผู้เซ็นต์ยืนยันการรับบัตรบนไปรษณีย์ตอบรับ ถือเป็นผู้กระทำการรับบัตรแทนข้าพเจ้า <br>
+                                                <span class="red">Service fee 60 Baht throughout the country(Domestic Only) and on behalf of me, I allow a delegate who sign off on my replied postal tickets to receive those particular tickets accordingly</span>
+                                            </p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </div>
+        
+                        <div class="agree">
+                            <div align="center">
+                                <table align="center">
+                                    
+                                    <tbody><tr>
+                                        <td width="50%"><input id="rdagree_y" name="rdagree" type="radio" value="1"><label for="rdagree_y"><strong>ยอมรับ/ I agree </strong></label></td>
+                                        <td width="50%"><input id="rdagree_n" name="rdagree" type="radio" value="0" checked=""><label for="rdagree_n"><strong>ไม่ยอมรับ/ I disagree</strong></label></td>
+                                    </tr>
+                                </tbody></table>
+                            </div>
+                        </div>
+        
+                        <div class="confirm button"><a href="#" id="channel_confirm">ยืนยันการสั่งซื้อ / CONFIRM</a></div>
+                    </div>
+                
+            </div></form>
+            <div class="clearfix"></div>
+            
+            <form action="channel.php?k=c6eeaa0539eaa4ce33dfb9e4b4eee1cfc0cbf6e7" method="post" id="rform" name="rform">
+                <input type="hidden" name="ver" value="1">
+                <input type="hidden" name="id11">
+                <input type="hidden" name="id22">
+                <input type="hidden" name="zone" value="B2">
+                <input type="hidden" name="rdId" value="62710">
+                <input type="hidden" name="ehId" value="584">
+                <input type="hidden" name="mrid" value="">
+                <input type="hidden" name="mwId" value="">
+                <input type="hidden" name="venue" value="IMPACT CHALLENGER (Hall 1)">
+                <input type="hidden" name="pricelist" value="">
+                <input type="hidden" name="seatlist" value="">
+                <input type="hidden" name="performance" value="The Chainsmokers World War Joy Asia Tour">
+                <input type="hidden" name="price" value="2500">
+                <input type="hidden" name="cnt" value="0">
+                <input type="hidden" name="debit1" value="">
+                <input type="hidden" name="alert1" value="0">
+                <input type="hidden" name="aigflag" value="1">
+            </form>
+            <form action="channel.php?k=c6eeaa0539eaa4ce33dfb9e4b4eee1cfc0cbf6e7" method="post" id="cform" name="cform">
+                <input type="hidden" name="ver" value="2">
+                <input type="hidden" name="cid11">
+                <input type="hidden" name="cid22">
+                <input type="hidden" name="cid33">
+                <input type="hidden" name="cid44">
+                <input type="hidden" name="zone" value="B2">
+                <input type="hidden" name="rdId" value="62710">
+                <input type="hidden" name="ehId" value="584">
+                <input type="hidden" name="mrid" value="">
+                <input type="hidden" name="venue" value="IMPACT CHALLENGER (Hall 1)">
+                <input type="hidden" name="pricelist" value="">
+                <input type="hidden" name="seatlist" value="">
+                <input type="hidden" name="performance" value="The Chainsmokers World War Joy Asia Tour">
+                <input type="hidden" name="price" value="2500">
+                <input type="hidden" name="cnt" value="0">
+                <input type="hidden" name="debit1" value="">
+                <input type="hidden" name="alert1" value="0">
+                <input type="hidden" name="aigflag" value="1">
+                <input type="hidden" name="book_cnt" value="1">
+            </form>
+            <form action="channel.php?k=c6eeaa0539eaa4ce33dfb9e4b4eee1cfc0cbf6e7" method="post" id="sform" name="sform">
+                <input type="hidden" name="ver" value="3">
+                <input type="hidden" name="sid11">
+                <input type="hidden" name="sid22">
+                <input type="hidden" name="sid33">
+                <input type="hidden" name="sid44">
+                <input type="hidden" name="zone" value="B2">
+                <input type="hidden" name="rdId" value="62710">
+                <input type="hidden" name="ehId" value="584">
+                <input type="hidden" name="mrid" value="">
+                <input type="hidden" name="venue" value="IMPACT CHALLENGER (Hall 1)">
+                <input type="hidden" name="pricelist" value="">
+                <input type="hidden" name="seatlist" value="">
+                <input type="hidden" name="performance" value="The Chainsmokers World War Joy Asia Tour">
+                <input type="hidden" name="price" value="2500">
+                <input type="hidden" name="cnt" value="0">
+                <input type="hidden" name="debit1" value="">
+                <input type="hidden" name="alert1" value="0">
+                <input type="hidden" name="aigflag" value="1">
+                <input type="hidden" name="book_cnt" value="1">
+            </form>
+            <form action="channel.php?k=c6eeaa0539eaa4ce33dfb9e4b4eee1cfc0cbf6e7" method="post" id="mform" name="mform">
+                <input type="hidden" name="ver" value="5">
+                <input type="hidden" name="mid11">
+                <input type="hidden" name="mid22">
+                <input type="hidden" name="mid33">
+                <input type="hidden" name="mid44">
+                <input type="hidden" name="zone" value="B2">
+                <input type="hidden" name="rdId" value="62710">
+                <input type="hidden" name="ehId" value="584">
+                <input type="hidden" name="mrid" value="">
+                <input type="hidden" name="venue" value="IMPACT CHALLENGER (Hall 1)">
+                <input type="hidden" name="pricelist" value="">
+                <input type="hidden" name="seatlist" value="">
+                <input type="hidden" name="performance" value="The Chainsmokers World War Joy Asia Tour">
+                <input type="hidden" name="price" value="2500">
+                <input type="hidden" name="cnt" value="0">
+                <input type="hidden" name="debit1" value="">
+                <input type="hidden" name="alert1" value="0">
+                <input type="hidden" name="aigflag" value="1">
+                <input type="hidden" name="book_cnt" value="1">
+            </form>
+            <form action="channel.php?k=c6eeaa0539eaa4ce33dfb9e4b4eee1cfc0cbf6e7" method="post" id="kform" name="kform">
+                <input type="hidden" name="ver" value="6">
+                <input type="hidden" name="kid11">
+                <input type="hidden" name="kid22">
+                <input type="hidden" name="kid33">
+                <input type="hidden" name="kid44">
+                <input type="hidden" name="zone" value="B2">
+                <input type="hidden" name="rdId" value="62710">
+                <input type="hidden" name="ehId" value="584">
+                <input type="hidden" name="mrid" value="">
+                <input type="hidden" name="venue" value="IMPACT CHALLENGER (Hall 1)">
+                <input type="hidden" name="pricelist" value="">
+                <input type="hidden" name="seatlist" value="">
+                <input type="hidden" name="performance" value="The Chainsmokers World War Joy Asia Tour">
+                <input type="hidden" name="price" value="2500">
+                <input type="hidden" name="cnt" value="0">
+                <input type="hidden" name="debit1" value="">
+                <input type="hidden" name="alert1" value="0">
+                <input type="hidden" name="aigflag" value="1">
+                <input type="hidden" name="book_cnt" value="1">
+            </form>
+            <form action="channel.php?k=c6eeaa0539eaa4ce33dfb9e4b4eee1cfc0cbf6e7" method="post" id="ktcform" name="ktcform">
+                <input type="hidden" name="ver" value="7">
+                <input type="hidden" name="ktcid11">
+                <input type="hidden" name="ktcid22">
+                <input type="hidden" name="ktcid33">
+                <input type="hidden" name="ktcid44">
+                <input type="hidden" name="zone" value="B2">
+                <input type="hidden" name="rdId" value="62710">
+                <input type="hidden" name="ehId" value="584">
+                <input type="hidden" name="mrid" value="">
+                <input type="hidden" name="venue" value="IMPACT CHALLENGER (Hall 1)">
+                <input type="hidden" name="pricelist" value="">
+                <input type="hidden" name="seatlist" value="">
+                <input type="hidden" name="performance" value="The Chainsmokers World War Joy Asia Tour">
+                <input type="hidden" name="price" value="2500">
+                <input type="hidden" name="cnt" value="0">
+                <input type="hidden" name="debit1" value="">
+                <input type="hidden" name="alert1" value="0">
+                <input type="hidden" name="aigflag" value="1">
+                <input type="hidden" name="book_cnt" value="1">
+            </form>
+            <form action="channel.php?k=c6eeaa0539eaa4ce33dfb9e4b4eee1cfc0cbf6e7" method="post" id="mpform" name="mpform">
+                <input type="hidden" name="ver" value="">
+                <input type="hidden" name="mpid11">
+                <input type="hidden" name="mpid22">
+                <input type="hidden" name="mpid33">
+                <input type="hidden" name="mpid44">
+                <input type="hidden" name="zone" value="B2">
+                <input type="hidden" name="rdId" value="62710">
+                <input type="hidden" name="ehId" value="584">
+                <input type="hidden" name="mrid" value="">
+                <input type="hidden" name="venue" value="IMPACT CHALLENGER (Hall 1)">
+                <input type="hidden" name="pricelist" value="">
+                <input type="hidden" name="seatlist" value="">
+                <input type="hidden" name="performance" value="The Chainsmokers World War Joy Asia Tour">
+                <input type="hidden" name="price" value="2500">
+                <input type="hidden" name="cnt" value="0">
+                <input type="hidden" name="debit1" value="">
+                <input type="hidden" name="alert1" value="0">
+                <input type="hidden" name="aigflag" value="1">
+                <input type="hidden" name="book_cnt" value="1">
+            </form>
+            <form action="channel.php?k=c6eeaa0539eaa4ce33dfb9e4b4eee1cfc0cbf6e7" method="post" id="ktcredeemform" name="ktcredeemform">
+                <input type="hidden" name="ver" value="10">
+                <input type="hidden" name="ktcredeemid11">
+                <input type="hidden" name="ktcredeemid22">
+                <input type="hidden" name="ktcredeemid33">
+                <input type="hidden" name="ktcredeemid44">
+                <input type="hidden" name="zone" value="B2">
+                <input type="hidden" name="rdId" value="62710">
+                <input type="hidden" name="ehId" value="584">
+                <input type="hidden" name="mrid" value="">
+                <input type="hidden" name="venue" value="IMPACT CHALLENGER (Hall 1)">
+                <input type="hidden" name="pricelist" value="">
+                <input type="hidden" name="seatlist" value="">
+                <input type="hidden" name="performance" value="The Chainsmokers World War Joy Asia Tour">
+                <input type="hidden" name="price" value="2500">
+                <input type="hidden" name="cnt" value="0">
+                <input type="hidden" name="debit1" value="">
+                <input type="hidden" name="alert1" value="0">
+                <input type="hidden" name="aigflag" value="1">
+                <input type="hidden" name="book_cnt" value="1">
+            </form>
+            <form action="channel.php?k=c6eeaa0539eaa4ce33dfb9e4b4eee1cfc0cbf6e7" method="post" id="ktcflexiform" name="ktcflexiform">
+                <input type="hidden" name="ver" value="11">
+                <input type="hidden" name="ktcflexiid11">
+                <input type="hidden" name="ktcflexiid22">
+                <input type="hidden" name="ktcflexiid33">
+                <input type="hidden" name="ktcflexiid44">
+                <input type="hidden" name="zone" value="B2">
+                <input type="hidden" name="rdId" value="62710">
+                <input type="hidden" name="ehId" value="584">
+                <input type="hidden" name="mrid" value="">
+                <input type="hidden" name="venue" value="IMPACT CHALLENGER (Hall 1)">
+                <input type="hidden" name="pricelist" value="">
+                <input type="hidden" name="seatlist" value="">
+                <input type="hidden" name="performance" value="The Chainsmokers World War Joy Asia Tour">
+                <input type="hidden" name="price" value="2500">
+                <input type="hidden" name="cnt" value="0">
+                <input type="hidden" name="debit1" value="">
+                <input type="hidden" name="alert1" value="0">
+                <input type="hidden" name="aigflag" value="1">
+                <input type="hidden" name="book_cnt" value="1">
+            </form>
+        
+            <form action="channel.php?k=c6eeaa0539eaa4ce33dfb9e4b4eee1cfc0cbf6e7" method="post" id="tform" name="tform">
+                <input type="hidden" name="ver" value="12">
+                <input type="hidden" name="tid11">
+                <input type="hidden" name="tid22">
+                <input type="hidden" name="tid33">
+                <input type="hidden" name="tid44">
+                <input type="hidden" name="zone" value="B2">
+                <input type="hidden" name="rdId" value="62710">
+                <input type="hidden" name="ehId" value="584">
+                <input type="hidden" name="mrid" value="">
+                <input type="hidden" name="venue" value="IMPACT CHALLENGER (Hall 1)">
+                <input type="hidden" name="pricelist" value="">
+                <input type="hidden" name="seatlist" value="">
+                <input type="hidden" name="performance" value="The Chainsmokers World War Joy Asia Tour">
+                <input type="hidden" name="price" value="2500">
+                <input type="hidden" name="cnt" value="0">
+                <input type="hidden" name="debit1" value="">
+                <input type="hidden" name="alert1" value="0">
+                <input type="hidden" name="aigflag" value="1">
+                <input type="hidden" name="book_cnt" value="1">
+            </form>
+        
+            <form action="channel.php?k=c6eeaa0539eaa4ce33dfb9e4b4eee1cfc0cbf6e7" method="post" id="ksform" name="ksform">
+                <input type="hidden" name="ver" value="13">
+                <input type="hidden" name="ksid11">
+                <input type="hidden" name="ksid22">
+                <input type="hidden" name="ksid33">
+                <input type="hidden" name="ksid44">
+                <input type="hidden" name="zone" value="B2">
+                <input type="hidden" name="rdId" value="62710">
+                <input type="hidden" name="ehId" value="584">
+                <input type="hidden" name="mrid" value="">
+                <input type="hidden" name="venue" value="IMPACT CHALLENGER (Hall 1)">
+                <input type="hidden" name="pricelist" value="">
+                <input type="hidden" name="seatlist" value="">
+                <input type="hidden" name="performance" value="The Chainsmokers World War Joy Asia Tour">
+                <input type="hidden" name="price" value="2500">
+                <input type="hidden" name="cnt" value="0">
+                <input type="hidden" name="debit1" value="">
+                <input type="hidden" name="alert1" value="0">
+                <input type="hidden" name="aigflag" value="1">
+                <input type="hidden" name="book_cnt" value="1">
+            </form>
+        
+            <form action="channel.php?k=c6eeaa0539eaa4ce33dfb9e4b4eee1cfc0cbf6e7" method="post" id="scbform" name="scbform">
+                <input type="hidden" name="ver" value="14">
+                <input type="hidden" name="scbid11">
+                <input type="hidden" name="scbid22">
+                <input type="hidden" name="scbid33">
+                <input type="hidden" name="scbid44">
+                <input type="hidden" name="zone" value="B2">
+                <input type="hidden" name="rdId" value="62710">
+                <input type="hidden" name="ehId" value="584">
+                <input type="hidden" name="mrid" value="">
+                <input type="hidden" name="venue" value="IMPACT CHALLENGER (Hall 1)">
+                <input type="hidden" name="pricelist" value="">
+                <input type="hidden" name="seatlist" value="">
+                <input type="hidden" name="performance" value="The Chainsmokers World War Joy Asia Tour">
+                <input type="hidden" name="price" value="2500">
+                <input type="hidden" name="cnt" value="0">
+                <input type="hidden" name="debit1" value="">
+                <input type="hidden" name="alert1" value="0">
+                <input type="hidden" name="aigflag" value="1">
+                <input type="hidden" name="book_cnt" value="1">
+            </form>
+        
+            <form action="channel.php?k=c6eeaa0539eaa4ce33dfb9e4b4eee1cfc0cbf6e7" method="post" id="scbmform" name="scbmform">
+                <input type="hidden" name="ver" value="15">
+                <input type="hidden" name="scbmid11">
+                <input type="hidden" name="scbmid22">
+                <input type="hidden" name="scbmid33">
+                <input type="hidden" name="scbmid44">
+                <input type="hidden" name="zone" value="B2">
+                <input type="hidden" name="rdId" value="62710">
+                <input type="hidden" name="ehId" value="584">
+                <input type="hidden" name="mrid" value="">
+                <input type="hidden" name="venue" value="IMPACT CHALLENGER (Hall 1)">
+                <input type="hidden" name="pricelist" value="">
+                <input type="hidden" name="seatlist" value="">
+                <input type="hidden" name="performance" value="The Chainsmokers World War Joy Asia Tour">
+                <input type="hidden" name="price" value="2500">
+                <input type="hidden" name="cnt" value="0">
+                <input type="hidden" name="debit1" value="">
+                <input type="hidden" name="alert1" value="0">
+                <input type="hidden" name="aigflag" value="1">
+                <input type="hidden" name="book_cnt" value="1">
+            </form>
+        </div>
+</body>
+        
