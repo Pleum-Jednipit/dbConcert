@@ -61,11 +61,11 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <input class="form-control" data-date-format="dd/mm/yyyy" id="datepicker" name="date">
+                                    <input class="form-control" type="text" class="form-control" id="datepicker" name="date">
                                 </td>
 
                                 <td>
-                                    <input id="timepicker" name="time"/>
+                                    <input id="timepicker" type="text" class="form-control" name="time"/>
                                 </td>
 
                                 <td>
@@ -228,7 +228,7 @@
             var index = $("table tbody tr:last-child").index();
             var row = '<tr>' +
                 '<td><input type="text" class="form-control" name="name" id="name"></td>' +
-                '<td><input id="timepicker" name="time"/></td>' +
+                '<td><input id="timepicker" type="text" class="form-control" name="time"/></td>' +
                 '<td><input type="text" name="plan"></td>' +
                 '<td>' + actions + '</td>' +
             '</tr>';
@@ -271,25 +271,7 @@
         });
     });
     </script>
-<!--datepicker-->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
-<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
-<script>
-        $('#datepicker').datepicker({
-            uiLibrary: 'bootstrap4'
-        });
-    </script>
-<!--timepicker-->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
-<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
-<script>
-    $('#timepicker').timepicker({
-        uiLibrary: 'bootstrap4'
-    });
-</script>
+
 </body>
 
 </html>
