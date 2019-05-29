@@ -8,68 +8,67 @@
         <div class="row">
             <div class="col-1"></div>
             <div class="col">
-                <h1 class="dispaly-1"><%= venue.Venue_Name %></h1>
+                <h1 class="dispaly-1" style="font-weight: bold"><%= venue.Venue_Name %></h1>
             </div>
-
         </div>
-        <hr>
-        
-        
+        <hr>  
     </div>
+
     <div class="container">
         <div class="row">
                 <div class="col text-center">
-                        <img src="<%= venue.Venue_Image %>" style="width: 75%;" alt="">
+                        <img src="<%= venue.Venue_Image %>" style="width: 70%;" alt="">
                 </div>
         </div>
         <div class="row mt-5">
                 <div class="col-1"></div>
                 <div class="col">
-                    <h1 class="dispaly-1">Detail</h1>
+                    <h2 class="dispaly-1" style="font-weight: bold; margin-left: 50px"><br>Detail</h2>
                 </div>
             </div>
             <hr>
             <div class="row">
-                        
-                    <div class="col-9">
-                            <form action="/venue" method="GET">
-                                    <div class="form-group row mx-5">
-                                      <label for="username" class="col-sm-5 col-form-label">Address</label>
-                                      <div class="col-sm-5">
-                                        <input type="text" readonly class="form-control-plaintext" disabled id="username" value="<%= venue.Venue_Address %>">
-                                      </div>
-                                    </div>
-                                    <div class="form-group row mx-5">
-                                      <label for="address" class="col-sm-5 col-form-label">Email</label>
-                                      <div class="col-sm-5">
-                                            <input type="text" readonly class="form-control-plaintext" disabled id="address" value="<%= venue.Venue_EmailAddress %>">
-                                      </div>
-                                    </div>
-                                    <div class="form-group row mx-5">
-                                            <label for="email" class="col-sm-5 col-form-label">Phone</label>
-                                            <div class="col-sm-5">
-                                                    <input type="text" readonly class="form-control-plaintext" disabled id="email" value="<%= venue.Venue_PhoneNumber %>">
-                                              </div>
-                                          </div>
-                                          <div class="form-group row mx-5">
-                                                <label for="phone" class="col-sm-5 col-form-label">Seat Capacity</label>
-                                                <div class="col-sm-5">
-                                                  <input type="text" readonly class="form-control-plaintext" disabled id="phone" value="<%= venue.Venue_SeatingCapacity %>">
-                                                </div>
-                                              </div>
-                                              <div class="form-group row mx-5">
-                                                    <p><%= venue.Venue_Detail %></p>
-                                                  </div>
-                                          <div class="row mt-auto">
-                                                <div class="col-5"></div>
-                                                <div class="col-3 text-center">
-                                                        <button class="btn btn-primary text-center align-self" type="submit">Back</button>
-                                                </div>
-                                                 
-                                            </div>
-                                  </form>
-                    </div>
+                <div class="col-12" style="padding: 5%; text-indent:5% ">
+                    <form action="/venue" method="GET">
+                        <div class="form-group row mx-5">
+                            <label for="username" class="col-sm-5 col-form-label">Address</label>
+                                <div class="col-sm-5">
+                                    <input type="text" readonly class="form-control-plaintext" disabled id="username" value="<%= venue.Venue_Address %>">
+                                </div>
+                        </div>
+                        <div class="form-group row mx-5">
+                            <label for="address" class="col-sm-5 col-form-label" >Email</label>
+                                <div class="col-sm-5">
+                                    <input type="text" readonly class="form-control-plaintext" disabled id="address" value="<%= venue.Venue_EmailAddress %>" >
+                                </div>
+                        </div>
+                        <div class="form-group row mx-5">
+                            <label for="email" class="col-sm-5 col-form-label">Phone</label>
+                                <div class="col-sm-5">
+                                    <input type="text" readonly class="form-control-plaintext" disabled id="email" value="<%= venue.Venue_PhoneNumber %>">
+                                </div>
+                        </div>
+                        <div class="form-group row mx-5">
+                            <label for="phone" class="col-sm-5 col-form-label">Seat Capacity</label>
+                                <div class="col-sm-5">
+                                    <input type="text" readonly class="form-control-plaintext" disabled id="phone" value="<%= venue.Venue_SeatingCapacity %>">
+                                </div>
+                        </div>
+                        <div class="form-group row mx-5">
+                            <label for="phone" class="col col-form-label mx-4"><%= venue.Venue_Detail %></label>
+                        </div>
+                        <div class="row mt-auto">
+                            <div class="col-5"></div>
+                                <div class="col-3 text-center">
+                                    <button class="btn btn-primary text-center align-self" type="submit">Back</button>
+                                </div>             
+                            </div>
+                        </div>
+                    </form>
                 </div>
+            </div>
+       
+        </div>
     </div>
 
     <!-- Optional JavaScript -->
