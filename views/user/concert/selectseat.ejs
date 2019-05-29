@@ -400,9 +400,11 @@
                                 <label for="inputPassword" class="col-sm-3 col-form-label">Promotion</label>
                                 <div class="col-sm-3">
                                         <% if(promotion) { %>
-                                        <input type="text" readonly class="form-control-plaintext" value="<%=promotion.Promotion_ID %>"><%=promotion.Promotion_Name %></option>
+                                            <label for="inputPassword" class="col-sm-3 col-form-label"><%= promotion.Promotion_Name %></label>
+                                            <input type="hidden" readonly class="form-control-plaintext" value="<%= promotion.Promotion_ID %>" name="promotion">
                                         <% } else { %>
-                                            <input type="text" readonly class="form-control-plaintext" value="none"> None </option>
+                                            <input type="hidden" readonly class="form-control-plaintext" value="" name="promotion">
+                                            <label for="inputPassword" class="col-sm-3 col-form-label">None</label>
                                             <% } %>
                                 </div>
                             </div>

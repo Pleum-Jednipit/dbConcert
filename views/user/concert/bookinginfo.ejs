@@ -92,18 +92,31 @@
         <div class="form-group row mx-5">
           <label for="promotionDiscount" class="col-sm-5 col-form-label">Promotion Discount</label>
           <div class="col-sm-5">
-            <input disabled type="text" readonly class="form-control-plaintext" id="promotionDiscount" value="">
+            <% if(promotion)  {%> 
+            <input disabled type="text" readonly class="form-control-plaintext" id="promotionDiscount" value="<%= promotion.Promotion_Discount %>">
+            <% } else {%>
+              <input disabled type="text" readonly class="form-control-plaintext" id="promotionDiscount" value="None">
+              <% } %>
           </div>
         </div>
+        <% if(promotion) {%> 
         <div class="form-group row mx-5">
-          <label for="deriveryMethod" class="col-sm-5 col-form-label">Derivery Method</label>
+            <label for="promotionDiscount" class="col-sm-5 col-form-label">Discount Price</label>
+            <div class="col-sm-5">
+              <input disabled type="text" readonly class="form-control-plaintext" id="promotionDiscount" value="<%= booking.Booking_Quantity * zone.Zone_Price * promotion.Promotion_Discount / 100 %>">
+            </div>
+          </div>
+          <% } else {%>
+            <% } %>
+        <div class="form-group row mx-5">
+          <label for="deriveryMethod" class="col-sm-5 col-form-label">Ticket Receiving Method</label>
           <div class="col-sm-5">
             <input disabled type="text" readonly class="form-control-plaintext" id="deriveryMethod"
               value="<%= ticket.Ticket_Receiving_Name %>">
           </div>
         </div>
         <div class="form-group row mx-5">
-          <label for="deriveryFee" class="col-sm-5 col-form-label">Derivery Fee</label>
+          <label for="deriveryFee" class="col-sm-5 col-form-label">Ticket Receiving Fee</label>
           <div class="col-sm-5">
             <input disabled type="text" readonly class="form-control-plaintext" id="deriveryFee"
               value="<%= ticket.Ticket_Receiving_Fee %>">
