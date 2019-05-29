@@ -52,13 +52,13 @@
                                     <table>
                                         <tr>
                                             <th>ConcertName</th>
-                                            <th>Artist</th>
+                                            <th>Showtime</th>
                                             <th>Capacity</th>
                                         </tr>
                                         <% table1.forEach(function(item) { %>
                                             <tr>
                                                 <td><label for=""><%= item.Concert_Name %></label></td>
-                                                <td><label for=""><%= item.Artist_Name %></label></td>
+                                                <td><label for=""><%= item.Concert_ShowDate %></label></td>
                                                 <td><label for=""><%= item.Capacity %></label></td>
                                 
                                             </tr>
@@ -132,14 +132,15 @@
                                     <table>
                                         <tr>
                                             <th>Concert</th>
-                                            <th>Artist</th>
                                             <th>Most Expensive Seat Price</th>
                                         </tr>
-                                        <tr>
-                                            <td><label for=""></label></td>
-                                            <td><label for=""></label></td>
-                                            <td><label for=""></label></td>
-                                        </tr>
+                                        <% table5.forEach(function(item) { %>
+                                            <tr>
+                                                <td><label for=""><%= item.Concert_Name %></label></td>
+                                                <td><label for=""><%= item.MostExpensive %></label></td>
+                                
+                                            </tr>
+                                            <% }) %>
                                     </table>
                                 </div>
                             </div>
@@ -159,10 +160,12 @@
                                             <th>Payment Method</th>
                                             <th>Number of People Who Choose This Method</th>
                                         </tr>
-                                        <tr>
-                                            <td><label for=""></label></td>
-                                            <td><label for=""></label></td>
-                                        </tr>
+                                        <% table4.forEach(function(item) { %>
+                                            <tr>
+                                                <td><label for=""><%= item.Payment_Name %></label></td>
+                                                <td><label for=""><%= item.Number %></label></td>
+                                            </tr>
+                                            <% }) %>
                                     </table>
                                 </div>
                             </div>
@@ -172,20 +175,22 @@
                         <div class="container mt-3">
                             <div class="row">
                                 <div class="col text-center">
-                                    <label for="">Record Lebel That Has the Most Artist</label>
+                                    <label for="">Record Label That Has the Most Artist</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
                                     <table>
                                         <tr>
-                                            <th>Record Lebel</th>
+                                            <th>Record Label</th>
                                             <th>Number of Artist</th>
                                         </tr>
-                                        <tr>
-                                            <td><label for=""></label></td>
-                                            <td><label for=""></label></td>
-                                        </tr>
+                                        <% table6.forEach(function(item) { %>
+                                            <tr>
+                                                <td><label for=""><%= item.Record_Label_Name %></label></td>
+                                                <td><label for=""><%= item.NumberofArtist %></label></td>
+                                            </tr>
+                                            <% }) %>
                                     </table>
                                 </div>
                             </div>
@@ -205,10 +210,12 @@
                                             <th>ConcertName</th>
                                             <th>Number of Artist</th>
                                         </tr>
-                                        <tr>
-                                            <td><label for=""></label></td>
-                                            <td><label for=""></label></td>
-                                        </tr>
+                                        <% table7.forEach(function(item) { %>
+                                            <tr>
+                                                <td><label for=""><%= item.Concert_Name %></label></td>
+                                                <td><label for=""><%= item.NumberofArtist %></label></td>
+                                            </tr>
+                                            <% }) %>
                                     </table>
                                 </div>
                             </div>
@@ -229,11 +236,13 @@
                                             <th>Concert</th>
                                             <th>Price</th>
                                         </tr>
-                                        <tr>
-                                            <td><label for=""></label></td>
-                                            <td><label for=""></label></td>
-                                            <td><label for=""></label></td>
-                                        </tr>
+                                        <% table8.forEach(function(item) { %>
+                                            <tr>
+                                                <td><label for=""><%= item.Member_Name %></label></td>
+                                                <td><label for=""><%= item.Concert_Name %></label></td>
+                                                <td><label for=""><%= item.Price %></label></td>
+                                            </tr>
+                                            <% }) %>
                                     </table>
                                 </div>
                             </div>
@@ -250,13 +259,15 @@
                                 <div class="col">
                                     <table>
                                         <tr>
-                                            <th>Shipping Method</th>
-                                            <th>Number of Times using Method</th>
+                                            <th>Ticket Receiving Method</th>
+                                            <th>Number of booking using Method</th>
                                         </tr>
-                                        <tr>
-                                            <td><label for=""></label></td>
-                                            <td><label for=""></label></td>
-                                        </tr>
+                                        <% table9.forEach(function(item) { %>
+                                            <tr>
+                                                <td><label for=""><%= item.Ticket_Receiving_Name %></label></td>
+                                                <td><label for=""><%= item.NumberofUsingMethod %></label></td>
+                                            </tr>
+                                            <% }) %>
                                     </table>
                                 </div>
                             </div>
@@ -276,10 +287,12 @@
                                             <th>ArtistName</th>
                                             <th>Number of Concert</th>
                                         </tr>
-                                        <tr>
-                                            <td><label for=""></label></td>
-                                            <td><label for=""></label></td>
-                                        </tr>
+                                        <% table10.forEach(function(item) { %>
+                                            <tr>
+                                                <td><label for=""><%= item.Artist_Name %></label></td>
+                                                <td><label for=""><%= item.NumberofConcert %></label></td>
+                                            </tr>
+                                            <% }) %>
                                     </table>
                                 </div>
                             </div>
@@ -299,10 +312,12 @@
                                             <th>Member's Name</th>
                                             <th>Number of Booking</th>
                                         </tr>
-                                        <tr>
-                                            <td><label for=""></label></td>
-                                            <td><label for=""></label></td>
-                                        </tr>
+                                        <% table11.forEach(function(item) { %>
+                                            <tr>
+                                                <td><label for=""><%= item.Member_Name %></label></td>
+                                                <td><label for=""><%= item.NumberofBooking %></label></td>
+                                            </tr>
+                                            <% }) %>
                                     </table>
                                 </div>
                             </div>
@@ -322,10 +337,12 @@
                                             <th>Venue's Name</th>
                                             <th>Number of Concerts</th>
                                         </tr>
-                                        <tr>
-                                            <td><label for=""></label></td>
-                                            <td><label for=""></label></td>
-                                        </tr>
+                                        <% table12.forEach(function(item) { %>
+                                            <tr>
+                                                <td><label for=""><%= item.Venue_Name %></label></td>
+                                                <td><label for=""><%= item.NumberofConcert %></label></td>
+                                            </tr>
+                                            <% }) %>
                                     </table>
                                 </div>
                             </div>
