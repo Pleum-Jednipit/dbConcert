@@ -58,12 +58,11 @@
                                         value="<%= item.Concert_ShowTime_ID %> ">
                                 </td>
                                 <td>
-                                    <input name="date" class="form-control" data-date-format="dd/mm/yyyy"
-                                        id="datepicker" value="<%= item.Concert_ShowDate %>">
+                                    <input class="form-control" data-date-format="yyyy-mm-dd" id="datepicker" name="date" value="<%= item.Concert_ShowDate %>">
                                 </td>
 
                                 <td>
-                                    <input name="time" id="timepicker" value="<%= item.Concert_ShowTime %>" />
+                                    <input type="text" class="form-control" name="time" id="timepicker" value="<%= item.Concert_ShowTime %>" />
                                 </td>
 
                                 <td>
@@ -222,7 +221,7 @@
 
             var index = $("table tbody tr:last-child").index();
             var row = '<tr>' +
-                '<td> <input type="date" name="date"> </td> <td> <input type="text" name="time"> </td> <td> <input type="text" name="plan"></td>' +
+                '<td> <input type="date" name="date" class="form-control" name="" data-date-format="yyyy-mm-dd"> </td> <td> <input type="text" name="time" class="form-control" data-date-format="hh:mm"> </td> <td> <input type="text" name="plan"></td>' +
                 '<td>' + actions + '</td>' +
                 '</tr>';
             $("table").append(row);
@@ -267,27 +266,6 @@
         $('#timepicker').timepicker({
             uiLibrary: 'bootstrap4'
         });
-    });
-</script>
-<!--datepicker-->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
-<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
-<script>
-        $('#datepicker').datepicker({
-            uiLibrary: 'bootstrap4'
-        });
-    </script>
-<!--timepicker-->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
-<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
-<script>
-    $('#timepicker').timepicker({
-        uiLibrary: 'bootstrap4'
     });
 </script>
 </body>
