@@ -6,7 +6,7 @@
     <div class="container" style="background: whitesmoke; margin-top: 40px; border-radius: 25px ">
         <div class="row">
             <div class="col-5">
-                <img src="<%= concert[0].Concert_Poster %>" class="img-fluid m-3 mx-5" alt="" style="padding-left: 150px; width: 460px">
+                <img src="<%= concert[0].Concert_Poster %>" class="img-fluid m-3 mx-5" alt="" style="padding-left: 150px; width: 450px; height: 450px;">
             </div>
             <div class="col-6">
                 <div class="row">
@@ -15,29 +15,29 @@
                                 <hr style="margin-left: 30px">
                         </div>
                 </div> 
-                <div class="row mt-4">
+                <div class="row mt-4" style="margin-left: 40px">
                     <% concert.forEach(function(item) { %>
 
-                    <div class="col-6" >
-                        <label for="" ><img src="https://image.flaticon.com/icons/svg/61/61469.svg" class="text-center mr-2 ml-5" width="20px" alt=""></label>
-                        <label for="" class="text-center" ><%= item.Concert_ShowDate %></label>
+                    <div class="col-7" >
+                        <label for="" ><img src="https://image.flaticon.com/icons/svg/61/61469.svg" class="text-center ml-4" width="20px" alt=""></label>
+                        <label for="" class="text-center"  ><%= item.Concert_ShowDate %></label>
                     </div>
-                    <div class="col-6 border-left" >
-                            <label for="" ><img src="https://image.flaticon.com/icons/svg/66/66403.svg" class="text-center mr-2 ml-5" width="20px" alt=""></label>
+                    <div class="col-5 border-left" >
+                            <label for="" ><img src="https://image.flaticon.com/icons/svg/66/66403.svg" class="text-center  ml-4" width="20px" alt=""></label>
                             <label for="" class="text-center"><%= item.Concert_ShowTime %></label>
-                        </div>
+                    </div>
                     <% }) %>
                 </div>
-                <div class="row mt-1" >
-                    <div class="col">
-                            <label for="" ><img src="https://image.flaticon.com/icons/svg/125/125805.svg" class="text-center mr-2 ml-5" width="20px" alt=""></label>
-                            <label for="" class="text-center"><%= venue.Venue_Name %></label>
+                <div class="row mt-1">
+                    <div class="col" style="margin-left: 80px">
+                            <label for="" ><img src="https://image.flaticon.com/icons/svg/125/125805.svg" class="text-center " width="20px" alt=""></label>
+                            <label for="" class="text-center" ><%= venue.Venue_Name %></label>
                     </div>
                 </div>
                 
                 <div class="row mt-1">
                         <% artist.forEach(function(item) { %>
-                        <div class="col-6">
+                        <div class="col-6" style="margin-left: 30px">
                                 <label for="" ><img src="https://image.flaticon.com/icons/svg/1844/1844092.svg" class="text-center mr-2 ml-5" width="20px" alt=""></label>
                                 <label for="" class="text-center"><%= item.Artist_Name %></label>
                         </div>

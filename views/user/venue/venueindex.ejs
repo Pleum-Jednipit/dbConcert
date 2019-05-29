@@ -1,41 +1,38 @@
-<% include ../../partials/userheader %>
-<title>Concert </title>
-</head>
-<% include ../../partials/usernav %>
-
+    <% include ../../partials/userheader %>
+        <title>Concert </title>
+    </head>
+    <% include ../../partials/usernav %>
 
     <body class="container">
         <!--body part1-->
         <div class="container my-5">
             <div class="row">
                 <div class="col-0" style="width: 25px"></div>
-                <div class="col">
-                    <h1 class="dispaly-1" style="float: left">Venue
-                        <img src="https://image.flaticon.com/icons/svg/1527/1527531.svg"
-                            style="float:right; width: 50px;"></h1>
+                    <div class="col">
+                        <h1 class="dispaly-1" style="float: left">Venue
+                        <img src="https://image.flaticon.com/icons/svg/1527/1527531.svg" style="float:right; width: 50px;"></h1>
+                    </div>
+                </div>
+                <hr>
+                <% venue.forEach(function(venue){ %>
+                        
+                <!--- Add form here --->
+                <div class="card">
+                    <div class="row">
+                        <div class="col-6 text-center">
+                            <img class="card-img-top" src="<%= venue.Venue_Image %>" alt="" ref="" style="position: relative; margin-left: 180px">
+                        </div>
+                        <div class="col-6 text-center">
+                            <a class="text-center" href="/venue/<%= venue.Venue_Name.split(" ").join("-")%>"><label for=""><%= venue.Venue_Name %></label></a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <hr>
-            <% venue.forEach(function(venue){ %>
-            <div class="row">
-                <!--- Add form here --->
-                    <div class="col-3 mx-2">
-                            <div class="row">
-                                <div class="col-12 text-center">
-                                        <img class="card-img-top" src="<%= venue.Venue_Image %>" alt="" ref="">
-                                </div>
-                                <div class="col-12 text-center">
-                                        <a class="text-center" href="/venue/<%= venue.Venue_Name.split(" ").join("-")%>"><label for=""><%= venue.Venue_Name %></label></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-10"></div>
-                        <!---- /Add ---->
-
+            <div class="col-6"></div>
+                <!---- /Add ---->
             </div>
-            <% }) %>
+                <% }) %>
         </div>
-
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -49,12 +46,11 @@
         </script>
         <style>
             .card-img-top{
-                width: 100%;
-                height: 12em;
-                            }
+                width: 40%;
+                height: 20em;
+            }
+
         </style>
-
-
     </body>
 
 </html>
