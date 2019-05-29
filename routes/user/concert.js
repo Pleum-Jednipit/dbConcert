@@ -231,19 +231,20 @@ router.get("/:name/showtime/:showtime/:zone",isUser, function (req, res) {
                            if (err) {
                               throw err;
                            }
-                           var getPromotion = "SELECT * FROM promotion WHERE Concert_ID = ?;";
-                           connection.query(getPromotion,[concert[0].Concert_ID],function (err, promotion) {
+                           var getMemberInfo = "SELECT * FROM member WHERE Member_Username = ?;";
+                           connection.query(getMemberInfo, 'test', function (err, memberInfo) {
+                           if (err) {
+                              throw err;
+                              }
+                           });
+                           var getPromotion = "SELECT DISTINCT p.* FROM promotion p, member_promotion mp , member m WHERE p.Concert_ID = ? AND CURDATE() > p.Promotion_Start AND CURDATE() < p.Promotion_End AND mp.MemberType_ID = m.MemberType_ID AND m.Member_Username = ?;";
+                           connection.query(getPromotion,[concert[0].Concert_ID,req.session.username],function (err, promotion) {
                               if (err) {
                                  throw err;
                               }
-                              var now = new Date();
-                              var currentDate = dateFormat(now,"isoDate");
-                              promotion.forEach(function(item){
-                                 if(currentDate >= item.Promotion_Start && currentDate <= item.Promotion_End ){
-                                    console.log("Nice");
-                                 } 
-                              });
+                              console.log(promotion);
                               res.render("./user/concert/selectseat", {
+                                 promotion: promotion[0],
                                  showtime: showtime[0],
                                  venue: venue[0],
                                  zone: zone[0],
@@ -274,6 +275,7 @@ router.post("/:name/showtime/:showtime/:zone/booking",isUser, function (req, res
    var zoneName = req.body.zoneName;
    var zoneID = req.body.zoneID;
    var name = req.params.name;
+   var promotion = req.body.promotion;
    console.log("ID" + zoneID);
    var zonePrice = req.body.zonePrice;
    var ticketID = req.body.ticketID;
@@ -396,7 +398,7 @@ router.get("/:name/showtime/:showtime/booking/:bookingID",isUser, function (req,
             throw err;
          }
          var getMemberInfo = "SELECT * FROM member WHERE Member_Username = ?;";
-         connection.query(getMemberInfo, 'test', function (err, memberInfo) {
+         connection.query(getMemberInfo, req.session.username, function (err, memberInfo) {
             if (err) {
                throw err;
             }

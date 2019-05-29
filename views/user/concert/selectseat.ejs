@@ -396,6 +396,16 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="form-group row mx-5">
+                                <label for="inputPassword" class="col-sm-3 col-form-label">Promotion</label>
+                                <div class="col-sm-3">
+                                        <% if(promotion) { %>
+                                        <input type="text" readonly class="form-control-plaintext" value="<%=promotion.Promotion_ID %>"><%=promotion.Promotion_Name %></option>
+                                        <% } else { %>
+                                            <input type="text" readonly class="form-control-plaintext" value="none"> None </option>
+                                            <% } %>
+                                </div>
+                            </div>
                         <div class="form-group row  mt-auto">
                             <div class="col-9"></div>
                             <div class="col-3 text-center">

@@ -22,16 +22,17 @@ router.get("/new", isAdmin,function (req, res) {
  });
  
  router.post("/new",isAdmin, function (req, res) {
-    var sql = "INSERT INTO promotion ( Promotion_Name, Promotion_Start, Promotion_End , Promotion_Detail,Concert_ID,Promotion_Discount) " +
-       "VALUES (?,?,?,?,?,?)";
+    var sql = "INSERT INTO promotion ( Promotion_Name, Promotion_Start, Promotion_End , Promotion_Detail,Concert_ID,Promotion_Discount,Promotion_Image) " +
+       "VALUES (?,?,?,?,?,?,?)";
     var name = req.body.name;
     var start = req.body.startdate;
     var end = req.body.enddate;
     var detail = req.body.detail;
     var concertID = req.body.dropdown;
+    var image = req.body.image;
     console.log(concertID);
     var discount = req.body.discount;
-    connection.query(sql, [name, dateFormat(start,"isoDate"), dateFormat(end,"isoDate"), detail,concertID,discount], function (err, result) {
+    connection.query(sql, [name, dateFormat(start,"isoDate"), dateFormat(end,"isoDate"), detail,concertID,discount,image], function (err, result) {
        if (err) {
           throw err;
        }

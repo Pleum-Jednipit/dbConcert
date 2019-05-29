@@ -19,7 +19,7 @@ router.get("/", function (req, res) {
  router.get("/:name", function (req, res) {
     var venueName = req.params.name.split("-").join(" ");
     var getVenueInfo = "SELECT *  FROM venue WHERE Venue_Name = ?";
-    connection.query(venueName, function (err, venueInfo) {
+    connection.query(getVenueInfo,[venueName], function (err, venueInfo) {
        if (err) {
           throw err;
        }

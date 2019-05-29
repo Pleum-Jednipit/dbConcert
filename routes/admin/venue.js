@@ -62,8 +62,9 @@ router.put("/edit", isAdmin,function (req, res) {
  var seatingCapacity = req.body.capacity;
  var detail = req.body.detail;
  var image = req.body.image;
+ console.log(seatingCapacity);
  var sql = "UPDATE venue SET venue_Name = ?, venue_Address = ?, venue_EmailAddress = ?, venue_PhoneNumber = ?, venue_SeatingCapacity = ? ,venue_Detail = ?, venue_Image = ? WHERE venue_ID = ?;"
- connection.query(sql,[venueName,address,email,phoneNumber,seatingCapacity,venueID,detail,image], function (err, concert) {
+ connection.query(sql,[venueName,address,email,phoneNumber,seatingCapacity,detail,image,venueID], function (err, concert) {
     if (err) {
        throw err;
     }

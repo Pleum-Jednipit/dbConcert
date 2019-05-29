@@ -20,7 +20,7 @@ router.get("/new", isAdmin,function (req, res) {
 
 router.post("/new",isAdmin, function (req, res) {
     var sql = "INSERT INTO artist ( artist_Name, artist_detail ,artist_Image, Record_Label_ID) " +
-       "VALUES (?,?,?)";
+       "VALUES (?,?,?,?)";
     var artistName = req.body.name;
     var artistDetail = req.body.detail;
     var recordLabel = req.body.recordLabel;
@@ -35,7 +35,13 @@ router.post("/new",isAdmin, function (req, res) {
  });
   
  router.get("/edit",isAdmin, function (req, res) {
-      res.render("./admin/concert-index/concert-artist/artist/edit", {artist : ""});
+      var getAllArtist = "SELECT * FROM artist;";
+      connection.query(getAllArtist, function (err, result) {
+         if (err) {
+            throw err;
+         }
+      res.render("./admin/concert-index/concert-artist/artist/edit", {artist : "" , search: result});
+      });
  });
 
  // display image link
@@ -57,7 +63,13 @@ router.post("/new",isAdmin, function (req, res) {
                if (err) {
                   throw err;
                }
-               res.render("./admin/concert-index/concert-artist/artist/edit", { artist: artist[0], recordLabel: allRecordLabel, currentRecordLabel: currentRecordLabel[0]});
+               var getAllArtist = "SELECT * FROM artist;";
+               connection.query(getAllArtist, function (err, result) {
+                  if (err) {
+                     throw err;
+                  }
+               res.render("./admin/concert-index/concert-artist/artist/edit", { artist: artist[0], recordLabel: allRecordLabel, currentRecordLabel: currentRecordLabel[0], search : result});
+               });
             });
          });
        }

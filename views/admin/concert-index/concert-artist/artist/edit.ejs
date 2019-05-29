@@ -13,7 +13,13 @@
 
                         <label for="artistrecieve" class="col-sm-3 col-form-label">Search Artist</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" name="search">
+                                <div class="col-sm-6">
+                                        <select name="search" id="dropdown" class="form-control selectpicker" data-live-search="true">
+                                            <% search.forEach(function(item){ %>
+                                            <option value="<%= item.Artist_Name %>"> <%= item.Artist_Name %> </option>
+                                            <% }) %>
+                                        </select>
+                                    </div>
                         </div>
                         <button class="btn btn-outline-success">Search</button>
                     </div>
@@ -21,7 +27,7 @@
             </div>
 
         </div>
-        <% if (artist && artist != "none") { %>
+        <% if (artist) { %>
         <form action="/admin/artist/edit?_method=PUT" method="POST">
             <div class="container my-5" id="find">
                 <div class="col mx-5">
@@ -62,13 +68,13 @@
                                     <Label>Uploaded Image:</Label>
                                 </div>
                                 <div class="col-5">
-                                    <img src="" alt="">
+                                    <img src="<%= artist.Artist_Image %>" alt="">
                                 </div>
                             </div>
                             <div class="form-group row  mx-4">
-                                    <label for="image" class="col-sm-2 col-form-label">Poster</label>
+                                    <label for="image" class="col-sm-2 col-form-label">Image</label>
                                     <div class="col-sm-5">
-                                        <input type="text" class="form-control" id="image" name="poster" value="<%= artist.Artist_Poster %>">
+                                        <input type="text" class="form-control" id="image" name="image" value="<%= artist.Artist_Image %> %>">
                                     </div>
                 
                                 </div>
@@ -77,14 +83,12 @@
                     <div class="col-7"></div>
                     <div class="col-3 align-self-end">
                         <button class="btn btn-outline-info text-center align-self mx-3" type="submit">Edit</button>
-                        <a href="/admin/artist/delete/<%= artist.Artist_ID %>" type="submit"><button class="btn btn-outline-danger">Delete</button></a>
+                        <a href="/admin/artist/delete/<%= artist.Artist_ID %>" class="btn btn-outline-danger">Delete</a>
                     </div>
                 <!--- /3.52AM --->
                 </div>
             </div>
     </div>
-    <% } else if(artist == "none") {%>
-    <p> NONE</p>
     <% } %>
 </div>
 </div>
@@ -99,7 +103,6 @@
         document.body.className = '';
     });
 </script>
-<script src="smoothscoll.js"></script>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
@@ -110,6 +113,11 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
 </script>
+<script>
+        $(function () {
+            $('select').selectpicker();
+        });
+    </script>
 </body>
 
 </html>
