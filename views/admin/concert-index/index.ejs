@@ -26,7 +26,7 @@
             </div>
             <div class="col-3 text-center my-auto">
                 <button type="button" class="btn pop btn-outline-dark btn-lg" data-placement="bottom" html="true"
-                    data-toggle="popover" id="showtime">
+                    data-toggle="popover" id="showtime" >
                     <span><img src="https://image.flaticon.com/icons/svg/265/265688.svg" class="p-4" width="200"
                             alt="">
                         <hr>
@@ -37,7 +37,7 @@
             </div>
             <div class="col-3 text-center">
                 <button type="button" class="btn pop btn-outline-dark btn-lg" data-placement="bottom" html="true"
-                    data-toggle="popover" id="zone">
+                    data-toggle="popover" id="zone" onclick="window.location.href='/admin/concert-zone/select'">
                     <span><img src="https://image.flaticon.com/icons/svg/1773/1773654.svg" class="p-4" width="200"
                             alt="">
                         <hr>
@@ -79,16 +79,7 @@
         </div>
     </div>
 </div>
-<div id="popover-content-zone" class="hide d-none">
-    <div class="row">
-        <div class="col ">
-            <a href="/admin/concert-zone/select" class="btn btn-primary">Add</a>
-        </div>
-        <div class="col">
-            <a href="/admin/concert-zone/edit" id="edit" class="btn btn-warning">Edit</a>
-        </div>
-    </div>
-</div>
+
 
 <!-- Optional JavaScript -->
 <script>

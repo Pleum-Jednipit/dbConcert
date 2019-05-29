@@ -46,7 +46,6 @@
 
                                 <th>Seating Plan</th>
 
-                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -55,8 +54,8 @@
                                 <td>
                                     <label for="concertname"
                                         class="col-sm-2 col-form-label"><%= item.Concert_ShowTime_ID %></label>
-                                    <input type="hidden" name="concertShowtimeID"
-                                        value="<%= item.Concert_ShowTime_ID %>">
+                                    <input type="hidden" name="concertShowtimeID" 
+                                        value="<%= item.Concert_ShowTime_ID %> ">
                                 </td>
                                 <td>
                                     <input name="date" class="form-control" data-date-format="dd/mm/yyyy"
@@ -68,16 +67,10 @@
                                 </td>
 
                                 <td>
-                                    <input type="text" name="plan" value="<%= item.Concert_ShowTime_Plan %>" style="width: 154px">
+                                    <input type="text" name="plan" value="<%= item.Concert_ShowTime_Plan %>" style="width: 70px">
                                 </td>
 
-                                <td>
-                                    <a class="add" title="Add" data-toggle="tooltip"><i
-                                            class="material-icons">&#xE03B;</i>
-                                        <a class="delete" title="Delete" data-toggle="tooltip" style="margin-left:26px;
-                                        margin-top:7px;">
-                                            <i class="material-icons">&#xE872;</i></a>
-                                </td>
+                                
                             </tr>
                             <% }) %>
                         </tbody>

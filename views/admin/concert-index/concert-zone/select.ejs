@@ -75,18 +75,15 @@
                                 <td>
                                     <a class="add" title="Add" data-toggle="tooltip"><i
                                             class="material-icons">&#xE03B;</i>
-                                        <a href="/admin/concert-zone/select/<%= name %>/<%= item.Concert_ShowTime_ID %>" class="delete" title="Delete" data-toggle="tooltip" style="margin-left:26px;
-                                        margin-top:7px;">
-                                            <i class="material-icons">&#xE872;</i></a>
+                                        <a href="/admin/concert-zone/select/<%= name %>/<%= item.Concert_ShowTime_ID %>" class="badge badge-success" style="margin-left:26px;
+                                        margin-top:7px;">Select
+                                            </a>
                                 </td>
                             </tr>
                             <% }) %>
                         </tbody>
                     </table>
-                    <div class="col-3 align-self-end" style="left: 750px ">
-                        <button class="btn btn-warning text-center align-self mx-3 " type="submit" style="background-color: #28a745;
-                        border-color: #28a745">Submit</button>
-                    </div>
+                    
                 </div>
             </div>
             <% } else if(showtime == "none") {%>
