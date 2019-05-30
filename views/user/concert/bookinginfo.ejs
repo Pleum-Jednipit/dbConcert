@@ -93,7 +93,7 @@
           <label for="promotionDiscount" class="col-sm-5 col-form-label">Promotion Discount</label>
           <div class="col-sm-5">
             <% if(promotion)  {%> 
-            <input disabled type="text" readonly class="form-control-plaintext" id="promotionDiscount" value="<%= promotion.Promotion_Discount %>">
+            <input disabled type="text" readonly class="form-control-plaintext" id="promotionDiscount" value="<%= promotion.Promotion_Discount %> %">
             <% } else {%>
               <input disabled type="text" readonly class="form-control-plaintext" id="promotionDiscount" value="None">
               <% } %>

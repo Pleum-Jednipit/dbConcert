@@ -40,6 +40,10 @@ router.get("/:name", function (req, res) {
       if (err) {
          throw err;
       }
+      var salesdate;
+      concert.forEach(function(item){
+         salesdate = dateFormat(item.Concert_Sales_Date,"mediumDate");
+      });
       var getAllArtist = "SELECT * FROM concert c, concert_artist ca, artist a WHERE c.Concert_Name = ? AND c.Concert_ID = ca.Concert_ID AND ca.Artist_ID = a.Artist_ID;"
       connection.query(getAllArtist, [concertName], function (err, artist) {
          if (err) {
@@ -70,7 +74,8 @@ router.get("/:name", function (req, res) {
                artist: artist,
                venue: venue[0],
                name: name,
-               comingSoon: comingSoon
+               comingSoon: comingSoon,
+               salesdate: salesdate,
             }, );
          });
       });
@@ -235,11 +240,12 @@ router.get("/:name/showtime/:showtime/:zone", isUser, function (req, res) {
                                  throw err;
                               }
                            });
-                           var getPromotion = "SELECT DISTINCT p.* FROM promotion p, member_promotion mp , member m WHERE p.Concert_ID = ? AND CURDATE() > p.Promotion_Start AND CURDATE() < p.Promotion_End AND mp.MemberType_ID = m.MemberType_ID AND m.Member_Username = ?;";
+                           var getPromotion = "SELECT DISTINCT p.* FROM promotion p, member_promotion mp , member m WHERE p.Concert_ID = ? AND CURDATE() > p.Promotion_Start AND CURDATE() < p.Promotion_End AND mp.MemberType_ID = m.MemberType_ID AND m.Member_Username = ? ORDER BY p.Promotion_Discount DESC;";
                            connection.query(getPromotion, [concert[0].Concert_ID, req.session.username], function (err, promotion) {
                               if (err) {
                                  throw err;
                               }
+                              console.log("@@@@@@@");
                               console.log(promotion);
                               res.render("./user/concert/selectseat", {
                                  promotion: promotion[0],
